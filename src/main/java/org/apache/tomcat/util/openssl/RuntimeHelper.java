@@ -34,7 +34,7 @@ final class RuntimeHelper {
     private final static SymbolLookup SYMBOL_LOOKUP;
 
     static {
-        System.loadLibrary("libssl");
+        System.loadLibrary("ssl");
         SymbolLookup loaderLookup = SymbolLookup.loaderLookup();
         SYMBOL_LOOKUP = name -> loaderLookup.lookup(name).or(() -> LINKER.lookup(name));
     }

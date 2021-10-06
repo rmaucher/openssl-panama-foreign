@@ -25,15 +25,15 @@
     </parent>
 
     <groupId>org.apache.tomcat</groupId>
-    <artifactId>tomcat-openssl-java17</artifactId>
-    <name>Apache Tomcat OpenSSL support for Java 17</name>
-    <description>OpenSSL support using JEP 412 API</description>
+    <artifactId>tomcat-openssl</artifactId>
+    <name>Apache Tomcat OpenSSL support for Panama</name>
+    <description>OpenSSL support using the Panama API</description>
     <!-- This is the Apache OpenWebBeans version -->
     <version>0.1</version>
     <packaging>jar</packaging>
 
     <properties>
-        <tomcat.version>10.0.7</tomcat.version>
+        <tomcat.version>10.0.12</tomcat.version>
     </properties>
 
     <dependencies>
