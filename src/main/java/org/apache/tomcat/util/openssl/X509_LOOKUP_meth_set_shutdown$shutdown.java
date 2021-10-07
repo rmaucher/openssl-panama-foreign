@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface X509_LOOKUP_meth_set_shutdown$shutdown {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0);
-    static CLinker.UpcallStub allocate(X509_LOOKUP_meth_set_shutdown$shutdown fi) {
-        return RuntimeHelper.upcallStub(X509_LOOKUP_meth_set_shutdown$shutdown.class, fi, constants$573.X509_LOOKUP_meth_set_shutdown$shutdown$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(X509_LOOKUP_meth_set_shutdown$shutdown fi, ResourceScope scope) {
+    static NativeSymbol allocate(X509_LOOKUP_meth_set_shutdown$shutdown fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(X509_LOOKUP_meth_set_shutdown$shutdown.class, fi, constants$573.X509_LOOKUP_meth_set_shutdown$shutdown$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static X509_LOOKUP_meth_set_shutdown$shutdown ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0) -> {
+    static X509_LOOKUP_meth_set_shutdown$shutdown ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("X509_LOOKUP_meth_set_shutdown$shutdown::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0) -> {
             try {
-                return (int)constants$573.X509_LOOKUP_meth_set_shutdown$shutdown$MH.invokeExact((Addressable)addr, x0);
+                return (int)constants$573.X509_LOOKUP_meth_set_shutdown$shutdown$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

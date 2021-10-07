@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface RSA_meth_set_init$init {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0);
-    static CLinker.UpcallStub allocate(RSA_meth_set_init$init fi) {
-        return RuntimeHelper.upcallStub(RSA_meth_set_init$init.class, fi, constants$442.RSA_meth_set_init$init$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(RSA_meth_set_init$init fi, ResourceScope scope) {
+    static NativeSymbol allocate(RSA_meth_set_init$init fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(RSA_meth_set_init$init.class, fi, constants$442.RSA_meth_set_init$init$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static RSA_meth_set_init$init ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0) -> {
+    static RSA_meth_set_init$init ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("RSA_meth_set_init$init::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0) -> {
             try {
-                return (int)constants$442.RSA_meth_set_init$init$MH.invokeExact((Addressable)addr, x0);
+                return (int)constants$442.RSA_meth_set_init$init$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface lh_CONF_VALUE_new$hfn {
 
     long apply(jdk.incubator.foreign.MemoryAddress x0);
-    static CLinker.UpcallStub allocate(lh_CONF_VALUE_new$hfn fi) {
-        return RuntimeHelper.upcallStub(lh_CONF_VALUE_new$hfn.class, fi, constants$906.lh_CONF_VALUE_new$hfn$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)J");
-    }
-    static CLinker.UpcallStub allocate(lh_CONF_VALUE_new$hfn fi, ResourceScope scope) {
+    static NativeSymbol allocate(lh_CONF_VALUE_new$hfn fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(lh_CONF_VALUE_new$hfn.class, fi, constants$906.lh_CONF_VALUE_new$hfn$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)J", scope);
     }
-    static lh_CONF_VALUE_new$hfn ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0) -> {
+    static lh_CONF_VALUE_new$hfn ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("lh_CONF_VALUE_new$hfn::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0) -> {
             try {
-                return (long)constants$906.lh_CONF_VALUE_new$hfn$MH.invokeExact((Addressable)addr, x0);
+                return (long)constants$906.lh_CONF_VALUE_new$hfn$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface X509V3_EXT_NEW {
 
     jdk.incubator.foreign.MemoryAddress apply();
-    static CLinker.UpcallStub allocate(X509V3_EXT_NEW fi) {
-        return RuntimeHelper.upcallStub(X509V3_EXT_NEW.class, fi, constants$927.X509V3_EXT_NEW$FUNC, "()Ljdk/incubator/foreign/MemoryAddress;");
-    }
-    static CLinker.UpcallStub allocate(X509V3_EXT_NEW fi, ResourceScope scope) {
+    static NativeSymbol allocate(X509V3_EXT_NEW fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(X509V3_EXT_NEW.class, fi, constants$927.X509V3_EXT_NEW$FUNC, "()Ljdk/incubator/foreign/MemoryAddress;", scope);
     }
-    static X509V3_EXT_NEW ofAddress(MemoryAddress addr) {
-        return () -> {
+    static X509V3_EXT_NEW ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("X509V3_EXT_NEW::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return () -> {
             try {
-                return (jdk.incubator.foreign.MemoryAddress)constants$928.X509V3_EXT_NEW$MH.invokeExact((Addressable)addr);
+                return (jdk.incubator.foreign.MemoryAddress)constants$928.X509V3_EXT_NEW$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

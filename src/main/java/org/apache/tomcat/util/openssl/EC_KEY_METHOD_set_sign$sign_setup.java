@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface EC_KEY_METHOD_set_sign$sign_setup {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3);
-    static CLinker.UpcallStub allocate(EC_KEY_METHOD_set_sign$sign_setup fi) {
-        return RuntimeHelper.upcallStub(EC_KEY_METHOD_set_sign$sign_setup.class, fi, constants$413.EC_KEY_METHOD_set_sign$sign_setup$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(EC_KEY_METHOD_set_sign$sign_setup fi, ResourceScope scope) {
+    static NativeSymbol allocate(EC_KEY_METHOD_set_sign$sign_setup fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(EC_KEY_METHOD_set_sign$sign_setup.class, fi, constants$413.EC_KEY_METHOD_set_sign$sign_setup$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static EC_KEY_METHOD_set_sign$sign_setup ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3) -> {
+    static EC_KEY_METHOD_set_sign$sign_setup ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("EC_KEY_METHOD_set_sign$sign_setup::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3) -> {
             try {
-                return (int)constants$413.EC_KEY_METHOD_set_sign$sign_setup$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                return (int)constants$413.EC_KEY_METHOD_set_sign$sign_setup$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

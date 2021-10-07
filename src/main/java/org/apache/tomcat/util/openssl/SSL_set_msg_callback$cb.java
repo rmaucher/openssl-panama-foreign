@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface SSL_set_msg_callback$cb {
 
     void apply(int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3, long x4, jdk.incubator.foreign.MemoryAddress x5, jdk.incubator.foreign.MemoryAddress x6);
-    static CLinker.UpcallStub allocate(SSL_set_msg_callback$cb fi) {
-        return RuntimeHelper.upcallStub(SSL_set_msg_callback$cb.class, fi, constants$764.SSL_set_msg_callback$cb$FUNC, "(IIILjdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static CLinker.UpcallStub allocate(SSL_set_msg_callback$cb fi, ResourceScope scope) {
+    static NativeSymbol allocate(SSL_set_msg_callback$cb fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(SSL_set_msg_callback$cb.class, fi, constants$764.SSL_set_msg_callback$cb$FUNC, "(IIILjdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static SSL_set_msg_callback$cb ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3, long x4, jdk.incubator.foreign.MemoryAddress x5, jdk.incubator.foreign.MemoryAddress x6) -> {
+    static SSL_set_msg_callback$cb ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("SSL_set_msg_callback$cb::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (int x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3, long x4, jdk.incubator.foreign.MemoryAddress x5, jdk.incubator.foreign.MemoryAddress x6) -> {
             try {
-                constants$764.SSL_set_msg_callback$cb$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5, x6);
+                constants$764.SSL_set_msg_callback$cb$MH.invokeExact(symbol, x0, x1, x2, x3, x4, x5, x6);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

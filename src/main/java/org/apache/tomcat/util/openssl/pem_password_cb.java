@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface pem_password_cb {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3);
-    static CLinker.UpcallStub allocate(pem_password_cb fi) {
-        return RuntimeHelper.upcallStub(pem_password_cb.class, fi, constants$708.pem_password_cb$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;IILjdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(pem_password_cb fi, ResourceScope scope) {
+    static NativeSymbol allocate(pem_password_cb fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(pem_password_cb.class, fi, constants$708.pem_password_cb$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;IILjdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static pem_password_cb ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3) -> {
+    static pem_password_cb ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("pem_password_cb::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3) -> {
             try {
-                return (int)constants$708.pem_password_cb$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                return (int)constants$708.pem_password_cb$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

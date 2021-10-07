@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface SSL_CTX_set_srp_client_pwd_callback$cb {
 
     jdk.incubator.foreign.MemoryAddress apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1);
-    static CLinker.UpcallStub allocate(SSL_CTX_set_srp_client_pwd_callback$cb fi) {
-        return RuntimeHelper.upcallStub(SSL_CTX_set_srp_client_pwd_callback$cb.class, fi, constants$825.SSL_CTX_set_srp_client_pwd_callback$cb$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;");
-    }
-    static CLinker.UpcallStub allocate(SSL_CTX_set_srp_client_pwd_callback$cb fi, ResourceScope scope) {
+    static NativeSymbol allocate(SSL_CTX_set_srp_client_pwd_callback$cb fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(SSL_CTX_set_srp_client_pwd_callback$cb.class, fi, constants$825.SSL_CTX_set_srp_client_pwd_callback$cb$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;", scope);
     }
-    static SSL_CTX_set_srp_client_pwd_callback$cb ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static SSL_CTX_set_srp_client_pwd_callback$cb ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("SSL_CTX_set_srp_client_pwd_callback$cb::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                return (jdk.incubator.foreign.MemoryAddress)constants$825.SSL_CTX_set_srp_client_pwd_callback$cb$MH.invokeExact((Addressable)addr, x0, x1);
+                return (jdk.incubator.foreign.MemoryAddress)constants$825.SSL_CTX_set_srp_client_pwd_callback$cb$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

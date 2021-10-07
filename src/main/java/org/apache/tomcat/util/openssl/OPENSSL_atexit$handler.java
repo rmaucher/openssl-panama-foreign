@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface OPENSSL_atexit$handler {
 
     void apply();
-    static CLinker.UpcallStub allocate(OPENSSL_atexit$handler fi) {
-        return RuntimeHelper.upcallStub(OPENSSL_atexit$handler.class, fi, constants$78.OPENSSL_atexit$handler$FUNC, "()V");
-    }
-    static CLinker.UpcallStub allocate(OPENSSL_atexit$handler fi, ResourceScope scope) {
+    static NativeSymbol allocate(OPENSSL_atexit$handler fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(OPENSSL_atexit$handler.class, fi, constants$78.OPENSSL_atexit$handler$FUNC, "()V", scope);
     }
-    static OPENSSL_atexit$handler ofAddress(MemoryAddress addr) {
-        return () -> {
+    static OPENSSL_atexit$handler ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("OPENSSL_atexit$handler::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return () -> {
             try {
-                constants$78.OPENSSL_atexit$handler$MH.invokeExact((Addressable)addr);
+                constants$78.OPENSSL_atexit$handler$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

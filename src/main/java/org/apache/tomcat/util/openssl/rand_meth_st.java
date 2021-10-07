@@ -30,16 +30,13 @@ public class rand_meth_st {
     public interface seed {
 
         int apply(jdk.incubator.foreign.MemoryAddress x0, int x1);
-        static CLinker.UpcallStub allocate(seed fi) {
-            return RuntimeHelper.upcallStub(seed.class, fi, rand_meth_st.seed$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;I)I");
-        }
-        static CLinker.UpcallStub allocate(seed fi, ResourceScope scope) {
+        static NativeSymbol allocate(seed fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(seed.class, fi, rand_meth_st.seed$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;I)I", scope);
         }
-        static seed ofAddress(MemoryAddress addr) {
-            return (jdk.incubator.foreign.MemoryAddress x0, int x1) -> {
+        static seed ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("seed::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, int x1) -> {
                 try {
-                    return (int)rand_meth_st.seed$MH.invokeExact((Addressable)addr, x0, x1);
+                    return (int)rand_meth_st.seed$MH.invokeExact(symbol, x0, x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -63,8 +60,8 @@ public class rand_meth_st {
     public static void seed$set(MemorySegment seg, long index, MemoryAddress x) {
         rand_meth_st.seed$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static seed seed (MemorySegment segment) {
-        return seed.ofAddress(seed$get(segment));
+    public static seed seed (MemorySegment segment, ResourceScope scope) {
+        return seed.ofAddress(seed$get(segment), scope);
     }
     static final FunctionDescriptor bytes$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
@@ -76,16 +73,13 @@ public class rand_meth_st {
     public interface bytes {
 
         int apply(jdk.incubator.foreign.MemoryAddress x0, int x1);
-        static CLinker.UpcallStub allocate(bytes fi) {
-            return RuntimeHelper.upcallStub(bytes.class, fi, rand_meth_st.bytes$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;I)I");
-        }
-        static CLinker.UpcallStub allocate(bytes fi, ResourceScope scope) {
+        static NativeSymbol allocate(bytes fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(bytes.class, fi, rand_meth_st.bytes$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;I)I", scope);
         }
-        static bytes ofAddress(MemoryAddress addr) {
-            return (jdk.incubator.foreign.MemoryAddress x0, int x1) -> {
+        static bytes ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("bytes::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, int x1) -> {
                 try {
-                    return (int)rand_meth_st.bytes$MH.invokeExact((Addressable)addr, x0, x1);
+                    return (int)rand_meth_st.bytes$MH.invokeExact(symbol, x0, x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -109,8 +103,8 @@ public class rand_meth_st {
     public static void bytes$set(MemorySegment seg, long index, MemoryAddress x) {
         rand_meth_st.bytes$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static bytes bytes (MemorySegment segment) {
-        return bytes.ofAddress(bytes$get(segment));
+    public static bytes bytes (MemorySegment segment, ResourceScope scope) {
+        return bytes.ofAddress(bytes$get(segment), scope);
     }
     static final FunctionDescriptor cleanup$FUNC = FunctionDescriptor.ofVoid();
     static final MethodHandle cleanup$MH = RuntimeHelper.downcallHandle(
@@ -119,16 +113,13 @@ public class rand_meth_st {
     public interface cleanup {
 
         void apply();
-        static CLinker.UpcallStub allocate(cleanup fi) {
-            return RuntimeHelper.upcallStub(cleanup.class, fi, rand_meth_st.cleanup$FUNC, "()V");
-        }
-        static CLinker.UpcallStub allocate(cleanup fi, ResourceScope scope) {
+        static NativeSymbol allocate(cleanup fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(cleanup.class, fi, rand_meth_st.cleanup$FUNC, "()V", scope);
         }
-        static cleanup ofAddress(MemoryAddress addr) {
-            return () -> {
+        static cleanup ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("cleanup::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return () -> {
                 try {
-                    rand_meth_st.cleanup$MH.invokeExact((Addressable)addr);
+                    rand_meth_st.cleanup$MH.invokeExact(symbol);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -152,8 +143,8 @@ public class rand_meth_st {
     public static void cleanup$set(MemorySegment seg, long index, MemoryAddress x) {
         rand_meth_st.cleanup$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static cleanup cleanup (MemorySegment segment) {
-        return cleanup.ofAddress(cleanup$get(segment));
+    public static cleanup cleanup (MemorySegment segment, ResourceScope scope) {
+        return cleanup.ofAddress(cleanup$get(segment), scope);
     }
     static final FunctionDescriptor add$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
@@ -166,16 +157,13 @@ public class rand_meth_st {
     public interface add {
 
         int apply(jdk.incubator.foreign.MemoryAddress x0, int x1, double x2);
-        static CLinker.UpcallStub allocate(add fi) {
-            return RuntimeHelper.upcallStub(add.class, fi, rand_meth_st.add$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;ID)I");
-        }
-        static CLinker.UpcallStub allocate(add fi, ResourceScope scope) {
+        static NativeSymbol allocate(add fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(add.class, fi, rand_meth_st.add$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;ID)I", scope);
         }
-        static add ofAddress(MemoryAddress addr) {
-            return (jdk.incubator.foreign.MemoryAddress x0, int x1, double x2) -> {
+        static add ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("add::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, int x1, double x2) -> {
                 try {
-                    return (int)rand_meth_st.add$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                    return (int)rand_meth_st.add$MH.invokeExact(symbol, x0, x1, x2);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -199,8 +187,8 @@ public class rand_meth_st {
     public static void add$set(MemorySegment seg, long index, MemoryAddress x) {
         rand_meth_st.add$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static add add (MemorySegment segment) {
-        return add.ofAddress(add$get(segment));
+    public static add add (MemorySegment segment, ResourceScope scope) {
+        return add.ofAddress(add$get(segment), scope);
     }
     static final FunctionDescriptor pseudorand$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
@@ -212,16 +200,13 @@ public class rand_meth_st {
     public interface pseudorand {
 
         int apply(jdk.incubator.foreign.MemoryAddress x0, int x1);
-        static CLinker.UpcallStub allocate(pseudorand fi) {
-            return RuntimeHelper.upcallStub(pseudorand.class, fi, rand_meth_st.pseudorand$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;I)I");
-        }
-        static CLinker.UpcallStub allocate(pseudorand fi, ResourceScope scope) {
+        static NativeSymbol allocate(pseudorand fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(pseudorand.class, fi, rand_meth_st.pseudorand$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;I)I", scope);
         }
-        static pseudorand ofAddress(MemoryAddress addr) {
-            return (jdk.incubator.foreign.MemoryAddress x0, int x1) -> {
+        static pseudorand ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("pseudorand::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, int x1) -> {
                 try {
-                    return (int)rand_meth_st.pseudorand$MH.invokeExact((Addressable)addr, x0, x1);
+                    return (int)rand_meth_st.pseudorand$MH.invokeExact(symbol, x0, x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -245,8 +230,8 @@ public class rand_meth_st {
     public static void pseudorand$set(MemorySegment seg, long index, MemoryAddress x) {
         rand_meth_st.pseudorand$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static pseudorand pseudorand (MemorySegment segment) {
-        return pseudorand.ofAddress(pseudorand$get(segment));
+    public static pseudorand pseudorand (MemorySegment segment, ResourceScope scope) {
+        return pseudorand.ofAddress(pseudorand$get(segment), scope);
     }
     static final FunctionDescriptor status$FUNC = FunctionDescriptor.of(JAVA_INT);
     static final MethodHandle status$MH = RuntimeHelper.downcallHandle(
@@ -255,16 +240,13 @@ public class rand_meth_st {
     public interface status {
 
         int apply();
-        static CLinker.UpcallStub allocate(status fi) {
-            return RuntimeHelper.upcallStub(status.class, fi, rand_meth_st.status$FUNC, "()I");
-        }
-        static CLinker.UpcallStub allocate(status fi, ResourceScope scope) {
+        static NativeSymbol allocate(status fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(status.class, fi, rand_meth_st.status$FUNC, "()I", scope);
         }
-        static status ofAddress(MemoryAddress addr) {
-            return () -> {
+        static status ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("status::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return () -> {
                 try {
-                    return (int)rand_meth_st.status$MH.invokeExact((Addressable)addr);
+                    return (int)rand_meth_st.status$MH.invokeExact(symbol);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -288,8 +270,8 @@ public class rand_meth_st {
     public static void status$set(MemorySegment seg, long index, MemoryAddress x) {
         rand_meth_st.status$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static status status (MemorySegment segment) {
-        return status.ofAddress(status$get(segment));
+    public static status status (MemorySegment segment, ResourceScope scope) {
+        return status.ofAddress(status$get(segment), scope);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

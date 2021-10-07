@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface tls_session_ticket_ext_cb_fn {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, int x2, jdk.incubator.foreign.MemoryAddress x3);
-    static CLinker.UpcallStub allocate(tls_session_ticket_ext_cb_fn fi) {
-        return RuntimeHelper.upcallStub(tls_session_ticket_ext_cb_fn.class, fi, constants$760.tls_session_ticket_ext_cb_fn$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(tls_session_ticket_ext_cb_fn fi, ResourceScope scope) {
+    static NativeSymbol allocate(tls_session_ticket_ext_cb_fn fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(tls_session_ticket_ext_cb_fn.class, fi, constants$760.tls_session_ticket_ext_cb_fn$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static tls_session_ticket_ext_cb_fn ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, int x2, jdk.incubator.foreign.MemoryAddress x3) -> {
+    static tls_session_ticket_ext_cb_fn ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("tls_session_ticket_ext_cb_fn::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, int x2, jdk.incubator.foreign.MemoryAddress x3) -> {
             try {
-                return (int)constants$760.tls_session_ticket_ext_cb_fn$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                return (int)constants$760.tls_session_ticket_ext_cb_fn$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

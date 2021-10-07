@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface CRYPTO_set_mem_functions$r {
 
     jdk.incubator.foreign.MemoryAddress apply(jdk.incubator.foreign.MemoryAddress x0, long x1, jdk.incubator.foreign.MemoryAddress x2, int x3);
-    static CLinker.UpcallStub allocate(CRYPTO_set_mem_functions$r fi) {
-        return RuntimeHelper.upcallStub(CRYPTO_set_mem_functions$r.class, fi, constants$70.CRYPTO_set_mem_functions$r$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;I)Ljdk/incubator/foreign/MemoryAddress;");
-    }
-    static CLinker.UpcallStub allocate(CRYPTO_set_mem_functions$r fi, ResourceScope scope) {
+    static NativeSymbol allocate(CRYPTO_set_mem_functions$r fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(CRYPTO_set_mem_functions$r.class, fi, constants$70.CRYPTO_set_mem_functions$r$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;I)Ljdk/incubator/foreign/MemoryAddress;", scope);
     }
-    static CRYPTO_set_mem_functions$r ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, long x1, jdk.incubator.foreign.MemoryAddress x2, int x3) -> {
+    static CRYPTO_set_mem_functions$r ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("CRYPTO_set_mem_functions$r::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, long x1, jdk.incubator.foreign.MemoryAddress x2, int x3) -> {
             try {
-                return (jdk.incubator.foreign.MemoryAddress)constants$70.CRYPTO_set_mem_functions$r$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                return (jdk.incubator.foreign.MemoryAddress)constants$70.CRYPTO_set_mem_functions$r$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

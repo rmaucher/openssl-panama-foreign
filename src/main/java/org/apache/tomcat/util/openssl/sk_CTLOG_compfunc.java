@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface sk_CTLOG_compfunc {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1);
-    static CLinker.UpcallStub allocate(sk_CTLOG_compfunc fi) {
-        return RuntimeHelper.upcallStub(sk_CTLOG_compfunc.class, fi, constants$740.sk_CTLOG_compfunc$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(sk_CTLOG_compfunc fi, ResourceScope scope) {
+    static NativeSymbol allocate(sk_CTLOG_compfunc fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(sk_CTLOG_compfunc.class, fi, constants$740.sk_CTLOG_compfunc$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static sk_CTLOG_compfunc ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static sk_CTLOG_compfunc ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("sk_CTLOG_compfunc::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                return (int)constants$740.sk_CTLOG_compfunc$MH.invokeExact((Addressable)addr, x0, x1);
+                return (int)constants$740.sk_CTLOG_compfunc$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

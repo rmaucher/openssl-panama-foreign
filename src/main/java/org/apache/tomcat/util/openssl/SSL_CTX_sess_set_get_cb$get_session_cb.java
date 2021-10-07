@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface SSL_CTX_sess_set_get_cb$get_session_cb {
 
     jdk.incubator.foreign.MemoryAddress apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, int x2, jdk.incubator.foreign.MemoryAddress x3);
-    static CLinker.UpcallStub allocate(SSL_CTX_sess_set_get_cb$get_session_cb fi) {
-        return RuntimeHelper.upcallStub(SSL_CTX_sess_set_get_cb$get_session_cb.class, fi, constants$768.SSL_CTX_sess_set_get_cb$get_session_cb$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;");
-    }
-    static CLinker.UpcallStub allocate(SSL_CTX_sess_set_get_cb$get_session_cb fi, ResourceScope scope) {
+    static NativeSymbol allocate(SSL_CTX_sess_set_get_cb$get_session_cb fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(SSL_CTX_sess_set_get_cb$get_session_cb.class, fi, constants$768.SSL_CTX_sess_set_get_cb$get_session_cb$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;", scope);
     }
-    static SSL_CTX_sess_set_get_cb$get_session_cb ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, int x2, jdk.incubator.foreign.MemoryAddress x3) -> {
+    static SSL_CTX_sess_set_get_cb$get_session_cb ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("SSL_CTX_sess_set_get_cb$get_session_cb::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, int x2, jdk.incubator.foreign.MemoryAddress x3) -> {
             try {
-                return (jdk.incubator.foreign.MemoryAddress)constants$768.SSL_CTX_sess_set_get_cb$get_session_cb$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                return (jdk.incubator.foreign.MemoryAddress)constants$768.SSL_CTX_sess_set_get_cb$get_session_cb$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

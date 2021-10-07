@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface RSA_meth_set_verify$verify {
 
     int apply(int x0, jdk.incubator.foreign.MemoryAddress x1, int x2, jdk.incubator.foreign.MemoryAddress x3, int x4, jdk.incubator.foreign.MemoryAddress x5);
-    static CLinker.UpcallStub allocate(RSA_meth_set_verify$verify fi) {
-        return RuntimeHelper.upcallStub(RSA_meth_set_verify$verify.class, fi, constants$444.RSA_meth_set_verify$verify$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(RSA_meth_set_verify$verify fi, ResourceScope scope) {
+    static NativeSymbol allocate(RSA_meth_set_verify$verify fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(RSA_meth_set_verify$verify.class, fi, constants$444.RSA_meth_set_verify$verify$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static RSA_meth_set_verify$verify ofAddress(MemoryAddress addr) {
-        return (int x0, jdk.incubator.foreign.MemoryAddress x1, int x2, jdk.incubator.foreign.MemoryAddress x3, int x4, jdk.incubator.foreign.MemoryAddress x5) -> {
+    static RSA_meth_set_verify$verify ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("RSA_meth_set_verify$verify::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (int x0, jdk.incubator.foreign.MemoryAddress x1, int x2, jdk.incubator.foreign.MemoryAddress x3, int x4, jdk.incubator.foreign.MemoryAddress x5) -> {
             try {
-                return (int)constants$444.RSA_meth_set_verify$verify$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5);
+                return (int)constants$444.RSA_meth_set_verify$verify$MH.invokeExact(symbol, x0, x1, x2, x3, x4, x5);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

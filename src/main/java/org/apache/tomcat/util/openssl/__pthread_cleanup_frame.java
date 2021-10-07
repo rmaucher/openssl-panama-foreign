@@ -27,16 +27,13 @@ public class __pthread_cleanup_frame {
     public interface __cancel_routine {
 
         void apply(jdk.incubator.foreign.MemoryAddress x0);
-        static CLinker.UpcallStub allocate(__cancel_routine fi) {
-            return RuntimeHelper.upcallStub(__cancel_routine.class, fi, __pthread_cleanup_frame.__cancel_routine$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)V");
-        }
-        static CLinker.UpcallStub allocate(__cancel_routine fi, ResourceScope scope) {
+        static NativeSymbol allocate(__cancel_routine fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(__cancel_routine.class, fi, __pthread_cleanup_frame.__cancel_routine$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)V", scope);
         }
-        static __cancel_routine ofAddress(MemoryAddress addr) {
-            return (jdk.incubator.foreign.MemoryAddress x0) -> {
+        static __cancel_routine ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("__cancel_routine::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0) -> {
                 try {
-                    __pthread_cleanup_frame.__cancel_routine$MH.invokeExact((Addressable)addr, x0);
+                    __pthread_cleanup_frame.__cancel_routine$MH.invokeExact(symbol, x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -60,8 +57,8 @@ public class __pthread_cleanup_frame {
     public static void __cancel_routine$set(MemorySegment seg, long index, MemoryAddress x) {
         __pthread_cleanup_frame.__cancel_routine$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static __cancel_routine __cancel_routine (MemorySegment segment) {
-        return __cancel_routine.ofAddress(__cancel_routine$get(segment));
+    public static __cancel_routine __cancel_routine (MemorySegment segment, ResourceScope scope) {
+        return __cancel_routine.ofAddress(__cancel_routine$get(segment), scope);
     }
     static final VarHandle __cancel_arg$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("__cancel_arg"));
     public static VarHandle __cancel_arg$VH() {

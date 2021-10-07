@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface BIO_info_cb {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, int x1, int x2);
-    static CLinker.UpcallStub allocate(BIO_info_cb fi) {
-        return RuntimeHelper.upcallStub(BIO_info_cb.class, fi, constants$107.BIO_info_cb$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;II)I");
-    }
-    static CLinker.UpcallStub allocate(BIO_info_cb fi, ResourceScope scope) {
+    static NativeSymbol allocate(BIO_info_cb fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(BIO_info_cb.class, fi, constants$107.BIO_info_cb$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;II)I", scope);
     }
-    static BIO_info_cb ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, int x1, int x2) -> {
+    static BIO_info_cb ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("BIO_info_cb::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, int x1, int x2) -> {
             try {
-                return (int)constants$107.BIO_info_cb$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                return (int)constants$107.BIO_info_cb$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

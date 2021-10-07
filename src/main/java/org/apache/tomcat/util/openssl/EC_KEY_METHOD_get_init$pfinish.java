@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface EC_KEY_METHOD_get_init$pfinish {
 
     void apply(jdk.incubator.foreign.MemoryAddress x0);
-    static CLinker.UpcallStub allocate(EC_KEY_METHOD_get_init$pfinish fi) {
-        return RuntimeHelper.upcallStub(EC_KEY_METHOD_get_init$pfinish.class, fi, constants$415.EC_KEY_METHOD_get_init$pfinish$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static CLinker.UpcallStub allocate(EC_KEY_METHOD_get_init$pfinish fi, ResourceScope scope) {
+    static NativeSymbol allocate(EC_KEY_METHOD_get_init$pfinish fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(EC_KEY_METHOD_get_init$pfinish.class, fi, constants$415.EC_KEY_METHOD_get_init$pfinish$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static EC_KEY_METHOD_get_init$pfinish ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0) -> {
+    static EC_KEY_METHOD_get_init$pfinish ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("EC_KEY_METHOD_get_init$pfinish::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0) -> {
             try {
-                constants$415.EC_KEY_METHOD_get_init$pfinish$MH.invokeExact((Addressable)addr, x0);
+                constants$415.EC_KEY_METHOD_get_init$pfinish$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

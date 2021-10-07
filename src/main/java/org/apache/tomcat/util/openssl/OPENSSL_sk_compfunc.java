@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface OPENSSL_sk_compfunc {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1);
-    static CLinker.UpcallStub allocate(OPENSSL_sk_compfunc fi) {
-        return RuntimeHelper.upcallStub(OPENSSL_sk_compfunc.class, fi, constants$39.OPENSSL_sk_compfunc$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(OPENSSL_sk_compfunc fi, ResourceScope scope) {
+    static NativeSymbol allocate(OPENSSL_sk_compfunc fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(OPENSSL_sk_compfunc.class, fi, constants$39.OPENSSL_sk_compfunc$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static OPENSSL_sk_compfunc ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static OPENSSL_sk_compfunc ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("OPENSSL_sk_compfunc::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                return (int)constants$39.OPENSSL_sk_compfunc$MH.invokeExact((Addressable)addr, x0, x1);
+                return (int)constants$39.OPENSSL_sk_compfunc$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

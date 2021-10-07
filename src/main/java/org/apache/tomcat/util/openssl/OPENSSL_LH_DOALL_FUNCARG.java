@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface OPENSSL_LH_DOALL_FUNCARG {
 
     void apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1);
-    static CLinker.UpcallStub allocate(OPENSSL_LH_DOALL_FUNCARG fi) {
-        return RuntimeHelper.upcallStub(OPENSSL_LH_DOALL_FUNCARG.class, fi, constants$527.OPENSSL_LH_DOALL_FUNCARG$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static CLinker.UpcallStub allocate(OPENSSL_LH_DOALL_FUNCARG fi, ResourceScope scope) {
+    static NativeSymbol allocate(OPENSSL_LH_DOALL_FUNCARG fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(OPENSSL_LH_DOALL_FUNCARG.class, fi, constants$527.OPENSSL_LH_DOALL_FUNCARG$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static OPENSSL_LH_DOALL_FUNCARG ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static OPENSSL_LH_DOALL_FUNCARG ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("OPENSSL_LH_DOALL_FUNCARG::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                constants$527.OPENSSL_LH_DOALL_FUNCARG$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$527.OPENSSL_LH_DOALL_FUNCARG$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

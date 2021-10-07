@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface on_exit$__func {
 
     void apply(int x0, jdk.incubator.foreign.MemoryAddress x1);
-    static CLinker.UpcallStub allocate(on_exit$__func fi) {
-        return RuntimeHelper.upcallStub(on_exit$__func.class, fi, constants$12.on_exit$__func$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static CLinker.UpcallStub allocate(on_exit$__func fi, ResourceScope scope) {
+    static NativeSymbol allocate(on_exit$__func fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(on_exit$__func.class, fi, constants$12.on_exit$__func$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static on_exit$__func ofAddress(MemoryAddress addr) {
-        return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static on_exit$__func ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("on_exit$__func::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                constants$12.on_exit$__func$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$12.on_exit$__func$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

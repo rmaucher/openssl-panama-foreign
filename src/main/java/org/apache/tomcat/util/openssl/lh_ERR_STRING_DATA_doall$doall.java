@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface lh_ERR_STRING_DATA_doall$doall {
 
     void apply(jdk.incubator.foreign.MemoryAddress x0);
-    static CLinker.UpcallStub allocate(lh_ERR_STRING_DATA_doall$doall fi) {
-        return RuntimeHelper.upcallStub(lh_ERR_STRING_DATA_doall$doall.class, fi, constants$873.lh_ERR_STRING_DATA_doall$doall$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static CLinker.UpcallStub allocate(lh_ERR_STRING_DATA_doall$doall fi, ResourceScope scope) {
+    static NativeSymbol allocate(lh_ERR_STRING_DATA_doall$doall fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(lh_ERR_STRING_DATA_doall$doall.class, fi, constants$873.lh_ERR_STRING_DATA_doall$doall$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static lh_ERR_STRING_DATA_doall$doall ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0) -> {
+    static lh_ERR_STRING_DATA_doall$doall ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("lh_ERR_STRING_DATA_doall$doall::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0) -> {
             try {
-                constants$873.lh_ERR_STRING_DATA_doall$doall$MH.invokeExact((Addressable)addr, x0);
+                constants$873.lh_ERR_STRING_DATA_doall$doall$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

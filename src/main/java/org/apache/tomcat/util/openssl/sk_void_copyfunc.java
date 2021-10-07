@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface sk_void_copyfunc {
 
     jdk.incubator.foreign.MemoryAddress apply(jdk.incubator.foreign.MemoryAddress x0);
-    static CLinker.UpcallStub allocate(sk_void_copyfunc fi) {
-        return RuntimeHelper.upcallStub(sk_void_copyfunc.class, fi, constants$61.sk_void_copyfunc$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;");
-    }
-    static CLinker.UpcallStub allocate(sk_void_copyfunc fi, ResourceScope scope) {
+    static NativeSymbol allocate(sk_void_copyfunc fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(sk_void_copyfunc.class, fi, constants$61.sk_void_copyfunc$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;", scope);
     }
-    static sk_void_copyfunc ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0) -> {
+    static sk_void_copyfunc ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("sk_void_copyfunc::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0) -> {
             try {
-                return (jdk.incubator.foreign.MemoryAddress)constants$61.sk_void_copyfunc$MH.invokeExact((Addressable)addr, x0);
+                return (jdk.incubator.foreign.MemoryAddress)constants$61.sk_void_copyfunc$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

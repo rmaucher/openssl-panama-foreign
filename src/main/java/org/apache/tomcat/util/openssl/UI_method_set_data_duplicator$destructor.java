@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface UI_method_set_data_duplicator$destructor {
 
     void apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1);
-    static CLinker.UpcallStub allocate(UI_method_set_data_duplicator$destructor fi) {
-        return RuntimeHelper.upcallStub(UI_method_set_data_duplicator$destructor.class, fi, constants$1086.UI_method_set_data_duplicator$destructor$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static CLinker.UpcallStub allocate(UI_method_set_data_duplicator$destructor fi, ResourceScope scope) {
+    static NativeSymbol allocate(UI_method_set_data_duplicator$destructor fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(UI_method_set_data_duplicator$destructor.class, fi, constants$1086.UI_method_set_data_duplicator$destructor$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static UI_method_set_data_duplicator$destructor ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static UI_method_set_data_duplicator$destructor ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("UI_method_set_data_duplicator$destructor::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                constants$1086.UI_method_set_data_duplicator$destructor$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$1086.UI_method_set_data_duplicator$destructor$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

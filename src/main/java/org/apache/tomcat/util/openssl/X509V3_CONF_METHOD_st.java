@@ -29,16 +29,13 @@ public class X509V3_CONF_METHOD_st {
     public interface get_string {
 
         jdk.incubator.foreign.MemoryAddress apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2);
-        static CLinker.UpcallStub allocate(get_string fi) {
-            return RuntimeHelper.upcallStub(get_string.class, fi, X509V3_CONF_METHOD_st.get_string$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;");
-        }
-        static CLinker.UpcallStub allocate(get_string fi, ResourceScope scope) {
+        static NativeSymbol allocate(get_string fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(get_string.class, fi, X509V3_CONF_METHOD_st.get_string$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;", scope);
         }
-        static get_string ofAddress(MemoryAddress addr) {
-            return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+        static get_string ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("get_string::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2) -> {
                 try {
-                    return (jdk.incubator.foreign.MemoryAddress)X509V3_CONF_METHOD_st.get_string$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                    return (jdk.incubator.foreign.MemoryAddress)X509V3_CONF_METHOD_st.get_string$MH.invokeExact(symbol, x0, x1, x2);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -62,8 +59,8 @@ public class X509V3_CONF_METHOD_st {
     public static void get_string$set(MemorySegment seg, long index, MemoryAddress x) {
         X509V3_CONF_METHOD_st.get_string$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static get_string get_string (MemorySegment segment) {
-        return get_string.ofAddress(get_string$get(segment));
+    public static get_string get_string (MemorySegment segment, ResourceScope scope) {
+        return get_string.ofAddress(get_string$get(segment), scope);
     }
     static final FunctionDescriptor get_section$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS,
@@ -75,16 +72,13 @@ public class X509V3_CONF_METHOD_st {
     public interface get_section {
 
         jdk.incubator.foreign.MemoryAddress apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1);
-        static CLinker.UpcallStub allocate(get_section fi) {
-            return RuntimeHelper.upcallStub(get_section.class, fi, X509V3_CONF_METHOD_st.get_section$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;");
-        }
-        static CLinker.UpcallStub allocate(get_section fi, ResourceScope scope) {
+        static NativeSymbol allocate(get_section fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(get_section.class, fi, X509V3_CONF_METHOD_st.get_section$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;", scope);
         }
-        static get_section ofAddress(MemoryAddress addr) {
-            return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+        static get_section ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("get_section::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
                 try {
-                    return (jdk.incubator.foreign.MemoryAddress)X509V3_CONF_METHOD_st.get_section$MH.invokeExact((Addressable)addr, x0, x1);
+                    return (jdk.incubator.foreign.MemoryAddress)X509V3_CONF_METHOD_st.get_section$MH.invokeExact(symbol, x0, x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -108,8 +102,8 @@ public class X509V3_CONF_METHOD_st {
     public static void get_section$set(MemorySegment seg, long index, MemoryAddress x) {
         X509V3_CONF_METHOD_st.get_section$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static get_section get_section (MemorySegment segment) {
-        return get_section.ofAddress(get_section$get(segment));
+    public static get_section get_section (MemorySegment segment, ResourceScope scope) {
+        return get_section.ofAddress(get_section$get(segment), scope);
     }
     static final FunctionDescriptor free_string$FUNC = FunctionDescriptor.ofVoid(
         ADDRESS,
@@ -121,16 +115,13 @@ public class X509V3_CONF_METHOD_st {
     public interface free_string {
 
         void apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1);
-        static CLinker.UpcallStub allocate(free_string fi) {
-            return RuntimeHelper.upcallStub(free_string.class, fi, X509V3_CONF_METHOD_st.free_string$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V");
-        }
-        static CLinker.UpcallStub allocate(free_string fi, ResourceScope scope) {
+        static NativeSymbol allocate(free_string fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(free_string.class, fi, X509V3_CONF_METHOD_st.free_string$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V", scope);
         }
-        static free_string ofAddress(MemoryAddress addr) {
-            return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+        static free_string ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("free_string::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
                 try {
-                    X509V3_CONF_METHOD_st.free_string$MH.invokeExact((Addressable)addr, x0, x1);
+                    X509V3_CONF_METHOD_st.free_string$MH.invokeExact(symbol, x0, x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -154,8 +145,8 @@ public class X509V3_CONF_METHOD_st {
     public static void free_string$set(MemorySegment seg, long index, MemoryAddress x) {
         X509V3_CONF_METHOD_st.free_string$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static free_string free_string (MemorySegment segment) {
-        return free_string.ofAddress(free_string$get(segment));
+    public static free_string free_string (MemorySegment segment, ResourceScope scope) {
+        return free_string.ofAddress(free_string$get(segment), scope);
     }
     static final FunctionDescriptor free_section$FUNC = FunctionDescriptor.ofVoid(
         ADDRESS,
@@ -167,16 +158,13 @@ public class X509V3_CONF_METHOD_st {
     public interface free_section {
 
         void apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1);
-        static CLinker.UpcallStub allocate(free_section fi) {
-            return RuntimeHelper.upcallStub(free_section.class, fi, X509V3_CONF_METHOD_st.free_section$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V");
-        }
-        static CLinker.UpcallStub allocate(free_section fi, ResourceScope scope) {
+        static NativeSymbol allocate(free_section fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(free_section.class, fi, X509V3_CONF_METHOD_st.free_section$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V", scope);
         }
-        static free_section ofAddress(MemoryAddress addr) {
-            return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+        static free_section ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("free_section::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
                 try {
-                    X509V3_CONF_METHOD_st.free_section$MH.invokeExact((Addressable)addr, x0, x1);
+                    X509V3_CONF_METHOD_st.free_section$MH.invokeExact(symbol, x0, x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -200,8 +188,8 @@ public class X509V3_CONF_METHOD_st {
     public static void free_section$set(MemorySegment seg, long index, MemoryAddress x) {
         X509V3_CONF_METHOD_st.free_section$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static free_section free_section (MemorySegment segment) {
-        return free_section.ofAddress(free_section$get(segment));
+    public static free_section free_section (MemorySegment segment, ResourceScope scope) {
+        return free_section.ofAddress(free_section$get(segment), scope);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

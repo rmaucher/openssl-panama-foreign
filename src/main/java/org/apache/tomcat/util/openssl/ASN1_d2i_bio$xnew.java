@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface ASN1_d2i_bio$xnew {
 
     jdk.incubator.foreign.MemoryAddress apply();
-    static CLinker.UpcallStub allocate(ASN1_d2i_bio$xnew fi) {
-        return RuntimeHelper.upcallStub(ASN1_d2i_bio$xnew.class, fi, constants$240.ASN1_d2i_bio$xnew$FUNC, "()Ljdk/incubator/foreign/MemoryAddress;");
-    }
-    static CLinker.UpcallStub allocate(ASN1_d2i_bio$xnew fi, ResourceScope scope) {
+    static NativeSymbol allocate(ASN1_d2i_bio$xnew fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(ASN1_d2i_bio$xnew.class, fi, constants$240.ASN1_d2i_bio$xnew$FUNC, "()Ljdk/incubator/foreign/MemoryAddress;", scope);
     }
-    static ASN1_d2i_bio$xnew ofAddress(MemoryAddress addr) {
-        return () -> {
+    static ASN1_d2i_bio$xnew ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("ASN1_d2i_bio$xnew::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return () -> {
             try {
-                return (jdk.incubator.foreign.MemoryAddress)constants$240.ASN1_d2i_bio$xnew$MH.invokeExact((Addressable)addr);
+                return (jdk.incubator.foreign.MemoryAddress)constants$240.ASN1_d2i_bio$xnew$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

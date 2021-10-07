@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface OBJ_NAME_do_all_sorted$fn {
 
     void apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1);
-    static CLinker.UpcallStub allocate(OBJ_NAME_do_all_sorted$fn fi) {
-        return RuntimeHelper.upcallStub(OBJ_NAME_do_all_sorted$fn.class, fi, constants$255.OBJ_NAME_do_all_sorted$fn$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static CLinker.UpcallStub allocate(OBJ_NAME_do_all_sorted$fn fi, ResourceScope scope) {
+    static NativeSymbol allocate(OBJ_NAME_do_all_sorted$fn fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(OBJ_NAME_do_all_sorted$fn.class, fi, constants$255.OBJ_NAME_do_all_sorted$fn$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static OBJ_NAME_do_all_sorted$fn ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static OBJ_NAME_do_all_sorted$fn ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("OBJ_NAME_do_all_sorted$fn::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                constants$255.OBJ_NAME_do_all_sorted$fn$MH.invokeExact((Addressable)addr, x0, x1);
+                constants$255.OBJ_NAME_do_all_sorted$fn$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

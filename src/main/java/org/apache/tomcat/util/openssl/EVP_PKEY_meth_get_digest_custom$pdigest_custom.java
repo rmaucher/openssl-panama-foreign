@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface EVP_PKEY_meth_get_digest_custom$pdigest_custom {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1);
-    static CLinker.UpcallStub allocate(EVP_PKEY_meth_get_digest_custom$pdigest_custom fi) {
-        return RuntimeHelper.upcallStub(EVP_PKEY_meth_get_digest_custom$pdigest_custom.class, fi, constants$382.EVP_PKEY_meth_get_digest_custom$pdigest_custom$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(EVP_PKEY_meth_get_digest_custom$pdigest_custom fi, ResourceScope scope) {
+    static NativeSymbol allocate(EVP_PKEY_meth_get_digest_custom$pdigest_custom fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(EVP_PKEY_meth_get_digest_custom$pdigest_custom.class, fi, constants$382.EVP_PKEY_meth_get_digest_custom$pdigest_custom$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static EVP_PKEY_meth_get_digest_custom$pdigest_custom ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static EVP_PKEY_meth_get_digest_custom$pdigest_custom ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("EVP_PKEY_meth_get_digest_custom$pdigest_custom::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                return (int)constants$382.EVP_PKEY_meth_get_digest_custom$pdigest_custom$MH.invokeExact((Addressable)addr, x0, x1);
+                return (int)constants$382.EVP_PKEY_meth_get_digest_custom$pdigest_custom$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

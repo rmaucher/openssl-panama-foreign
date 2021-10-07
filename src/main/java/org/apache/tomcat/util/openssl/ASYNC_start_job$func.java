@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface ASYNC_start_job$func {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0);
-    static CLinker.UpcallStub allocate(ASYNC_start_job$func fi) {
-        return RuntimeHelper.upcallStub(ASYNC_start_job$func.class, fi, constants$734.ASYNC_start_job$func$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(ASYNC_start_job$func fi, ResourceScope scope) {
+    static NativeSymbol allocate(ASYNC_start_job$func fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(ASYNC_start_job$func.class, fi, constants$734.ASYNC_start_job$func$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static ASYNC_start_job$func ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0) -> {
+    static ASYNC_start_job$func ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("ASYNC_start_job$func::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0) -> {
             try {
-                return (int)constants$734.ASYNC_start_job$func$MH.invokeExact((Addressable)addr, x0);
+                return (int)constants$734.ASYNC_start_job$func$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

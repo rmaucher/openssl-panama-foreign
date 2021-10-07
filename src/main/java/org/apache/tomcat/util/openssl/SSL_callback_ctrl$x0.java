@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface SSL_callback_ctrl$x0 {
 
     void apply();
-    static CLinker.UpcallStub allocate(SSL_callback_ctrl$x0 fi) {
-        return RuntimeHelper.upcallStub(SSL_callback_ctrl$x0.class, fi, constants$833.SSL_callback_ctrl$x0$FUNC, "()V");
-    }
-    static CLinker.UpcallStub allocate(SSL_callback_ctrl$x0 fi, ResourceScope scope) {
+    static NativeSymbol allocate(SSL_callback_ctrl$x0 fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(SSL_callback_ctrl$x0.class, fi, constants$833.SSL_callback_ctrl$x0$FUNC, "()V", scope);
     }
-    static SSL_callback_ctrl$x0 ofAddress(MemoryAddress addr) {
-        return () -> {
+    static SSL_callback_ctrl$x0 ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("SSL_callback_ctrl$x0::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return () -> {
             try {
-                constants$833.SSL_callback_ctrl$x0$MH.invokeExact((Addressable)addr);
+                constants$833.SSL_callback_ctrl$x0$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

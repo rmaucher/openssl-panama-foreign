@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface UI_method_set_prompt_constructor$prompt_constructor {
 
     jdk.incubator.foreign.MemoryAddress apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2);
-    static CLinker.UpcallStub allocate(UI_method_set_prompt_constructor$prompt_constructor fi) {
-        return RuntimeHelper.upcallStub(UI_method_set_prompt_constructor$prompt_constructor.class, fi, constants$1087.UI_method_set_prompt_constructor$prompt_constructor$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;");
-    }
-    static CLinker.UpcallStub allocate(UI_method_set_prompt_constructor$prompt_constructor fi, ResourceScope scope) {
+    static NativeSymbol allocate(UI_method_set_prompt_constructor$prompt_constructor fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(UI_method_set_prompt_constructor$prompt_constructor.class, fi, constants$1087.UI_method_set_prompt_constructor$prompt_constructor$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;", scope);
     }
-    static UI_method_set_prompt_constructor$prompt_constructor ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static UI_method_set_prompt_constructor$prompt_constructor ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("UI_method_set_prompt_constructor$prompt_constructor::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                return (jdk.incubator.foreign.MemoryAddress)constants$1087.UI_method_set_prompt_constructor$prompt_constructor$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                return (jdk.incubator.foreign.MemoryAddress)constants$1087.UI_method_set_prompt_constructor$prompt_constructor$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

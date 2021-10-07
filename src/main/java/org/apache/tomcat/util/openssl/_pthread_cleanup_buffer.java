@@ -28,16 +28,13 @@ public class _pthread_cleanup_buffer {
     public interface __routine {
 
         void apply(jdk.incubator.foreign.MemoryAddress x0);
-        static CLinker.UpcallStub allocate(__routine fi) {
-            return RuntimeHelper.upcallStub(__routine.class, fi, _pthread_cleanup_buffer.__routine$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)V");
-        }
-        static CLinker.UpcallStub allocate(__routine fi, ResourceScope scope) {
+        static NativeSymbol allocate(__routine fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(__routine.class, fi, _pthread_cleanup_buffer.__routine$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)V", scope);
         }
-        static __routine ofAddress(MemoryAddress addr) {
-            return (jdk.incubator.foreign.MemoryAddress x0) -> {
+        static __routine ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("__routine::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0) -> {
                 try {
-                    _pthread_cleanup_buffer.__routine$MH.invokeExact((Addressable)addr, x0);
+                    _pthread_cleanup_buffer.__routine$MH.invokeExact(symbol, x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -61,8 +58,8 @@ public class _pthread_cleanup_buffer {
     public static void __routine$set(MemorySegment seg, long index, MemoryAddress x) {
         _pthread_cleanup_buffer.__routine$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static __routine __routine (MemorySegment segment) {
-        return __routine.ofAddress(__routine$get(segment));
+    public static __routine __routine (MemorySegment segment, ResourceScope scope) {
+        return __routine.ofAddress(__routine$get(segment), scope);
     }
     static final VarHandle __arg$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("__arg"));
     public static VarHandle __arg$VH() {

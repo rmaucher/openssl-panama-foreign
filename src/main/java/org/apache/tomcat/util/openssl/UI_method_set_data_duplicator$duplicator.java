@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface UI_method_set_data_duplicator$duplicator {
 
     jdk.incubator.foreign.MemoryAddress apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1);
-    static CLinker.UpcallStub allocate(UI_method_set_data_duplicator$duplicator fi) {
-        return RuntimeHelper.upcallStub(UI_method_set_data_duplicator$duplicator.class, fi, constants$1086.UI_method_set_data_duplicator$duplicator$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;");
-    }
-    static CLinker.UpcallStub allocate(UI_method_set_data_duplicator$duplicator fi, ResourceScope scope) {
+    static NativeSymbol allocate(UI_method_set_data_duplicator$duplicator fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(UI_method_set_data_duplicator$duplicator.class, fi, constants$1086.UI_method_set_data_duplicator$duplicator$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;", scope);
     }
-    static UI_method_set_data_duplicator$duplicator ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static UI_method_set_data_duplicator$duplicator ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("UI_method_set_data_duplicator$duplicator::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                return (jdk.incubator.foreign.MemoryAddress)constants$1086.UI_method_set_data_duplicator$duplicator$MH.invokeExact((Addressable)addr, x0, x1);
+                return (jdk.incubator.foreign.MemoryAddress)constants$1086.UI_method_set_data_duplicator$duplicator$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

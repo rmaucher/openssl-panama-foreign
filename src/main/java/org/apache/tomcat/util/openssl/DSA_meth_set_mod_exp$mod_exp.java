@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface DSA_meth_set_mod_exp$mod_exp {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3, jdk.incubator.foreign.MemoryAddress x4, jdk.incubator.foreign.MemoryAddress x5, jdk.incubator.foreign.MemoryAddress x6, jdk.incubator.foreign.MemoryAddress x7, jdk.incubator.foreign.MemoryAddress x8);
-    static CLinker.UpcallStub allocate(DSA_meth_set_mod_exp$mod_exp fi) {
-        return RuntimeHelper.upcallStub(DSA_meth_set_mod_exp$mod_exp.class, fi, constants$473.DSA_meth_set_mod_exp$mod_exp$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(DSA_meth_set_mod_exp$mod_exp fi, ResourceScope scope) {
+    static NativeSymbol allocate(DSA_meth_set_mod_exp$mod_exp fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(DSA_meth_set_mod_exp$mod_exp.class, fi, constants$473.DSA_meth_set_mod_exp$mod_exp$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static DSA_meth_set_mod_exp$mod_exp ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3, jdk.incubator.foreign.MemoryAddress x4, jdk.incubator.foreign.MemoryAddress x5, jdk.incubator.foreign.MemoryAddress x6, jdk.incubator.foreign.MemoryAddress x7, jdk.incubator.foreign.MemoryAddress x8) -> {
+    static DSA_meth_set_mod_exp$mod_exp ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("DSA_meth_set_mod_exp$mod_exp::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3, jdk.incubator.foreign.MemoryAddress x4, jdk.incubator.foreign.MemoryAddress x5, jdk.incubator.foreign.MemoryAddress x6, jdk.incubator.foreign.MemoryAddress x7, jdk.incubator.foreign.MemoryAddress x8) -> {
             try {
-                return (int)constants$473.DSA_meth_set_mod_exp$mod_exp$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5, x6, x7, x8);
+                return (int)constants$473.DSA_meth_set_mod_exp$mod_exp$MH.invokeExact(symbol, x0, x1, x2, x3, x4, x5, x6, x7, x8);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface BN_GENCB_set_old$callback {
 
     void apply(int x0, int x1, jdk.incubator.foreign.MemoryAddress x2);
-    static CLinker.UpcallStub allocate(BN_GENCB_set_old$callback fi) {
-        return RuntimeHelper.upcallStub(BN_GENCB_set_old$callback.class, fi, constants$145.BN_GENCB_set_old$callback$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static CLinker.UpcallStub allocate(BN_GENCB_set_old$callback fi, ResourceScope scope) {
+    static NativeSymbol allocate(BN_GENCB_set_old$callback fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(BN_GENCB_set_old$callback.class, fi, constants$145.BN_GENCB_set_old$callback$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static BN_GENCB_set_old$callback ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static BN_GENCB_set_old$callback ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("BN_GENCB_set_old$callback::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                constants$146.BN_GENCB_set_old$callback$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$146.BN_GENCB_set_old$callback$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

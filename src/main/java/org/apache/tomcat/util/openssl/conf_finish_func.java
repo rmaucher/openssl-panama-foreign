@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface conf_finish_func {
 
     void apply(jdk.incubator.foreign.MemoryAddress x0);
-    static CLinker.UpcallStub allocate(conf_finish_func fi) {
-        return RuntimeHelper.upcallStub(conf_finish_func.class, fi, constants$920.conf_finish_func$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static CLinker.UpcallStub allocate(conf_finish_func fi, ResourceScope scope) {
+    static NativeSymbol allocate(conf_finish_func fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(conf_finish_func.class, fi, constants$920.conf_finish_func$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static conf_finish_func ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0) -> {
+    static conf_finish_func ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("conf_finish_func::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0) -> {
             try {
-                constants$920.conf_finish_func$MH.invokeExact((Addressable)addr, x0);
+                constants$920.conf_finish_func$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

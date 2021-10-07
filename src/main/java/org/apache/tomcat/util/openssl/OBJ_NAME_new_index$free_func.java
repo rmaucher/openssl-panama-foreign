@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface OBJ_NAME_new_index$free_func {
 
     void apply(jdk.incubator.foreign.MemoryAddress x0, int x1, jdk.incubator.foreign.MemoryAddress x2);
-    static CLinker.UpcallStub allocate(OBJ_NAME_new_index$free_func fi) {
-        return RuntimeHelper.upcallStub(OBJ_NAME_new_index$free_func.class, fi, constants$254.OBJ_NAME_new_index$free_func$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static CLinker.UpcallStub allocate(OBJ_NAME_new_index$free_func fi, ResourceScope scope) {
+    static NativeSymbol allocate(OBJ_NAME_new_index$free_func fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(OBJ_NAME_new_index$free_func.class, fi, constants$254.OBJ_NAME_new_index$free_func$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static OBJ_NAME_new_index$free_func ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static OBJ_NAME_new_index$free_func ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("OBJ_NAME_new_index$free_func::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                constants$254.OBJ_NAME_new_index$free_func$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$254.OBJ_NAME_new_index$free_func$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

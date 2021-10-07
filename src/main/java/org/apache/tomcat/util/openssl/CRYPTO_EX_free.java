@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface CRYPTO_EX_free {
 
     void apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, int x3, long x4, jdk.incubator.foreign.MemoryAddress x5);
-    static CLinker.UpcallStub allocate(CRYPTO_EX_free fi) {
-        return RuntimeHelper.upcallStub(CRYPTO_EX_free.class, fi, constants$68.CRYPTO_EX_free$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;IJLjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static CLinker.UpcallStub allocate(CRYPTO_EX_free fi, ResourceScope scope) {
+    static NativeSymbol allocate(CRYPTO_EX_free fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(CRYPTO_EX_free.class, fi, constants$68.CRYPTO_EX_free$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;IJLjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static CRYPTO_EX_free ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, int x3, long x4, jdk.incubator.foreign.MemoryAddress x5) -> {
+    static CRYPTO_EX_free ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("CRYPTO_EX_free::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, int x3, long x4, jdk.incubator.foreign.MemoryAddress x5) -> {
             try {
-                constants$68.CRYPTO_EX_free$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5);
+                constants$68.CRYPTO_EX_free$MH.invokeExact(symbol, x0, x1, x2, x3, x4, x5);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface ENGINE_DIGESTS_PTR {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, int x3);
-    static CLinker.UpcallStub allocate(ENGINE_DIGESTS_PTR fi) {
-        return RuntimeHelper.upcallStub(ENGINE_DIGESTS_PTR.class, fi, constants$1093.ENGINE_DIGESTS_PTR$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;I)I");
-    }
-    static CLinker.UpcallStub allocate(ENGINE_DIGESTS_PTR fi, ResourceScope scope) {
+    static NativeSymbol allocate(ENGINE_DIGESTS_PTR fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(ENGINE_DIGESTS_PTR.class, fi, constants$1093.ENGINE_DIGESTS_PTR$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;I)I", scope);
     }
-    static ENGINE_DIGESTS_PTR ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, int x3) -> {
+    static ENGINE_DIGESTS_PTR ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("ENGINE_DIGESTS_PTR::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, int x3) -> {
             try {
-                return (int)constants$1093.ENGINE_DIGESTS_PTR$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                return (int)constants$1093.ENGINE_DIGESTS_PTR$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

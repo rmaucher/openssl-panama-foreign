@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface lh_ERR_STRING_DATA_new$cfn {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1);
-    static CLinker.UpcallStub allocate(lh_ERR_STRING_DATA_new$cfn fi) {
-        return RuntimeHelper.upcallStub(lh_ERR_STRING_DATA_new$cfn.class, fi, constants$870.lh_ERR_STRING_DATA_new$cfn$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(lh_ERR_STRING_DATA_new$cfn fi, ResourceScope scope) {
+    static NativeSymbol allocate(lh_ERR_STRING_DATA_new$cfn fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(lh_ERR_STRING_DATA_new$cfn.class, fi, constants$870.lh_ERR_STRING_DATA_new$cfn$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static lh_ERR_STRING_DATA_new$cfn ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static lh_ERR_STRING_DATA_new$cfn ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("lh_ERR_STRING_DATA_new$cfn::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                return (int)constants$871.lh_ERR_STRING_DATA_new$cfn$MH.invokeExact((Addressable)addr, x0, x1);
+                return (int)constants$871.lh_ERR_STRING_DATA_new$cfn$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

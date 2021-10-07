@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface EVP_MD_CTX_set_update_fn$update {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, long x2);
-    static CLinker.UpcallStub allocate(EVP_MD_CTX_set_update_fn$update fi) {
-        return RuntimeHelper.upcallStub(EVP_MD_CTX_set_update_fn$update.class, fi, constants$273.EVP_MD_CTX_set_update_fn$update$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;J)I");
-    }
-    static CLinker.UpcallStub allocate(EVP_MD_CTX_set_update_fn$update fi, ResourceScope scope) {
+    static NativeSymbol allocate(EVP_MD_CTX_set_update_fn$update fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(EVP_MD_CTX_set_update_fn$update.class, fi, constants$273.EVP_MD_CTX_set_update_fn$update$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;J)I", scope);
     }
-    static EVP_MD_CTX_set_update_fn$update ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, long x2) -> {
+    static EVP_MD_CTX_set_update_fn$update ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("EVP_MD_CTX_set_update_fn$update::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, long x2) -> {
             try {
-                return (int)constants$273.EVP_MD_CTX_set_update_fn$update$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                return (int)constants$273.EVP_MD_CTX_set_update_fn$update$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

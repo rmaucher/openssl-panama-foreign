@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface UI_method_set_opener$opener {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0);
-    static CLinker.UpcallStub allocate(UI_method_set_opener$opener fi) {
-        return RuntimeHelper.upcallStub(UI_method_set_opener$opener.class, fi, constants$1083.UI_method_set_opener$opener$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(UI_method_set_opener$opener fi, ResourceScope scope) {
+    static NativeSymbol allocate(UI_method_set_opener$opener fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(UI_method_set_opener$opener.class, fi, constants$1083.UI_method_set_opener$opener$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static UI_method_set_opener$opener ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0) -> {
+    static UI_method_set_opener$opener ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("UI_method_set_opener$opener::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0) -> {
             try {
-                return (int)constants$1083.UI_method_set_opener$opener$MH.invokeExact((Addressable)addr, x0);
+                return (int)constants$1083.UI_method_set_opener$opener$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

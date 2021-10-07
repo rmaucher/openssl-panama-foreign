@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface EVP_CIPHER_do_all$fn {
 
     void apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3);
-    static CLinker.UpcallStub allocate(EVP_CIPHER_do_all$fn fi) {
-        return RuntimeHelper.upcallStub(EVP_CIPHER_do_all$fn.class, fi, constants$318.EVP_CIPHER_do_all$fn$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static CLinker.UpcallStub allocate(EVP_CIPHER_do_all$fn fi, ResourceScope scope) {
+    static NativeSymbol allocate(EVP_CIPHER_do_all$fn fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(EVP_CIPHER_do_all$fn.class, fi, constants$318.EVP_CIPHER_do_all$fn$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static EVP_CIPHER_do_all$fn ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3) -> {
+    static EVP_CIPHER_do_all$fn ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("EVP_CIPHER_do_all$fn::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3) -> {
             try {
-                constants$318.EVP_CIPHER_do_all$fn$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$318.EVP_CIPHER_do_all$fn$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

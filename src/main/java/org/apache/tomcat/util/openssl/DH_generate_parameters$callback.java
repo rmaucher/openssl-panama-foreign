@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface DH_generate_parameters$callback {
 
     void apply(int x0, int x1, jdk.incubator.foreign.MemoryAddress x2);
-    static CLinker.UpcallStub allocate(DH_generate_parameters$callback fi) {
-        return RuntimeHelper.upcallStub(DH_generate_parameters$callback.class, fi, constants$448.DH_generate_parameters$callback$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static CLinker.UpcallStub allocate(DH_generate_parameters$callback fi, ResourceScope scope) {
+    static NativeSymbol allocate(DH_generate_parameters$callback fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(DH_generate_parameters$callback.class, fi, constants$448.DH_generate_parameters$callback$FUNC, "(IILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static DH_generate_parameters$callback ofAddress(MemoryAddress addr) {
-        return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static DH_generate_parameters$callback ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("DH_generate_parameters$callback::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (int x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                constants$448.DH_generate_parameters$callback$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                constants$448.DH_generate_parameters$callback$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

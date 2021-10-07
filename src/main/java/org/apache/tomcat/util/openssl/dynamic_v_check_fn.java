@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface dynamic_v_check_fn {
 
     long apply(long x0);
-    static CLinker.UpcallStub allocate(dynamic_v_check_fn fi) {
-        return RuntimeHelper.upcallStub(dynamic_v_check_fn.class, fi, constants$1116.dynamic_v_check_fn$FUNC, "(J)J");
-    }
-    static CLinker.UpcallStub allocate(dynamic_v_check_fn fi, ResourceScope scope) {
+    static NativeSymbol allocate(dynamic_v_check_fn fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(dynamic_v_check_fn.class, fi, constants$1116.dynamic_v_check_fn$FUNC, "(J)J", scope);
     }
-    static dynamic_v_check_fn ofAddress(MemoryAddress addr) {
-        return (long x0) -> {
+    static dynamic_v_check_fn ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("dynamic_v_check_fn::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (long x0) -> {
             try {
-                return (long)constants$1116.dynamic_v_check_fn$MH.invokeExact((Addressable)addr, x0);
+                return (long)constants$1116.dynamic_v_check_fn$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

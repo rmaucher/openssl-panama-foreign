@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface X509V3_EXT_D2I {
 
     jdk.incubator.foreign.MemoryAddress apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, long x2);
-    static CLinker.UpcallStub allocate(X509V3_EXT_D2I fi) {
-        return RuntimeHelper.upcallStub(X509V3_EXT_D2I.class, fi, constants$928.X509V3_EXT_D2I$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;J)Ljdk/incubator/foreign/MemoryAddress;");
-    }
-    static CLinker.UpcallStub allocate(X509V3_EXT_D2I fi, ResourceScope scope) {
+    static NativeSymbol allocate(X509V3_EXT_D2I fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(X509V3_EXT_D2I.class, fi, constants$928.X509V3_EXT_D2I$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;J)Ljdk/incubator/foreign/MemoryAddress;", scope);
     }
-    static X509V3_EXT_D2I ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, long x2) -> {
+    static X509V3_EXT_D2I ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("X509V3_EXT_D2I::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, long x2) -> {
             try {
-                return (jdk.incubator.foreign.MemoryAddress)constants$928.X509V3_EXT_D2I$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                return (jdk.incubator.foreign.MemoryAddress)constants$928.X509V3_EXT_D2I$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

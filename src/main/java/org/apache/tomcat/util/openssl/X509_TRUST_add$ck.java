@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface X509_TRUST_add$ck {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, int x2);
-    static CLinker.UpcallStub allocate(X509_TRUST_add$ck fi) {
-        return RuntimeHelper.upcallStub(X509_TRUST_add$ck.class, fi, constants$707.X509_TRUST_add$ck$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;I)I");
-    }
-    static CLinker.UpcallStub allocate(X509_TRUST_add$ck fi, ResourceScope scope) {
+    static NativeSymbol allocate(X509_TRUST_add$ck fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(X509_TRUST_add$ck.class, fi, constants$707.X509_TRUST_add$ck$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;I)I", scope);
     }
-    static X509_TRUST_add$ck ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, int x2) -> {
+    static X509_TRUST_add$ck ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("X509_TRUST_add$ck::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, int x2) -> {
             try {
-                return (int)constants$707.X509_TRUST_add$ck$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                return (int)constants$707.X509_TRUST_add$ck$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

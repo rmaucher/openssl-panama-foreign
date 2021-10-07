@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface EVP_PKEY_asn1_set_security_bits$pkey_security_bits {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0);
-    static CLinker.UpcallStub allocate(EVP_PKEY_asn1_set_security_bits$pkey_security_bits fi) {
-        return RuntimeHelper.upcallStub(EVP_PKEY_asn1_set_security_bits$pkey_security_bits.class, fi, constants$345.EVP_PKEY_asn1_set_security_bits$pkey_security_bits$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(EVP_PKEY_asn1_set_security_bits$pkey_security_bits fi, ResourceScope scope) {
+    static NativeSymbol allocate(EVP_PKEY_asn1_set_security_bits$pkey_security_bits fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(EVP_PKEY_asn1_set_security_bits$pkey_security_bits.class, fi, constants$345.EVP_PKEY_asn1_set_security_bits$pkey_security_bits$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static EVP_PKEY_asn1_set_security_bits$pkey_security_bits ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0) -> {
+    static EVP_PKEY_asn1_set_security_bits$pkey_security_bits ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("EVP_PKEY_asn1_set_security_bits$pkey_security_bits::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0) -> {
             try {
-                return (int)constants$345.EVP_PKEY_asn1_set_security_bits$pkey_security_bits$MH.invokeExact((Addressable)addr, x0);
+                return (int)constants$345.EVP_PKEY_asn1_set_security_bits$pkey_security_bits$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

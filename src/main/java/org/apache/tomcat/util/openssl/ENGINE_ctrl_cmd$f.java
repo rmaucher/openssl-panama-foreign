@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface ENGINE_ctrl_cmd$f {
 
     void apply();
-    static CLinker.UpcallStub allocate(ENGINE_ctrl_cmd$f fi) {
-        return RuntimeHelper.upcallStub(ENGINE_ctrl_cmd$f.class, fi, constants$1101.ENGINE_ctrl_cmd$f$FUNC, "()V");
-    }
-    static CLinker.UpcallStub allocate(ENGINE_ctrl_cmd$f fi, ResourceScope scope) {
+    static NativeSymbol allocate(ENGINE_ctrl_cmd$f fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(ENGINE_ctrl_cmd$f.class, fi, constants$1101.ENGINE_ctrl_cmd$f$FUNC, "()V", scope);
     }
-    static ENGINE_ctrl_cmd$f ofAddress(MemoryAddress addr) {
-        return () -> {
+    static ENGINE_ctrl_cmd$f ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("ENGINE_ctrl_cmd$f::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return () -> {
             try {
-                constants$1102.ENGINE_ctrl_cmd$f$MH.invokeExact((Addressable)addr);
+                constants$1102.ENGINE_ctrl_cmd$f$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

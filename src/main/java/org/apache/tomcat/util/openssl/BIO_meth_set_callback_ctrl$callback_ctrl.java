@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface BIO_meth_set_callback_ctrl$callback_ctrl {
 
     long apply(jdk.incubator.foreign.MemoryAddress x0, int x1, jdk.incubator.foreign.MemoryAddress x2);
-    static CLinker.UpcallStub allocate(BIO_meth_set_callback_ctrl$callback_ctrl fi) {
-        return RuntimeHelper.upcallStub(BIO_meth_set_callback_ctrl$callback_ctrl.class, fi, constants$142.BIO_meth_set_callback_ctrl$callback_ctrl$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;)J");
-    }
-    static CLinker.UpcallStub allocate(BIO_meth_set_callback_ctrl$callback_ctrl fi, ResourceScope scope) {
+    static NativeSymbol allocate(BIO_meth_set_callback_ctrl$callback_ctrl fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(BIO_meth_set_callback_ctrl$callback_ctrl.class, fi, constants$142.BIO_meth_set_callback_ctrl$callback_ctrl$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;)J", scope);
     }
-    static BIO_meth_set_callback_ctrl$callback_ctrl ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static BIO_meth_set_callback_ctrl$callback_ctrl ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("BIO_meth_set_callback_ctrl$callback_ctrl::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, int x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                return (long)constants$142.BIO_meth_set_callback_ctrl$callback_ctrl$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                return (long)constants$142.BIO_meth_set_callback_ctrl$callback_ctrl$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

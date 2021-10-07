@@ -64,16 +64,13 @@ public class x509_trust_st {
     public interface check_trust {
 
         int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, int x2);
-        static CLinker.UpcallStub allocate(check_trust fi) {
-            return RuntimeHelper.upcallStub(check_trust.class, fi, x509_trust_st.check_trust$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;I)I");
-        }
-        static CLinker.UpcallStub allocate(check_trust fi, ResourceScope scope) {
+        static NativeSymbol allocate(check_trust fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(check_trust.class, fi, x509_trust_st.check_trust$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;I)I", scope);
         }
-        static check_trust ofAddress(MemoryAddress addr) {
-            return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, int x2) -> {
+        static check_trust ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("check_trust::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, int x2) -> {
                 try {
-                    return (int)x509_trust_st.check_trust$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                    return (int)x509_trust_st.check_trust$MH.invokeExact(symbol, x0, x1, x2);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -97,8 +94,8 @@ public class x509_trust_st {
     public static void check_trust$set(MemorySegment seg, long index, MemoryAddress x) {
         x509_trust_st.check_trust$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static check_trust check_trust (MemorySegment segment) {
-        return check_trust.ofAddress(check_trust$get(segment));
+    public static check_trust check_trust (MemorySegment segment, ResourceScope scope) {
+        return check_trust.ofAddress(check_trust$get(segment), scope);
     }
     static final VarHandle name$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("name"));
     public static VarHandle name$VH() {

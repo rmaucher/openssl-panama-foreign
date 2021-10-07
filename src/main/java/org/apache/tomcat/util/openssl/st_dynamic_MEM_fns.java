@@ -33,8 +33,8 @@ public class st_dynamic_MEM_fns {
     public static void malloc_fn$set(MemorySegment seg, long index, MemoryAddress x) {
         st_dynamic_MEM_fns.malloc_fn$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static dyn_MEM_malloc_fn malloc_fn (MemorySegment segment) {
-        return dyn_MEM_malloc_fn.ofAddress(malloc_fn$get(segment));
+    public static dyn_MEM_malloc_fn malloc_fn (MemorySegment segment, ResourceScope scope) {
+        return dyn_MEM_malloc_fn.ofAddress(malloc_fn$get(segment), scope);
     }
     static final VarHandle realloc_fn$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("realloc_fn"));
     public static VarHandle realloc_fn$VH() {
@@ -52,8 +52,8 @@ public class st_dynamic_MEM_fns {
     public static void realloc_fn$set(MemorySegment seg, long index, MemoryAddress x) {
         st_dynamic_MEM_fns.realloc_fn$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static dyn_MEM_realloc_fn realloc_fn (MemorySegment segment) {
-        return dyn_MEM_realloc_fn.ofAddress(realloc_fn$get(segment));
+    public static dyn_MEM_realloc_fn realloc_fn (MemorySegment segment, ResourceScope scope) {
+        return dyn_MEM_realloc_fn.ofAddress(realloc_fn$get(segment), scope);
     }
     static final VarHandle free_fn$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("free_fn"));
     public static VarHandle free_fn$VH() {
@@ -71,8 +71,8 @@ public class st_dynamic_MEM_fns {
     public static void free_fn$set(MemorySegment seg, long index, MemoryAddress x) {
         st_dynamic_MEM_fns.free_fn$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static dyn_MEM_free_fn free_fn (MemorySegment segment) {
-        return dyn_MEM_free_fn.ofAddress(free_fn$get(segment));
+    public static dyn_MEM_free_fn free_fn (MemorySegment segment, ResourceScope scope) {
+        return dyn_MEM_free_fn.ofAddress(free_fn$get(segment), scope);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

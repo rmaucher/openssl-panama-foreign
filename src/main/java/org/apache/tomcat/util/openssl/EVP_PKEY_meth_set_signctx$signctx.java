@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface EVP_PKEY_meth_set_signctx$signctx {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3);
-    static CLinker.UpcallStub allocate(EVP_PKEY_meth_set_signctx$signctx fi) {
-        return RuntimeHelper.upcallStub(EVP_PKEY_meth_set_signctx$signctx.class, fi, constants$361.EVP_PKEY_meth_set_signctx$signctx$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(EVP_PKEY_meth_set_signctx$signctx fi, ResourceScope scope) {
+    static NativeSymbol allocate(EVP_PKEY_meth_set_signctx$signctx fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(EVP_PKEY_meth_set_signctx$signctx.class, fi, constants$361.EVP_PKEY_meth_set_signctx$signctx$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static EVP_PKEY_meth_set_signctx$signctx ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3) -> {
+    static EVP_PKEY_meth_set_signctx$signctx ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("EVP_PKEY_meth_set_signctx$signctx::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3) -> {
             try {
-                return (int)constants$361.EVP_PKEY_meth_set_signctx$signctx$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                return (int)constants$361.EVP_PKEY_meth_set_signctx$signctx$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

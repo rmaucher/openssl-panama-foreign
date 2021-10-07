@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface X509_STORE_CTX_verify_cb {
 
     int apply(int x0, jdk.incubator.foreign.MemoryAddress x1);
-    static CLinker.UpcallStub allocate(X509_STORE_CTX_verify_cb fi) {
-        return RuntimeHelper.upcallStub(X509_STORE_CTX_verify_cb.class, fi, constants$552.X509_STORE_CTX_verify_cb$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(X509_STORE_CTX_verify_cb fi, ResourceScope scope) {
+    static NativeSymbol allocate(X509_STORE_CTX_verify_cb fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(X509_STORE_CTX_verify_cb.class, fi, constants$552.X509_STORE_CTX_verify_cb$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static X509_STORE_CTX_verify_cb ofAddress(MemoryAddress addr) {
-        return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static X509_STORE_CTX_verify_cb ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("X509_STORE_CTX_verify_cb::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (int x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                return (int)constants$552.X509_STORE_CTX_verify_cb$MH.invokeExact((Addressable)addr, x0, x1);
+                return (int)constants$552.X509_STORE_CTX_verify_cb$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

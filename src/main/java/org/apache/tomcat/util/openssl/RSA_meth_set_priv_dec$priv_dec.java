@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface RSA_meth_set_priv_dec$priv_dec {
 
     int apply(int x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3, int x4);
-    static CLinker.UpcallStub allocate(RSA_meth_set_priv_dec$priv_dec fi) {
-        return RuntimeHelper.upcallStub(RSA_meth_set_priv_dec$priv_dec.class, fi, constants$440.RSA_meth_set_priv_dec$priv_dec$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;I)I");
-    }
-    static CLinker.UpcallStub allocate(RSA_meth_set_priv_dec$priv_dec fi, ResourceScope scope) {
+    static NativeSymbol allocate(RSA_meth_set_priv_dec$priv_dec fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(RSA_meth_set_priv_dec$priv_dec.class, fi, constants$440.RSA_meth_set_priv_dec$priv_dec$FUNC, "(ILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;I)I", scope);
     }
-    static RSA_meth_set_priv_dec$priv_dec ofAddress(MemoryAddress addr) {
-        return (int x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3, int x4) -> {
+    static RSA_meth_set_priv_dec$priv_dec ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("RSA_meth_set_priv_dec$priv_dec::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (int x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3, int x4) -> {
             try {
-                return (int)constants$440.RSA_meth_set_priv_dec$priv_dec$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                return (int)constants$440.RSA_meth_set_priv_dec$priv_dec$MH.invokeExact(symbol, x0, x1, x2, x3, x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

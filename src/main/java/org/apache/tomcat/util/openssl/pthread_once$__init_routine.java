@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface pthread_once$__init_routine {
 
     void apply();
-    static CLinker.UpcallStub allocate(pthread_once$__init_routine fi) {
-        return RuntimeHelper.upcallStub(pthread_once$__init_routine.class, fi, constants$86.pthread_once$__init_routine$FUNC, "()V");
-    }
-    static CLinker.UpcallStub allocate(pthread_once$__init_routine fi, ResourceScope scope) {
+    static NativeSymbol allocate(pthread_once$__init_routine fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(pthread_once$__init_routine.class, fi, constants$86.pthread_once$__init_routine$FUNC, "()V", scope);
     }
-    static pthread_once$__init_routine ofAddress(MemoryAddress addr) {
-        return () -> {
+    static pthread_once$__init_routine ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("pthread_once$__init_routine::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return () -> {
             try {
-                constants$86.pthread_once$__init_routine$MH.invokeExact((Addressable)addr);
+                constants$86.pthread_once$__init_routine$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

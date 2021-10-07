@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface EVP_PKEY_asn1_set_private$priv_encode {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1);
-    static CLinker.UpcallStub allocate(EVP_PKEY_asn1_set_private$priv_encode fi) {
-        return RuntimeHelper.upcallStub(EVP_PKEY_asn1_set_private$priv_encode.class, fi, constants$336.EVP_PKEY_asn1_set_private$priv_encode$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(EVP_PKEY_asn1_set_private$priv_encode fi, ResourceScope scope) {
+    static NativeSymbol allocate(EVP_PKEY_asn1_set_private$priv_encode fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(EVP_PKEY_asn1_set_private$priv_encode.class, fi, constants$336.EVP_PKEY_asn1_set_private$priv_encode$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static EVP_PKEY_asn1_set_private$priv_encode ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static EVP_PKEY_asn1_set_private$priv_encode ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("EVP_PKEY_asn1_set_private$priv_encode::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                return (int)constants$336.EVP_PKEY_asn1_set_private$priv_encode$MH.invokeExact((Addressable)addr, x0, x1);
+                return (int)constants$336.EVP_PKEY_asn1_set_private$priv_encode$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

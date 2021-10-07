@@ -17,7 +17,7 @@ class constants$1117 {
     static final MemorySegment OPENSSL_VERSION_TEXT$SEGMENT = ResourceScope.globalScope().allocateUtf8String("OpenSSL 1.1.1l  FIPS 24 Aug 2021");
     static final MemorySegment SHLIB_VERSION_HISTORY$SEGMENT = ResourceScope.globalScope().allocateUtf8String("");
     static final MemorySegment SHLIB_VERSION_NUMBER$SEGMENT = ResourceScope.globalScope().allocateUtf8String("1.1");
-    static final MemorySegment OPENSSL_FILE$SEGMENT = ResourceScope.globalScope().allocateUtf8String("/tmp/jextract$18114464568021504747.h");
+    static final MemorySegment OPENSSL_FILE$SEGMENT = ResourceScope.globalScope().allocateUtf8String("/tmp/jextract$8976318511067573528.h");
     static final MemorySegment __PRI64_PREFIX$SEGMENT = ResourceScope.globalScope().allocateUtf8String("l");
 }
 

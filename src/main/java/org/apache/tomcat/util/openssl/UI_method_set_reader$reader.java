@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface UI_method_set_reader$reader {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1);
-    static CLinker.UpcallStub allocate(UI_method_set_reader$reader fi) {
-        return RuntimeHelper.upcallStub(UI_method_set_reader$reader.class, fi, constants$1085.UI_method_set_reader$reader$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(UI_method_set_reader$reader fi, ResourceScope scope) {
+    static NativeSymbol allocate(UI_method_set_reader$reader fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(UI_method_set_reader$reader.class, fi, constants$1085.UI_method_set_reader$reader$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static UI_method_set_reader$reader ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static UI_method_set_reader$reader ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("UI_method_set_reader$reader::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                return (int)constants$1085.UI_method_set_reader$reader$MH.invokeExact((Addressable)addr, x0, x1);
+                return (int)constants$1085.UI_method_set_reader$reader$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

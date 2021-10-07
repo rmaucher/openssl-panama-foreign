@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface custom_ext_free_cb {
 
     void apply(jdk.incubator.foreign.MemoryAddress x0, int x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3);
-    static CLinker.UpcallStub allocate(custom_ext_free_cb fi) {
-        return RuntimeHelper.upcallStub(custom_ext_free_cb.class, fi, constants$761.custom_ext_free_cb$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static CLinker.UpcallStub allocate(custom_ext_free_cb fi, ResourceScope scope) {
+    static NativeSymbol allocate(custom_ext_free_cb fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(custom_ext_free_cb.class, fi, constants$761.custom_ext_free_cb$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static custom_ext_free_cb ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, int x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3) -> {
+    static custom_ext_free_cb ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("custom_ext_free_cb::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, int x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3) -> {
             try {
-                constants$761.custom_ext_free_cb$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$761.custom_ext_free_cb$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

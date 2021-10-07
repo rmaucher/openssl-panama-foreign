@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface CRYPTO_THREAD_run_once$init {
 
     void apply();
-    static CLinker.UpcallStub allocate(CRYPTO_THREAD_run_once$init fi) {
-        return RuntimeHelper.upcallStub(CRYPTO_THREAD_run_once$init.class, fi, constants$100.CRYPTO_THREAD_run_once$init$FUNC, "()V");
-    }
-    static CLinker.UpcallStub allocate(CRYPTO_THREAD_run_once$init fi, ResourceScope scope) {
+    static NativeSymbol allocate(CRYPTO_THREAD_run_once$init fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(CRYPTO_THREAD_run_once$init.class, fi, constants$100.CRYPTO_THREAD_run_once$init$FUNC, "()V", scope);
     }
-    static CRYPTO_THREAD_run_once$init ofAddress(MemoryAddress addr) {
-        return () -> {
+    static CRYPTO_THREAD_run_once$init ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("CRYPTO_THREAD_run_once$init::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return () -> {
             try {
-                constants$101.CRYPTO_THREAD_run_once$init$MH.invokeExact((Addressable)addr);
+                constants$101.CRYPTO_THREAD_run_once$init$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

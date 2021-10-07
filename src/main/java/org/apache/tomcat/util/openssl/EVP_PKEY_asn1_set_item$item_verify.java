@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface EVP_PKEY_asn1_set_item$item_verify {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3, jdk.incubator.foreign.MemoryAddress x4, jdk.incubator.foreign.MemoryAddress x5);
-    static CLinker.UpcallStub allocate(EVP_PKEY_asn1_set_item$item_verify fi) {
-        return RuntimeHelper.upcallStub(EVP_PKEY_asn1_set_item$item_verify.class, fi, constants$340.EVP_PKEY_asn1_set_item$item_verify$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(EVP_PKEY_asn1_set_item$item_verify fi, ResourceScope scope) {
+    static NativeSymbol allocate(EVP_PKEY_asn1_set_item$item_verify fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(EVP_PKEY_asn1_set_item$item_verify.class, fi, constants$340.EVP_PKEY_asn1_set_item$item_verify$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static EVP_PKEY_asn1_set_item$item_verify ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3, jdk.incubator.foreign.MemoryAddress x4, jdk.incubator.foreign.MemoryAddress x5) -> {
+    static EVP_PKEY_asn1_set_item$item_verify ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("EVP_PKEY_asn1_set_item$item_verify::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3, jdk.incubator.foreign.MemoryAddress x4, jdk.incubator.foreign.MemoryAddress x5) -> {
             try {
-                return (int)constants$340.EVP_PKEY_asn1_set_item$item_verify$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5);
+                return (int)constants$340.EVP_PKEY_asn1_set_item$item_verify$MH.invokeExact(symbol, x0, x1, x2, x3, x4, x5);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

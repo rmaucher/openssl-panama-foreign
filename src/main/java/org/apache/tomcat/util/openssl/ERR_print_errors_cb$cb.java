@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface ERR_print_errors_cb$cb {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, long x1, jdk.incubator.foreign.MemoryAddress x2);
-    static CLinker.UpcallStub allocate(ERR_print_errors_cb$cb fi) {
-        return RuntimeHelper.upcallStub(ERR_print_errors_cb$cb.class, fi, constants$876.ERR_print_errors_cb$cb$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(ERR_print_errors_cb$cb fi, ResourceScope scope) {
+    static NativeSymbol allocate(ERR_print_errors_cb$cb fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(ERR_print_errors_cb$cb.class, fi, constants$876.ERR_print_errors_cb$cb$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static ERR_print_errors_cb$cb ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, long x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static ERR_print_errors_cb$cb ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("ERR_print_errors_cb$cb::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, long x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                return (int)constants$876.ERR_print_errors_cb$cb$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                return (int)constants$876.ERR_print_errors_cb$cb$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

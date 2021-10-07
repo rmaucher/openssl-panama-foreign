@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface custom_ext_add_cb {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, int x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3, jdk.incubator.foreign.MemoryAddress x4, jdk.incubator.foreign.MemoryAddress x5);
-    static CLinker.UpcallStub allocate(custom_ext_add_cb fi) {
-        return RuntimeHelper.upcallStub(custom_ext_add_cb.class, fi, constants$760.custom_ext_add_cb$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(custom_ext_add_cb fi, ResourceScope scope) {
+    static NativeSymbol allocate(custom_ext_add_cb fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(custom_ext_add_cb.class, fi, constants$760.custom_ext_add_cb$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static custom_ext_add_cb ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, int x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3, jdk.incubator.foreign.MemoryAddress x4, jdk.incubator.foreign.MemoryAddress x5) -> {
+    static custom_ext_add_cb ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("custom_ext_add_cb::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, int x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3, jdk.incubator.foreign.MemoryAddress x4, jdk.incubator.foreign.MemoryAddress x5) -> {
             try {
-                return (int)constants$761.custom_ext_add_cb$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5);
+                return (int)constants$761.custom_ext_add_cb$MH.invokeExact(symbol, x0, x1, x2, x3, x4, x5);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

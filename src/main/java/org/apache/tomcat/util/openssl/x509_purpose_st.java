@@ -81,16 +81,13 @@ public class x509_purpose_st {
     public interface check_purpose {
 
         int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, int x2);
-        static CLinker.UpcallStub allocate(check_purpose fi) {
-            return RuntimeHelper.upcallStub(check_purpose.class, fi, x509_purpose_st.check_purpose$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;I)I");
-        }
-        static CLinker.UpcallStub allocate(check_purpose fi, ResourceScope scope) {
+        static NativeSymbol allocate(check_purpose fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(check_purpose.class, fi, x509_purpose_st.check_purpose$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;I)I", scope);
         }
-        static check_purpose ofAddress(MemoryAddress addr) {
-            return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, int x2) -> {
+        static check_purpose ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("check_purpose::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, int x2) -> {
                 try {
-                    return (int)x509_purpose_st.check_purpose$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                    return (int)x509_purpose_st.check_purpose$MH.invokeExact(symbol, x0, x1, x2);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -114,8 +111,8 @@ public class x509_purpose_st {
     public static void check_purpose$set(MemorySegment seg, long index, MemoryAddress x) {
         x509_purpose_st.check_purpose$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static check_purpose check_purpose (MemorySegment segment) {
-        return check_purpose.ofAddress(check_purpose$get(segment));
+    public static check_purpose check_purpose (MemorySegment segment, ResourceScope scope) {
+        return check_purpose.ofAddress(check_purpose$get(segment), scope);
     }
     static final VarHandle name$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("name"));
     public static VarHandle name$VH() {

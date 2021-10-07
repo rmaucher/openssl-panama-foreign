@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface ENGINE_SSL_CLIENT_CERT_PTR {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3, jdk.incubator.foreign.MemoryAddress x4, jdk.incubator.foreign.MemoryAddress x5, jdk.incubator.foreign.MemoryAddress x6, jdk.incubator.foreign.MemoryAddress x7);
-    static CLinker.UpcallStub allocate(ENGINE_SSL_CLIENT_CERT_PTR fi) {
-        return RuntimeHelper.upcallStub(ENGINE_SSL_CLIENT_CERT_PTR.class, fi, constants$1093.ENGINE_SSL_CLIENT_CERT_PTR$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(ENGINE_SSL_CLIENT_CERT_PTR fi, ResourceScope scope) {
+    static NativeSymbol allocate(ENGINE_SSL_CLIENT_CERT_PTR fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(ENGINE_SSL_CLIENT_CERT_PTR.class, fi, constants$1093.ENGINE_SSL_CLIENT_CERT_PTR$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static ENGINE_SSL_CLIENT_CERT_PTR ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3, jdk.incubator.foreign.MemoryAddress x4, jdk.incubator.foreign.MemoryAddress x5, jdk.incubator.foreign.MemoryAddress x6, jdk.incubator.foreign.MemoryAddress x7) -> {
+    static ENGINE_SSL_CLIENT_CERT_PTR ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("ENGINE_SSL_CLIENT_CERT_PTR::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3, jdk.incubator.foreign.MemoryAddress x4, jdk.incubator.foreign.MemoryAddress x5, jdk.incubator.foreign.MemoryAddress x6, jdk.incubator.foreign.MemoryAddress x7) -> {
             try {
-                return (int)constants$1093.ENGINE_SSL_CLIENT_CERT_PTR$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5, x6, x7);
+                return (int)constants$1093.ENGINE_SSL_CLIENT_CERT_PTR$MH.invokeExact(symbol, x0, x1, x2, x3, x4, x5, x6, x7);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

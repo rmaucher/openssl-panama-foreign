@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface EVP_PKEY_meth_set_cleanup$cleanup {
 
     void apply(jdk.incubator.foreign.MemoryAddress x0);
-    static CLinker.UpcallStub allocate(EVP_PKEY_meth_set_cleanup$cleanup fi) {
-        return RuntimeHelper.upcallStub(EVP_PKEY_meth_set_cleanup$cleanup.class, fi, constants$356.EVP_PKEY_meth_set_cleanup$cleanup$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static CLinker.UpcallStub allocate(EVP_PKEY_meth_set_cleanup$cleanup fi, ResourceScope scope) {
+    static NativeSymbol allocate(EVP_PKEY_meth_set_cleanup$cleanup fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(EVP_PKEY_meth_set_cleanup$cleanup.class, fi, constants$356.EVP_PKEY_meth_set_cleanup$cleanup$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static EVP_PKEY_meth_set_cleanup$cleanup ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0) -> {
+    static EVP_PKEY_meth_set_cleanup$cleanup ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("EVP_PKEY_meth_set_cleanup$cleanup::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0) -> {
             try {
-                constants$356.EVP_PKEY_meth_set_cleanup$cleanup$MH.invokeExact((Addressable)addr, x0);
+                constants$356.EVP_PKEY_meth_set_cleanup$cleanup$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface ENGINE_GEN_FUNC_PTR {
 
     int apply();
-    static CLinker.UpcallStub allocate(ENGINE_GEN_FUNC_PTR fi) {
-        return RuntimeHelper.upcallStub(ENGINE_GEN_FUNC_PTR.class, fi, constants$1091.ENGINE_GEN_FUNC_PTR$FUNC, "()I");
-    }
-    static CLinker.UpcallStub allocate(ENGINE_GEN_FUNC_PTR fi, ResourceScope scope) {
+    static NativeSymbol allocate(ENGINE_GEN_FUNC_PTR fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(ENGINE_GEN_FUNC_PTR.class, fi, constants$1091.ENGINE_GEN_FUNC_PTR$FUNC, "()I", scope);
     }
-    static ENGINE_GEN_FUNC_PTR ofAddress(MemoryAddress addr) {
-        return () -> {
+    static ENGINE_GEN_FUNC_PTR ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("ENGINE_GEN_FUNC_PTR::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return () -> {
             try {
-                return (int)constants$1091.ENGINE_GEN_FUNC_PTR$MH.invokeExact((Addressable)addr);
+                return (int)constants$1091.ENGINE_GEN_FUNC_PTR$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

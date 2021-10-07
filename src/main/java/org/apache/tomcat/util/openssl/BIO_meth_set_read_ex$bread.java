@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface BIO_meth_set_read_ex$bread {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, long x2, jdk.incubator.foreign.MemoryAddress x3);
-    static CLinker.UpcallStub allocate(BIO_meth_set_read_ex$bread fi) {
-        return RuntimeHelper.upcallStub(BIO_meth_set_read_ex$bread.class, fi, constants$138.BIO_meth_set_read_ex$bread$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(BIO_meth_set_read_ex$bread fi, ResourceScope scope) {
+    static NativeSymbol allocate(BIO_meth_set_read_ex$bread fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(BIO_meth_set_read_ex$bread.class, fi, constants$138.BIO_meth_set_read_ex$bread$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static BIO_meth_set_read_ex$bread ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, long x2, jdk.incubator.foreign.MemoryAddress x3) -> {
+    static BIO_meth_set_read_ex$bread ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("BIO_meth_set_read_ex$bread::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, long x2, jdk.incubator.foreign.MemoryAddress x3) -> {
             try {
-                return (int)constants$138.BIO_meth_set_read_ex$bread$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                return (int)constants$138.BIO_meth_set_read_ex$bread$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

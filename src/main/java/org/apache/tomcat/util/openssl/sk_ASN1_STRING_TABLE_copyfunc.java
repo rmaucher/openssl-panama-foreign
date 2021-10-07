@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface sk_ASN1_STRING_TABLE_copyfunc {
 
     jdk.incubator.foreign.MemoryAddress apply(jdk.incubator.foreign.MemoryAddress x0);
-    static CLinker.UpcallStub allocate(sk_ASN1_STRING_TABLE_copyfunc fi) {
-        return RuntimeHelper.upcallStub(sk_ASN1_STRING_TABLE_copyfunc.class, fi, constants$179.sk_ASN1_STRING_TABLE_copyfunc$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;");
-    }
-    static CLinker.UpcallStub allocate(sk_ASN1_STRING_TABLE_copyfunc fi, ResourceScope scope) {
+    static NativeSymbol allocate(sk_ASN1_STRING_TABLE_copyfunc fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(sk_ASN1_STRING_TABLE_copyfunc.class, fi, constants$179.sk_ASN1_STRING_TABLE_copyfunc$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;", scope);
     }
-    static sk_ASN1_STRING_TABLE_copyfunc ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0) -> {
+    static sk_ASN1_STRING_TABLE_copyfunc ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("sk_ASN1_STRING_TABLE_copyfunc::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0) -> {
             try {
-                return (jdk.incubator.foreign.MemoryAddress)constants$180.sk_ASN1_STRING_TABLE_copyfunc$MH.invokeExact((Addressable)addr, x0);
+                return (jdk.incubator.foreign.MemoryAddress)constants$180.sk_ASN1_STRING_TABLE_copyfunc$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

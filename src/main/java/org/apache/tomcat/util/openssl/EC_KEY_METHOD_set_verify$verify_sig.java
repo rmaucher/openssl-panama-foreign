@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface EC_KEY_METHOD_set_verify$verify_sig {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, int x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3);
-    static CLinker.UpcallStub allocate(EC_KEY_METHOD_set_verify$verify_sig fi) {
-        return RuntimeHelper.upcallStub(EC_KEY_METHOD_set_verify$verify_sig.class, fi, constants$414.EC_KEY_METHOD_set_verify$verify_sig$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(EC_KEY_METHOD_set_verify$verify_sig fi, ResourceScope scope) {
+    static NativeSymbol allocate(EC_KEY_METHOD_set_verify$verify_sig fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(EC_KEY_METHOD_set_verify$verify_sig.class, fi, constants$414.EC_KEY_METHOD_set_verify$verify_sig$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static EC_KEY_METHOD_set_verify$verify_sig ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, int x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3) -> {
+    static EC_KEY_METHOD_set_verify$verify_sig ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("EC_KEY_METHOD_set_verify$verify_sig::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, int x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3) -> {
             try {
-                return (int)constants$414.EC_KEY_METHOD_set_verify$verify_sig$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                return (int)constants$414.EC_KEY_METHOD_set_verify$verify_sig$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

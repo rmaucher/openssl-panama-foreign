@@ -92,8 +92,8 @@ public class v3_ext_method {
     public static void ext_new$set(MemorySegment seg, long index, MemoryAddress x) {
         v3_ext_method.ext_new$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static X509V3_EXT_NEW ext_new (MemorySegment segment) {
-        return X509V3_EXT_NEW.ofAddress(ext_new$get(segment));
+    public static X509V3_EXT_NEW ext_new (MemorySegment segment, ResourceScope scope) {
+        return X509V3_EXT_NEW.ofAddress(ext_new$get(segment), scope);
     }
     static final VarHandle ext_free$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("ext_free"));
     public static VarHandle ext_free$VH() {
@@ -111,8 +111,8 @@ public class v3_ext_method {
     public static void ext_free$set(MemorySegment seg, long index, MemoryAddress x) {
         v3_ext_method.ext_free$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static X509V3_EXT_FREE ext_free (MemorySegment segment) {
-        return X509V3_EXT_FREE.ofAddress(ext_free$get(segment));
+    public static X509V3_EXT_FREE ext_free (MemorySegment segment, ResourceScope scope) {
+        return X509V3_EXT_FREE.ofAddress(ext_free$get(segment), scope);
     }
     static final VarHandle d2i$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("d2i"));
     public static VarHandle d2i$VH() {
@@ -130,8 +130,8 @@ public class v3_ext_method {
     public static void d2i$set(MemorySegment seg, long index, MemoryAddress x) {
         v3_ext_method.d2i$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static X509V3_EXT_D2I d2i (MemorySegment segment) {
-        return X509V3_EXT_D2I.ofAddress(d2i$get(segment));
+    public static X509V3_EXT_D2I d2i (MemorySegment segment, ResourceScope scope) {
+        return X509V3_EXT_D2I.ofAddress(d2i$get(segment), scope);
     }
     static final VarHandle i2d$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("i2d"));
     public static VarHandle i2d$VH() {
@@ -149,8 +149,8 @@ public class v3_ext_method {
     public static void i2d$set(MemorySegment seg, long index, MemoryAddress x) {
         v3_ext_method.i2d$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static X509V3_EXT_I2D i2d (MemorySegment segment) {
-        return X509V3_EXT_I2D.ofAddress(i2d$get(segment));
+    public static X509V3_EXT_I2D i2d (MemorySegment segment, ResourceScope scope) {
+        return X509V3_EXT_I2D.ofAddress(i2d$get(segment), scope);
     }
     static final VarHandle i2s$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("i2s"));
     public static VarHandle i2s$VH() {
@@ -168,8 +168,8 @@ public class v3_ext_method {
     public static void i2s$set(MemorySegment seg, long index, MemoryAddress x) {
         v3_ext_method.i2s$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static X509V3_EXT_I2S i2s (MemorySegment segment) {
-        return X509V3_EXT_I2S.ofAddress(i2s$get(segment));
+    public static X509V3_EXT_I2S i2s (MemorySegment segment, ResourceScope scope) {
+        return X509V3_EXT_I2S.ofAddress(i2s$get(segment), scope);
     }
     static final VarHandle s2i$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("s2i"));
     public static VarHandle s2i$VH() {
@@ -187,8 +187,8 @@ public class v3_ext_method {
     public static void s2i$set(MemorySegment seg, long index, MemoryAddress x) {
         v3_ext_method.s2i$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static X509V3_EXT_S2I s2i (MemorySegment segment) {
-        return X509V3_EXT_S2I.ofAddress(s2i$get(segment));
+    public static X509V3_EXT_S2I s2i (MemorySegment segment, ResourceScope scope) {
+        return X509V3_EXT_S2I.ofAddress(s2i$get(segment), scope);
     }
     static final VarHandle i2v$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("i2v"));
     public static VarHandle i2v$VH() {
@@ -206,8 +206,8 @@ public class v3_ext_method {
     public static void i2v$set(MemorySegment seg, long index, MemoryAddress x) {
         v3_ext_method.i2v$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static X509V3_EXT_I2V i2v (MemorySegment segment) {
-        return X509V3_EXT_I2V.ofAddress(i2v$get(segment));
+    public static X509V3_EXT_I2V i2v (MemorySegment segment, ResourceScope scope) {
+        return X509V3_EXT_I2V.ofAddress(i2v$get(segment), scope);
     }
     static final VarHandle v2i$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("v2i"));
     public static VarHandle v2i$VH() {
@@ -225,8 +225,8 @@ public class v3_ext_method {
     public static void v2i$set(MemorySegment seg, long index, MemoryAddress x) {
         v3_ext_method.v2i$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static X509V3_EXT_V2I v2i (MemorySegment segment) {
-        return X509V3_EXT_V2I.ofAddress(v2i$get(segment));
+    public static X509V3_EXT_V2I v2i (MemorySegment segment, ResourceScope scope) {
+        return X509V3_EXT_V2I.ofAddress(v2i$get(segment), scope);
     }
     static final VarHandle i2r$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("i2r"));
     public static VarHandle i2r$VH() {
@@ -244,8 +244,8 @@ public class v3_ext_method {
     public static void i2r$set(MemorySegment seg, long index, MemoryAddress x) {
         v3_ext_method.i2r$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static X509V3_EXT_I2R i2r (MemorySegment segment) {
-        return X509V3_EXT_I2R.ofAddress(i2r$get(segment));
+    public static X509V3_EXT_I2R i2r (MemorySegment segment, ResourceScope scope) {
+        return X509V3_EXT_I2R.ofAddress(i2r$get(segment), scope);
     }
     static final VarHandle r2i$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("r2i"));
     public static VarHandle r2i$VH() {
@@ -263,8 +263,8 @@ public class v3_ext_method {
     public static void r2i$set(MemorySegment seg, long index, MemoryAddress x) {
         v3_ext_method.r2i$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static X509V3_EXT_R2I r2i (MemorySegment segment) {
-        return X509V3_EXT_R2I.ofAddress(r2i$get(segment));
+    public static X509V3_EXT_R2I r2i (MemorySegment segment, ResourceScope scope) {
+        return X509V3_EXT_R2I.ofAddress(r2i$get(segment), scope);
     }
     static final VarHandle usr_data$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("usr_data"));
     public static VarHandle usr_data$VH() {

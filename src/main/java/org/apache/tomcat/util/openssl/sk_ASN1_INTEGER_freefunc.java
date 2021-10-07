@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface sk_ASN1_INTEGER_freefunc {
 
     void apply(jdk.incubator.foreign.MemoryAddress x0);
-    static CLinker.UpcallStub allocate(sk_ASN1_INTEGER_freefunc fi) {
-        return RuntimeHelper.upcallStub(sk_ASN1_INTEGER_freefunc.class, fi, constants$185.sk_ASN1_INTEGER_freefunc$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static CLinker.UpcallStub allocate(sk_ASN1_INTEGER_freefunc fi, ResourceScope scope) {
+    static NativeSymbol allocate(sk_ASN1_INTEGER_freefunc fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(sk_ASN1_INTEGER_freefunc.class, fi, constants$185.sk_ASN1_INTEGER_freefunc$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static sk_ASN1_INTEGER_freefunc ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0) -> {
+    static sk_ASN1_INTEGER_freefunc ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("sk_ASN1_INTEGER_freefunc::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0) -> {
             try {
-                constants$185.sk_ASN1_INTEGER_freefunc$MH.invokeExact((Addressable)addr, x0);
+                constants$185.sk_ASN1_INTEGER_freefunc$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

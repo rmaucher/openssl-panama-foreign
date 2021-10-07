@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface pthread_create$__start_routine {
 
     jdk.incubator.foreign.MemoryAddress apply(jdk.incubator.foreign.MemoryAddress x0);
-    static CLinker.UpcallStub allocate(pthread_create$__start_routine fi) {
-        return RuntimeHelper.upcallStub(pthread_create$__start_routine.class, fi, constants$81.pthread_create$__start_routine$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;");
-    }
-    static CLinker.UpcallStub allocate(pthread_create$__start_routine fi, ResourceScope scope) {
+    static NativeSymbol allocate(pthread_create$__start_routine fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(pthread_create$__start_routine.class, fi, constants$81.pthread_create$__start_routine$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;", scope);
     }
-    static pthread_create$__start_routine ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0) -> {
+    static pthread_create$__start_routine ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("pthread_create$__start_routine::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0) -> {
             try {
-                return (jdk.incubator.foreign.MemoryAddress)constants$81.pthread_create$__start_routine$MH.invokeExact((Addressable)addr, x0);
+                return (jdk.incubator.foreign.MemoryAddress)constants$81.pthread_create$__start_routine$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

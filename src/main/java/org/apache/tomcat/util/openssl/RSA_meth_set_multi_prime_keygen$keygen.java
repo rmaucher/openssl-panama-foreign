@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface RSA_meth_set_multi_prime_keygen$keygen {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3, jdk.incubator.foreign.MemoryAddress x4);
-    static CLinker.UpcallStub allocate(RSA_meth_set_multi_prime_keygen$keygen fi) {
-        return RuntimeHelper.upcallStub(RSA_meth_set_multi_prime_keygen$keygen.class, fi, constants$445.RSA_meth_set_multi_prime_keygen$keygen$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;IILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(RSA_meth_set_multi_prime_keygen$keygen fi, ResourceScope scope) {
+    static NativeSymbol allocate(RSA_meth_set_multi_prime_keygen$keygen fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(RSA_meth_set_multi_prime_keygen$keygen.class, fi, constants$445.RSA_meth_set_multi_prime_keygen$keygen$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;IILjdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static RSA_meth_set_multi_prime_keygen$keygen ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3, jdk.incubator.foreign.MemoryAddress x4) -> {
+    static RSA_meth_set_multi_prime_keygen$keygen ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("RSA_meth_set_multi_prime_keygen$keygen::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, int x1, int x2, jdk.incubator.foreign.MemoryAddress x3, jdk.incubator.foreign.MemoryAddress x4) -> {
             try {
-                return (int)constants$445.RSA_meth_set_multi_prime_keygen$keygen$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                return (int)constants$445.RSA_meth_set_multi_prime_keygen$keygen$MH.invokeExact(symbol, x0, x1, x2, x3, x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

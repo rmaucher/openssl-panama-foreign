@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface EVP_PKEY_asn1_set_param$param_cmp {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1);
-    static CLinker.UpcallStub allocate(EVP_PKEY_asn1_set_param$param_cmp fi) {
-        return RuntimeHelper.upcallStub(EVP_PKEY_asn1_set_param$param_cmp.class, fi, constants$338.EVP_PKEY_asn1_set_param$param_cmp$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(EVP_PKEY_asn1_set_param$param_cmp fi, ResourceScope scope) {
+    static NativeSymbol allocate(EVP_PKEY_asn1_set_param$param_cmp fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(EVP_PKEY_asn1_set_param$param_cmp.class, fi, constants$338.EVP_PKEY_asn1_set_param$param_cmp$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static EVP_PKEY_asn1_set_param$param_cmp ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static EVP_PKEY_asn1_set_param$param_cmp ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("EVP_PKEY_asn1_set_param$param_cmp::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                return (int)constants$338.EVP_PKEY_asn1_set_param$param_cmp$MH.invokeExact((Addressable)addr, x0, x1);
+                return (int)constants$338.EVP_PKEY_asn1_set_param$param_cmp$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface EVP_PKEY_meth_set_sign$sign {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3, long x4);
-    static CLinker.UpcallStub allocate(EVP_PKEY_meth_set_sign$sign fi) {
-        return RuntimeHelper.upcallStub(EVP_PKEY_meth_set_sign$sign.class, fi, constants$358.EVP_PKEY_meth_set_sign$sign$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;J)I");
-    }
-    static CLinker.UpcallStub allocate(EVP_PKEY_meth_set_sign$sign fi, ResourceScope scope) {
+    static NativeSymbol allocate(EVP_PKEY_meth_set_sign$sign fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(EVP_PKEY_meth_set_sign$sign.class, fi, constants$358.EVP_PKEY_meth_set_sign$sign$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;J)I", scope);
     }
-    static EVP_PKEY_meth_set_sign$sign ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3, long x4) -> {
+    static EVP_PKEY_meth_set_sign$sign ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("EVP_PKEY_meth_set_sign$sign::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3, long x4) -> {
             try {
-                return (int)constants$358.EVP_PKEY_meth_set_sign$sign$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                return (int)constants$358.EVP_PKEY_meth_set_sign$sign$MH.invokeExact(symbol, x0, x1, x2, x3, x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

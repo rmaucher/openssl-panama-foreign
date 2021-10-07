@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface SSL_CTX_generate_session_ticket_fn {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1);
-    static CLinker.UpcallStub allocate(SSL_CTX_generate_session_ticket_fn fi) {
-        return RuntimeHelper.upcallStub(SSL_CTX_generate_session_ticket_fn.class, fi, constants$868.SSL_CTX_generate_session_ticket_fn$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(SSL_CTX_generate_session_ticket_fn fi, ResourceScope scope) {
+    static NativeSymbol allocate(SSL_CTX_generate_session_ticket_fn fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(SSL_CTX_generate_session_ticket_fn.class, fi, constants$868.SSL_CTX_generate_session_ticket_fn$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static SSL_CTX_generate_session_ticket_fn ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static SSL_CTX_generate_session_ticket_fn ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("SSL_CTX_generate_session_ticket_fn::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                return (int)constants$868.SSL_CTX_generate_session_ticket_fn$MH.invokeExact((Addressable)addr, x0, x1);
+                return (int)constants$868.SSL_CTX_generate_session_ticket_fn$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

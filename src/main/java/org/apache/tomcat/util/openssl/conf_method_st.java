@@ -49,16 +49,13 @@ public class conf_method_st {
     public interface create {
 
         jdk.incubator.foreign.MemoryAddress apply(jdk.incubator.foreign.MemoryAddress x0);
-        static CLinker.UpcallStub allocate(create fi) {
-            return RuntimeHelper.upcallStub(create.class, fi, conf_method_st.create$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;");
-        }
-        static CLinker.UpcallStub allocate(create fi, ResourceScope scope) {
+        static NativeSymbol allocate(create fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(create.class, fi, conf_method_st.create$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;", scope);
         }
-        static create ofAddress(MemoryAddress addr) {
-            return (jdk.incubator.foreign.MemoryAddress x0) -> {
+        static create ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("create::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0) -> {
                 try {
-                    return (jdk.incubator.foreign.MemoryAddress)conf_method_st.create$MH.invokeExact((Addressable)addr, x0);
+                    return (jdk.incubator.foreign.MemoryAddress)conf_method_st.create$MH.invokeExact(symbol, x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -82,8 +79,8 @@ public class conf_method_st {
     public static void create$set(MemorySegment seg, long index, MemoryAddress x) {
         conf_method_st.create$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static create create (MemorySegment segment) {
-        return create.ofAddress(create$get(segment));
+    public static create create (MemorySegment segment, ResourceScope scope) {
+        return create.ofAddress(create$get(segment), scope);
     }
     static final FunctionDescriptor init$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS
@@ -94,16 +91,13 @@ public class conf_method_st {
     public interface init {
 
         int apply(jdk.incubator.foreign.MemoryAddress x0);
-        static CLinker.UpcallStub allocate(init fi) {
-            return RuntimeHelper.upcallStub(init.class, fi, conf_method_st.init$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)I");
-        }
-        static CLinker.UpcallStub allocate(init fi, ResourceScope scope) {
+        static NativeSymbol allocate(init fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(init.class, fi, conf_method_st.init$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)I", scope);
         }
-        static init ofAddress(MemoryAddress addr) {
-            return (jdk.incubator.foreign.MemoryAddress x0) -> {
+        static init ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("init::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0) -> {
                 try {
-                    return (int)conf_method_st.init$MH.invokeExact((Addressable)addr, x0);
+                    return (int)conf_method_st.init$MH.invokeExact(symbol, x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -127,8 +121,8 @@ public class conf_method_st {
     public static void init$set(MemorySegment seg, long index, MemoryAddress x) {
         conf_method_st.init$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static init init (MemorySegment segment) {
-        return init.ofAddress(init$get(segment));
+    public static init init (MemorySegment segment, ResourceScope scope) {
+        return init.ofAddress(init$get(segment), scope);
     }
     static final FunctionDescriptor destroy$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS
@@ -139,16 +133,13 @@ public class conf_method_st {
     public interface destroy {
 
         int apply(jdk.incubator.foreign.MemoryAddress x0);
-        static CLinker.UpcallStub allocate(destroy fi) {
-            return RuntimeHelper.upcallStub(destroy.class, fi, conf_method_st.destroy$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)I");
-        }
-        static CLinker.UpcallStub allocate(destroy fi, ResourceScope scope) {
+        static NativeSymbol allocate(destroy fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(destroy.class, fi, conf_method_st.destroy$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)I", scope);
         }
-        static destroy ofAddress(MemoryAddress addr) {
-            return (jdk.incubator.foreign.MemoryAddress x0) -> {
+        static destroy ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("destroy::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0) -> {
                 try {
-                    return (int)conf_method_st.destroy$MH.invokeExact((Addressable)addr, x0);
+                    return (int)conf_method_st.destroy$MH.invokeExact(symbol, x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -172,8 +163,8 @@ public class conf_method_st {
     public static void destroy$set(MemorySegment seg, long index, MemoryAddress x) {
         conf_method_st.destroy$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static destroy destroy (MemorySegment segment) {
-        return destroy.ofAddress(destroy$get(segment));
+    public static destroy destroy (MemorySegment segment, ResourceScope scope) {
+        return destroy.ofAddress(destroy$get(segment), scope);
     }
     static final FunctionDescriptor destroy_data$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS
@@ -184,16 +175,13 @@ public class conf_method_st {
     public interface destroy_data {
 
         int apply(jdk.incubator.foreign.MemoryAddress x0);
-        static CLinker.UpcallStub allocate(destroy_data fi) {
-            return RuntimeHelper.upcallStub(destroy_data.class, fi, conf_method_st.destroy_data$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)I");
-        }
-        static CLinker.UpcallStub allocate(destroy_data fi, ResourceScope scope) {
+        static NativeSymbol allocate(destroy_data fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(destroy_data.class, fi, conf_method_st.destroy_data$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)I", scope);
         }
-        static destroy_data ofAddress(MemoryAddress addr) {
-            return (jdk.incubator.foreign.MemoryAddress x0) -> {
+        static destroy_data ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("destroy_data::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0) -> {
                 try {
-                    return (int)conf_method_st.destroy_data$MH.invokeExact((Addressable)addr, x0);
+                    return (int)conf_method_st.destroy_data$MH.invokeExact(symbol, x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -217,8 +205,8 @@ public class conf_method_st {
     public static void destroy_data$set(MemorySegment seg, long index, MemoryAddress x) {
         conf_method_st.destroy_data$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static destroy_data destroy_data (MemorySegment segment) {
-        return destroy_data.ofAddress(destroy_data$get(segment));
+    public static destroy_data destroy_data (MemorySegment segment, ResourceScope scope) {
+        return destroy_data.ofAddress(destroy_data$get(segment), scope);
     }
     static final FunctionDescriptor load_bio$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
@@ -231,16 +219,13 @@ public class conf_method_st {
     public interface load_bio {
 
         int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2);
-        static CLinker.UpcallStub allocate(load_bio fi) {
-            return RuntimeHelper.upcallStub(load_bio.class, fi, conf_method_st.load_bio$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I");
-        }
-        static CLinker.UpcallStub allocate(load_bio fi, ResourceScope scope) {
+        static NativeSymbol allocate(load_bio fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(load_bio.class, fi, conf_method_st.load_bio$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I", scope);
         }
-        static load_bio ofAddress(MemoryAddress addr) {
-            return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+        static load_bio ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("load_bio::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2) -> {
                 try {
-                    return (int)conf_method_st.load_bio$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                    return (int)conf_method_st.load_bio$MH.invokeExact(symbol, x0, x1, x2);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -264,8 +249,8 @@ public class conf_method_st {
     public static void load_bio$set(MemorySegment seg, long index, MemoryAddress x) {
         conf_method_st.load_bio$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static load_bio load_bio (MemorySegment segment) {
-        return load_bio.ofAddress(load_bio$get(segment));
+    public static load_bio load_bio (MemorySegment segment, ResourceScope scope) {
+        return load_bio.ofAddress(load_bio$get(segment), scope);
     }
     static final FunctionDescriptor dump$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
@@ -277,16 +262,13 @@ public class conf_method_st {
     public interface dump {
 
         int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1);
-        static CLinker.UpcallStub allocate(dump fi) {
-            return RuntimeHelper.upcallStub(dump.class, fi, conf_method_st.dump$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I");
-        }
-        static CLinker.UpcallStub allocate(dump fi, ResourceScope scope) {
+        static NativeSymbol allocate(dump fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(dump.class, fi, conf_method_st.dump$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I", scope);
         }
-        static dump ofAddress(MemoryAddress addr) {
-            return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+        static dump ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("dump::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
                 try {
-                    return (int)conf_method_st.dump$MH.invokeExact((Addressable)addr, x0, x1);
+                    return (int)conf_method_st.dump$MH.invokeExact(symbol, x0, x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -310,8 +292,8 @@ public class conf_method_st {
     public static void dump$set(MemorySegment seg, long index, MemoryAddress x) {
         conf_method_st.dump$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static dump dump (MemorySegment segment) {
-        return dump.ofAddress(dump$get(segment));
+    public static dump dump (MemorySegment segment, ResourceScope scope) {
+        return dump.ofAddress(dump$get(segment), scope);
     }
     static final FunctionDescriptor is_number$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
@@ -323,16 +305,13 @@ public class conf_method_st {
     public interface is_number {
 
         int apply(jdk.incubator.foreign.MemoryAddress x0, byte x1);
-        static CLinker.UpcallStub allocate(is_number fi) {
-            return RuntimeHelper.upcallStub(is_number.class, fi, conf_method_st.is_number$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;B)I");
-        }
-        static CLinker.UpcallStub allocate(is_number fi, ResourceScope scope) {
+        static NativeSymbol allocate(is_number fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(is_number.class, fi, conf_method_st.is_number$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;B)I", scope);
         }
-        static is_number ofAddress(MemoryAddress addr) {
-            return (jdk.incubator.foreign.MemoryAddress x0, byte x1) -> {
+        static is_number ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("is_number::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, byte x1) -> {
                 try {
-                    return (int)conf_method_st.is_number$MH.invokeExact((Addressable)addr, x0, x1);
+                    return (int)conf_method_st.is_number$MH.invokeExact(symbol, x0, x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -356,8 +335,8 @@ public class conf_method_st {
     public static void is_number$set(MemorySegment seg, long index, MemoryAddress x) {
         conf_method_st.is_number$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static is_number is_number (MemorySegment segment) {
-        return is_number.ofAddress(is_number$get(segment));
+    public static is_number is_number (MemorySegment segment, ResourceScope scope) {
+        return is_number.ofAddress(is_number$get(segment), scope);
     }
     static final FunctionDescriptor to_int$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
@@ -369,16 +348,13 @@ public class conf_method_st {
     public interface to_int {
 
         int apply(jdk.incubator.foreign.MemoryAddress x0, byte x1);
-        static CLinker.UpcallStub allocate(to_int fi) {
-            return RuntimeHelper.upcallStub(to_int.class, fi, conf_method_st.to_int$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;B)I");
-        }
-        static CLinker.UpcallStub allocate(to_int fi, ResourceScope scope) {
+        static NativeSymbol allocate(to_int fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(to_int.class, fi, conf_method_st.to_int$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;B)I", scope);
         }
-        static to_int ofAddress(MemoryAddress addr) {
-            return (jdk.incubator.foreign.MemoryAddress x0, byte x1) -> {
+        static to_int ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("to_int::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, byte x1) -> {
                 try {
-                    return (int)conf_method_st.to_int$MH.invokeExact((Addressable)addr, x0, x1);
+                    return (int)conf_method_st.to_int$MH.invokeExact(symbol, x0, x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -402,8 +378,8 @@ public class conf_method_st {
     public static void to_int$set(MemorySegment seg, long index, MemoryAddress x) {
         conf_method_st.to_int$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static to_int to_int (MemorySegment segment) {
-        return to_int.ofAddress(to_int$get(segment));
+    public static to_int to_int (MemorySegment segment, ResourceScope scope) {
+        return to_int.ofAddress(to_int$get(segment), scope);
     }
     static final FunctionDescriptor load$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
@@ -416,16 +392,13 @@ public class conf_method_st {
     public interface load {
 
         int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2);
-        static CLinker.UpcallStub allocate(load fi) {
-            return RuntimeHelper.upcallStub(load.class, fi, conf_method_st.load$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I");
-        }
-        static CLinker.UpcallStub allocate(load fi, ResourceScope scope) {
+        static NativeSymbol allocate(load fi, ResourceScope scope) {
             return RuntimeHelper.upcallStub(load.class, fi, conf_method_st.load$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I", scope);
         }
-        static load ofAddress(MemoryAddress addr) {
-            return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+        static load ofAddress(MemoryAddress addr, ResourceScope scope) {
+            NativeSymbol symbol = NativeSymbol.ofAddress("load::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2) -> {
                 try {
-                    return (int)conf_method_st.load$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                    return (int)conf_method_st.load$MH.invokeExact(symbol, x0, x1, x2);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -449,8 +422,8 @@ public class conf_method_st {
     public static void load$set(MemorySegment seg, long index, MemoryAddress x) {
         conf_method_st.load$VH.set(seg.asSlice(index*sizeof()), x);
     }
-    public static load load (MemorySegment segment) {
-        return load.ofAddress(load$get(segment));
+    public static load load (MemorySegment segment, ResourceScope scope) {
+        return load.ofAddress(load$get(segment), scope);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

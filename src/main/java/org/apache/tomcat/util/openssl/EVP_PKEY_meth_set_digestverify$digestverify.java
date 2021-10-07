@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface EVP_PKEY_meth_set_digestverify$digestverify {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, long x2, jdk.incubator.foreign.MemoryAddress x3, long x4);
-    static CLinker.UpcallStub allocate(EVP_PKEY_meth_set_digestverify$digestverify fi) {
-        return RuntimeHelper.upcallStub(EVP_PKEY_meth_set_digestverify$digestverify.class, fi, constants$366.EVP_PKEY_meth_set_digestverify$digestverify$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;J)I");
-    }
-    static CLinker.UpcallStub allocate(EVP_PKEY_meth_set_digestverify$digestverify fi, ResourceScope scope) {
+    static NativeSymbol allocate(EVP_PKEY_meth_set_digestverify$digestverify fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(EVP_PKEY_meth_set_digestverify$digestverify.class, fi, constants$366.EVP_PKEY_meth_set_digestverify$digestverify$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;J)I", scope);
     }
-    static EVP_PKEY_meth_set_digestverify$digestverify ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, long x2, jdk.incubator.foreign.MemoryAddress x3, long x4) -> {
+    static EVP_PKEY_meth_set_digestverify$digestverify ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("EVP_PKEY_meth_set_digestverify$digestverify::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, long x2, jdk.incubator.foreign.MemoryAddress x3, long x4) -> {
             try {
-                return (int)constants$366.EVP_PKEY_meth_set_digestverify$digestverify$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4);
+                return (int)constants$366.EVP_PKEY_meth_set_digestverify$digestverify$MH.invokeExact(symbol, x0, x1, x2, x3, x4);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

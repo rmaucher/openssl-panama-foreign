@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface sk_ACCESS_DESCRIPTION_copyfunc {
 
     jdk.incubator.foreign.MemoryAddress apply(jdk.incubator.foreign.MemoryAddress x0);
-    static CLinker.UpcallStub allocate(sk_ACCESS_DESCRIPTION_copyfunc fi) {
-        return RuntimeHelper.upcallStub(sk_ACCESS_DESCRIPTION_copyfunc.class, fi, constants$946.sk_ACCESS_DESCRIPTION_copyfunc$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;");
-    }
-    static CLinker.UpcallStub allocate(sk_ACCESS_DESCRIPTION_copyfunc fi, ResourceScope scope) {
+    static NativeSymbol allocate(sk_ACCESS_DESCRIPTION_copyfunc fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(sk_ACCESS_DESCRIPTION_copyfunc.class, fi, constants$946.sk_ACCESS_DESCRIPTION_copyfunc$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)Ljdk/incubator/foreign/MemoryAddress;", scope);
     }
-    static sk_ACCESS_DESCRIPTION_copyfunc ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0) -> {
+    static sk_ACCESS_DESCRIPTION_copyfunc ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("sk_ACCESS_DESCRIPTION_copyfunc::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0) -> {
             try {
-                return (jdk.incubator.foreign.MemoryAddress)constants$947.sk_ACCESS_DESCRIPTION_copyfunc$MH.invokeExact((Addressable)addr, x0);
+                return (jdk.incubator.foreign.MemoryAddress)constants$947.sk_ACCESS_DESCRIPTION_copyfunc$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

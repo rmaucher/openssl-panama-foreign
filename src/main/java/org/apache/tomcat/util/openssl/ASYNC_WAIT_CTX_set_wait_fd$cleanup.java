@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface ASYNC_WAIT_CTX_set_wait_fd$cleanup {
 
     void apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, int x2, jdk.incubator.foreign.MemoryAddress x3);
-    static CLinker.UpcallStub allocate(ASYNC_WAIT_CTX_set_wait_fd$cleanup fi) {
-        return RuntimeHelper.upcallStub(ASYNC_WAIT_CTX_set_wait_fd$cleanup.class, fi, constants$732.ASYNC_WAIT_CTX_set_wait_fd$cleanup$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static CLinker.UpcallStub allocate(ASYNC_WAIT_CTX_set_wait_fd$cleanup fi, ResourceScope scope) {
+    static NativeSymbol allocate(ASYNC_WAIT_CTX_set_wait_fd$cleanup fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(ASYNC_WAIT_CTX_set_wait_fd$cleanup.class, fi, constants$732.ASYNC_WAIT_CTX_set_wait_fd$cleanup$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;ILjdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static ASYNC_WAIT_CTX_set_wait_fd$cleanup ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, int x2, jdk.incubator.foreign.MemoryAddress x3) -> {
+    static ASYNC_WAIT_CTX_set_wait_fd$cleanup ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("ASYNC_WAIT_CTX_set_wait_fd$cleanup::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, int x2, jdk.incubator.foreign.MemoryAddress x3) -> {
             try {
-                constants$733.ASYNC_WAIT_CTX_set_wait_fd$cleanup$MH.invokeExact((Addressable)addr, x0, x1, x2, x3);
+                constants$733.ASYNC_WAIT_CTX_set_wait_fd$cleanup$MH.invokeExact(symbol, x0, x1, x2, x3);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

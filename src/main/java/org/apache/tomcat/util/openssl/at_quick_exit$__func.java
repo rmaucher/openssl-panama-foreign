@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface at_quick_exit$__func {
 
     void apply();
-    static CLinker.UpcallStub allocate(at_quick_exit$__func fi) {
-        return RuntimeHelper.upcallStub(at_quick_exit$__func.class, fi, constants$11.at_quick_exit$__func$FUNC, "()V");
-    }
-    static CLinker.UpcallStub allocate(at_quick_exit$__func fi, ResourceScope scope) {
+    static NativeSymbol allocate(at_quick_exit$__func fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(at_quick_exit$__func.class, fi, constants$11.at_quick_exit$__func$FUNC, "()V", scope);
     }
-    static at_quick_exit$__func ofAddress(MemoryAddress addr) {
-        return () -> {
+    static at_quick_exit$__func ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("at_quick_exit$__func::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return () -> {
             try {
-                constants$12.at_quick_exit$__func$MH.invokeExact((Addressable)addr);
+                constants$12.at_quick_exit$__func$MH.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

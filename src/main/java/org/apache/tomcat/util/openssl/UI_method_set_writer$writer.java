@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface UI_method_set_writer$writer {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1);
-    static CLinker.UpcallStub allocate(UI_method_set_writer$writer fi) {
-        return RuntimeHelper.upcallStub(UI_method_set_writer$writer.class, fi, constants$1084.UI_method_set_writer$writer$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(UI_method_set_writer$writer fi, ResourceScope scope) {
+    static NativeSymbol allocate(UI_method_set_writer$writer fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(UI_method_set_writer$writer.class, fi, constants$1084.UI_method_set_writer$writer$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static UI_method_set_writer$writer ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+    static UI_method_set_writer$writer ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("UI_method_set_writer$writer::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                return (int)constants$1084.UI_method_set_writer$writer$MH.invokeExact((Addressable)addr, x0, x1);
+                return (int)constants$1084.UI_method_set_writer$writer$MH.invokeExact(symbol, x0, x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface X509_LOOKUP_meth_set_free$free_fn {
 
     void apply(jdk.incubator.foreign.MemoryAddress x0);
-    static CLinker.UpcallStub allocate(X509_LOOKUP_meth_set_free$free_fn fi) {
-        return RuntimeHelper.upcallStub(X509_LOOKUP_meth_set_free$free_fn.class, fi, constants$572.X509_LOOKUP_meth_set_free$free_fn$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static CLinker.UpcallStub allocate(X509_LOOKUP_meth_set_free$free_fn fi, ResourceScope scope) {
+    static NativeSymbol allocate(X509_LOOKUP_meth_set_free$free_fn fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(X509_LOOKUP_meth_set_free$free_fn.class, fi, constants$572.X509_LOOKUP_meth_set_free$free_fn$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static X509_LOOKUP_meth_set_free$free_fn ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0) -> {
+    static X509_LOOKUP_meth_set_free$free_fn ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("X509_LOOKUP_meth_set_free$free_fn::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0) -> {
             try {
-                constants$572.X509_LOOKUP_meth_set_free$free_fn$MH.invokeExact((Addressable)addr, x0);
+                constants$572.X509_LOOKUP_meth_set_free$free_fn$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

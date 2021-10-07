@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface EVP_PKEY_asn1_set_set_pub_key$set_pub_key {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, long x2);
-    static CLinker.UpcallStub allocate(EVP_PKEY_asn1_set_set_pub_key$set_pub_key fi) {
-        return RuntimeHelper.upcallStub(EVP_PKEY_asn1_set_set_pub_key$set_pub_key.class, fi, constants$343.EVP_PKEY_asn1_set_set_pub_key$set_pub_key$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;J)I");
-    }
-    static CLinker.UpcallStub allocate(EVP_PKEY_asn1_set_set_pub_key$set_pub_key fi, ResourceScope scope) {
+    static NativeSymbol allocate(EVP_PKEY_asn1_set_set_pub_key$set_pub_key fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(EVP_PKEY_asn1_set_set_pub_key$set_pub_key.class, fi, constants$343.EVP_PKEY_asn1_set_set_pub_key$set_pub_key$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;J)I", scope);
     }
-    static EVP_PKEY_asn1_set_set_pub_key$set_pub_key ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, long x2) -> {
+    static EVP_PKEY_asn1_set_set_pub_key$set_pub_key ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("EVP_PKEY_asn1_set_set_pub_key$set_pub_key::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, long x2) -> {
             try {
-                return (int)constants$343.EVP_PKEY_asn1_set_set_pub_key$set_pub_key$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                return (int)constants$343.EVP_PKEY_asn1_set_set_pub_key$set_pub_key$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface sk_DIST_POINT_freefunc {
 
     void apply(jdk.incubator.foreign.MemoryAddress x0);
-    static CLinker.UpcallStub allocate(sk_DIST_POINT_freefunc fi) {
-        return RuntimeHelper.upcallStub(sk_DIST_POINT_freefunc.class, fi, constants$951.sk_DIST_POINT_freefunc$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)V");
-    }
-    static CLinker.UpcallStub allocate(sk_DIST_POINT_freefunc fi, ResourceScope scope) {
+    static NativeSymbol allocate(sk_DIST_POINT_freefunc fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(sk_DIST_POINT_freefunc.class, fi, constants$951.sk_DIST_POINT_freefunc$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)V", scope);
     }
-    static sk_DIST_POINT_freefunc ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0) -> {
+    static sk_DIST_POINT_freefunc ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("sk_DIST_POINT_freefunc::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0) -> {
             try {
-                constants$951.sk_DIST_POINT_freefunc$MH.invokeExact((Addressable)addr, x0);
+                constants$951.sk_DIST_POINT_freefunc$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

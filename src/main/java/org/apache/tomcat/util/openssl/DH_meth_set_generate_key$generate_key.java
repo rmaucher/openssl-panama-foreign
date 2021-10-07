@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface DH_meth_set_generate_key$generate_key {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0);
-    static CLinker.UpcallStub allocate(DH_meth_set_generate_key$generate_key fi) {
-        return RuntimeHelper.upcallStub(DH_meth_set_generate_key$generate_key.class, fi, constants$456.DH_meth_set_generate_key$generate_key$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(DH_meth_set_generate_key$generate_key fi, ResourceScope scope) {
+    static NativeSymbol allocate(DH_meth_set_generate_key$generate_key fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(DH_meth_set_generate_key$generate_key.class, fi, constants$456.DH_meth_set_generate_key$generate_key$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static DH_meth_set_generate_key$generate_key ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0) -> {
+    static DH_meth_set_generate_key$generate_key ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("DH_meth_set_generate_key$generate_key::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0) -> {
             try {
-                return (int)constants$457.DH_meth_set_generate_key$generate_key$MH.invokeExact((Addressable)addr, x0);
+                return (int)constants$457.DH_meth_set_generate_key$generate_key$MH.invokeExact(symbol, x0);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface SSL_client_hello_cb_fn {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2);
-    static CLinker.UpcallStub allocate(SSL_client_hello_cb_fn fi) {
-        return RuntimeHelper.upcallStub(SSL_client_hello_cb_fn.class, fi, constants$828.SSL_client_hello_cb_fn$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(SSL_client_hello_cb_fn fi, ResourceScope scope) {
+    static NativeSymbol allocate(SSL_client_hello_cb_fn fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(SSL_client_hello_cb_fn.class, fi, constants$828.SSL_client_hello_cb_fn$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static SSL_client_hello_cb_fn ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static SSL_client_hello_cb_fn ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("SSL_client_hello_cb_fn::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                return (int)constants$828.SSL_client_hello_cb_fn$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                return (int)constants$828.SSL_client_hello_cb_fn$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

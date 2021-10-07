@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface dynamic_bind_engine {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2);
-    static CLinker.UpcallStub allocate(dynamic_bind_engine fi) {
-        return RuntimeHelper.upcallStub(dynamic_bind_engine.class, fi, constants$1116.dynamic_bind_engine$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(dynamic_bind_engine fi, ResourceScope scope) {
+    static NativeSymbol allocate(dynamic_bind_engine fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(dynamic_bind_engine.class, fi, constants$1116.dynamic_bind_engine$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static dynamic_bind_engine ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2) -> {
+    static dynamic_bind_engine ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("dynamic_bind_engine::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2) -> {
             try {
-                return (int)constants$1116.dynamic_bind_engine$MH.invokeExact((Addressable)addr, x0, x1, x2);
+                return (int)constants$1116.dynamic_bind_engine$MH.invokeExact(symbol, x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

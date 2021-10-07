@@ -10,16 +10,13 @@ import static jdk.incubator.foreign.ValueLayout.*;
 public interface tls_session_secret_cb_fn {
 
     int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3, jdk.incubator.foreign.MemoryAddress x4, jdk.incubator.foreign.MemoryAddress x5);
-    static CLinker.UpcallStub allocate(tls_session_secret_cb_fn fi) {
-        return RuntimeHelper.upcallStub(tls_session_secret_cb_fn.class, fi, constants$760.tls_session_secret_cb_fn$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I");
-    }
-    static CLinker.UpcallStub allocate(tls_session_secret_cb_fn fi, ResourceScope scope) {
+    static NativeSymbol allocate(tls_session_secret_cb_fn fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(tls_session_secret_cb_fn.class, fi, constants$760.tls_session_secret_cb_fn$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
-    static tls_session_secret_cb_fn ofAddress(MemoryAddress addr) {
-        return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3, jdk.incubator.foreign.MemoryAddress x4, jdk.incubator.foreign.MemoryAddress x5) -> {
+    static tls_session_secret_cb_fn ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("tls_session_secret_cb_fn::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1, jdk.incubator.foreign.MemoryAddress x2, jdk.incubator.foreign.MemoryAddress x3, jdk.incubator.foreign.MemoryAddress x4, jdk.incubator.foreign.MemoryAddress x5) -> {
             try {
-                return (int)constants$760.tls_session_secret_cb_fn$MH.invokeExact((Addressable)addr, x0, x1, x2, x3, x4, x5);
+                return (int)constants$760.tls_session_secret_cb_fn$MH.invokeExact(symbol, x0, x1, x2, x3, x4, x5);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }
