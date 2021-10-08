@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1289 {
 
-    static final MemorySegment SN_aes_192_ofb128$SEGMENT = ResourceScope.globalScope().allocateUtf8String("AES-192-OFB");
-    static final MemorySegment LN_aes_192_ofb128$SEGMENT = ResourceScope.globalScope().allocateUtf8String("aes-192-ofb");
-    static final MemorySegment SN_aes_192_cfb128$SEGMENT = ResourceScope.globalScope().allocateUtf8String("AES-192-CFB");
-    static final MemorySegment LN_aes_192_cfb128$SEGMENT = ResourceScope.globalScope().allocateUtf8String("aes-192-cfb");
-    static final MemorySegment SN_id_aes192_wrap$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-aes192-wrap");
-    static final MemorySegment SN_aes_192_gcm$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-aes192-GCM");
+    static final MemorySegment SN_aes_192_ofb128$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("AES-192-OFB");
+    static final MemorySegment LN_aes_192_ofb128$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("aes-192-ofb");
+    static final MemorySegment SN_aes_192_cfb128$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("AES-192-CFB");
+    static final MemorySegment LN_aes_192_cfb128$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("aes-192-cfb");
+    static final MemorySegment SN_id_aes192_wrap$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-aes192-wrap");
+    static final MemorySegment SN_aes_192_gcm$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-aes192-GCM");
 }
 
 

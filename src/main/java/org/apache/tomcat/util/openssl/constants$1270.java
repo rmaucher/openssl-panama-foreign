@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1270 {
 
-    static final MemorySegment LN_crl_reason$SEGMENT = ResourceScope.globalScope().allocateUtf8String("X509v3 CRL Reason Code");
-    static final MemorySegment SN_invalidity_date$SEGMENT = ResourceScope.globalScope().allocateUtf8String("invalidityDate");
-    static final MemorySegment LN_invalidity_date$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Invalidity Date");
-    static final MemorySegment SN_delta_crl$SEGMENT = ResourceScope.globalScope().allocateUtf8String("deltaCRL");
-    static final MemorySegment LN_delta_crl$SEGMENT = ResourceScope.globalScope().allocateUtf8String("X509v3 Delta CRL Indicator");
-    static final MemorySegment SN_issuing_distribution_point$SEGMENT = ResourceScope.globalScope().allocateUtf8String("issuingDistributionPoint");
+    static final MemorySegment LN_crl_reason$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X509v3 CRL Reason Code");
+    static final MemorySegment SN_invalidity_date$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("invalidityDate");
+    static final MemorySegment LN_invalidity_date$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Invalidity Date");
+    static final MemorySegment SN_delta_crl$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("deltaCRL");
+    static final MemorySegment LN_delta_crl$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X509v3 Delta CRL Indicator");
+    static final MemorySegment SN_issuing_distribution_point$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("issuingDistributionPoint");
 }
 
 

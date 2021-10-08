@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1403 {
 
-    static final MemorySegment SN_brainpoolP192t1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("brainpoolP192t1");
-    static final MemorySegment SN_brainpoolP224r1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("brainpoolP224r1");
-    static final MemorySegment SN_brainpoolP224t1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("brainpoolP224t1");
-    static final MemorySegment SN_brainpoolP256r1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("brainpoolP256r1");
-    static final MemorySegment SN_brainpoolP256t1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("brainpoolP256t1");
-    static final MemorySegment SN_brainpoolP320r1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("brainpoolP320r1");
+    static final MemorySegment SN_brainpoolP192t1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("brainpoolP192t1");
+    static final MemorySegment SN_brainpoolP224r1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("brainpoolP224r1");
+    static final MemorySegment SN_brainpoolP224t1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("brainpoolP224t1");
+    static final MemorySegment SN_brainpoolP256r1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("brainpoolP256r1");
+    static final MemorySegment SN_brainpoolP256t1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("brainpoolP256t1");
+    static final MemorySegment SN_brainpoolP320r1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("brainpoolP320r1");
 }
 
 

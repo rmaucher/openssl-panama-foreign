@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1139 {
 
-    static final MemorySegment SCNoLEAST16$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ho");
-    static final MemorySegment SCNoLEAST32$SEGMENT = ResourceScope.globalScope().allocateUtf8String("o");
-    static final MemorySegment SCNoLEAST64$SEGMENT = ResourceScope.globalScope().allocateUtf8String("lo");
-    static final MemorySegment SCNoFAST8$SEGMENT = ResourceScope.globalScope().allocateUtf8String("hho");
-    static final MemorySegment SCNoFAST16$SEGMENT = ResourceScope.globalScope().allocateUtf8String("lo");
-    static final MemorySegment SCNoFAST32$SEGMENT = ResourceScope.globalScope().allocateUtf8String("lo");
+    static final MemorySegment SCNoLEAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ho");
+    static final MemorySegment SCNoLEAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("o");
+    static final MemorySegment SCNoLEAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lo");
+    static final MemorySegment SCNoFAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hho");
+    static final MemorySegment SCNoFAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lo");
+    static final MemorySegment SCNoFAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lo");
 }
 
 

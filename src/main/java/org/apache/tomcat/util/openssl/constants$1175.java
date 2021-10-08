@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1175 {
 
-    static final MemorySegment LN_pbeWithMD5AndRC2_CBC$SEGMENT = ResourceScope.globalScope().allocateUtf8String("pbeWithMD5AndRC2-CBC");
-    static final MemorySegment SN_pbeWithSHA1AndDES_CBC$SEGMENT = ResourceScope.globalScope().allocateUtf8String("PBE-SHA1-DES");
-    static final MemorySegment LN_pbeWithSHA1AndDES_CBC$SEGMENT = ResourceScope.globalScope().allocateUtf8String("pbeWithSHA1AndDES-CBC");
-    static final MemorySegment SN_pbeWithSHA1AndRC2_CBC$SEGMENT = ResourceScope.globalScope().allocateUtf8String("PBE-SHA1-RC2-64");
-    static final MemorySegment LN_pbeWithSHA1AndRC2_CBC$SEGMENT = ResourceScope.globalScope().allocateUtf8String("pbeWithSHA1AndRC2-CBC");
-    static final MemorySegment LN_id_pbkdf2$SEGMENT = ResourceScope.globalScope().allocateUtf8String("PBKDF2");
+    static final MemorySegment LN_pbeWithMD5AndRC2_CBC$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("pbeWithMD5AndRC2-CBC");
+    static final MemorySegment SN_pbeWithSHA1AndDES_CBC$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("PBE-SHA1-DES");
+    static final MemorySegment LN_pbeWithSHA1AndDES_CBC$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("pbeWithSHA1AndDES-CBC");
+    static final MemorySegment SN_pbeWithSHA1AndRC2_CBC$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("PBE-SHA1-RC2-64");
+    static final MemorySegment LN_pbeWithSHA1AndRC2_CBC$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("pbeWithSHA1AndRC2-CBC");
+    static final MemorySegment LN_id_pbkdf2$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("PBKDF2");
 }
 
 

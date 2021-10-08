@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1315 {
 
-    static final MemorySegment SN_userId$SEGMENT = ResourceScope.globalScope().allocateUtf8String("UID");
-    static final MemorySegment LN_userId$SEGMENT = ResourceScope.globalScope().allocateUtf8String("userId");
-    static final MemorySegment LN_textEncodedORAddress$SEGMENT = ResourceScope.globalScope().allocateUtf8String("textEncodedORAddress");
-    static final MemorySegment SN_rfc822Mailbox$SEGMENT = ResourceScope.globalScope().allocateUtf8String("mail");
-    static final MemorySegment LN_rfc822Mailbox$SEGMENT = ResourceScope.globalScope().allocateUtf8String("rfc822Mailbox");
-    static final MemorySegment SN_info$SEGMENT = ResourceScope.globalScope().allocateUtf8String("info");
+    static final MemorySegment SN_userId$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("UID");
+    static final MemorySegment LN_userId$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("userId");
+    static final MemorySegment LN_textEncodedORAddress$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("textEncodedORAddress");
+    static final MemorySegment SN_rfc822Mailbox$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("mail");
+    static final MemorySegment LN_rfc822Mailbox$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("rfc822Mailbox");
+    static final MemorySegment SN_info$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("info");
 }
 
 

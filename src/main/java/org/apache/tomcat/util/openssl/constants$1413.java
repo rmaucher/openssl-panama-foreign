@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1413 {
 
-    static final MemorySegment SN_kx_rsa$SEGMENT = ResourceScope.globalScope().allocateUtf8String("KxRSA");
-    static final MemorySegment LN_kx_rsa$SEGMENT = ResourceScope.globalScope().allocateUtf8String("kx-rsa");
-    static final MemorySegment SN_kx_ecdhe$SEGMENT = ResourceScope.globalScope().allocateUtf8String("KxECDHE");
-    static final MemorySegment LN_kx_ecdhe$SEGMENT = ResourceScope.globalScope().allocateUtf8String("kx-ecdhe");
-    static final MemorySegment SN_kx_dhe$SEGMENT = ResourceScope.globalScope().allocateUtf8String("KxDHE");
-    static final MemorySegment LN_kx_dhe$SEGMENT = ResourceScope.globalScope().allocateUtf8String("kx-dhe");
+    static final MemorySegment SN_kx_rsa$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("KxRSA");
+    static final MemorySegment LN_kx_rsa$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("kx-rsa");
+    static final MemorySegment SN_kx_ecdhe$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("KxECDHE");
+    static final MemorySegment LN_kx_ecdhe$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("kx-ecdhe");
+    static final MemorySegment SN_kx_dhe$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("KxDHE");
+    static final MemorySegment LN_kx_dhe$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("kx-dhe");
 }
 
 

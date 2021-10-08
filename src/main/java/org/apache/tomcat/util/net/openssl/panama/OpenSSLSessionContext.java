@@ -22,9 +22,13 @@ import java.util.NoSuchElementException;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSessionContext;
 
-import org.apache.tomcat.jni.SSL;
-import org.apache.tomcat.jni.SSLContext;
+import static org.apache.tomcat.util.openssl.openssl_h.*;
+
 import org.apache.tomcat.util.res.StringManager;
+
+import jdk.incubator.foreign.ResourceScope;
+import jdk.incubator.foreign.SegmentAllocator;
+import jdk.incubator.foreign.ValueLayout;
 
 /**
  * OpenSSL specific {@link SSLSessionContext} implementation.
@@ -33,19 +37,14 @@ public class OpenSSLSessionContext implements SSLSessionContext {
     private static final StringManager sm = StringManager.getManager(OpenSSLSessionContext.class);
     private static final Enumeration<byte[]> EMPTY = new EmptyEnumeration();
 
+    private static final int TICKET_KEYS_SIZE = 48;
+
     private final OpenSSLSessionStats stats;
-    // This is deliberately unused. The reference is retained so that a
-    // reference chain is established and maintained to the OpenSSLContext while
-    // there is a connection that is using the OpenSSLContext. Therefore, the
-    // OpenSSLContext can not be eligible for GC while it is in use.
-    @SuppressWarnings("unused")
     private final OpenSSLContext context;
-    private final long contextID;
 
     OpenSSLSessionContext(OpenSSLContext context) {
         this.context = context;
-        this.contextID = context.getSSLContextID();
-        stats = new OpenSSLSessionStats(contextID);
+        stats = new OpenSSLSessionStats(context.getSSLContext());
     }
 
     @Override
@@ -67,7 +66,13 @@ public class OpenSSLSessionContext implements SSLSessionContext {
         if (keys == null) {
             throw new IllegalArgumentException(sm.getString("sessionContext.nullTicketKeys"));
         }
-        SSLContext.setSessionTicketKeys(contextID, keys);
+        if (keys.length != TICKET_KEYS_SIZE) {
+            throw new IllegalArgumentException(sm.getString("sessionContext.invalidTicketKeysLength", keys.length));
+        }
+        try (var scope = ResourceScope.newConfinedScope()) {
+            var array = SegmentAllocator.nativeAllocator(scope).allocateArray(ValueLayout.JAVA_BYTE, keys);
+            // FIXME: Not documented ... SSL_CTX_set_tlsext_ticket_keys(context.getSSLContext(), array);
+        }
     }
 
     /**
@@ -76,8 +81,10 @@ public class OpenSSLSessionContext implements SSLSessionContext {
      * @param enabled {@code true} to enable caching, {@code false} to disable
      */
     public void setSessionCacheEnabled(boolean enabled) {
-        long mode = enabled ? SSL.SSL_SESS_CACHE_SERVER : SSL.SSL_SESS_CACHE_OFF;
-        SSLContext.setSessionCacheMode(contextID, mode);
+        long mode = enabled ? SSL_SESS_CACHE_SERVER() : SSL_SESS_CACHE_OFF();
+        // # define SSL_CTX_set_session_cache_mode(ctx,m) \
+        //     SSL_CTX_ctrl(ctx,SSL_CTRL_SET_SESS_CACHE_MODE,m,NULL)
+        SSL_CTX_ctrl(context.getSSLContext(), SSL_CTRL_SET_SESS_CACHE_MODE(), mode, null);
     }
 
     /**
@@ -85,7 +92,9 @@ public class OpenSSLSessionContext implements SSLSessionContext {
      *         otherwise.
      */
     public boolean isSessionCacheEnabled() {
-        return SSLContext.getSessionCacheMode(contextID) == SSL.SSL_SESS_CACHE_SERVER;
+        // # define SSL_CTX_get_session_cache_mode(ctx) \
+        //    SSL_CTX_ctrl(ctx,SSL_CTRL_GET_SESS_CACHE_MODE,0,NULL)
+        return SSL_CTX_ctrl(context.getSSLContext(), SSL_CTRL_GET_SESS_CACHE_MODE(), 0, null) == SSL_SESS_CACHE_SERVER();
     }
 
     /**
@@ -100,12 +109,12 @@ public class OpenSSLSessionContext implements SSLSessionContext {
         if (seconds < 0) {
             throw new IllegalArgumentException();
         }
-        SSLContext.setSessionCacheTimeout(contextID, seconds);
+        SSL_CTX_set_timeout(context.getSSLContext(), seconds);
     }
 
     @Override
     public int getSessionTimeout() {
-        return (int) SSLContext.getSessionCacheTimeout(contextID);
+        return (int) SSL_CTX_get_timeout(context.getSSLContext());
     }
 
     @Override
@@ -113,12 +122,16 @@ public class OpenSSLSessionContext implements SSLSessionContext {
         if (size < 0) {
             throw new IllegalArgumentException();
         }
-        SSLContext.setSessionCacheSize(contextID, size);
+        // # define SSL_CTX_sess_set_cache_size(ctx,t) \
+        //     SSL_CTX_ctrl(ctx,SSL_CTRL_SET_SESS_CACHE_SIZE,t,NULL)
+        SSL_CTX_ctrl(context.getSSLContext(), SSL_CTRL_SET_SESS_CACHE_SIZE(), size, null);
     }
 
     @Override
     public int getSessionCacheSize() {
-        return (int) SSLContext.getSessionCacheSize(contextID);
+        // # define SSL_CTX_sess_get_cache_size(ctx) \
+        //     SSL_CTX_ctrl(ctx,SSL_CTRL_GET_SESS_CACHE_SIZE,0,NULL)
+        return (int) SSL_CTX_ctrl(context.getSSLContext(), SSL_CTRL_GET_SESS_CACHE_SIZE(), 0, null);
     }
 
     /**
@@ -131,7 +144,10 @@ public class OpenSSLSessionContext implements SSLSessionContext {
      * @return {@code true} if success, {@code false} otherwise.
      */
     public boolean setSessionIdContext(byte[] sidCtx) {
-        return SSLContext.setSessionIdContext(contextID, sidCtx);
+        try (var scope = ResourceScope.newConfinedScope()) {
+            var array = SegmentAllocator.nativeAllocator(scope).allocateArray(ValueLayout.JAVA_BYTE, sidCtx);
+            return (SSL_CTX_set_session_id_context(context.getSSLContext(), array, sidCtx.length) == 1);
+        }
     }
 
     private static final class EmptyEnumeration implements Enumeration<byte[]> {

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1423 {
 
-    static final MemorySegment LN_dstu28147_cfb$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DSTU Gost 28147-2009 CFB mode");
-    static final MemorySegment SN_dstu28147_wrap$SEGMENT = ResourceScope.globalScope().allocateUtf8String("dstu28147-wrap");
-    static final MemorySegment LN_dstu28147_wrap$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DSTU Gost 28147-2009 key wrap");
-    static final MemorySegment SN_hmacWithDstu34311$SEGMENT = ResourceScope.globalScope().allocateUtf8String("hmacWithDstu34311");
-    static final MemorySegment LN_hmacWithDstu34311$SEGMENT = ResourceScope.globalScope().allocateUtf8String("HMAC DSTU Gost 34311-95");
-    static final MemorySegment SN_dstu34311$SEGMENT = ResourceScope.globalScope().allocateUtf8String("dstu34311");
+    static final MemorySegment LN_dstu28147_cfb$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DSTU Gost 28147-2009 CFB mode");
+    static final MemorySegment SN_dstu28147_wrap$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("dstu28147-wrap");
+    static final MemorySegment LN_dstu28147_wrap$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DSTU Gost 28147-2009 key wrap");
+    static final MemorySegment SN_hmacWithDstu34311$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hmacWithDstu34311");
+    static final MemorySegment LN_hmacWithDstu34311$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("HMAC DSTU Gost 34311-95");
+    static final MemorySegment SN_dstu34311$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("dstu34311");
 }
 
 

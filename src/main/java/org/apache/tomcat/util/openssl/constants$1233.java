@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1233 {
 
-    static final MemorySegment SN_id_cmc_encryptedPOP$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-cmc-encryptedPOP");
-    static final MemorySegment SN_id_cmc_decryptedPOP$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-cmc-decryptedPOP");
-    static final MemorySegment SN_id_cmc_lraPOPWitness$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-cmc-lraPOPWitness");
-    static final MemorySegment SN_id_cmc_getCert$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-cmc-getCert");
-    static final MemorySegment SN_id_cmc_getCRL$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-cmc-getCRL");
-    static final MemorySegment SN_id_cmc_revokeRequest$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-cmc-revokeRequest");
+    static final MemorySegment SN_id_cmc_encryptedPOP$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-cmc-encryptedPOP");
+    static final MemorySegment SN_id_cmc_decryptedPOP$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-cmc-decryptedPOP");
+    static final MemorySegment SN_id_cmc_lraPOPWitness$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-cmc-lraPOPWitness");
+    static final MemorySegment SN_id_cmc_getCert$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-cmc-getCert");
+    static final MemorySegment SN_id_cmc_getCRL$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-cmc-getCRL");
+    static final MemorySegment SN_id_cmc_revokeRequest$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-cmc-revokeRequest");
 }
 
 

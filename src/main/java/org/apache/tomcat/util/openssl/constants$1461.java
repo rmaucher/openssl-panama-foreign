@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1461 {
 
-    static final MemorySegment TLS1_RFC_DHE_PSK_WITH_AES_128_CCM_8$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_PSK_DHE_WITH_AES_128_CCM_8");
-    static final MemorySegment TLS1_RFC_DHE_PSK_WITH_AES_256_CCM_8$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_PSK_DHE_WITH_AES_256_CCM_8");
-    static final MemorySegment TLS1_RFC_ECDHE_ECDSA_WITH_AES_128_CCM$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_ECDHE_ECDSA_WITH_AES_128_CCM");
-    static final MemorySegment TLS1_RFC_ECDHE_ECDSA_WITH_AES_256_CCM$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_ECDHE_ECDSA_WITH_AES_256_CCM");
-    static final MemorySegment TLS1_RFC_ECDHE_ECDSA_WITH_AES_128_CCM_8$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_ECDHE_ECDSA_WITH_AES_128_CCM_8");
-    static final MemorySegment TLS1_RFC_ECDHE_ECDSA_WITH_AES_256_CCM_8$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_ECDHE_ECDSA_WITH_AES_256_CCM_8");
+    static final MemorySegment TLS1_RFC_DHE_PSK_WITH_AES_128_CCM_8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_PSK_DHE_WITH_AES_128_CCM_8");
+    static final MemorySegment TLS1_RFC_DHE_PSK_WITH_AES_256_CCM_8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_PSK_DHE_WITH_AES_256_CCM_8");
+    static final MemorySegment TLS1_RFC_ECDHE_ECDSA_WITH_AES_128_CCM$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_ECDHE_ECDSA_WITH_AES_128_CCM");
+    static final MemorySegment TLS1_RFC_ECDHE_ECDSA_WITH_AES_256_CCM$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_ECDHE_ECDSA_WITH_AES_256_CCM");
+    static final MemorySegment TLS1_RFC_ECDHE_ECDSA_WITH_AES_128_CCM_8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_ECDHE_ECDSA_WITH_AES_128_CCM_8");
+    static final MemorySegment TLS1_RFC_ECDHE_ECDSA_WITH_AES_256_CCM_8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_ECDHE_ECDSA_WITH_AES_256_CCM_8");
 }
 
 

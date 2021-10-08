@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1431 {
 
-    static final MemorySegment PEM_STRING_DHXPARAMS$SEGMENT = ResourceScope.globalScope().allocateUtf8String("X9.42 DH PARAMETERS");
-    static final MemorySegment PEM_STRING_SSL_SESSION$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SSL SESSION PARAMETERS");
-    static final MemorySegment PEM_STRING_DSAPARAMS$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DSA PARAMETERS");
-    static final MemorySegment PEM_STRING_ECDSA_PUBLIC$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ECDSA PUBLIC KEY");
-    static final MemorySegment PEM_STRING_ECPARAMETERS$SEGMENT = ResourceScope.globalScope().allocateUtf8String("EC PARAMETERS");
-    static final MemorySegment PEM_STRING_ECPRIVATEKEY$SEGMENT = ResourceScope.globalScope().allocateUtf8String("EC PRIVATE KEY");
+    static final MemorySegment PEM_STRING_DHXPARAMS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X9.42 DH PARAMETERS");
+    static final MemorySegment PEM_STRING_SSL_SESSION$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SSL SESSION PARAMETERS");
+    static final MemorySegment PEM_STRING_DSAPARAMS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DSA PARAMETERS");
+    static final MemorySegment PEM_STRING_ECDSA_PUBLIC$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ECDSA PUBLIC KEY");
+    static final MemorySegment PEM_STRING_ECPARAMETERS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("EC PARAMETERS");
+    static final MemorySegment PEM_STRING_ECPRIVATEKEY$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("EC PRIVATE KEY");
 }
 
 

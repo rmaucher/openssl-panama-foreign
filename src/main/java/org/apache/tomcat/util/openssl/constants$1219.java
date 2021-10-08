@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1219 {
 
-    static final MemorySegment LN_id_qt_cps$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Policy Qualifier CPS");
-    static final MemorySegment SN_id_qt_unotice$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-qt-unotice");
-    static final MemorySegment LN_id_qt_unotice$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Policy Qualifier User Notice");
-    static final MemorySegment SN_textNotice$SEGMENT = ResourceScope.globalScope().allocateUtf8String("textNotice");
-    static final MemorySegment SN_server_auth$SEGMENT = ResourceScope.globalScope().allocateUtf8String("serverAuth");
-    static final MemorySegment LN_server_auth$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS Web Server Authentication");
+    static final MemorySegment LN_id_qt_cps$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Policy Qualifier CPS");
+    static final MemorySegment SN_id_qt_unotice$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-qt-unotice");
+    static final MemorySegment LN_id_qt_unotice$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Policy Qualifier User Notice");
+    static final MemorySegment SN_textNotice$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("textNotice");
+    static final MemorySegment SN_server_auth$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("serverAuth");
+    static final MemorySegment LN_server_auth$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS Web Server Authentication");
 }
 
 

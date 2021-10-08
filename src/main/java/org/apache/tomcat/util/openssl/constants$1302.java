@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1302 {
 
-    static final MemorySegment SN_sha3_512$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SHA3-512");
-    static final MemorySegment LN_sha3_512$SEGMENT = ResourceScope.globalScope().allocateUtf8String("sha3-512");
-    static final MemorySegment SN_shake128$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SHAKE128");
-    static final MemorySegment LN_shake128$SEGMENT = ResourceScope.globalScope().allocateUtf8String("shake128");
-    static final MemorySegment SN_shake256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SHAKE256");
-    static final MemorySegment LN_shake256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("shake256");
+    static final MemorySegment SN_sha3_512$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SHA3-512");
+    static final MemorySegment LN_sha3_512$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("sha3-512");
+    static final MemorySegment SN_shake128$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SHAKE128");
+    static final MemorySegment LN_shake128$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("shake128");
+    static final MemorySegment SN_shake256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SHAKE256");
+    static final MemorySegment LN_shake256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("shake256");
 }
 
 

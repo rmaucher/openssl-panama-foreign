@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1173 {
 
-    static final MemorySegment SN_sha512_256WithRSAEncryption$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RSA-SHA512/256");
-    static final MemorySegment LN_sha512_256WithRSAEncryption$SEGMENT = ResourceScope.globalScope().allocateUtf8String("sha512-256WithRSAEncryption");
-    static final MemorySegment SN_pkcs3$SEGMENT = ResourceScope.globalScope().allocateUtf8String("pkcs3");
-    static final MemorySegment LN_dhKeyAgreement$SEGMENT = ResourceScope.globalScope().allocateUtf8String("dhKeyAgreement");
-    static final MemorySegment SN_pkcs5$SEGMENT = ResourceScope.globalScope().allocateUtf8String("pkcs5");
-    static final MemorySegment SN_pbeWithMD2AndDES_CBC$SEGMENT = ResourceScope.globalScope().allocateUtf8String("PBE-MD2-DES");
+    static final MemorySegment SN_sha512_256WithRSAEncryption$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RSA-SHA512/256");
+    static final MemorySegment LN_sha512_256WithRSAEncryption$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("sha512-256WithRSAEncryption");
+    static final MemorySegment SN_pkcs3$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("pkcs3");
+    static final MemorySegment LN_dhKeyAgreement$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("dhKeyAgreement");
+    static final MemorySegment SN_pkcs5$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("pkcs5");
+    static final MemorySegment SN_pbeWithMD2AndDES_CBC$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("PBE-MD2-DES");
 }
 
 

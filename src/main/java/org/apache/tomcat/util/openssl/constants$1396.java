@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1396 {
 
-    static final MemorySegment LN_seed_ofb128$SEGMENT = ResourceScope.globalScope().allocateUtf8String("seed-ofb");
-    static final MemorySegment SN_sm4_ecb$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SM4-ECB");
-    static final MemorySegment LN_sm4_ecb$SEGMENT = ResourceScope.globalScope().allocateUtf8String("sm4-ecb");
-    static final MemorySegment SN_sm4_cbc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SM4-CBC");
-    static final MemorySegment LN_sm4_cbc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("sm4-cbc");
-    static final MemorySegment SN_sm4_ofb128$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SM4-OFB");
+    static final MemorySegment LN_seed_ofb128$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("seed-ofb");
+    static final MemorySegment SN_sm4_ecb$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SM4-ECB");
+    static final MemorySegment LN_sm4_ecb$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("sm4-ecb");
+    static final MemorySegment SN_sm4_cbc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SM4-CBC");
+    static final MemorySegment LN_sm4_cbc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("sm4-cbc");
+    static final MemorySegment SN_sm4_ofb128$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SM4-OFB");
 }
 
 

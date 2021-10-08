@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1493 {
 
-    static final MemorySegment TLS1_TXT_PSK_WITH_3DES_EDE_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("PSK-3DES-EDE-CBC-SHA");
-    static final MemorySegment TLS1_TXT_PSK_WITH_AES_128_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("PSK-AES128-CBC-SHA");
-    static final MemorySegment TLS1_TXT_PSK_WITH_AES_256_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("PSK-AES256-CBC-SHA");
-    static final MemorySegment TLS1_TXT_DHE_PSK_WITH_RC4_128_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DHE-PSK-RC4-SHA");
-    static final MemorySegment TLS1_TXT_DHE_PSK_WITH_3DES_EDE_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DHE-PSK-3DES-EDE-CBC-SHA");
-    static final MemorySegment TLS1_TXT_DHE_PSK_WITH_AES_128_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DHE-PSK-AES128-CBC-SHA");
+    static final MemorySegment TLS1_TXT_PSK_WITH_3DES_EDE_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("PSK-3DES-EDE-CBC-SHA");
+    static final MemorySegment TLS1_TXT_PSK_WITH_AES_128_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("PSK-AES128-CBC-SHA");
+    static final MemorySegment TLS1_TXT_PSK_WITH_AES_256_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("PSK-AES256-CBC-SHA");
+    static final MemorySegment TLS1_TXT_DHE_PSK_WITH_RC4_128_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DHE-PSK-RC4-SHA");
+    static final MemorySegment TLS1_TXT_DHE_PSK_WITH_3DES_EDE_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DHE-PSK-3DES-EDE-CBC-SHA");
+    static final MemorySegment TLS1_TXT_DHE_PSK_WITH_AES_128_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DHE-PSK-AES128-CBC-SHA");
 }
 
 

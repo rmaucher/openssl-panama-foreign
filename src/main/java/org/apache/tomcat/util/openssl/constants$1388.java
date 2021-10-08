@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1388 {
 
-    static final MemorySegment LN_aria_192_cfb128$SEGMENT = ResourceScope.globalScope().allocateUtf8String("aria-192-cfb");
-    static final MemorySegment SN_aria_192_ofb128$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ARIA-192-OFB");
-    static final MemorySegment LN_aria_192_ofb128$SEGMENT = ResourceScope.globalScope().allocateUtf8String("aria-192-ofb");
-    static final MemorySegment SN_aria_192_ctr$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ARIA-192-CTR");
-    static final MemorySegment LN_aria_192_ctr$SEGMENT = ResourceScope.globalScope().allocateUtf8String("aria-192-ctr");
-    static final MemorySegment SN_aria_256_ecb$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ARIA-256-ECB");
+    static final MemorySegment LN_aria_192_cfb128$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("aria-192-cfb");
+    static final MemorySegment SN_aria_192_ofb128$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ARIA-192-OFB");
+    static final MemorySegment LN_aria_192_ofb128$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("aria-192-ofb");
+    static final MemorySegment SN_aria_192_ctr$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ARIA-192-CTR");
+    static final MemorySegment LN_aria_192_ctr$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("aria-192-ctr");
+    static final MemorySegment SN_aria_256_ecb$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ARIA-256-ECB");
 }
 
 

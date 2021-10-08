@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1245 {
 
-    static final MemorySegment SN_des_cbc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DES-CBC");
-    static final MemorySegment LN_des_cbc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("des-cbc");
-    static final MemorySegment SN_des_ofb64$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DES-OFB");
-    static final MemorySegment LN_des_ofb64$SEGMENT = ResourceScope.globalScope().allocateUtf8String("des-ofb");
-    static final MemorySegment SN_des_cfb64$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DES-CFB");
-    static final MemorySegment LN_des_cfb64$SEGMENT = ResourceScope.globalScope().allocateUtf8String("des-cfb");
+    static final MemorySegment SN_des_cbc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DES-CBC");
+    static final MemorySegment LN_des_cbc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("des-cbc");
+    static final MemorySegment SN_des_ofb64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DES-OFB");
+    static final MemorySegment LN_des_ofb64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("des-ofb");
+    static final MemorySegment SN_des_cfb64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DES-CFB");
+    static final MemorySegment LN_des_cfb64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("des-cfb");
 }
 
 

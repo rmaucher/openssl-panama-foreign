@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1430 {
 
-    static final MemorySegment PEM_STRING_DSA_PUBLIC$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DSA PUBLIC KEY");
-    static final MemorySegment PEM_STRING_PKCS7$SEGMENT = ResourceScope.globalScope().allocateUtf8String("PKCS7");
-    static final MemorySegment PEM_STRING_PKCS7_SIGNED$SEGMENT = ResourceScope.globalScope().allocateUtf8String("PKCS #7 SIGNED DATA");
-    static final MemorySegment PEM_STRING_PKCS8$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ENCRYPTED PRIVATE KEY");
-    static final MemorySegment PEM_STRING_PKCS8INF$SEGMENT = ResourceScope.globalScope().allocateUtf8String("PRIVATE KEY");
-    static final MemorySegment PEM_STRING_DHPARAMS$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DH PARAMETERS");
+    static final MemorySegment PEM_STRING_DSA_PUBLIC$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DSA PUBLIC KEY");
+    static final MemorySegment PEM_STRING_PKCS7$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("PKCS7");
+    static final MemorySegment PEM_STRING_PKCS7_SIGNED$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("PKCS #7 SIGNED DATA");
+    static final MemorySegment PEM_STRING_PKCS8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ENCRYPTED PRIVATE KEY");
+    static final MemorySegment PEM_STRING_PKCS8INF$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("PRIVATE KEY");
+    static final MemorySegment PEM_STRING_DHPARAMS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DH PARAMETERS");
 }
 
 

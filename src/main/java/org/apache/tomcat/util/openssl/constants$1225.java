@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1225 {
 
-    static final MemorySegment SN_sendProxiedRouter$SEGMENT = ResourceScope.globalScope().allocateUtf8String("sendProxiedRouter");
-    static final MemorySegment LN_sendProxiedRouter$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Send Proxied Router");
-    static final MemorySegment SN_sendOwner$SEGMENT = ResourceScope.globalScope().allocateUtf8String("sendOwner");
-    static final MemorySegment LN_sendOwner$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Send Owner");
-    static final MemorySegment SN_sendProxiedOwner$SEGMENT = ResourceScope.globalScope().allocateUtf8String("sendProxiedOwner");
-    static final MemorySegment LN_sendProxiedOwner$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Send Proxied Owner");
+    static final MemorySegment SN_sendProxiedRouter$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("sendProxiedRouter");
+    static final MemorySegment LN_sendProxiedRouter$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Send Proxied Router");
+    static final MemorySegment SN_sendOwner$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("sendOwner");
+    static final MemorySegment LN_sendOwner$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Send Owner");
+    static final MemorySegment SN_sendProxiedOwner$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("sendProxiedOwner");
+    static final MemorySegment LN_sendProxiedOwner$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Send Proxied Owner");
 }
 
 

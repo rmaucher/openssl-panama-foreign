@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1523 {
 
-    static final MemorySegment TLS1_TXT_ECDH_RSA_WITH_ARIA_256_GCM_SHA384$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ECDH-ARIA256-GCM-SHA384");
-    static final MemorySegment TLS1_TXT_PSK_WITH_ARIA_128_GCM_SHA256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("PSK-ARIA128-GCM-SHA256");
-    static final MemorySegment TLS1_TXT_PSK_WITH_ARIA_256_GCM_SHA384$SEGMENT = ResourceScope.globalScope().allocateUtf8String("PSK-ARIA256-GCM-SHA384");
-    static final MemorySegment TLS1_TXT_DHE_PSK_WITH_ARIA_128_GCM_SHA256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DHE-PSK-ARIA128-GCM-SHA256");
-    static final MemorySegment TLS1_TXT_DHE_PSK_WITH_ARIA_256_GCM_SHA384$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DHE-PSK-ARIA256-GCM-SHA384");
-    static final MemorySegment TLS1_TXT_RSA_PSK_WITH_ARIA_128_GCM_SHA256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RSA-PSK-ARIA128-GCM-SHA256");
+    static final MemorySegment TLS1_TXT_ECDH_RSA_WITH_ARIA_256_GCM_SHA384$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ECDH-ARIA256-GCM-SHA384");
+    static final MemorySegment TLS1_TXT_PSK_WITH_ARIA_128_GCM_SHA256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("PSK-ARIA128-GCM-SHA256");
+    static final MemorySegment TLS1_TXT_PSK_WITH_ARIA_256_GCM_SHA384$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("PSK-ARIA256-GCM-SHA384");
+    static final MemorySegment TLS1_TXT_DHE_PSK_WITH_ARIA_128_GCM_SHA256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DHE-PSK-ARIA128-GCM-SHA256");
+    static final MemorySegment TLS1_TXT_DHE_PSK_WITH_ARIA_256_GCM_SHA384$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DHE-PSK-ARIA256-GCM-SHA384");
+    static final MemorySegment TLS1_TXT_RSA_PSK_WITH_ARIA_128_GCM_SHA256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RSA-PSK-ARIA128-GCM-SHA256");
 }
 
 

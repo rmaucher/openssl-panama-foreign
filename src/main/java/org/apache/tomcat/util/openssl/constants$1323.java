@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1323 {
 
-    static final MemorySegment LN_dITRedirect$SEGMENT = ResourceScope.globalScope().allocateUtf8String("dITRedirect");
-    static final MemorySegment SN_audio$SEGMENT = ResourceScope.globalScope().allocateUtf8String("audio");
-    static final MemorySegment LN_documentPublisher$SEGMENT = ResourceScope.globalScope().allocateUtf8String("documentPublisher");
-    static final MemorySegment SN_id_set$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-set");
-    static final MemorySegment LN_id_set$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Secure Electronic Transactions");
-    static final MemorySegment SN_set_ctype$SEGMENT = ResourceScope.globalScope().allocateUtf8String("set-ctype");
+    static final MemorySegment LN_dITRedirect$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("dITRedirect");
+    static final MemorySegment SN_audio$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("audio");
+    static final MemorySegment LN_documentPublisher$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("documentPublisher");
+    static final MemorySegment SN_id_set$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-set");
+    static final MemorySegment LN_id_set$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Secure Electronic Transactions");
+    static final MemorySegment SN_set_ctype$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("set-ctype");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1166 {
 
-    static final MemorySegment LN_cast5_ecb$SEGMENT = ResourceScope.globalScope().allocateUtf8String("cast5-ecb");
-    static final MemorySegment SN_cast5_cfb64$SEGMENT = ResourceScope.globalScope().allocateUtf8String("CAST5-CFB");
-    static final MemorySegment LN_cast5_cfb64$SEGMENT = ResourceScope.globalScope().allocateUtf8String("cast5-cfb");
-    static final MemorySegment SN_cast5_ofb64$SEGMENT = ResourceScope.globalScope().allocateUtf8String("CAST5-OFB");
-    static final MemorySegment LN_cast5_ofb64$SEGMENT = ResourceScope.globalScope().allocateUtf8String("cast5-ofb");
-    static final MemorySegment LN_pbeWithMD5AndCast5_CBC$SEGMENT = ResourceScope.globalScope().allocateUtf8String("pbeWithMD5AndCast5CBC");
+    static final MemorySegment LN_cast5_ecb$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("cast5-ecb");
+    static final MemorySegment SN_cast5_cfb64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("CAST5-CFB");
+    static final MemorySegment LN_cast5_cfb64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("cast5-cfb");
+    static final MemorySegment SN_cast5_ofb64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("CAST5-OFB");
+    static final MemorySegment LN_cast5_ofb64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("cast5-ofb");
+    static final MemorySegment LN_pbeWithMD5AndCast5_CBC$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("pbeWithMD5AndCast5CBC");
 }
 
 

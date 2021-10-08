@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1341 {
 
-    static final MemorySegment SN_setCext_merchData$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setCext-merchData");
-    static final MemorySegment SN_setCext_cCertRequired$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setCext-cCertRequired");
-    static final MemorySegment SN_setCext_tunneling$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setCext-tunneling");
-    static final MemorySegment SN_setCext_setExt$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setCext-setExt");
-    static final MemorySegment SN_setCext_setQualf$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setCext-setQualf");
-    static final MemorySegment SN_setCext_PGWYcapabilities$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setCext-PGWYcapabilities");
+    static final MemorySegment SN_setCext_merchData$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setCext-merchData");
+    static final MemorySegment SN_setCext_cCertRequired$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setCext-cCertRequired");
+    static final MemorySegment SN_setCext_tunneling$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setCext-tunneling");
+    static final MemorySegment SN_setCext_setExt$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setCext-setExt");
+    static final MemorySegment SN_setCext_setQualf$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setCext-setQualf");
+    static final MemorySegment SN_setCext_PGWYcapabilities$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setCext-PGWYcapabilities");
 }
 
 

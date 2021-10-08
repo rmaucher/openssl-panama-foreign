@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1463 {
 
-    static final MemorySegment TLS1_RFC_ECDHE_ECDSA_WITH_DES_192_CBC3_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA");
-    static final MemorySegment TLS1_RFC_ECDHE_ECDSA_WITH_AES_128_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA");
-    static final MemorySegment TLS1_RFC_ECDHE_ECDSA_WITH_AES_256_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA");
-    static final MemorySegment TLS1_RFC_ECDHE_RSA_WITH_NULL_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_ECDHE_RSA_WITH_NULL_SHA");
-    static final MemorySegment TLS1_RFC_ECDHE_RSA_WITH_DES_192_CBC3_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA");
-    static final MemorySegment TLS1_RFC_ECDHE_RSA_WITH_AES_128_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA");
+    static final MemorySegment TLS1_RFC_ECDHE_ECDSA_WITH_DES_192_CBC3_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA");
+    static final MemorySegment TLS1_RFC_ECDHE_ECDSA_WITH_AES_128_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA");
+    static final MemorySegment TLS1_RFC_ECDHE_ECDSA_WITH_AES_256_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA");
+    static final MemorySegment TLS1_RFC_ECDHE_RSA_WITH_NULL_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_ECDHE_RSA_WITH_NULL_SHA");
+    static final MemorySegment TLS1_RFC_ECDHE_RSA_WITH_DES_192_CBC3_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA");
+    static final MemorySegment TLS1_RFC_ECDHE_RSA_WITH_AES_128_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA");
 }
 
 

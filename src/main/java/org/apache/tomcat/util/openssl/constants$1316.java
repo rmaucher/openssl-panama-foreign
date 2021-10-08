@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1316 {
 
-    static final MemorySegment LN_favouriteDrink$SEGMENT = ResourceScope.globalScope().allocateUtf8String("favouriteDrink");
-    static final MemorySegment LN_roomNumber$SEGMENT = ResourceScope.globalScope().allocateUtf8String("roomNumber");
-    static final MemorySegment SN_photo$SEGMENT = ResourceScope.globalScope().allocateUtf8String("photo");
-    static final MemorySegment LN_userClass$SEGMENT = ResourceScope.globalScope().allocateUtf8String("userClass");
-    static final MemorySegment SN_host$SEGMENT = ResourceScope.globalScope().allocateUtf8String("host");
-    static final MemorySegment SN_manager$SEGMENT = ResourceScope.globalScope().allocateUtf8String("manager");
+    static final MemorySegment LN_favouriteDrink$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("favouriteDrink");
+    static final MemorySegment LN_roomNumber$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("roomNumber");
+    static final MemorySegment SN_photo$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("photo");
+    static final MemorySegment LN_userClass$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("userClass");
+    static final MemorySegment SN_host$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("host");
+    static final MemorySegment SN_manager$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("manager");
 }
 
 

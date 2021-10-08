@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1355 {
 
-    static final MemorySegment SN_id_Gost28147_89_CryptoPro_A_ParamSet$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-Gost28147-89-CryptoPro-A-ParamSet");
-    static final MemorySegment SN_id_Gost28147_89_CryptoPro_B_ParamSet$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-Gost28147-89-CryptoPro-B-ParamSet");
-    static final MemorySegment SN_id_Gost28147_89_CryptoPro_C_ParamSet$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-Gost28147-89-CryptoPro-C-ParamSet");
-    static final MemorySegment SN_id_Gost28147_89_CryptoPro_D_ParamSet$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-Gost28147-89-CryptoPro-D-ParamSet");
-    static final MemorySegment SN_id_Gost28147_89_CryptoPro_Oscar_1_1_ParamSet$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-Gost28147-89-CryptoPro-Oscar-1-1-ParamSet");
-    static final MemorySegment SN_id_Gost28147_89_CryptoPro_Oscar_1_0_ParamSet$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-Gost28147-89-CryptoPro-Oscar-1-0-ParamSet");
+    static final MemorySegment SN_id_Gost28147_89_CryptoPro_A_ParamSet$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-Gost28147-89-CryptoPro-A-ParamSet");
+    static final MemorySegment SN_id_Gost28147_89_CryptoPro_B_ParamSet$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-Gost28147-89-CryptoPro-B-ParamSet");
+    static final MemorySegment SN_id_Gost28147_89_CryptoPro_C_ParamSet$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-Gost28147-89-CryptoPro-C-ParamSet");
+    static final MemorySegment SN_id_Gost28147_89_CryptoPro_D_ParamSet$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-Gost28147-89-CryptoPro-D-ParamSet");
+    static final MemorySegment SN_id_Gost28147_89_CryptoPro_Oscar_1_1_ParamSet$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-Gost28147-89-CryptoPro-Oscar-1-1-ParamSet");
+    static final MemorySegment SN_id_Gost28147_89_CryptoPro_Oscar_1_0_ParamSet$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-Gost28147-89-CryptoPro-Oscar-1-0-ParamSet");
 }
 
 

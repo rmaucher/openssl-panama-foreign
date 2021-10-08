@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1181 {
 
-    static final MemorySegment SN_id_smime_spq$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-spq");
-    static final MemorySegment SN_id_smime_cti$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-cti");
-    static final MemorySegment SN_id_smime_mod_cms$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-mod-cms");
-    static final MemorySegment SN_id_smime_mod_ess$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-mod-ess");
-    static final MemorySegment SN_id_smime_mod_oid$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-mod-oid");
-    static final MemorySegment SN_id_smime_mod_msg_v3$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-mod-msg-v3");
+    static final MemorySegment SN_id_smime_spq$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-spq");
+    static final MemorySegment SN_id_smime_cti$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-cti");
+    static final MemorySegment SN_id_smime_mod_cms$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-mod-cms");
+    static final MemorySegment SN_id_smime_mod_ess$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-mod-ess");
+    static final MemorySegment SN_id_smime_mod_oid$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-mod-oid");
+    static final MemorySegment SN_id_smime_mod_msg_v3$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-mod-msg-v3");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1281 {
 
-    static final MemorySegment LN_iana$SEGMENT = ResourceScope.globalScope().allocateUtf8String("iana");
-    static final MemorySegment SN_Directory$SEGMENT = ResourceScope.globalScope().allocateUtf8String("directory");
-    static final MemorySegment LN_Directory$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Directory");
-    static final MemorySegment SN_Management$SEGMENT = ResourceScope.globalScope().allocateUtf8String("mgmt");
-    static final MemorySegment LN_Management$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Management");
-    static final MemorySegment SN_Experimental$SEGMENT = ResourceScope.globalScope().allocateUtf8String("experimental");
+    static final MemorySegment LN_iana$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("iana");
+    static final MemorySegment SN_Directory$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("directory");
+    static final MemorySegment LN_Directory$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Directory");
+    static final MemorySegment SN_Management$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("mgmt");
+    static final MemorySegment LN_Management$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Management");
+    static final MemorySegment SN_Experimental$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("experimental");
 }
 
 

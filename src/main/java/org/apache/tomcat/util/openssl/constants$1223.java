@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1223 {
 
-    static final MemorySegment SN_ipsec_IKE$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ipsecIKE");
-    static final MemorySegment LN_ipsec_IKE$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ipsec Internet Key Exchange");
-    static final MemorySegment SN_capwapAC$SEGMENT = ResourceScope.globalScope().allocateUtf8String("capwapAC");
-    static final MemorySegment LN_capwapAC$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Ctrl/provision WAP Access");
-    static final MemorySegment SN_capwapWTP$SEGMENT = ResourceScope.globalScope().allocateUtf8String("capwapWTP");
-    static final MemorySegment LN_capwapWTP$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Ctrl/Provision WAP Termination");
+    static final MemorySegment SN_ipsec_IKE$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ipsecIKE");
+    static final MemorySegment LN_ipsec_IKE$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ipsec Internet Key Exchange");
+    static final MemorySegment SN_capwapAC$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("capwapAC");
+    static final MemorySegment LN_capwapAC$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Ctrl/provision WAP Access");
+    static final MemorySegment SN_capwapWTP$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("capwapWTP");
+    static final MemorySegment LN_capwapWTP$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Ctrl/Provision WAP Termination");
 }
 
 

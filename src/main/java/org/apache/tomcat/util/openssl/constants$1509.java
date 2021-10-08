@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1509 {
 
-    static final MemorySegment TLS1_TXT_DHE_DSS_WITH_AES_256_GCM_SHA384$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DHE-DSS-AES256-GCM-SHA384");
-    static final MemorySegment TLS1_TXT_DH_DSS_WITH_AES_128_GCM_SHA256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DH-DSS-AES128-GCM-SHA256");
-    static final MemorySegment TLS1_TXT_DH_DSS_WITH_AES_256_GCM_SHA384$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DH-DSS-AES256-GCM-SHA384");
-    static final MemorySegment TLS1_TXT_ADH_WITH_AES_128_GCM_SHA256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ADH-AES128-GCM-SHA256");
-    static final MemorySegment TLS1_TXT_ADH_WITH_AES_256_GCM_SHA384$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ADH-AES256-GCM-SHA384");
-    static final MemorySegment TLS1_TXT_RSA_WITH_AES_128_CCM$SEGMENT = ResourceScope.globalScope().allocateUtf8String("AES128-CCM");
+    static final MemorySegment TLS1_TXT_DHE_DSS_WITH_AES_256_GCM_SHA384$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DHE-DSS-AES256-GCM-SHA384");
+    static final MemorySegment TLS1_TXT_DH_DSS_WITH_AES_128_GCM_SHA256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DH-DSS-AES128-GCM-SHA256");
+    static final MemorySegment TLS1_TXT_DH_DSS_WITH_AES_256_GCM_SHA384$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DH-DSS-AES256-GCM-SHA384");
+    static final MemorySegment TLS1_TXT_ADH_WITH_AES_128_GCM_SHA256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ADH-AES128-GCM-SHA256");
+    static final MemorySegment TLS1_TXT_ADH_WITH_AES_256_GCM_SHA384$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ADH-AES256-GCM-SHA384");
+    static final MemorySegment TLS1_TXT_RSA_WITH_AES_128_CCM$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("AES128-CCM");
 }
 
 

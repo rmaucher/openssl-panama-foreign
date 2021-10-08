@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1238 {
 
-    static final MemorySegment SN_id_ppl_anyLanguage$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-ppl-anyLanguage");
-    static final MemorySegment LN_id_ppl_anyLanguage$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Any language");
-    static final MemorySegment SN_id_ppl_inheritAll$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-ppl-inheritAll");
-    static final MemorySegment LN_id_ppl_inheritAll$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Inherit all");
-    static final MemorySegment SN_Independent$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-ppl-independent");
-    static final MemorySegment LN_Independent$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Independent");
+    static final MemorySegment SN_id_ppl_anyLanguage$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-ppl-anyLanguage");
+    static final MemorySegment LN_id_ppl_anyLanguage$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Any language");
+    static final MemorySegment SN_id_ppl_inheritAll$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-ppl-inheritAll");
+    static final MemorySegment LN_id_ppl_inheritAll$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Inherit all");
+    static final MemorySegment SN_Independent$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-ppl-independent");
+    static final MemorySegment LN_Independent$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Independent");
 }
 
 

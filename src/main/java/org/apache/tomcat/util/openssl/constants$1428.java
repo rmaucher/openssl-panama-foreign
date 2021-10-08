@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1428 {
 
-    static final MemorySegment LN_uacurve9$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DSTU curve 9");
-    static final MemorySegment PEM_STRING_X509_OLD$SEGMENT = ResourceScope.globalScope().allocateUtf8String("X509 CERTIFICATE");
-    static final MemorySegment PEM_STRING_X509$SEGMENT = ResourceScope.globalScope().allocateUtf8String("CERTIFICATE");
-    static final MemorySegment PEM_STRING_X509_TRUSTED$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TRUSTED CERTIFICATE");
-    static final MemorySegment PEM_STRING_X509_REQ_OLD$SEGMENT = ResourceScope.globalScope().allocateUtf8String("NEW CERTIFICATE REQUEST");
-    static final MemorySegment PEM_STRING_X509_REQ$SEGMENT = ResourceScope.globalScope().allocateUtf8String("CERTIFICATE REQUEST");
+    static final MemorySegment LN_uacurve9$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DSTU curve 9");
+    static final MemorySegment PEM_STRING_X509_OLD$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X509 CERTIFICATE");
+    static final MemorySegment PEM_STRING_X509$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("CERTIFICATE");
+    static final MemorySegment PEM_STRING_X509_TRUSTED$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TRUSTED CERTIFICATE");
+    static final MemorySegment PEM_STRING_X509_REQ_OLD$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("NEW CERTIFICATE REQUEST");
+    static final MemorySegment PEM_STRING_X509_REQ$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("CERTIFICATE REQUEST");
 }
 
 

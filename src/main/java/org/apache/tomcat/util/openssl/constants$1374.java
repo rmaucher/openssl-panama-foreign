@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1374 {
 
-    static final MemorySegment SN_magma_ecb$SEGMENT = ResourceScope.globalScope().allocateUtf8String("magma-ecb");
-    static final MemorySegment SN_magma_ctr$SEGMENT = ResourceScope.globalScope().allocateUtf8String("magma-ctr");
-    static final MemorySegment SN_magma_ofb$SEGMENT = ResourceScope.globalScope().allocateUtf8String("magma-ofb");
-    static final MemorySegment SN_magma_cbc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("magma-cbc");
-    static final MemorySegment SN_magma_cfb$SEGMENT = ResourceScope.globalScope().allocateUtf8String("magma-cfb");
-    static final MemorySegment SN_magma_mac$SEGMENT = ResourceScope.globalScope().allocateUtf8String("magma-mac");
+    static final MemorySegment SN_magma_ecb$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("magma-ecb");
+    static final MemorySegment SN_magma_ctr$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("magma-ctr");
+    static final MemorySegment SN_magma_ofb$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("magma-ofb");
+    static final MemorySegment SN_magma_cbc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("magma-cbc");
+    static final MemorySegment SN_magma_cfb$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("magma-cfb");
+    static final MemorySegment SN_magma_mac$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("magma-mac");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1418 {
 
-    static final MemorySegment SN_auth_gost12$SEGMENT = ResourceScope.globalScope().allocateUtf8String("AuthGOST12");
-    static final MemorySegment LN_auth_gost12$SEGMENT = ResourceScope.globalScope().allocateUtf8String("auth-gost12");
-    static final MemorySegment SN_auth_srp$SEGMENT = ResourceScope.globalScope().allocateUtf8String("AuthSRP");
-    static final MemorySegment LN_auth_srp$SEGMENT = ResourceScope.globalScope().allocateUtf8String("auth-srp");
-    static final MemorySegment SN_auth_null$SEGMENT = ResourceScope.globalScope().allocateUtf8String("AuthNULL");
-    static final MemorySegment LN_auth_null$SEGMENT = ResourceScope.globalScope().allocateUtf8String("auth-null");
+    static final MemorySegment SN_auth_gost12$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("AuthGOST12");
+    static final MemorySegment LN_auth_gost12$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("auth-gost12");
+    static final MemorySegment SN_auth_srp$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("AuthSRP");
+    static final MemorySegment LN_auth_srp$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("auth-srp");
+    static final MemorySegment SN_auth_null$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("AuthNULL");
+    static final MemorySegment LN_auth_null$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("auth-null");
 }
 
 

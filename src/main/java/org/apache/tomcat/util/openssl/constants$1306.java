@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1306 {
 
-    static final MemorySegment SN_dsa_with_SHA3_384$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-dsa-with-sha3-384");
-    static final MemorySegment LN_dsa_with_SHA3_384$SEGMENT = ResourceScope.globalScope().allocateUtf8String("dsa_with_SHA3-384");
-    static final MemorySegment SN_dsa_with_SHA3_512$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-dsa-with-sha3-512");
-    static final MemorySegment LN_dsa_with_SHA3_512$SEGMENT = ResourceScope.globalScope().allocateUtf8String("dsa_with_SHA3-512");
-    static final MemorySegment SN_ecdsa_with_SHA3_224$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-ecdsa-with-sha3-224");
-    static final MemorySegment LN_ecdsa_with_SHA3_224$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ecdsa_with_SHA3-224");
+    static final MemorySegment SN_dsa_with_SHA3_384$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-dsa-with-sha3-384");
+    static final MemorySegment LN_dsa_with_SHA3_384$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("dsa_with_SHA3-384");
+    static final MemorySegment SN_dsa_with_SHA3_512$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-dsa-with-sha3-512");
+    static final MemorySegment LN_dsa_with_SHA3_512$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("dsa_with_SHA3-512");
+    static final MemorySegment SN_ecdsa_with_SHA3_224$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-ecdsa-with-sha3-224");
+    static final MemorySegment LN_ecdsa_with_SHA3_224$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ecdsa_with_SHA3-224");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1300 {
 
-    static final MemorySegment SN_sha224$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SHA224");
-    static final MemorySegment LN_sha224$SEGMENT = ResourceScope.globalScope().allocateUtf8String("sha224");
-    static final MemorySegment SN_sha512_224$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SHA512-224");
-    static final MemorySegment LN_sha512_224$SEGMENT = ResourceScope.globalScope().allocateUtf8String("sha512-224");
-    static final MemorySegment SN_sha512_256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SHA512-256");
-    static final MemorySegment LN_sha512_256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("sha512-256");
+    static final MemorySegment SN_sha224$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SHA224");
+    static final MemorySegment LN_sha224$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("sha224");
+    static final MemorySegment SN_sha512_224$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SHA512-224");
+    static final MemorySegment LN_sha512_224$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("sha512-224");
+    static final MemorySegment SN_sha512_256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SHA512-256");
+    static final MemorySegment LN_sha512_256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("sha512-256");
 }
 
 

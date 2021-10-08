@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1421 {
 
-    static final MemorySegment SN_modp_2048$SEGMENT = ResourceScope.globalScope().allocateUtf8String("modp_2048");
-    static final MemorySegment SN_modp_3072$SEGMENT = ResourceScope.globalScope().allocateUtf8String("modp_3072");
-    static final MemorySegment SN_modp_4096$SEGMENT = ResourceScope.globalScope().allocateUtf8String("modp_4096");
-    static final MemorySegment SN_modp_6144$SEGMENT = ResourceScope.globalScope().allocateUtf8String("modp_6144");
-    static final MemorySegment SN_modp_8192$SEGMENT = ResourceScope.globalScope().allocateUtf8String("modp_8192");
-    static final MemorySegment SN_ISO_UA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ISO-UA");
+    static final MemorySegment SN_modp_2048$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("modp_2048");
+    static final MemorySegment SN_modp_3072$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("modp_3072");
+    static final MemorySegment SN_modp_4096$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("modp_4096");
+    static final MemorySegment SN_modp_6144$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("modp_6144");
+    static final MemorySegment SN_modp_8192$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("modp_8192");
+    static final MemorySegment SN_ISO_UA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ISO-UA");
 }
 
 

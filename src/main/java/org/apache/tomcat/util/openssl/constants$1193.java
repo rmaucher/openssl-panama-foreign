@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1193 {
 
-    static final MemorySegment SN_ms_csp_name$SEGMENT = ResourceScope.globalScope().allocateUtf8String("CSPName");
-    static final MemorySegment LN_ms_csp_name$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Microsoft CSP Name");
-    static final MemorySegment SN_LocalKeySet$SEGMENT = ResourceScope.globalScope().allocateUtf8String("LocalKeySet");
-    static final MemorySegment LN_LocalKeySet$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Microsoft Local Key set");
-    static final MemorySegment LN_x509Certificate$SEGMENT = ResourceScope.globalScope().allocateUtf8String("x509Certificate");
-    static final MemorySegment LN_sdsiCertificate$SEGMENT = ResourceScope.globalScope().allocateUtf8String("sdsiCertificate");
+    static final MemorySegment SN_ms_csp_name$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("CSPName");
+    static final MemorySegment LN_ms_csp_name$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Microsoft CSP Name");
+    static final MemorySegment SN_LocalKeySet$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("LocalKeySet");
+    static final MemorySegment LN_LocalKeySet$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Microsoft Local Key set");
+    static final MemorySegment LN_x509Certificate$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("x509Certificate");
+    static final MemorySegment LN_sdsiCertificate$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("sdsiCertificate");
 }
 
 

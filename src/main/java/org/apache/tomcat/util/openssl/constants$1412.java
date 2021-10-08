@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1412 {
 
-    static final MemorySegment SN_pkInitKDC$SEGMENT = ResourceScope.globalScope().allocateUtf8String("pkInitKDC");
-    static final MemorySegment LN_pkInitKDC$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Signing KDC Response");
-    static final MemorySegment SN_X25519$SEGMENT = ResourceScope.globalScope().allocateUtf8String("X25519");
-    static final MemorySegment SN_X448$SEGMENT = ResourceScope.globalScope().allocateUtf8String("X448");
-    static final MemorySegment SN_ED25519$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ED25519");
-    static final MemorySegment SN_ED448$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ED448");
+    static final MemorySegment SN_pkInitKDC$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("pkInitKDC");
+    static final MemorySegment LN_pkInitKDC$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Signing KDC Response");
+    static final MemorySegment SN_X25519$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X25519");
+    static final MemorySegment SN_X448$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X448");
+    static final MemorySegment SN_ED25519$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ED25519");
+    static final MemorySegment SN_ED448$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ED448");
 }
 
 

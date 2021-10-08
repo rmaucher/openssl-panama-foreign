@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1194 {
 
-    static final MemorySegment LN_x509Crl$SEGMENT = ResourceScope.globalScope().allocateUtf8String("x509Crl");
-    static final MemorySegment SN_pbe_WithSHA1And128BitRC4$SEGMENT = ResourceScope.globalScope().allocateUtf8String("PBE-SHA1-RC4-128");
-    static final MemorySegment LN_pbe_WithSHA1And128BitRC4$SEGMENT = ResourceScope.globalScope().allocateUtf8String("pbeWithSHA1And128BitRC4");
-    static final MemorySegment SN_pbe_WithSHA1And40BitRC4$SEGMENT = ResourceScope.globalScope().allocateUtf8String("PBE-SHA1-RC4-40");
-    static final MemorySegment LN_pbe_WithSHA1And40BitRC4$SEGMENT = ResourceScope.globalScope().allocateUtf8String("pbeWithSHA1And40BitRC4");
-    static final MemorySegment SN_pbe_WithSHA1And3_Key_TripleDES_CBC$SEGMENT = ResourceScope.globalScope().allocateUtf8String("PBE-SHA1-3DES");
+    static final MemorySegment LN_x509Crl$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("x509Crl");
+    static final MemorySegment SN_pbe_WithSHA1And128BitRC4$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("PBE-SHA1-RC4-128");
+    static final MemorySegment LN_pbe_WithSHA1And128BitRC4$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("pbeWithSHA1And128BitRC4");
+    static final MemorySegment SN_pbe_WithSHA1And40BitRC4$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("PBE-SHA1-RC4-40");
+    static final MemorySegment LN_pbe_WithSHA1And40BitRC4$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("pbeWithSHA1And40BitRC4");
+    static final MemorySegment SN_pbe_WithSHA1And3_Key_TripleDES_CBC$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("PBE-SHA1-3DES");
 }
 
 

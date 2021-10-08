@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1333 {
 
-    static final MemorySegment SN_setct_CertResData$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-CertResData");
-    static final MemorySegment SN_setct_CertInqReqTBS$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-CertInqReqTBS");
-    static final MemorySegment SN_setct_ErrorTBS$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-ErrorTBS");
-    static final MemorySegment SN_setct_PIDualSignedTBE$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-PIDualSignedTBE");
-    static final MemorySegment SN_setct_PIUnsignedTBE$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-PIUnsignedTBE");
-    static final MemorySegment SN_setct_AuthReqTBE$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-AuthReqTBE");
+    static final MemorySegment SN_setct_CertResData$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-CertResData");
+    static final MemorySegment SN_setct_CertInqReqTBS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-CertInqReqTBS");
+    static final MemorySegment SN_setct_ErrorTBS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-ErrorTBS");
+    static final MemorySegment SN_setct_PIDualSignedTBE$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-PIDualSignedTBE");
+    static final MemorySegment SN_setct_PIUnsignedTBE$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-PIUnsignedTBE");
+    static final MemorySegment SN_setct_AuthReqTBE$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-AuthReqTBE");
 }
 
 

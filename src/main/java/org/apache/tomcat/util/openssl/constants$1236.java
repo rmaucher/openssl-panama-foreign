@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1236 {
 
-    static final MemorySegment SN_id_pda_countryOfCitizenship$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-pda-countryOfCitizenship");
-    static final MemorySegment SN_id_pda_countryOfResidence$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-pda-countryOfResidence");
-    static final MemorySegment SN_id_aca_authenticationInfo$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-aca-authenticationInfo");
-    static final MemorySegment SN_id_aca_accessIdentity$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-aca-accessIdentity");
-    static final MemorySegment SN_id_aca_chargingIdentity$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-aca-chargingIdentity");
-    static final MemorySegment SN_id_aca_group$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-aca-group");
+    static final MemorySegment SN_id_pda_countryOfCitizenship$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-pda-countryOfCitizenship");
+    static final MemorySegment SN_id_pda_countryOfResidence$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-pda-countryOfResidence");
+    static final MemorySegment SN_id_aca_authenticationInfo$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-aca-authenticationInfo");
+    static final MemorySegment SN_id_aca_accessIdentity$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-aca-accessIdentity");
+    static final MemorySegment SN_id_aca_chargingIdentity$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-aca-chargingIdentity");
+    static final MemorySegment SN_id_aca_group$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-aca-group");
 }
 
 

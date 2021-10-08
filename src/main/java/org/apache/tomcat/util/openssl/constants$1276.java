@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1276 {
 
-    static final MemorySegment LN_netscape$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Netscape Communications Corp.");
-    static final MemorySegment SN_netscape_cert_extension$SEGMENT = ResourceScope.globalScope().allocateUtf8String("nsCertExt");
-    static final MemorySegment LN_netscape_cert_extension$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Netscape Certificate Extension");
-    static final MemorySegment SN_netscape_data_type$SEGMENT = ResourceScope.globalScope().allocateUtf8String("nsDataType");
-    static final MemorySegment LN_netscape_data_type$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Netscape Data Type");
-    static final MemorySegment SN_netscape_cert_type$SEGMENT = ResourceScope.globalScope().allocateUtf8String("nsCertType");
+    static final MemorySegment LN_netscape$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Netscape Communications Corp.");
+    static final MemorySegment SN_netscape_cert_extension$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("nsCertExt");
+    static final MemorySegment LN_netscape_cert_extension$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Netscape Certificate Extension");
+    static final MemorySegment SN_netscape_data_type$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("nsDataType");
+    static final MemorySegment LN_netscape_data_type$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Netscape Data Type");
+    static final MemorySegment SN_netscape_cert_type$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("nsCertType");
 }
 
 

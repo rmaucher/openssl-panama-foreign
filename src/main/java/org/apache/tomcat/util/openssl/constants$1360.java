@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1360 {
 
-    static final MemorySegment LN_id_GostR3410_2001_cc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("GOST 34.10-2001 Cryptocom");
-    static final MemorySegment SN_id_GostR3411_94_with_GostR3410_94_cc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-GostR3411-94-with-GostR3410-94-cc");
-    static final MemorySegment LN_id_GostR3411_94_with_GostR3410_94_cc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("GOST R 34.11-94 with GOST R 34.10-94 Cryptocom");
-    static final MemorySegment SN_id_GostR3411_94_with_GostR3410_2001_cc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-GostR3411-94-with-GostR3410-2001-cc");
-    static final MemorySegment LN_id_GostR3411_94_with_GostR3410_2001_cc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("GOST R 34.11-94 with GOST R 34.10-2001 Cryptocom");
-    static final MemorySegment SN_id_GostR3410_2001_ParamSet_cc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-GostR3410-2001-ParamSet-cc");
+    static final MemorySegment LN_id_GostR3410_2001_cc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("GOST 34.10-2001 Cryptocom");
+    static final MemorySegment SN_id_GostR3411_94_with_GostR3410_94_cc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-GostR3411-94-with-GostR3410-94-cc");
+    static final MemorySegment LN_id_GostR3411_94_with_GostR3410_94_cc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("GOST R 34.11-94 with GOST R 34.10-94 Cryptocom");
+    static final MemorySegment SN_id_GostR3411_94_with_GostR3410_2001_cc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-GostR3411-94-with-GostR3410-2001-cc");
+    static final MemorySegment LN_id_GostR3411_94_with_GostR3410_2001_cc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("GOST R 34.11-94 with GOST R 34.10-2001 Cryptocom");
+    static final MemorySegment SN_id_GostR3410_2001_ParamSet_cc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-GostR3410-2001-ParamSet-cc");
 }
 
 

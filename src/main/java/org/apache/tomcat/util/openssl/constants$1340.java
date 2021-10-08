@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1340 {
 
-    static final MemorySegment SN_setext_track2$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setext-track2");
-    static final MemorySegment SN_setext_cv$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setext-cv");
-    static final MemorySegment LN_setext_cv$SEGMENT = ResourceScope.globalScope().allocateUtf8String("additional verification");
-    static final MemorySegment SN_set_policy_root$SEGMENT = ResourceScope.globalScope().allocateUtf8String("set-policy-root");
-    static final MemorySegment SN_setCext_hashedRoot$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setCext-hashedRoot");
-    static final MemorySegment SN_setCext_certType$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setCext-certType");
+    static final MemorySegment SN_setext_track2$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setext-track2");
+    static final MemorySegment SN_setext_cv$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setext-cv");
+    static final MemorySegment LN_setext_cv$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("additional verification");
+    static final MemorySegment SN_set_policy_root$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("set-policy-root");
+    static final MemorySegment SN_setCext_hashedRoot$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setCext-hashedRoot");
+    static final MemorySegment SN_setCext_certType$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setCext-certType");
 }
 
 

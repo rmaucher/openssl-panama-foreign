@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1268 {
 
-    static final MemorySegment LN_key_usage$SEGMENT = ResourceScope.globalScope().allocateUtf8String("X509v3 Key Usage");
-    static final MemorySegment SN_private_key_usage_period$SEGMENT = ResourceScope.globalScope().allocateUtf8String("privateKeyUsagePeriod");
-    static final MemorySegment LN_private_key_usage_period$SEGMENT = ResourceScope.globalScope().allocateUtf8String("X509v3 Private Key Usage Period");
-    static final MemorySegment SN_subject_alt_name$SEGMENT = ResourceScope.globalScope().allocateUtf8String("subjectAltName");
-    static final MemorySegment LN_subject_alt_name$SEGMENT = ResourceScope.globalScope().allocateUtf8String("X509v3 Subject Alternative Name");
-    static final MemorySegment SN_issuer_alt_name$SEGMENT = ResourceScope.globalScope().allocateUtf8String("issuerAltName");
+    static final MemorySegment LN_key_usage$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X509v3 Key Usage");
+    static final MemorySegment SN_private_key_usage_period$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("privateKeyUsagePeriod");
+    static final MemorySegment LN_private_key_usage_period$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X509v3 Private Key Usage Period");
+    static final MemorySegment SN_subject_alt_name$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("subjectAltName");
+    static final MemorySegment LN_subject_alt_name$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X509v3 Subject Alternative Name");
+    static final MemorySegment SN_issuer_alt_name$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("issuerAltName");
 }
 
 

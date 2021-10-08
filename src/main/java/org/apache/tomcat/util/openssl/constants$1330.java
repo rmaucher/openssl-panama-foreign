@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1330 {
 
-    static final MemorySegment SN_setct_CapRevReqTBS$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-CapRevReqTBS");
-    static final MemorySegment SN_setct_CapRevReqTBSX$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-CapRevReqTBSX");
-    static final MemorySegment SN_setct_CapRevResData$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-CapRevResData");
-    static final MemorySegment SN_setct_CredReqTBS$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-CredReqTBS");
-    static final MemorySegment SN_setct_CredReqTBSX$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-CredReqTBSX");
-    static final MemorySegment SN_setct_CredResData$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-CredResData");
+    static final MemorySegment SN_setct_CapRevReqTBS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-CapRevReqTBS");
+    static final MemorySegment SN_setct_CapRevReqTBSX$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-CapRevReqTBSX");
+    static final MemorySegment SN_setct_CapRevResData$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-CapRevResData");
+    static final MemorySegment SN_setct_CredReqTBS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-CredReqTBS");
+    static final MemorySegment SN_setct_CredReqTBSX$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-CredReqTBSX");
+    static final MemorySegment SN_setct_CredResData$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-CredResData");
 }
 
 

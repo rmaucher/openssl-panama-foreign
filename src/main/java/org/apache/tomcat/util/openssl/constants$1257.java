@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1257 {
 
-    static final MemorySegment LN_postalAddress$SEGMENT = ResourceScope.globalScope().allocateUtf8String("postalAddress");
-    static final MemorySegment LN_postalCode$SEGMENT = ResourceScope.globalScope().allocateUtf8String("postalCode");
-    static final MemorySegment LN_postOfficeBox$SEGMENT = ResourceScope.globalScope().allocateUtf8String("postOfficeBox");
-    static final MemorySegment LN_physicalDeliveryOfficeName$SEGMENT = ResourceScope.globalScope().allocateUtf8String("physicalDeliveryOfficeName");
-    static final MemorySegment LN_telephoneNumber$SEGMENT = ResourceScope.globalScope().allocateUtf8String("telephoneNumber");
-    static final MemorySegment LN_telexNumber$SEGMENT = ResourceScope.globalScope().allocateUtf8String("telexNumber");
+    static final MemorySegment LN_postalAddress$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("postalAddress");
+    static final MemorySegment LN_postalCode$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("postalCode");
+    static final MemorySegment LN_postOfficeBox$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("postOfficeBox");
+    static final MemorySegment LN_physicalDeliveryOfficeName$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("physicalDeliveryOfficeName");
+    static final MemorySegment LN_telephoneNumber$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("telephoneNumber");
+    static final MemorySegment LN_telexNumber$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("telexNumber");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1133 {
 
-    static final MemorySegment SCNdLEAST16$SEGMENT = ResourceScope.globalScope().allocateUtf8String("hd");
-    static final MemorySegment SCNdLEAST32$SEGMENT = ResourceScope.globalScope().allocateUtf8String("d");
-    static final MemorySegment SCNdLEAST64$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ld");
-    static final MemorySegment SCNdFAST8$SEGMENT = ResourceScope.globalScope().allocateUtf8String("hhd");
-    static final MemorySegment SCNdFAST16$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ld");
-    static final MemorySegment SCNdFAST32$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ld");
+    static final MemorySegment SCNdLEAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hd");
+    static final MemorySegment SCNdLEAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("d");
+    static final MemorySegment SCNdLEAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ld");
+    static final MemorySegment SCNdFAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hhd");
+    static final MemorySegment SCNdFAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ld");
+    static final MemorySegment SCNdFAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ld");
 }
 
 

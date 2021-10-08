@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1398 {
 
-    static final MemorySegment LN_sm4_cfb8$SEGMENT = ResourceScope.globalScope().allocateUtf8String("sm4-cfb8");
-    static final MemorySegment SN_sm4_ctr$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SM4-CTR");
-    static final MemorySegment LN_sm4_ctr$SEGMENT = ResourceScope.globalScope().allocateUtf8String("sm4-ctr");
-    static final MemorySegment SN_hmac$SEGMENT = ResourceScope.globalScope().allocateUtf8String("HMAC");
-    static final MemorySegment LN_hmac$SEGMENT = ResourceScope.globalScope().allocateUtf8String("hmac");
-    static final MemorySegment SN_cmac$SEGMENT = ResourceScope.globalScope().allocateUtf8String("CMAC");
+    static final MemorySegment LN_sm4_cfb8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("sm4-cfb8");
+    static final MemorySegment SN_sm4_ctr$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SM4-CTR");
+    static final MemorySegment LN_sm4_ctr$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("sm4-ctr");
+    static final MemorySegment SN_hmac$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("HMAC");
+    static final MemorySegment LN_hmac$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hmac");
+    static final MemorySegment SN_cmac$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("CMAC");
 }
 
 

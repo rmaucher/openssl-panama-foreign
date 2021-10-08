@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1442 {
 
-    static final MemorySegment SSL_TXT_AES_CCM$SEGMENT = ResourceScope.globalScope().allocateUtf8String("AESCCM");
-    static final MemorySegment SSL_TXT_AES_CCM_8$SEGMENT = ResourceScope.globalScope().allocateUtf8String("AESCCM8");
-    static final MemorySegment SSL_TXT_CAMELLIA128$SEGMENT = ResourceScope.globalScope().allocateUtf8String("CAMELLIA128");
-    static final MemorySegment SSL_TXT_CAMELLIA256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("CAMELLIA256");
-    static final MemorySegment SSL_TXT_CAMELLIA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("CAMELLIA");
-    static final MemorySegment SSL_TXT_CHACHA20$SEGMENT = ResourceScope.globalScope().allocateUtf8String("CHACHA20");
+    static final MemorySegment SSL_TXT_AES_CCM$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("AESCCM");
+    static final MemorySegment SSL_TXT_AES_CCM_8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("AESCCM8");
+    static final MemorySegment SSL_TXT_CAMELLIA128$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("CAMELLIA128");
+    static final MemorySegment SSL_TXT_CAMELLIA256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("CAMELLIA256");
+    static final MemorySegment SSL_TXT_CAMELLIA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("CAMELLIA");
+    static final MemorySegment SSL_TXT_CHACHA20$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("CHACHA20");
 }
 
 

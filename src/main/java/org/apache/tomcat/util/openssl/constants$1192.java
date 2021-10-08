@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1192 {
 
-    static final MemorySegment SN_id_smime_cti_ets_proofOfDelivery$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-cti-ets-proofOfDelivery");
-    static final MemorySegment SN_id_smime_cti_ets_proofOfSender$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-cti-ets-proofOfSender");
-    static final MemorySegment SN_id_smime_cti_ets_proofOfApproval$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-cti-ets-proofOfApproval");
-    static final MemorySegment SN_id_smime_cti_ets_proofOfCreation$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-cti-ets-proofOfCreation");
-    static final MemorySegment LN_friendlyName$SEGMENT = ResourceScope.globalScope().allocateUtf8String("friendlyName");
-    static final MemorySegment LN_localKeyID$SEGMENT = ResourceScope.globalScope().allocateUtf8String("localKeyID");
+    static final MemorySegment SN_id_smime_cti_ets_proofOfDelivery$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-cti-ets-proofOfDelivery");
+    static final MemorySegment SN_id_smime_cti_ets_proofOfSender$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-cti-ets-proofOfSender");
+    static final MemorySegment SN_id_smime_cti_ets_proofOfApproval$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-cti-ets-proofOfApproval");
+    static final MemorySegment SN_id_smime_cti_ets_proofOfCreation$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-cti-ets-proofOfCreation");
+    static final MemorySegment LN_friendlyName$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("friendlyName");
+    static final MemorySegment LN_localKeyID$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("localKeyID");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1354 {
 
-    static final MemorySegment LN_id_GostR3410_94DH$SEGMENT = ResourceScope.globalScope().allocateUtf8String("GOST R 34.10-94 DH");
-    static final MemorySegment SN_id_Gost28147_89_CryptoPro_KeyMeshing$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-Gost28147-89-CryptoPro-KeyMeshing");
-    static final MemorySegment SN_id_Gost28147_89_None_KeyMeshing$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-Gost28147-89-None-KeyMeshing");
-    static final MemorySegment SN_id_GostR3411_94_TestParamSet$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-GostR3411-94-TestParamSet");
-    static final MemorySegment SN_id_GostR3411_94_CryptoProParamSet$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-GostR3411-94-CryptoProParamSet");
-    static final MemorySegment SN_id_Gost28147_89_TestParamSet$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-Gost28147-89-TestParamSet");
+    static final MemorySegment LN_id_GostR3410_94DH$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("GOST R 34.10-94 DH");
+    static final MemorySegment SN_id_Gost28147_89_CryptoPro_KeyMeshing$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-Gost28147-89-CryptoPro-KeyMeshing");
+    static final MemorySegment SN_id_Gost28147_89_None_KeyMeshing$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-Gost28147-89-None-KeyMeshing");
+    static final MemorySegment SN_id_GostR3411_94_TestParamSet$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-GostR3411-94-TestParamSet");
+    static final MemorySegment SN_id_GostR3411_94_CryptoProParamSet$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-GostR3411-94-CryptoProParamSet");
+    static final MemorySegment SN_id_Gost28147_89_TestParamSet$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-Gost28147-89-TestParamSet");
 }
 
 

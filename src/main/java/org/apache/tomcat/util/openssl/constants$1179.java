@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1179 {
 
-    static final MemorySegment LN_pkcs9_extCertAttributes$SEGMENT = ResourceScope.globalScope().allocateUtf8String("extendedCertificateAttributes");
-    static final MemorySegment SN_ext_req$SEGMENT = ResourceScope.globalScope().allocateUtf8String("extReq");
-    static final MemorySegment LN_ext_req$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Extension Request");
-    static final MemorySegment SN_SMIMECapabilities$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SMIME-CAPS");
-    static final MemorySegment LN_SMIMECapabilities$SEGMENT = ResourceScope.globalScope().allocateUtf8String("S/MIME Capabilities");
-    static final MemorySegment SN_SMIME$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SMIME");
+    static final MemorySegment LN_pkcs9_extCertAttributes$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("extendedCertificateAttributes");
+    static final MemorySegment SN_ext_req$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("extReq");
+    static final MemorySegment LN_ext_req$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Extension Request");
+    static final MemorySegment SN_SMIMECapabilities$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SMIME-CAPS");
+    static final MemorySegment LN_SMIMECapabilities$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("S/MIME Capabilities");
+    static final MemorySegment SN_SMIME$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SMIME");
 }
 
 

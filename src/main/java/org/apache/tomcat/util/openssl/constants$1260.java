@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1260 {
 
-    static final MemorySegment SN_seeAlso$SEGMENT = ResourceScope.globalScope().allocateUtf8String("seeAlso");
-    static final MemorySegment LN_userPassword$SEGMENT = ResourceScope.globalScope().allocateUtf8String("userPassword");
-    static final MemorySegment LN_userCertificate$SEGMENT = ResourceScope.globalScope().allocateUtf8String("userCertificate");
-    static final MemorySegment LN_cACertificate$SEGMENT = ResourceScope.globalScope().allocateUtf8String("cACertificate");
-    static final MemorySegment LN_authorityRevocationList$SEGMENT = ResourceScope.globalScope().allocateUtf8String("authorityRevocationList");
-    static final MemorySegment LN_certificateRevocationList$SEGMENT = ResourceScope.globalScope().allocateUtf8String("certificateRevocationList");
+    static final MemorySegment SN_seeAlso$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("seeAlso");
+    static final MemorySegment LN_userPassword$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("userPassword");
+    static final MemorySegment LN_userCertificate$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("userCertificate");
+    static final MemorySegment LN_cACertificate$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("cACertificate");
+    static final MemorySegment LN_authorityRevocationList$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("authorityRevocationList");
+    static final MemorySegment LN_certificateRevocationList$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("certificateRevocationList");
 }
 
 

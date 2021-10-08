@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1213 {
 
-    static final MemorySegment SN_id_ad$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-ad");
-    static final MemorySegment SN_id_pkix1_explicit_88$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-pkix1-explicit-88");
-    static final MemorySegment SN_id_pkix1_implicit_88$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-pkix1-implicit-88");
-    static final MemorySegment SN_id_pkix1_explicit_93$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-pkix1-explicit-93");
-    static final MemorySegment SN_id_pkix1_implicit_93$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-pkix1-implicit-93");
-    static final MemorySegment SN_id_mod_crmf$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-mod-crmf");
+    static final MemorySegment SN_id_ad$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-ad");
+    static final MemorySegment SN_id_pkix1_explicit_88$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-pkix1-explicit-88");
+    static final MemorySegment SN_id_pkix1_implicit_88$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-pkix1-implicit-88");
+    static final MemorySegment SN_id_pkix1_explicit_93$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-pkix1-explicit-93");
+    static final MemorySegment SN_id_pkix1_implicit_93$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-pkix1-implicit-93");
+    static final MemorySegment SN_id_mod_crmf$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-mod-crmf");
 }
 
 

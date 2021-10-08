@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1397 {
 
-    static final MemorySegment LN_sm4_ofb128$SEGMENT = ResourceScope.globalScope().allocateUtf8String("sm4-ofb");
-    static final MemorySegment SN_sm4_cfb128$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SM4-CFB");
-    static final MemorySegment LN_sm4_cfb128$SEGMENT = ResourceScope.globalScope().allocateUtf8String("sm4-cfb");
-    static final MemorySegment SN_sm4_cfb1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SM4-CFB1");
-    static final MemorySegment LN_sm4_cfb1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("sm4-cfb1");
-    static final MemorySegment SN_sm4_cfb8$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SM4-CFB8");
+    static final MemorySegment LN_sm4_ofb128$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("sm4-ofb");
+    static final MemorySegment SN_sm4_cfb128$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SM4-CFB");
+    static final MemorySegment LN_sm4_cfb128$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("sm4-cfb");
+    static final MemorySegment SN_sm4_cfb1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SM4-CFB1");
+    static final MemorySegment LN_sm4_cfb1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("sm4-cfb1");
+    static final MemorySegment SN_sm4_cfb8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SM4-CFB8");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1258 {
 
-    static final MemorySegment LN_teletexTerminalIdentifier$SEGMENT = ResourceScope.globalScope().allocateUtf8String("teletexTerminalIdentifier");
-    static final MemorySegment LN_facsimileTelephoneNumber$SEGMENT = ResourceScope.globalScope().allocateUtf8String("facsimileTelephoneNumber");
-    static final MemorySegment LN_x121Address$SEGMENT = ResourceScope.globalScope().allocateUtf8String("x121Address");
-    static final MemorySegment LN_internationaliSDNNumber$SEGMENT = ResourceScope.globalScope().allocateUtf8String("internationaliSDNNumber");
-    static final MemorySegment LN_registeredAddress$SEGMENT = ResourceScope.globalScope().allocateUtf8String("registeredAddress");
-    static final MemorySegment LN_destinationIndicator$SEGMENT = ResourceScope.globalScope().allocateUtf8String("destinationIndicator");
+    static final MemorySegment LN_teletexTerminalIdentifier$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("teletexTerminalIdentifier");
+    static final MemorySegment LN_facsimileTelephoneNumber$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("facsimileTelephoneNumber");
+    static final MemorySegment LN_x121Address$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("x121Address");
+    static final MemorySegment LN_internationaliSDNNumber$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("internationaliSDNNumber");
+    static final MemorySegment LN_registeredAddress$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("registeredAddress");
+    static final MemorySegment LN_destinationIndicator$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("destinationIndicator");
 }
 
 

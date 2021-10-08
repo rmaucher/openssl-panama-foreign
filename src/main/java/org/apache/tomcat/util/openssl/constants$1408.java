@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1408 {
 
-    static final MemorySegment LN_ct_cert_scts$SEGMENT = ResourceScope.globalScope().allocateUtf8String("CT Certificate SCTs");
-    static final MemorySegment SN_jurisdictionLocalityName$SEGMENT = ResourceScope.globalScope().allocateUtf8String("jurisdictionL");
-    static final MemorySegment LN_jurisdictionLocalityName$SEGMENT = ResourceScope.globalScope().allocateUtf8String("jurisdictionLocalityName");
-    static final MemorySegment SN_jurisdictionStateOrProvinceName$SEGMENT = ResourceScope.globalScope().allocateUtf8String("jurisdictionST");
-    static final MemorySegment LN_jurisdictionStateOrProvinceName$SEGMENT = ResourceScope.globalScope().allocateUtf8String("jurisdictionStateOrProvinceName");
-    static final MemorySegment SN_jurisdictionCountryName$SEGMENT = ResourceScope.globalScope().allocateUtf8String("jurisdictionC");
+    static final MemorySegment LN_ct_cert_scts$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("CT Certificate SCTs");
+    static final MemorySegment SN_jurisdictionLocalityName$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("jurisdictionL");
+    static final MemorySegment LN_jurisdictionLocalityName$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("jurisdictionLocalityName");
+    static final MemorySegment SN_jurisdictionStateOrProvinceName$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("jurisdictionST");
+    static final MemorySegment LN_jurisdictionStateOrProvinceName$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("jurisdictionStateOrProvinceName");
+    static final MemorySegment SN_jurisdictionCountryName$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("jurisdictionC");
 }
 
 

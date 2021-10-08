@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1200 {
 
-    static final MemorySegment LN_hmacWithSHA256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("hmacWithSHA256");
-    static final MemorySegment LN_hmacWithSHA384$SEGMENT = ResourceScope.globalScope().allocateUtf8String("hmacWithSHA384");
-    static final MemorySegment LN_hmacWithSHA512$SEGMENT = ResourceScope.globalScope().allocateUtf8String("hmacWithSHA512");
-    static final MemorySegment LN_hmacWithSHA512_224$SEGMENT = ResourceScope.globalScope().allocateUtf8String("hmacWithSHA512-224");
-    static final MemorySegment LN_hmacWithSHA512_256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("hmacWithSHA512-256");
-    static final MemorySegment SN_rc2_cbc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RC2-CBC");
+    static final MemorySegment LN_hmacWithSHA256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hmacWithSHA256");
+    static final MemorySegment LN_hmacWithSHA384$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hmacWithSHA384");
+    static final MemorySegment LN_hmacWithSHA512$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hmacWithSHA512");
+    static final MemorySegment LN_hmacWithSHA512_224$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hmacWithSHA512-224");
+    static final MemorySegment LN_hmacWithSHA512_256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hmacWithSHA512-256");
+    static final MemorySegment SN_rc2_cbc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RC2-CBC");
 }
 
 

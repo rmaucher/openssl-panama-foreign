@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1222 {
 
-    static final MemorySegment SN_time_stamp$SEGMENT = ResourceScope.globalScope().allocateUtf8String("timeStamping");
-    static final MemorySegment LN_time_stamp$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Time Stamping");
-    static final MemorySegment SN_OCSP_sign$SEGMENT = ResourceScope.globalScope().allocateUtf8String("OCSPSigning");
-    static final MemorySegment LN_OCSP_sign$SEGMENT = ResourceScope.globalScope().allocateUtf8String("OCSP Signing");
-    static final MemorySegment SN_dvcs$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DVCS");
-    static final MemorySegment LN_dvcs$SEGMENT = ResourceScope.globalScope().allocateUtf8String("dvcs");
+    static final MemorySegment SN_time_stamp$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("timeStamping");
+    static final MemorySegment LN_time_stamp$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Time Stamping");
+    static final MemorySegment SN_OCSP_sign$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("OCSPSigning");
+    static final MemorySegment LN_OCSP_sign$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("OCSP Signing");
+    static final MemorySegment SN_dvcs$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DVCS");
+    static final MemorySegment LN_dvcs$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("dvcs");
 }
 
 

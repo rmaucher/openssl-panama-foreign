@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1144 {
 
-    static final MemorySegment P_tmpdir$SEGMENT = ResourceScope.globalScope().allocateUtf8String("/tmp");
+    static final MemorySegment P_tmpdir$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("/tmp");
     static final MemoryAddress PTHREAD_CANCELED$ADDR = MemoryAddress.ofLong(-1L);
-    static final MemorySegment SN_undef$SEGMENT = ResourceScope.globalScope().allocateUtf8String("UNDEF");
-    static final MemorySegment LN_undef$SEGMENT = ResourceScope.globalScope().allocateUtf8String("undefined");
-    static final MemorySegment SN_itu_t$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ITU-T");
-    static final MemorySegment LN_itu_t$SEGMENT = ResourceScope.globalScope().allocateUtf8String("itu-t");
+    static final MemorySegment SN_undef$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("UNDEF");
+    static final MemorySegment LN_undef$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("undefined");
+    static final MemorySegment SN_itu_t$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ITU-T");
+    static final MemorySegment LN_itu_t$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("itu-t");
 }
 
 

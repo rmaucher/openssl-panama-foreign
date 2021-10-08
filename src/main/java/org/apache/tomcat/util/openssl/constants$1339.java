@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1339 {
 
-    static final MemorySegment SN_setext_genCrypt$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setext-genCrypt");
-    static final MemorySegment LN_setext_genCrypt$SEGMENT = ResourceScope.globalScope().allocateUtf8String("generic cryptogram");
-    static final MemorySegment SN_setext_miAuth$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setext-miAuth");
-    static final MemorySegment LN_setext_miAuth$SEGMENT = ResourceScope.globalScope().allocateUtf8String("merchant initiated auth");
-    static final MemorySegment SN_setext_pinSecure$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setext-pinSecure");
-    static final MemorySegment SN_setext_pinAny$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setext-pinAny");
+    static final MemorySegment SN_setext_genCrypt$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setext-genCrypt");
+    static final MemorySegment LN_setext_genCrypt$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("generic cryptogram");
+    static final MemorySegment SN_setext_miAuth$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setext-miAuth");
+    static final MemorySegment LN_setext_miAuth$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("merchant initiated auth");
+    static final MemorySegment SN_setext_pinSecure$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setext-pinSecure");
+    static final MemorySegment SN_setext_pinAny$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setext-pinAny");
 }
 
 

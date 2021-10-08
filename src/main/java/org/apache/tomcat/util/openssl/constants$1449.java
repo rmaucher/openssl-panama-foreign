@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1449 {
 
-    static final MemorySegment SSL3_TXT_RSA_RC4_40_MD5$SEGMENT = ResourceScope.globalScope().allocateUtf8String("EXP-RC4-MD5");
-    static final MemorySegment SSL3_TXT_RSA_RC4_128_MD5$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RC4-MD5");
-    static final MemorySegment SSL3_TXT_RSA_RC4_128_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RC4-SHA");
-    static final MemorySegment SSL3_TXT_RSA_RC2_40_MD5$SEGMENT = ResourceScope.globalScope().allocateUtf8String("EXP-RC2-CBC-MD5");
-    static final MemorySegment SSL3_TXT_RSA_IDEA_128_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("IDEA-CBC-SHA");
-    static final MemorySegment SSL3_TXT_RSA_DES_40_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("EXP-DES-CBC-SHA");
+    static final MemorySegment SSL3_TXT_RSA_RC4_40_MD5$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("EXP-RC4-MD5");
+    static final MemorySegment SSL3_TXT_RSA_RC4_128_MD5$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RC4-MD5");
+    static final MemorySegment SSL3_TXT_RSA_RC4_128_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RC4-SHA");
+    static final MemorySegment SSL3_TXT_RSA_RC2_40_MD5$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("EXP-RC2-CBC-MD5");
+    static final MemorySegment SSL3_TXT_RSA_IDEA_128_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("IDEA-CBC-SHA");
+    static final MemorySegment SSL3_TXT_RSA_DES_40_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("EXP-DES-CBC-SHA");
 }
 
 

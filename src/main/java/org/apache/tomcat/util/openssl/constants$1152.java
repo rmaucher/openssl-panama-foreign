@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1152 {
 
-    static final MemorySegment SN_X9_62_id_characteristic_two_basis$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-characteristic-two-basis");
-    static final MemorySegment SN_X9_62_onBasis$SEGMENT = ResourceScope.globalScope().allocateUtf8String("onBasis");
-    static final MemorySegment SN_X9_62_tpBasis$SEGMENT = ResourceScope.globalScope().allocateUtf8String("tpBasis");
-    static final MemorySegment SN_X9_62_ppBasis$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ppBasis");
-    static final MemorySegment SN_X9_62_id_ecPublicKey$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-ecPublicKey");
-    static final MemorySegment SN_X9_62_c2pnb163v1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("c2pnb163v1");
+    static final MemorySegment SN_X9_62_id_characteristic_two_basis$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-characteristic-two-basis");
+    static final MemorySegment SN_X9_62_onBasis$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("onBasis");
+    static final MemorySegment SN_X9_62_tpBasis$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("tpBasis");
+    static final MemorySegment SN_X9_62_ppBasis$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ppBasis");
+    static final MemorySegment SN_X9_62_id_ecPublicKey$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-ecPublicKey");
+    static final MemorySegment SN_X9_62_c2pnb163v1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("c2pnb163v1");
 }
 
 

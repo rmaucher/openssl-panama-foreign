@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1266 {
 
-    static final MemorySegment SN_rsa$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RSA");
-    static final MemorySegment LN_rsa$SEGMENT = ResourceScope.globalScope().allocateUtf8String("rsa");
-    static final MemorySegment SN_mdc2WithRSA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RSA-MDC2");
-    static final MemorySegment LN_mdc2WithRSA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("mdc2WithRSA");
-    static final MemorySegment SN_mdc2$SEGMENT = ResourceScope.globalScope().allocateUtf8String("MDC2");
-    static final MemorySegment LN_mdc2$SEGMENT = ResourceScope.globalScope().allocateUtf8String("mdc2");
+    static final MemorySegment SN_rsa$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RSA");
+    static final MemorySegment LN_rsa$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("rsa");
+    static final MemorySegment SN_mdc2WithRSA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RSA-MDC2");
+    static final MemorySegment LN_mdc2WithRSA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("mdc2WithRSA");
+    static final MemorySegment SN_mdc2$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("MDC2");
+    static final MemorySegment LN_mdc2$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("mdc2");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1151 {
 
-    static final MemorySegment SN_dsaWithSHA1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DSA-SHA1");
-    static final MemorySegment LN_dsaWithSHA1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("dsaWithSHA1");
-    static final MemorySegment SN_ansi_X9_62$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ansi-X9-62");
-    static final MemorySegment LN_ansi_X9_62$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ANSI X9.62");
-    static final MemorySegment SN_X9_62_prime_field$SEGMENT = ResourceScope.globalScope().allocateUtf8String("prime-field");
-    static final MemorySegment SN_X9_62_characteristic_two_field$SEGMENT = ResourceScope.globalScope().allocateUtf8String("characteristic-two-field");
+    static final MemorySegment SN_dsaWithSHA1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DSA-SHA1");
+    static final MemorySegment LN_dsaWithSHA1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("dsaWithSHA1");
+    static final MemorySegment SN_ansi_X9_62$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ansi-X9-62");
+    static final MemorySegment LN_ansi_X9_62$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ANSI X9.62");
+    static final MemorySegment SN_X9_62_prime_field$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("prime-field");
+    static final MemorySegment SN_X9_62_characteristic_two_field$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("characteristic-two-field");
 }
 
 

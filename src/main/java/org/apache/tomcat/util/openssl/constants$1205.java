@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1205 {
 
-    static final MemorySegment LN_rc5_ofb64$SEGMENT = ResourceScope.globalScope().allocateUtf8String("rc5-ofb");
-    static final MemorySegment SN_ms_ext_req$SEGMENT = ResourceScope.globalScope().allocateUtf8String("msExtReq");
-    static final MemorySegment LN_ms_ext_req$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Microsoft Extension Request");
-    static final MemorySegment SN_ms_code_ind$SEGMENT = ResourceScope.globalScope().allocateUtf8String("msCodeInd");
-    static final MemorySegment LN_ms_code_ind$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Microsoft Individual Code Signing");
-    static final MemorySegment SN_ms_code_com$SEGMENT = ResourceScope.globalScope().allocateUtf8String("msCodeCom");
+    static final MemorySegment LN_rc5_ofb64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("rc5-ofb");
+    static final MemorySegment SN_ms_ext_req$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("msExtReq");
+    static final MemorySegment LN_ms_ext_req$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Microsoft Extension Request");
+    static final MemorySegment SN_ms_code_ind$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("msCodeInd");
+    static final MemorySegment LN_ms_code_ind$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Microsoft Individual Code Signing");
+    static final MemorySegment SN_ms_code_com$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("msCodeCom");
 }
 
 

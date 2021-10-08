@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1471 {
 
-    static final MemorySegment TLS1_RFC_RSA_PSK_WITH_NULL_SHA384$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_RSA_PSK_WITH_NULL_SHA384");
-    static final MemorySegment TLS1_RFC_ECDHE_PSK_WITH_3DES_EDE_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_ECDHE_PSK_WITH_3DES_EDE_CBC_SHA");
-    static final MemorySegment TLS1_RFC_ECDHE_PSK_WITH_AES_128_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA");
-    static final MemorySegment TLS1_RFC_ECDHE_PSK_WITH_AES_256_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA");
-    static final MemorySegment TLS1_RFC_ECDHE_PSK_WITH_AES_128_CBC_SHA256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA256");
-    static final MemorySegment TLS1_RFC_ECDHE_PSK_WITH_AES_256_CBC_SHA384$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA384");
+    static final MemorySegment TLS1_RFC_RSA_PSK_WITH_NULL_SHA384$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_RSA_PSK_WITH_NULL_SHA384");
+    static final MemorySegment TLS1_RFC_ECDHE_PSK_WITH_3DES_EDE_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_ECDHE_PSK_WITH_3DES_EDE_CBC_SHA");
+    static final MemorySegment TLS1_RFC_ECDHE_PSK_WITH_AES_128_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA");
+    static final MemorySegment TLS1_RFC_ECDHE_PSK_WITH_AES_256_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA");
+    static final MemorySegment TLS1_RFC_ECDHE_PSK_WITH_AES_128_CBC_SHA256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA256");
+    static final MemorySegment TLS1_RFC_ECDHE_PSK_WITH_AES_256_CBC_SHA384$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA384");
 }
 
 

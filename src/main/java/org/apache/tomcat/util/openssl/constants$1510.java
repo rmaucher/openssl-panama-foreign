@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1510 {
 
-    static final MemorySegment TLS1_TXT_RSA_WITH_AES_256_CCM$SEGMENT = ResourceScope.globalScope().allocateUtf8String("AES256-CCM");
-    static final MemorySegment TLS1_TXT_DHE_RSA_WITH_AES_128_CCM$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DHE-RSA-AES128-CCM");
-    static final MemorySegment TLS1_TXT_DHE_RSA_WITH_AES_256_CCM$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DHE-RSA-AES256-CCM");
-    static final MemorySegment TLS1_TXT_RSA_WITH_AES_128_CCM_8$SEGMENT = ResourceScope.globalScope().allocateUtf8String("AES128-CCM8");
-    static final MemorySegment TLS1_TXT_RSA_WITH_AES_256_CCM_8$SEGMENT = ResourceScope.globalScope().allocateUtf8String("AES256-CCM8");
-    static final MemorySegment TLS1_TXT_DHE_RSA_WITH_AES_128_CCM_8$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DHE-RSA-AES128-CCM8");
+    static final MemorySegment TLS1_TXT_RSA_WITH_AES_256_CCM$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("AES256-CCM");
+    static final MemorySegment TLS1_TXT_DHE_RSA_WITH_AES_128_CCM$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DHE-RSA-AES128-CCM");
+    static final MemorySegment TLS1_TXT_DHE_RSA_WITH_AES_256_CCM$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DHE-RSA-AES256-CCM");
+    static final MemorySegment TLS1_TXT_RSA_WITH_AES_128_CCM_8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("AES128-CCM8");
+    static final MemorySegment TLS1_TXT_RSA_WITH_AES_256_CCM_8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("AES256-CCM8");
+    static final MemorySegment TLS1_TXT_DHE_RSA_WITH_AES_128_CCM_8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DHE-RSA-AES128-CCM8");
 }
 
 

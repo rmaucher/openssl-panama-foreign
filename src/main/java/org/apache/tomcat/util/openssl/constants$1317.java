@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1317 {
 
-    static final MemorySegment LN_documentIdentifier$SEGMENT = ResourceScope.globalScope().allocateUtf8String("documentIdentifier");
-    static final MemorySegment LN_documentTitle$SEGMENT = ResourceScope.globalScope().allocateUtf8String("documentTitle");
-    static final MemorySegment LN_documentVersion$SEGMENT = ResourceScope.globalScope().allocateUtf8String("documentVersion");
-    static final MemorySegment LN_documentAuthor$SEGMENT = ResourceScope.globalScope().allocateUtf8String("documentAuthor");
-    static final MemorySegment LN_documentLocation$SEGMENT = ResourceScope.globalScope().allocateUtf8String("documentLocation");
-    static final MemorySegment LN_homeTelephoneNumber$SEGMENT = ResourceScope.globalScope().allocateUtf8String("homeTelephoneNumber");
+    static final MemorySegment LN_documentIdentifier$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("documentIdentifier");
+    static final MemorySegment LN_documentTitle$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("documentTitle");
+    static final MemorySegment LN_documentVersion$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("documentVersion");
+    static final MemorySegment LN_documentAuthor$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("documentAuthor");
+    static final MemorySegment LN_documentLocation$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("documentLocation");
+    static final MemorySegment LN_homeTelephoneNumber$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("homeTelephoneNumber");
 }
 
 

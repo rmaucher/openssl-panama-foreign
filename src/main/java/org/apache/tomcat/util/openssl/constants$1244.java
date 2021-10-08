@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1244 {
 
-    static final MemorySegment SN_algorithm$SEGMENT = ResourceScope.globalScope().allocateUtf8String("algorithm");
-    static final MemorySegment LN_algorithm$SEGMENT = ResourceScope.globalScope().allocateUtf8String("algorithm");
-    static final MemorySegment SN_md5WithRSA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RSA-NP-MD5");
-    static final MemorySegment LN_md5WithRSA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("md5WithRSA");
-    static final MemorySegment SN_des_ecb$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DES-ECB");
-    static final MemorySegment LN_des_ecb$SEGMENT = ResourceScope.globalScope().allocateUtf8String("des-ecb");
+    static final MemorySegment SN_algorithm$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("algorithm");
+    static final MemorySegment LN_algorithm$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("algorithm");
+    static final MemorySegment SN_md5WithRSA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RSA-NP-MD5");
+    static final MemorySegment LN_md5WithRSA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("md5WithRSA");
+    static final MemorySegment SN_des_ecb$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DES-ECB");
+    static final MemorySegment LN_des_ecb$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("des-ecb");
 }
 
 

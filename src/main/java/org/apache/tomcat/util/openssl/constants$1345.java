@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1345 {
 
-    static final MemorySegment LN_setAttr_GenCryptgrm$SEGMENT = ResourceScope.globalScope().allocateUtf8String("generate cryptogram");
-    static final MemorySegment SN_setAttr_T2Enc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setAttr-T2Enc");
-    static final MemorySegment LN_setAttr_T2Enc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("encrypted track 2");
-    static final MemorySegment SN_setAttr_T2cleartxt$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setAttr-T2cleartxt");
-    static final MemorySegment LN_setAttr_T2cleartxt$SEGMENT = ResourceScope.globalScope().allocateUtf8String("cleartext track 2");
-    static final MemorySegment SN_setAttr_TokICCsig$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setAttr-TokICCsig");
+    static final MemorySegment LN_setAttr_GenCryptgrm$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("generate cryptogram");
+    static final MemorySegment SN_setAttr_T2Enc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setAttr-T2Enc");
+    static final MemorySegment LN_setAttr_T2Enc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("encrypted track 2");
+    static final MemorySegment SN_setAttr_T2cleartxt$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setAttr-T2cleartxt");
+    static final MemorySegment LN_setAttr_T2cleartxt$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("cleartext track 2");
+    static final MemorySegment SN_setAttr_TokICCsig$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setAttr-TokICCsig");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1343 {
 
-    static final MemorySegment LN_setAttr_PGWYcap$SEGMENT = ResourceScope.globalScope().allocateUtf8String("payment gateway capabilities");
-    static final MemorySegment SN_setAttr_TokenType$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setAttr-TokenType");
-    static final MemorySegment SN_setAttr_IssCap$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setAttr-IssCap");
-    static final MemorySegment LN_setAttr_IssCap$SEGMENT = ResourceScope.globalScope().allocateUtf8String("issuer capabilities");
-    static final MemorySegment SN_set_rootKeyThumb$SEGMENT = ResourceScope.globalScope().allocateUtf8String("set-rootKeyThumb");
-    static final MemorySegment SN_set_addPolicy$SEGMENT = ResourceScope.globalScope().allocateUtf8String("set-addPolicy");
+    static final MemorySegment LN_setAttr_PGWYcap$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("payment gateway capabilities");
+    static final MemorySegment SN_setAttr_TokenType$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setAttr-TokenType");
+    static final MemorySegment SN_setAttr_IssCap$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setAttr-IssCap");
+    static final MemorySegment LN_setAttr_IssCap$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("issuer capabilities");
+    static final MemorySegment SN_set_rootKeyThumb$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("set-rootKeyThumb");
+    static final MemorySegment SN_set_addPolicy$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("set-addPolicy");
 }
 
 

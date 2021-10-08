@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1221 {
 
-    static final MemorySegment SN_ipsecEndSystem$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ipsecEndSystem");
-    static final MemorySegment LN_ipsecEndSystem$SEGMENT = ResourceScope.globalScope().allocateUtf8String("IPSec End System");
-    static final MemorySegment SN_ipsecTunnel$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ipsecTunnel");
-    static final MemorySegment LN_ipsecTunnel$SEGMENT = ResourceScope.globalScope().allocateUtf8String("IPSec Tunnel");
-    static final MemorySegment SN_ipsecUser$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ipsecUser");
-    static final MemorySegment LN_ipsecUser$SEGMENT = ResourceScope.globalScope().allocateUtf8String("IPSec User");
+    static final MemorySegment SN_ipsecEndSystem$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ipsecEndSystem");
+    static final MemorySegment LN_ipsecEndSystem$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("IPSec End System");
+    static final MemorySegment SN_ipsecTunnel$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ipsecTunnel");
+    static final MemorySegment LN_ipsecTunnel$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("IPSec Tunnel");
+    static final MemorySegment SN_ipsecUser$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ipsecUser");
+    static final MemorySegment LN_ipsecUser$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("IPSec User");
 }
 
 

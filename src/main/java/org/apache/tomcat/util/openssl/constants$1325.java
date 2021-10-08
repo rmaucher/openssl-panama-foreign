@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1325 {
 
-    static final MemorySegment LN_set_certExt$SEGMENT = ResourceScope.globalScope().allocateUtf8String("certificate extensions");
-    static final MemorySegment SN_set_brand$SEGMENT = ResourceScope.globalScope().allocateUtf8String("set-brand");
-    static final MemorySegment SN_setct_PANData$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-PANData");
-    static final MemorySegment SN_setct_PANToken$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-PANToken");
-    static final MemorySegment SN_setct_PANOnly$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-PANOnly");
-    static final MemorySegment SN_setct_OIData$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-OIData");
+    static final MemorySegment LN_set_certExt$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("certificate extensions");
+    static final MemorySegment SN_set_brand$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("set-brand");
+    static final MemorySegment SN_setct_PANData$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-PANData");
+    static final MemorySegment SN_setct_PANToken$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-PANToken");
+    static final MemorySegment SN_setct_PANOnly$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-PANOnly");
+    static final MemorySegment SN_setct_OIData$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-OIData");
 }
 
 

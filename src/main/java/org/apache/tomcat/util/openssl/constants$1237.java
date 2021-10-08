@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1237 {
 
-    static final MemorySegment SN_id_aca_role$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-aca-role");
-    static final MemorySegment SN_id_aca_encAttrs$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-aca-encAttrs");
-    static final MemorySegment SN_id_qcs_pkixQCSyntax_v1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-qcs-pkixQCSyntax-v1");
-    static final MemorySegment SN_id_cct_crs$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-cct-crs");
-    static final MemorySegment SN_id_cct_PKIData$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-cct-PKIData");
-    static final MemorySegment SN_id_cct_PKIResponse$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-cct-PKIResponse");
+    static final MemorySegment SN_id_aca_role$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-aca-role");
+    static final MemorySegment SN_id_aca_encAttrs$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-aca-encAttrs");
+    static final MemorySegment SN_id_qcs_pkixQCSyntax_v1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-qcs-pkixQCSyntax-v1");
+    static final MemorySegment SN_id_cct_crs$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-cct-crs");
+    static final MemorySegment SN_id_cct_PKIData$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-cct-PKIData");
+    static final MemorySegment SN_id_cct_PKIResponse$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-cct-PKIResponse");
 }
 
 

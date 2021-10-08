@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1473 {
 
-    static final MemorySegment TLS1_RFC_SRP_SHA_WITH_AES_128_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_SRP_SHA_WITH_AES_128_CBC_SHA");
-    static final MemorySegment TLS1_RFC_SRP_SHA_RSA_WITH_AES_128_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_SRP_SHA_RSA_WITH_AES_128_CBC_SHA");
-    static final MemorySegment TLS1_RFC_SRP_SHA_DSS_WITH_AES_128_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_SRP_SHA_DSS_WITH_AES_128_CBC_SHA");
-    static final MemorySegment TLS1_RFC_SRP_SHA_WITH_AES_256_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_SRP_SHA_WITH_AES_256_CBC_SHA");
-    static final MemorySegment TLS1_RFC_SRP_SHA_RSA_WITH_AES_256_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_SRP_SHA_RSA_WITH_AES_256_CBC_SHA");
-    static final MemorySegment TLS1_RFC_SRP_SHA_DSS_WITH_AES_256_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_SRP_SHA_DSS_WITH_AES_256_CBC_SHA");
+    static final MemorySegment TLS1_RFC_SRP_SHA_WITH_AES_128_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_SRP_SHA_WITH_AES_128_CBC_SHA");
+    static final MemorySegment TLS1_RFC_SRP_SHA_RSA_WITH_AES_128_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_SRP_SHA_RSA_WITH_AES_128_CBC_SHA");
+    static final MemorySegment TLS1_RFC_SRP_SHA_DSS_WITH_AES_128_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_SRP_SHA_DSS_WITH_AES_128_CBC_SHA");
+    static final MemorySegment TLS1_RFC_SRP_SHA_WITH_AES_256_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_SRP_SHA_WITH_AES_256_CBC_SHA");
+    static final MemorySegment TLS1_RFC_SRP_SHA_RSA_WITH_AES_256_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_SRP_SHA_RSA_WITH_AES_256_CBC_SHA");
+    static final MemorySegment TLS1_RFC_SRP_SHA_DSS_WITH_AES_256_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_SRP_SHA_DSS_WITH_AES_256_CBC_SHA");
 }
 
 

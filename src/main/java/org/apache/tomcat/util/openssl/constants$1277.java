@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1277 {
 
-    static final MemorySegment LN_netscape_cert_type$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Netscape Cert Type");
-    static final MemorySegment SN_netscape_base_url$SEGMENT = ResourceScope.globalScope().allocateUtf8String("nsBaseUrl");
-    static final MemorySegment LN_netscape_base_url$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Netscape Base Url");
-    static final MemorySegment SN_netscape_revocation_url$SEGMENT = ResourceScope.globalScope().allocateUtf8String("nsRevocationUrl");
-    static final MemorySegment LN_netscape_revocation_url$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Netscape Revocation Url");
-    static final MemorySegment SN_netscape_ca_revocation_url$SEGMENT = ResourceScope.globalScope().allocateUtf8String("nsCaRevocationUrl");
+    static final MemorySegment LN_netscape_cert_type$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Netscape Cert Type");
+    static final MemorySegment SN_netscape_base_url$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("nsBaseUrl");
+    static final MemorySegment LN_netscape_base_url$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Netscape Base Url");
+    static final MemorySegment SN_netscape_revocation_url$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("nsRevocationUrl");
+    static final MemorySegment LN_netscape_revocation_url$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Netscape Revocation Url");
+    static final MemorySegment SN_netscape_ca_revocation_url$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("nsCaRevocationUrl");
 }
 
 

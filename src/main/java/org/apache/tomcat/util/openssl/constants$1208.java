@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1208 {
 
-    static final MemorySegment LN_idea_cbc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("idea-cbc");
-    static final MemorySegment SN_idea_ecb$SEGMENT = ResourceScope.globalScope().allocateUtf8String("IDEA-ECB");
-    static final MemorySegment LN_idea_ecb$SEGMENT = ResourceScope.globalScope().allocateUtf8String("idea-ecb");
-    static final MemorySegment SN_idea_cfb64$SEGMENT = ResourceScope.globalScope().allocateUtf8String("IDEA-CFB");
-    static final MemorySegment LN_idea_cfb64$SEGMENT = ResourceScope.globalScope().allocateUtf8String("idea-cfb");
-    static final MemorySegment SN_idea_ofb64$SEGMENT = ResourceScope.globalScope().allocateUtf8String("IDEA-OFB");
+    static final MemorySegment LN_idea_cbc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("idea-cbc");
+    static final MemorySegment SN_idea_ecb$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("IDEA-ECB");
+    static final MemorySegment LN_idea_ecb$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("idea-ecb");
+    static final MemorySegment SN_idea_cfb64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("IDEA-CFB");
+    static final MemorySegment LN_idea_cfb64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("idea-cfb");
+    static final MemorySegment SN_idea_ofb64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("IDEA-OFB");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1280 {
 
-    static final MemorySegment LN_ns_sgc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Netscape Server Gated Crypto");
-    static final MemorySegment SN_org$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ORG");
-    static final MemorySegment LN_org$SEGMENT = ResourceScope.globalScope().allocateUtf8String("org");
-    static final MemorySegment SN_dod$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DOD");
-    static final MemorySegment LN_dod$SEGMENT = ResourceScope.globalScope().allocateUtf8String("dod");
-    static final MemorySegment SN_iana$SEGMENT = ResourceScope.globalScope().allocateUtf8String("IANA");
+    static final MemorySegment LN_ns_sgc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Netscape Server Gated Crypto");
+    static final MemorySegment SN_org$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ORG");
+    static final MemorySegment LN_org$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("org");
+    static final MemorySegment SN_dod$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DOD");
+    static final MemorySegment LN_dod$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("dod");
+    static final MemorySegment SN_iana$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("IANA");
 }
 
 

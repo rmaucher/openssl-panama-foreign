@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1422 {
 
-    static final MemorySegment SN_ua_pki$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ua-pki");
-    static final MemorySegment SN_dstu28147$SEGMENT = ResourceScope.globalScope().allocateUtf8String("dstu28147");
-    static final MemorySegment LN_dstu28147$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DSTU Gost 28147-2009");
-    static final MemorySegment SN_dstu28147_ofb$SEGMENT = ResourceScope.globalScope().allocateUtf8String("dstu28147-ofb");
-    static final MemorySegment LN_dstu28147_ofb$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DSTU Gost 28147-2009 OFB mode");
-    static final MemorySegment SN_dstu28147_cfb$SEGMENT = ResourceScope.globalScope().allocateUtf8String("dstu28147-cfb");
+    static final MemorySegment SN_ua_pki$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ua-pki");
+    static final MemorySegment SN_dstu28147$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("dstu28147");
+    static final MemorySegment LN_dstu28147$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DSTU Gost 28147-2009");
+    static final MemorySegment SN_dstu28147_ofb$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("dstu28147-ofb");
+    static final MemorySegment LN_dstu28147_ofb$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DSTU Gost 28147-2009 OFB mode");
+    static final MemorySegment SN_dstu28147_cfb$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("dstu28147-cfb");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1155 {
 
-    static final MemorySegment SN_X9_62_c2onb239v4$SEGMENT = ResourceScope.globalScope().allocateUtf8String("c2onb239v4");
-    static final MemorySegment SN_X9_62_c2onb239v5$SEGMENT = ResourceScope.globalScope().allocateUtf8String("c2onb239v5");
-    static final MemorySegment SN_X9_62_c2pnb272w1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("c2pnb272w1");
-    static final MemorySegment SN_X9_62_c2pnb304w1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("c2pnb304w1");
-    static final MemorySegment SN_X9_62_c2tnb359v1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("c2tnb359v1");
-    static final MemorySegment SN_X9_62_c2pnb368w1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("c2pnb368w1");
+    static final MemorySegment SN_X9_62_c2onb239v4$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("c2onb239v4");
+    static final MemorySegment SN_X9_62_c2onb239v5$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("c2onb239v5");
+    static final MemorySegment SN_X9_62_c2pnb272w1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("c2pnb272w1");
+    static final MemorySegment SN_X9_62_c2pnb304w1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("c2pnb304w1");
+    static final MemorySegment SN_X9_62_c2tnb359v1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("c2tnb359v1");
+    static final MemorySegment SN_X9_62_c2pnb368w1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("c2pnb368w1");
 }
 
 

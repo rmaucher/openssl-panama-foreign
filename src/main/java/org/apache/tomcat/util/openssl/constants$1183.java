@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1183 {
 
-    static final MemorySegment SN_id_smime_ct_publishCert$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-ct-publishCert");
-    static final MemorySegment SN_id_smime_ct_TSTInfo$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-ct-TSTInfo");
-    static final MemorySegment SN_id_smime_ct_TDTInfo$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-ct-TDTInfo");
-    static final MemorySegment SN_id_smime_ct_contentInfo$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-ct-contentInfo");
-    static final MemorySegment SN_id_smime_ct_DVCSRequestData$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-ct-DVCSRequestData");
-    static final MemorySegment SN_id_smime_ct_DVCSResponseData$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-ct-DVCSResponseData");
+    static final MemorySegment SN_id_smime_ct_publishCert$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-ct-publishCert");
+    static final MemorySegment SN_id_smime_ct_TSTInfo$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-ct-TSTInfo");
+    static final MemorySegment SN_id_smime_ct_TDTInfo$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-ct-TDTInfo");
+    static final MemorySegment SN_id_smime_ct_contentInfo$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-ct-contentInfo");
+    static final MemorySegment SN_id_smime_ct_DVCSRequestData$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-ct-DVCSRequestData");
+    static final MemorySegment SN_id_smime_ct_DVCSResponseData$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-ct-DVCSResponseData");
 }
 
 

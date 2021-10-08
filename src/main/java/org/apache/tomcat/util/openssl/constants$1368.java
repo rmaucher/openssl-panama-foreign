@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1368 {
 
-    static final MemorySegment SN_id_tc26_gost_3410_2012_256_paramSetB$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-tc26-gost-3410-2012-256-paramSetB");
-    static final MemorySegment LN_id_tc26_gost_3410_2012_256_paramSetB$SEGMENT = ResourceScope.globalScope().allocateUtf8String("GOST R 34.10-2012 (256 bit) ParamSet B");
-    static final MemorySegment SN_id_tc26_gost_3410_2012_256_paramSetC$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-tc26-gost-3410-2012-256-paramSetC");
-    static final MemorySegment LN_id_tc26_gost_3410_2012_256_paramSetC$SEGMENT = ResourceScope.globalScope().allocateUtf8String("GOST R 34.10-2012 (256 bit) ParamSet C");
-    static final MemorySegment SN_id_tc26_gost_3410_2012_256_paramSetD$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-tc26-gost-3410-2012-256-paramSetD");
-    static final MemorySegment LN_id_tc26_gost_3410_2012_256_paramSetD$SEGMENT = ResourceScope.globalScope().allocateUtf8String("GOST R 34.10-2012 (256 bit) ParamSet D");
+    static final MemorySegment SN_id_tc26_gost_3410_2012_256_paramSetB$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-tc26-gost-3410-2012-256-paramSetB");
+    static final MemorySegment LN_id_tc26_gost_3410_2012_256_paramSetB$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("GOST R 34.10-2012 (256 bit) ParamSet B");
+    static final MemorySegment SN_id_tc26_gost_3410_2012_256_paramSetC$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-tc26-gost-3410-2012-256-paramSetC");
+    static final MemorySegment LN_id_tc26_gost_3410_2012_256_paramSetC$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("GOST R 34.10-2012 (256 bit) ParamSet C");
+    static final MemorySegment SN_id_tc26_gost_3410_2012_256_paramSetD$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-tc26-gost-3410-2012-256-paramSetD");
+    static final MemorySegment LN_id_tc26_gost_3410_2012_256_paramSetD$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("GOST R 34.10-2012 (256 bit) ParamSet D");
 }
 
 

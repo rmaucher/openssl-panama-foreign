@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1167 {
 
-    static final MemorySegment SN_id_PasswordBasedMAC$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-PasswordBasedMAC");
-    static final MemorySegment LN_id_PasswordBasedMAC$SEGMENT = ResourceScope.globalScope().allocateUtf8String("password based MAC");
-    static final MemorySegment SN_id_DHBasedMac$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-DHBasedMac");
-    static final MemorySegment LN_id_DHBasedMac$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Diffie-Hellman based MAC");
-    static final MemorySegment SN_rsadsi$SEGMENT = ResourceScope.globalScope().allocateUtf8String("rsadsi");
-    static final MemorySegment LN_rsadsi$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RSA Data Security, Inc.");
+    static final MemorySegment SN_id_PasswordBasedMAC$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-PasswordBasedMAC");
+    static final MemorySegment LN_id_PasswordBasedMAC$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("password based MAC");
+    static final MemorySegment SN_id_DHBasedMac$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-DHBasedMac");
+    static final MemorySegment LN_id_DHBasedMac$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Diffie-Hellman based MAC");
+    static final MemorySegment SN_rsadsi$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("rsadsi");
+    static final MemorySegment LN_rsadsi$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RSA Data Security, Inc.");
 }
 
 

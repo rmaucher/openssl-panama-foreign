@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1441 {
 
-    static final MemorySegment SSL_TXT_IDEA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("IDEA");
-    static final MemorySegment SSL_TXT_SEED$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SEED");
-    static final MemorySegment SSL_TXT_AES128$SEGMENT = ResourceScope.globalScope().allocateUtf8String("AES128");
-    static final MemorySegment SSL_TXT_AES256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("AES256");
-    static final MemorySegment SSL_TXT_AES$SEGMENT = ResourceScope.globalScope().allocateUtf8String("AES");
-    static final MemorySegment SSL_TXT_AES_GCM$SEGMENT = ResourceScope.globalScope().allocateUtf8String("AESGCM");
+    static final MemorySegment SSL_TXT_IDEA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("IDEA");
+    static final MemorySegment SSL_TXT_SEED$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SEED");
+    static final MemorySegment SSL_TXT_AES128$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("AES128");
+    static final MemorySegment SSL_TXT_AES256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("AES256");
+    static final MemorySegment SSL_TXT_AES$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("AES");
+    static final MemorySegment SSL_TXT_AES_GCM$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("AESGCM");
 }
 
 

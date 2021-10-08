@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1242 {
 
-    static final MemorySegment SN_id_pkix_OCSP_noCheck$SEGMENT = ResourceScope.globalScope().allocateUtf8String("noCheck");
-    static final MemorySegment LN_id_pkix_OCSP_noCheck$SEGMENT = ResourceScope.globalScope().allocateUtf8String("OCSP No Check");
-    static final MemorySegment SN_id_pkix_OCSP_archiveCutoff$SEGMENT = ResourceScope.globalScope().allocateUtf8String("archiveCutoff");
-    static final MemorySegment LN_id_pkix_OCSP_archiveCutoff$SEGMENT = ResourceScope.globalScope().allocateUtf8String("OCSP Archive Cutoff");
-    static final MemorySegment SN_id_pkix_OCSP_serviceLocator$SEGMENT = ResourceScope.globalScope().allocateUtf8String("serviceLocator");
-    static final MemorySegment LN_id_pkix_OCSP_serviceLocator$SEGMENT = ResourceScope.globalScope().allocateUtf8String("OCSP Service Locator");
+    static final MemorySegment SN_id_pkix_OCSP_noCheck$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("noCheck");
+    static final MemorySegment LN_id_pkix_OCSP_noCheck$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("OCSP No Check");
+    static final MemorySegment SN_id_pkix_OCSP_archiveCutoff$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("archiveCutoff");
+    static final MemorySegment LN_id_pkix_OCSP_archiveCutoff$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("OCSP Archive Cutoff");
+    static final MemorySegment SN_id_pkix_OCSP_serviceLocator$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("serviceLocator");
+    static final MemorySegment LN_id_pkix_OCSP_serviceLocator$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("OCSP Service Locator");
 }
 
 

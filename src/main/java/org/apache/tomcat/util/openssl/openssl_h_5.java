@@ -2514,6 +2514,9 @@ import static jdk.incubator.foreign.ValueLayout.*;
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    public static MemorySegment imaxdiv ( ResourceScope scope,  long __numer,  long __denom) {
+        return imaxdiv(SegmentAllocator.nativeAllocator(scope), __numer, __denom);
+    }
     public static MethodHandle strtoimax$MH() {
         return RuntimeHelper.requireNonNull(constants$0.strtoimax$MH,"strtoimax");
     }
@@ -3517,6 +3520,9 @@ import static jdk.incubator.foreign.ValueLayout.*;
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    public static MemorySegment div ( ResourceScope scope,  int __numer,  int __denom) {
+        return div(SegmentAllocator.nativeAllocator(scope), __numer, __denom);
+    }
     public static MethodHandle ldiv$MH() {
         return RuntimeHelper.requireNonNull(constants$16.ldiv$MH,"ldiv");
     }
@@ -3528,6 +3534,9 @@ import static jdk.incubator.foreign.ValueLayout.*;
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    public static MemorySegment ldiv ( ResourceScope scope,  long __numer,  long __denom) {
+        return ldiv(SegmentAllocator.nativeAllocator(scope), __numer, __denom);
+    }
     public static MethodHandle lldiv$MH() {
         return RuntimeHelper.requireNonNull(constants$16.lldiv$MH,"lldiv");
     }
@@ -3538,6 +3547,9 @@ import static jdk.incubator.foreign.ValueLayout.*;
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
+    }
+    public static MemorySegment lldiv ( ResourceScope scope,  long __numer,  long __denom) {
+        return lldiv(SegmentAllocator.nativeAllocator(scope), __numer, __denom);
     }
     public static MethodHandle ecvt$MH() {
         return RuntimeHelper.requireNonNull(constants$16.ecvt$MH,"ecvt");

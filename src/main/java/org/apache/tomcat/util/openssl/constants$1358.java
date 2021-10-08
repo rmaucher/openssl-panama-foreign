@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1358 {
 
-    static final MemorySegment SN_id_GostR3410_2001_CryptoPro_C_ParamSet$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-GostR3410-2001-CryptoPro-C-ParamSet");
-    static final MemorySegment SN_id_GostR3410_2001_CryptoPro_XchA_ParamSet$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-GostR3410-2001-CryptoPro-XchA-ParamSet");
-    static final MemorySegment SN_id_GostR3410_2001_CryptoPro_XchB_ParamSet$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-GostR3410-2001-CryptoPro-XchB-ParamSet");
-    static final MemorySegment SN_id_GostR3410_94_a$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-GostR3410-94-a");
-    static final MemorySegment SN_id_GostR3410_94_aBis$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-GostR3410-94-aBis");
-    static final MemorySegment SN_id_GostR3410_94_b$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-GostR3410-94-b");
+    static final MemorySegment SN_id_GostR3410_2001_CryptoPro_C_ParamSet$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-GostR3410-2001-CryptoPro-C-ParamSet");
+    static final MemorySegment SN_id_GostR3410_2001_CryptoPro_XchA_ParamSet$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-GostR3410-2001-CryptoPro-XchA-ParamSet");
+    static final MemorySegment SN_id_GostR3410_2001_CryptoPro_XchB_ParamSet$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-GostR3410-2001-CryptoPro-XchB-ParamSet");
+    static final MemorySegment SN_id_GostR3410_94_a$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-GostR3410-94-a");
+    static final MemorySegment SN_id_GostR3410_94_aBis$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-GostR3410-94-aBis");
+    static final MemorySegment SN_id_GostR3410_94_b$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-GostR3410-94-b");
 }
 
 

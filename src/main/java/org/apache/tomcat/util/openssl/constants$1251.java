@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1251 {
 
-    static final MemorySegment LN_sha1WithRSA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("sha1WithRSA");
-    static final MemorySegment SN_ripemd160$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RIPEMD160");
-    static final MemorySegment LN_ripemd160$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ripemd160");
-    static final MemorySegment SN_ripemd160WithRSA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RSA-RIPEMD160");
-    static final MemorySegment LN_ripemd160WithRSA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ripemd160WithRSA");
-    static final MemorySegment SN_blake2b512$SEGMENT = ResourceScope.globalScope().allocateUtf8String("BLAKE2b512");
+    static final MemorySegment LN_sha1WithRSA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("sha1WithRSA");
+    static final MemorySegment SN_ripemd160$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RIPEMD160");
+    static final MemorySegment LN_ripemd160$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ripemd160");
+    static final MemorySegment SN_ripemd160WithRSA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RSA-RIPEMD160");
+    static final MemorySegment LN_ripemd160WithRSA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ripemd160WithRSA");
+    static final MemorySegment SN_blake2b512$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("BLAKE2b512");
 }
 
 

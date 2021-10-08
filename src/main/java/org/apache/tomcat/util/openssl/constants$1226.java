@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1226 {
 
-    static final MemorySegment SN_cmcCA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("cmcCA");
-    static final MemorySegment LN_cmcCA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("CMC Certificate Authority");
-    static final MemorySegment SN_cmcRA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("cmcRA");
-    static final MemorySegment LN_cmcRA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("CMC Registration Authority");
-    static final MemorySegment SN_id_it_caProtEncCert$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-it-caProtEncCert");
-    static final MemorySegment SN_id_it_signKeyPairTypes$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-it-signKeyPairTypes");
+    static final MemorySegment SN_cmcCA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("cmcCA");
+    static final MemorySegment LN_cmcCA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("CMC Certificate Authority");
+    static final MemorySegment SN_cmcRA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("cmcRA");
+    static final MemorySegment LN_cmcRA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("CMC Registration Authority");
+    static final MemorySegment SN_id_it_caProtEncCert$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-it-caProtEncCert");
+    static final MemorySegment SN_id_it_signKeyPairTypes$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-it-signKeyPairTypes");
 }
 
 

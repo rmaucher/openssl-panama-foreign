@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1209 {
 
-    static final MemorySegment LN_idea_ofb64$SEGMENT = ResourceScope.globalScope().allocateUtf8String("idea-ofb");
-    static final MemorySegment SN_bf_cbc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("BF-CBC");
-    static final MemorySegment LN_bf_cbc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("bf-cbc");
-    static final MemorySegment SN_bf_ecb$SEGMENT = ResourceScope.globalScope().allocateUtf8String("BF-ECB");
-    static final MemorySegment LN_bf_ecb$SEGMENT = ResourceScope.globalScope().allocateUtf8String("bf-ecb");
-    static final MemorySegment SN_bf_cfb64$SEGMENT = ResourceScope.globalScope().allocateUtf8String("BF-CFB");
+    static final MemorySegment LN_idea_ofb64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("idea-ofb");
+    static final MemorySegment SN_bf_cbc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("BF-CBC");
+    static final MemorySegment LN_bf_cbc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("bf-cbc");
+    static final MemorySegment SN_bf_ecb$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("BF-ECB");
+    static final MemorySegment LN_bf_ecb$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("bf-ecb");
+    static final MemorySegment SN_bf_cfb64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("BF-CFB");
 }
 
 

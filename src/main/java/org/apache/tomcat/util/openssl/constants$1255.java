@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1255 {
 
-    static final MemorySegment LN_stateOrProvinceName$SEGMENT = ResourceScope.globalScope().allocateUtf8String("stateOrProvinceName");
-    static final MemorySegment SN_streetAddress$SEGMENT = ResourceScope.globalScope().allocateUtf8String("street");
-    static final MemorySegment LN_streetAddress$SEGMENT = ResourceScope.globalScope().allocateUtf8String("streetAddress");
-    static final MemorySegment SN_organizationName$SEGMENT = ResourceScope.globalScope().allocateUtf8String("O");
-    static final MemorySegment LN_organizationName$SEGMENT = ResourceScope.globalScope().allocateUtf8String("organizationName");
-    static final MemorySegment SN_organizationalUnitName$SEGMENT = ResourceScope.globalScope().allocateUtf8String("OU");
+    static final MemorySegment LN_stateOrProvinceName$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("stateOrProvinceName");
+    static final MemorySegment SN_streetAddress$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("street");
+    static final MemorySegment LN_streetAddress$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("streetAddress");
+    static final MemorySegment SN_organizationName$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("O");
+    static final MemorySegment LN_organizationName$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("organizationName");
+    static final MemorySegment SN_organizationalUnitName$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("OU");
 }
 
 

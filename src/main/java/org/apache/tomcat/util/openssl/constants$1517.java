@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1517 {
 
-    static final MemorySegment TLS1_TXT_ECDHE_PSK_WITH_NULL_SHA256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ECDHE-PSK-NULL-SHA256");
-    static final MemorySegment TLS1_TXT_ECDHE_PSK_WITH_NULL_SHA384$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ECDHE-PSK-NULL-SHA384");
-    static final MemorySegment TLS1_TXT_ECDHE_ECDSA_WITH_CAMELLIA_128_CBC_SHA256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ECDHE-ECDSA-CAMELLIA128-SHA256");
-    static final MemorySegment TLS1_TXT_ECDHE_ECDSA_WITH_CAMELLIA_256_CBC_SHA384$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ECDHE-ECDSA-CAMELLIA256-SHA384");
-    static final MemorySegment TLS1_TXT_ECDH_ECDSA_WITH_CAMELLIA_128_CBC_SHA256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ECDH-ECDSA-CAMELLIA128-SHA256");
-    static final MemorySegment TLS1_TXT_ECDH_ECDSA_WITH_CAMELLIA_256_CBC_SHA384$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ECDH-ECDSA-CAMELLIA256-SHA384");
+    static final MemorySegment TLS1_TXT_ECDHE_PSK_WITH_NULL_SHA256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ECDHE-PSK-NULL-SHA256");
+    static final MemorySegment TLS1_TXT_ECDHE_PSK_WITH_NULL_SHA384$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ECDHE-PSK-NULL-SHA384");
+    static final MemorySegment TLS1_TXT_ECDHE_ECDSA_WITH_CAMELLIA_128_CBC_SHA256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ECDHE-ECDSA-CAMELLIA128-SHA256");
+    static final MemorySegment TLS1_TXT_ECDHE_ECDSA_WITH_CAMELLIA_256_CBC_SHA384$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ECDHE-ECDSA-CAMELLIA256-SHA384");
+    static final MemorySegment TLS1_TXT_ECDH_ECDSA_WITH_CAMELLIA_128_CBC_SHA256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ECDH-ECDSA-CAMELLIA128-SHA256");
+    static final MemorySegment TLS1_TXT_ECDH_ECDSA_WITH_CAMELLIA_256_CBC_SHA384$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ECDH-ECDSA-CAMELLIA256-SHA384");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1293 {
 
-    static final MemorySegment SN_aes_128_xts$SEGMENT = ResourceScope.globalScope().allocateUtf8String("AES-128-XTS");
-    static final MemorySegment LN_aes_128_xts$SEGMENT = ResourceScope.globalScope().allocateUtf8String("aes-128-xts");
-    static final MemorySegment SN_aes_256_xts$SEGMENT = ResourceScope.globalScope().allocateUtf8String("AES-256-XTS");
-    static final MemorySegment LN_aes_256_xts$SEGMENT = ResourceScope.globalScope().allocateUtf8String("aes-256-xts");
-    static final MemorySegment SN_aes_128_cfb1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("AES-128-CFB1");
-    static final MemorySegment LN_aes_128_cfb1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("aes-128-cfb1");
+    static final MemorySegment SN_aes_128_xts$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("AES-128-XTS");
+    static final MemorySegment LN_aes_128_xts$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("aes-128-xts");
+    static final MemorySegment SN_aes_256_xts$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("AES-256-XTS");
+    static final MemorySegment LN_aes_256_xts$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("aes-256-xts");
+    static final MemorySegment SN_aes_128_cfb1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("AES-128-CFB1");
+    static final MemorySegment LN_aes_128_cfb1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("aes-128-cfb1");
 }
 
 

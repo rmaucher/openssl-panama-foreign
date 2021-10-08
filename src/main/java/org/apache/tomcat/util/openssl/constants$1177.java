@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1177 {
 
-    static final MemorySegment LN_pkcs7_signedAndEnveloped$SEGMENT = ResourceScope.globalScope().allocateUtf8String("pkcs7-signedAndEnvelopedData");
-    static final MemorySegment LN_pkcs7_digest$SEGMENT = ResourceScope.globalScope().allocateUtf8String("pkcs7-digestData");
-    static final MemorySegment LN_pkcs7_encrypted$SEGMENT = ResourceScope.globalScope().allocateUtf8String("pkcs7-encryptedData");
-    static final MemorySegment SN_pkcs9$SEGMENT = ResourceScope.globalScope().allocateUtf8String("pkcs9");
-    static final MemorySegment LN_pkcs9_emailAddress$SEGMENT = ResourceScope.globalScope().allocateUtf8String("emailAddress");
-    static final MemorySegment LN_pkcs9_unstructuredName$SEGMENT = ResourceScope.globalScope().allocateUtf8String("unstructuredName");
+    static final MemorySegment LN_pkcs7_signedAndEnveloped$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("pkcs7-signedAndEnvelopedData");
+    static final MemorySegment LN_pkcs7_digest$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("pkcs7-digestData");
+    static final MemorySegment LN_pkcs7_encrypted$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("pkcs7-encryptedData");
+    static final MemorySegment SN_pkcs9$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("pkcs9");
+    static final MemorySegment LN_pkcs9_emailAddress$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("emailAddress");
+    static final MemorySegment LN_pkcs9_unstructuredName$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("unstructuredName");
 }
 
 

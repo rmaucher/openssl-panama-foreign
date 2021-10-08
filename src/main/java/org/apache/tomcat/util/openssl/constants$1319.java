@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1319 {
 
-    static final MemorySegment LN_aRecord$SEGMENT = ResourceScope.globalScope().allocateUtf8String("aRecord");
-    static final MemorySegment LN_pilotAttributeType27$SEGMENT = ResourceScope.globalScope().allocateUtf8String("pilotAttributeType27");
-    static final MemorySegment LN_mXRecord$SEGMENT = ResourceScope.globalScope().allocateUtf8String("mXRecord");
-    static final MemorySegment LN_nSRecord$SEGMENT = ResourceScope.globalScope().allocateUtf8String("nSRecord");
-    static final MemorySegment LN_sOARecord$SEGMENT = ResourceScope.globalScope().allocateUtf8String("sOARecord");
-    static final MemorySegment LN_cNAMERecord$SEGMENT = ResourceScope.globalScope().allocateUtf8String("cNAMERecord");
+    static final MemorySegment LN_aRecord$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("aRecord");
+    static final MemorySegment LN_pilotAttributeType27$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("pilotAttributeType27");
+    static final MemorySegment LN_mXRecord$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("mXRecord");
+    static final MemorySegment LN_nSRecord$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("nSRecord");
+    static final MemorySegment LN_sOARecord$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("sOARecord");
+    static final MemorySegment LN_cNAMERecord$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("cNAMERecord");
 }
 
 

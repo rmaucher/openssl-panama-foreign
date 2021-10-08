@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1241 {
 
-    static final MemorySegment SN_id_pkix_OCSP_Nonce$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Nonce");
-    static final MemorySegment LN_id_pkix_OCSP_Nonce$SEGMENT = ResourceScope.globalScope().allocateUtf8String("OCSP Nonce");
-    static final MemorySegment SN_id_pkix_OCSP_CrlID$SEGMENT = ResourceScope.globalScope().allocateUtf8String("CrlID");
-    static final MemorySegment LN_id_pkix_OCSP_CrlID$SEGMENT = ResourceScope.globalScope().allocateUtf8String("OCSP CRL ID");
-    static final MemorySegment SN_id_pkix_OCSP_acceptableResponses$SEGMENT = ResourceScope.globalScope().allocateUtf8String("acceptableResponses");
-    static final MemorySegment LN_id_pkix_OCSP_acceptableResponses$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Acceptable OCSP Responses");
+    static final MemorySegment SN_id_pkix_OCSP_Nonce$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Nonce");
+    static final MemorySegment LN_id_pkix_OCSP_Nonce$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("OCSP Nonce");
+    static final MemorySegment SN_id_pkix_OCSP_CrlID$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("CrlID");
+    static final MemorySegment LN_id_pkix_OCSP_CrlID$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("OCSP CRL ID");
+    static final MemorySegment SN_id_pkix_OCSP_acceptableResponses$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("acceptableResponses");
+    static final MemorySegment LN_id_pkix_OCSP_acceptableResponses$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Acceptable OCSP Responses");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1178 {
 
-    static final MemorySegment LN_pkcs9_contentType$SEGMENT = ResourceScope.globalScope().allocateUtf8String("contentType");
-    static final MemorySegment LN_pkcs9_messageDigest$SEGMENT = ResourceScope.globalScope().allocateUtf8String("messageDigest");
-    static final MemorySegment LN_pkcs9_signingTime$SEGMENT = ResourceScope.globalScope().allocateUtf8String("signingTime");
-    static final MemorySegment LN_pkcs9_countersignature$SEGMENT = ResourceScope.globalScope().allocateUtf8String("countersignature");
-    static final MemorySegment LN_pkcs9_challengePassword$SEGMENT = ResourceScope.globalScope().allocateUtf8String("challengePassword");
-    static final MemorySegment LN_pkcs9_unstructuredAddress$SEGMENT = ResourceScope.globalScope().allocateUtf8String("unstructuredAddress");
+    static final MemorySegment LN_pkcs9_contentType$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("contentType");
+    static final MemorySegment LN_pkcs9_messageDigest$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("messageDigest");
+    static final MemorySegment LN_pkcs9_signingTime$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("signingTime");
+    static final MemorySegment LN_pkcs9_countersignature$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("countersignature");
+    static final MemorySegment LN_pkcs9_challengePassword$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("challengePassword");
+    static final MemorySegment LN_pkcs9_unstructuredAddress$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("unstructuredAddress");
 }
 
 

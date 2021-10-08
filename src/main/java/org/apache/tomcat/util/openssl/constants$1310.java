@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1310 {
 
-    static final MemorySegment SN_hold_instruction_call_issuer$SEGMENT = ResourceScope.globalScope().allocateUtf8String("holdInstructionCallIssuer");
-    static final MemorySegment LN_hold_instruction_call_issuer$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Hold Instruction Call Issuer");
-    static final MemorySegment SN_hold_instruction_reject$SEGMENT = ResourceScope.globalScope().allocateUtf8String("holdInstructionReject");
-    static final MemorySegment LN_hold_instruction_reject$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Hold Instruction Reject");
-    static final MemorySegment SN_data$SEGMENT = ResourceScope.globalScope().allocateUtf8String("data");
-    static final MemorySegment SN_pss$SEGMENT = ResourceScope.globalScope().allocateUtf8String("pss");
+    static final MemorySegment SN_hold_instruction_call_issuer$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("holdInstructionCallIssuer");
+    static final MemorySegment LN_hold_instruction_call_issuer$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Hold Instruction Call Issuer");
+    static final MemorySegment SN_hold_instruction_reject$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("holdInstructionReject");
+    static final MemorySegment LN_hold_instruction_reject$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Hold Instruction Reject");
+    static final MemorySegment SN_data$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("data");
+    static final MemorySegment SN_pss$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("pss");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1416 {
 
-    static final MemorySegment SN_kx_any$SEGMENT = ResourceScope.globalScope().allocateUtf8String("KxANY");
-    static final MemorySegment LN_kx_any$SEGMENT = ResourceScope.globalScope().allocateUtf8String("kx-any");
-    static final MemorySegment SN_auth_rsa$SEGMENT = ResourceScope.globalScope().allocateUtf8String("AuthRSA");
-    static final MemorySegment LN_auth_rsa$SEGMENT = ResourceScope.globalScope().allocateUtf8String("auth-rsa");
-    static final MemorySegment SN_auth_ecdsa$SEGMENT = ResourceScope.globalScope().allocateUtf8String("AuthECDSA");
-    static final MemorySegment LN_auth_ecdsa$SEGMENT = ResourceScope.globalScope().allocateUtf8String("auth-ecdsa");
+    static final MemorySegment SN_kx_any$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("KxANY");
+    static final MemorySegment LN_kx_any$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("kx-any");
+    static final MemorySegment SN_auth_rsa$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("AuthRSA");
+    static final MemorySegment LN_auth_rsa$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("auth-rsa");
+    static final MemorySegment SN_auth_ecdsa$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("AuthECDSA");
+    static final MemorySegment LN_auth_ecdsa$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("auth-ecdsa");
 }
 
 

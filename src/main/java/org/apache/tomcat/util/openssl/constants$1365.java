@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1365 {
 
-    static final MemorySegment SN_id_tc26_cipher_gostr3412_2015_magma_ctracpkm$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-tc26-cipher-gostr3412-2015-magma-ctracpkm");
-    static final MemorySegment SN_id_tc26_cipher_gostr3412_2015_magma_ctracpkm_omac$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-tc26-cipher-gostr3412-2015-magma-ctracpkm-omac");
-    static final MemorySegment SN_id_tc26_cipher_gostr3412_2015_kuznyechik$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-tc26-cipher-gostr3412-2015-kuznyechik");
-    static final MemorySegment SN_id_tc26_cipher_gostr3412_2015_kuznyechik_ctracpkm$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-tc26-cipher-gostr3412-2015-kuznyechik-ctracpkm");
-    static final MemorySegment SN_id_tc26_cipher_gostr3412_2015_kuznyechik_ctracpkm_omac$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-tc26-cipher-gostr3412-2015-kuznyechik-ctracpkm-omac");
-    static final MemorySegment SN_id_tc26_agreement$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-tc26-agreement");
+    static final MemorySegment SN_id_tc26_cipher_gostr3412_2015_magma_ctracpkm$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-tc26-cipher-gostr3412-2015-magma-ctracpkm");
+    static final MemorySegment SN_id_tc26_cipher_gostr3412_2015_magma_ctracpkm_omac$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-tc26-cipher-gostr3412-2015-magma-ctracpkm-omac");
+    static final MemorySegment SN_id_tc26_cipher_gostr3412_2015_kuznyechik$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-tc26-cipher-gostr3412-2015-kuznyechik");
+    static final MemorySegment SN_id_tc26_cipher_gostr3412_2015_kuznyechik_ctracpkm$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-tc26-cipher-gostr3412-2015-kuznyechik-ctracpkm");
+    static final MemorySegment SN_id_tc26_cipher_gostr3412_2015_kuznyechik_ctracpkm_omac$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-tc26-cipher-gostr3412-2015-kuznyechik-ctracpkm-omac");
+    static final MemorySegment SN_id_tc26_agreement$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-tc26-agreement");
 }
 
 

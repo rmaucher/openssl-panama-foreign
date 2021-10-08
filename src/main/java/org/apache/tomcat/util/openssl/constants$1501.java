@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1501 {
 
-    static final MemorySegment TLS1_TXT_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DHE-RSA-CAMELLIA256-SHA");
-    static final MemorySegment TLS1_TXT_ADH_WITH_CAMELLIA_256_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ADH-CAMELLIA256-SHA");
-    static final MemorySegment TLS1_TXT_RSA_WITH_CAMELLIA_128_CBC_SHA256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("CAMELLIA128-SHA256");
-    static final MemorySegment TLS1_TXT_DH_DSS_WITH_CAMELLIA_128_CBC_SHA256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DH-DSS-CAMELLIA128-SHA256");
-    static final MemorySegment TLS1_TXT_DH_RSA_WITH_CAMELLIA_128_CBC_SHA256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DH-RSA-CAMELLIA128-SHA256");
-    static final MemorySegment TLS1_TXT_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DHE-DSS-CAMELLIA128-SHA256");
+    static final MemorySegment TLS1_TXT_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DHE-RSA-CAMELLIA256-SHA");
+    static final MemorySegment TLS1_TXT_ADH_WITH_CAMELLIA_256_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ADH-CAMELLIA256-SHA");
+    static final MemorySegment TLS1_TXT_RSA_WITH_CAMELLIA_128_CBC_SHA256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("CAMELLIA128-SHA256");
+    static final MemorySegment TLS1_TXT_DH_DSS_WITH_CAMELLIA_128_CBC_SHA256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DH-DSS-CAMELLIA128-SHA256");
+    static final MemorySegment TLS1_TXT_DH_RSA_WITH_CAMELLIA_128_CBC_SHA256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DH-RSA-CAMELLIA128-SHA256");
+    static final MemorySegment TLS1_TXT_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DHE-DSS-CAMELLIA128-SHA256");
 }
 
 

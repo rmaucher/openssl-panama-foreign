@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1273 {
 
-    static final MemorySegment LN_policy_mappings$SEGMENT = ResourceScope.globalScope().allocateUtf8String("X509v3 Policy Mappings");
-    static final MemorySegment SN_authority_key_identifier$SEGMENT = ResourceScope.globalScope().allocateUtf8String("authorityKeyIdentifier");
-    static final MemorySegment LN_authority_key_identifier$SEGMENT = ResourceScope.globalScope().allocateUtf8String("X509v3 Authority Key Identifier");
-    static final MemorySegment SN_policy_constraints$SEGMENT = ResourceScope.globalScope().allocateUtf8String("policyConstraints");
-    static final MemorySegment LN_policy_constraints$SEGMENT = ResourceScope.globalScope().allocateUtf8String("X509v3 Policy Constraints");
-    static final MemorySegment SN_ext_key_usage$SEGMENT = ResourceScope.globalScope().allocateUtf8String("extendedKeyUsage");
+    static final MemorySegment LN_policy_mappings$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X509v3 Policy Mappings");
+    static final MemorySegment SN_authority_key_identifier$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("authorityKeyIdentifier");
+    static final MemorySegment LN_authority_key_identifier$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X509v3 Authority Key Identifier");
+    static final MemorySegment SN_policy_constraints$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("policyConstraints");
+    static final MemorySegment LN_policy_constraints$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X509v3 Policy Constraints");
+    static final MemorySegment SN_ext_key_usage$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("extendedKeyUsage");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1215 {
 
-    static final MemorySegment SN_id_mod_attribute_cert$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-mod-attribute-cert");
-    static final MemorySegment SN_id_mod_timestamp_protocol$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-mod-timestamp-protocol");
-    static final MemorySegment SN_id_mod_ocsp$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-mod-ocsp");
-    static final MemorySegment SN_id_mod_dvcs$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-mod-dvcs");
-    static final MemorySegment SN_id_mod_cmp2000$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-mod-cmp2000");
-    static final MemorySegment SN_info_access$SEGMENT = ResourceScope.globalScope().allocateUtf8String("authorityInfoAccess");
+    static final MemorySegment SN_id_mod_attribute_cert$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-mod-attribute-cert");
+    static final MemorySegment SN_id_mod_timestamp_protocol$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-mod-timestamp-protocol");
+    static final MemorySegment SN_id_mod_ocsp$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-mod-ocsp");
+    static final MemorySegment SN_id_mod_dvcs$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-mod-dvcs");
+    static final MemorySegment SN_id_mod_cmp2000$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-mod-cmp2000");
+    static final MemorySegment SN_info_access$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("authorityInfoAccess");
 }
 
 

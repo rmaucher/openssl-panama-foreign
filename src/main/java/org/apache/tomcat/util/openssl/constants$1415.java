@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1415 {
 
-    static final MemorySegment SN_kx_psk$SEGMENT = ResourceScope.globalScope().allocateUtf8String("KxPSK");
-    static final MemorySegment LN_kx_psk$SEGMENT = ResourceScope.globalScope().allocateUtf8String("kx-psk");
-    static final MemorySegment SN_kx_srp$SEGMENT = ResourceScope.globalScope().allocateUtf8String("KxSRP");
-    static final MemorySegment LN_kx_srp$SEGMENT = ResourceScope.globalScope().allocateUtf8String("kx-srp");
-    static final MemorySegment SN_kx_gost$SEGMENT = ResourceScope.globalScope().allocateUtf8String("KxGOST");
-    static final MemorySegment LN_kx_gost$SEGMENT = ResourceScope.globalScope().allocateUtf8String("kx-gost");
+    static final MemorySegment SN_kx_psk$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("KxPSK");
+    static final MemorySegment LN_kx_psk$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("kx-psk");
+    static final MemorySegment SN_kx_srp$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("KxSRP");
+    static final MemorySegment LN_kx_srp$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("kx-srp");
+    static final MemorySegment SN_kx_gost$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("KxGOST");
+    static final MemorySegment LN_kx_gost$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("kx-gost");
 }
 
 

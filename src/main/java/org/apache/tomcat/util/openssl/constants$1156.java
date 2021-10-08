@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1156 {
 
-    static final MemorySegment SN_X9_62_c2tnb431r1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("c2tnb431r1");
-    static final MemorySegment SN_X9_62_prime192v1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("prime192v1");
-    static final MemorySegment SN_X9_62_prime192v2$SEGMENT = ResourceScope.globalScope().allocateUtf8String("prime192v2");
-    static final MemorySegment SN_X9_62_prime192v3$SEGMENT = ResourceScope.globalScope().allocateUtf8String("prime192v3");
-    static final MemorySegment SN_X9_62_prime239v1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("prime239v1");
-    static final MemorySegment SN_X9_62_prime239v2$SEGMENT = ResourceScope.globalScope().allocateUtf8String("prime239v2");
+    static final MemorySegment SN_X9_62_c2tnb431r1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("c2tnb431r1");
+    static final MemorySegment SN_X9_62_prime192v1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("prime192v1");
+    static final MemorySegment SN_X9_62_prime192v2$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("prime192v2");
+    static final MemorySegment SN_X9_62_prime192v3$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("prime192v3");
+    static final MemorySegment SN_X9_62_prime239v1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("prime239v1");
+    static final MemorySegment SN_X9_62_prime239v2$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("prime239v2");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1439 {
 
-    static final MemorySegment SSL_TXT_RSA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RSA");
-    static final MemorySegment SSL_TXT_ECDH$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ECDH");
-    static final MemorySegment SSL_TXT_EECDH$SEGMENT = ResourceScope.globalScope().allocateUtf8String("EECDH");
-    static final MemorySegment SSL_TXT_ECDHE$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ECDHE");
-    static final MemorySegment SSL_TXT_AECDH$SEGMENT = ResourceScope.globalScope().allocateUtf8String("AECDH");
-    static final MemorySegment SSL_TXT_ECDSA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ECDSA");
+    static final MemorySegment SSL_TXT_RSA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RSA");
+    static final MemorySegment SSL_TXT_ECDH$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ECDH");
+    static final MemorySegment SSL_TXT_EECDH$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("EECDH");
+    static final MemorySegment SSL_TXT_ECDHE$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ECDHE");
+    static final MemorySegment SSL_TXT_AECDH$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("AECDH");
+    static final MemorySegment SSL_TXT_ECDSA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ECDSA");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1234 {
 
-    static final MemorySegment SN_id_cmc_regInfo$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-cmc-regInfo");
-    static final MemorySegment SN_id_cmc_responseInfo$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-cmc-responseInfo");
-    static final MemorySegment SN_id_cmc_queryPending$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-cmc-queryPending");
-    static final MemorySegment SN_id_cmc_popLinkRandom$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-cmc-popLinkRandom");
-    static final MemorySegment SN_id_cmc_popLinkWitness$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-cmc-popLinkWitness");
-    static final MemorySegment SN_id_cmc_confirmCertAcceptance$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-cmc-confirmCertAcceptance");
+    static final MemorySegment SN_id_cmc_regInfo$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-cmc-regInfo");
+    static final MemorySegment SN_id_cmc_responseInfo$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-cmc-responseInfo");
+    static final MemorySegment SN_id_cmc_queryPending$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-cmc-queryPending");
+    static final MemorySegment SN_id_cmc_popLinkRandom$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-cmc-popLinkRandom");
+    static final MemorySegment SN_id_cmc_popLinkWitness$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-cmc-popLinkWitness");
+    static final MemorySegment SN_id_cmc_confirmCertAcceptance$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-cmc-confirmCertAcceptance");
 }
 
 

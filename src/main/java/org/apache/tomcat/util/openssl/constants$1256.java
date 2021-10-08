@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1256 {
 
-    static final MemorySegment LN_organizationalUnitName$SEGMENT = ResourceScope.globalScope().allocateUtf8String("organizationalUnitName");
-    static final MemorySegment SN_title$SEGMENT = ResourceScope.globalScope().allocateUtf8String("title");
-    static final MemorySegment LN_title$SEGMENT = ResourceScope.globalScope().allocateUtf8String("title");
-    static final MemorySegment LN_description$SEGMENT = ResourceScope.globalScope().allocateUtf8String("description");
-    static final MemorySegment LN_searchGuide$SEGMENT = ResourceScope.globalScope().allocateUtf8String("searchGuide");
-    static final MemorySegment LN_businessCategory$SEGMENT = ResourceScope.globalScope().allocateUtf8String("businessCategory");
+    static final MemorySegment LN_organizationalUnitName$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("organizationalUnitName");
+    static final MemorySegment SN_title$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("title");
+    static final MemorySegment LN_title$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("title");
+    static final MemorySegment LN_description$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("description");
+    static final MemorySegment LN_searchGuide$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("searchGuide");
+    static final MemorySegment LN_businessCategory$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("businessCategory");
 }
 
 

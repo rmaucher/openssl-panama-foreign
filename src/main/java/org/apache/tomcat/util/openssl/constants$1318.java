@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1318 {
 
-    static final MemorySegment SN_secretary$SEGMENT = ResourceScope.globalScope().allocateUtf8String("secretary");
-    static final MemorySegment LN_otherMailbox$SEGMENT = ResourceScope.globalScope().allocateUtf8String("otherMailbox");
-    static final MemorySegment LN_lastModifiedTime$SEGMENT = ResourceScope.globalScope().allocateUtf8String("lastModifiedTime");
-    static final MemorySegment LN_lastModifiedBy$SEGMENT = ResourceScope.globalScope().allocateUtf8String("lastModifiedBy");
-    static final MemorySegment SN_domainComponent$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DC");
-    static final MemorySegment LN_domainComponent$SEGMENT = ResourceScope.globalScope().allocateUtf8String("domainComponent");
+    static final MemorySegment SN_secretary$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("secretary");
+    static final MemorySegment LN_otherMailbox$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("otherMailbox");
+    static final MemorySegment LN_lastModifiedTime$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lastModifiedTime");
+    static final MemorySegment LN_lastModifiedBy$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lastModifiedBy");
+    static final MemorySegment SN_domainComponent$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DC");
+    static final MemorySegment LN_domainComponent$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("domainComponent");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1211 {
 
-    static final MemorySegment SN_id_qt$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-qt");
-    static final MemorySegment SN_id_kp$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-kp");
-    static final MemorySegment SN_id_it$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-it");
-    static final MemorySegment SN_id_pkip$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-pkip");
-    static final MemorySegment SN_id_alg$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-alg");
-    static final MemorySegment SN_id_cmc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-cmc");
+    static final MemorySegment SN_id_qt$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-qt");
+    static final MemorySegment SN_id_kp$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-kp");
+    static final MemorySegment SN_id_it$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-it");
+    static final MemorySegment SN_id_pkip$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-pkip");
+    static final MemorySegment SN_id_alg$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-alg");
+    static final MemorySegment SN_id_cmc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-cmc");
 }
 
 

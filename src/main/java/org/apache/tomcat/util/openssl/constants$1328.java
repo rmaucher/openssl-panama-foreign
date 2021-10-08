@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1328 {
 
-    static final MemorySegment SN_setct_AuthResTBS$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-AuthResTBS");
-    static final MemorySegment SN_setct_AuthResTBSX$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-AuthResTBSX");
-    static final MemorySegment SN_setct_AuthTokenTBS$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-AuthTokenTBS");
-    static final MemorySegment SN_setct_CapTokenData$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-CapTokenData");
-    static final MemorySegment SN_setct_CapTokenTBS$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-CapTokenTBS");
-    static final MemorySegment SN_setct_AcqCardCodeMsg$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-AcqCardCodeMsg");
+    static final MemorySegment SN_setct_AuthResTBS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-AuthResTBS");
+    static final MemorySegment SN_setct_AuthResTBSX$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-AuthResTBSX");
+    static final MemorySegment SN_setct_AuthTokenTBS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-AuthTokenTBS");
+    static final MemorySegment SN_setct_CapTokenData$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-CapTokenData");
+    static final MemorySegment SN_setct_CapTokenTBS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-CapTokenTBS");
+    static final MemorySegment SN_setct_AcqCardCodeMsg$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-AcqCardCodeMsg");
 }
 
 

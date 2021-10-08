@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1424 {
 
-    static final MemorySegment LN_dstu34311$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DSTU Gost 34311-95");
-    static final MemorySegment SN_dstu4145le$SEGMENT = ResourceScope.globalScope().allocateUtf8String("dstu4145le");
-    static final MemorySegment LN_dstu4145le$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DSTU 4145-2002 little endian");
-    static final MemorySegment SN_dstu4145be$SEGMENT = ResourceScope.globalScope().allocateUtf8String("dstu4145be");
-    static final MemorySegment LN_dstu4145be$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DSTU 4145-2002 big endian");
-    static final MemorySegment SN_uacurve0$SEGMENT = ResourceScope.globalScope().allocateUtf8String("uacurve0");
+    static final MemorySegment LN_dstu34311$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DSTU Gost 34311-95");
+    static final MemorySegment SN_dstu4145le$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("dstu4145le");
+    static final MemorySegment LN_dstu4145le$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DSTU 4145-2002 little endian");
+    static final MemorySegment SN_dstu4145be$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("dstu4145be");
+    static final MemorySegment LN_dstu4145be$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DSTU 4145-2002 big endian");
+    static final MemorySegment SN_uacurve0$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("uacurve0");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1278 {
 
-    static final MemorySegment LN_netscape_ca_revocation_url$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Netscape CA Revocation Url");
-    static final MemorySegment SN_netscape_renewal_url$SEGMENT = ResourceScope.globalScope().allocateUtf8String("nsRenewalUrl");
-    static final MemorySegment LN_netscape_renewal_url$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Netscape Renewal Url");
-    static final MemorySegment SN_netscape_ca_policy_url$SEGMENT = ResourceScope.globalScope().allocateUtf8String("nsCaPolicyUrl");
-    static final MemorySegment LN_netscape_ca_policy_url$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Netscape CA Policy Url");
-    static final MemorySegment SN_netscape_ssl_server_name$SEGMENT = ResourceScope.globalScope().allocateUtf8String("nsSslServerName");
+    static final MemorySegment LN_netscape_ca_revocation_url$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Netscape CA Revocation Url");
+    static final MemorySegment SN_netscape_renewal_url$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("nsRenewalUrl");
+    static final MemorySegment LN_netscape_renewal_url$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Netscape Renewal Url");
+    static final MemorySegment SN_netscape_ca_policy_url$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("nsCaPolicyUrl");
+    static final MemorySegment LN_netscape_ca_policy_url$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Netscape CA Policy Url");
+    static final MemorySegment SN_netscape_ssl_server_name$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("nsSslServerName");
 }
 
 

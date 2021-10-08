@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1184 {
 
-    static final MemorySegment SN_id_smime_ct_compressedData$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-ct-compressedData");
-    static final MemorySegment SN_id_smime_ct_contentCollection$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-ct-contentCollection");
-    static final MemorySegment SN_id_smime_ct_authEnvelopedData$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-ct-authEnvelopedData");
-    static final MemorySegment SN_id_ct_asciiTextWithCRLF$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-ct-asciiTextWithCRLF");
-    static final MemorySegment SN_id_ct_xml$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-ct-xml");
-    static final MemorySegment SN_id_smime_aa_receiptRequest$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-aa-receiptRequest");
+    static final MemorySegment SN_id_smime_ct_compressedData$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-ct-compressedData");
+    static final MemorySegment SN_id_smime_ct_contentCollection$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-ct-contentCollection");
+    static final MemorySegment SN_id_smime_ct_authEnvelopedData$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-ct-authEnvelopedData");
+    static final MemorySegment SN_id_ct_asciiTextWithCRLF$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-ct-asciiTextWithCRLF");
+    static final MemorySegment SN_id_ct_xml$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-ct-xml");
+    static final MemorySegment SN_id_smime_aa_receiptRequest$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-aa-receiptRequest");
 }
 
 

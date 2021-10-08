@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1504 {
 
-    static final MemorySegment TLS1_TXT_RSA_PSK_WITH_CAMELLIA_128_CBC_SHA256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RSA-PSK-CAMELLIA128-SHA256");
-    static final MemorySegment TLS1_TXT_RSA_PSK_WITH_CAMELLIA_256_CBC_SHA384$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RSA-PSK-CAMELLIA256-SHA384");
-    static final MemorySegment TLS1_TXT_ECDHE_PSK_WITH_CAMELLIA_128_CBC_SHA256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ECDHE-PSK-CAMELLIA128-SHA256");
-    static final MemorySegment TLS1_TXT_ECDHE_PSK_WITH_CAMELLIA_256_CBC_SHA384$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ECDHE-PSK-CAMELLIA256-SHA384");
-    static final MemorySegment TLS1_TXT_RSA_WITH_SEED_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SEED-SHA");
-    static final MemorySegment TLS1_TXT_DH_DSS_WITH_SEED_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DH-DSS-SEED-SHA");
+    static final MemorySegment TLS1_TXT_RSA_PSK_WITH_CAMELLIA_128_CBC_SHA256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RSA-PSK-CAMELLIA128-SHA256");
+    static final MemorySegment TLS1_TXT_RSA_PSK_WITH_CAMELLIA_256_CBC_SHA384$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RSA-PSK-CAMELLIA256-SHA384");
+    static final MemorySegment TLS1_TXT_ECDHE_PSK_WITH_CAMELLIA_128_CBC_SHA256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ECDHE-PSK-CAMELLIA128-SHA256");
+    static final MemorySegment TLS1_TXT_ECDHE_PSK_WITH_CAMELLIA_256_CBC_SHA384$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ECDHE-PSK-CAMELLIA256-SHA384");
+    static final MemorySegment TLS1_TXT_RSA_WITH_SEED_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SEED-SHA");
+    static final MemorySegment TLS1_TXT_DH_DSS_WITH_SEED_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DH-DSS-SEED-SHA");
 }
 
 

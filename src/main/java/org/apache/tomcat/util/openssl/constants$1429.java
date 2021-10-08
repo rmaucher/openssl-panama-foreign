@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1429 {
 
-    static final MemorySegment PEM_STRING_X509_CRL$SEGMENT = ResourceScope.globalScope().allocateUtf8String("X509 CRL");
-    static final MemorySegment PEM_STRING_EVP_PKEY$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ANY PRIVATE KEY");
-    static final MemorySegment PEM_STRING_PUBLIC$SEGMENT = ResourceScope.globalScope().allocateUtf8String("PUBLIC KEY");
-    static final MemorySegment PEM_STRING_RSA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RSA PRIVATE KEY");
-    static final MemorySegment PEM_STRING_RSA_PUBLIC$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RSA PUBLIC KEY");
-    static final MemorySegment PEM_STRING_DSA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DSA PRIVATE KEY");
+    static final MemorySegment PEM_STRING_X509_CRL$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X509 CRL");
+    static final MemorySegment PEM_STRING_EVP_PKEY$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ANY PRIVATE KEY");
+    static final MemorySegment PEM_STRING_PUBLIC$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("PUBLIC KEY");
+    static final MemorySegment PEM_STRING_RSA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RSA PRIVATE KEY");
+    static final MemorySegment PEM_STRING_RSA_PUBLIC$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RSA PUBLIC KEY");
+    static final MemorySegment PEM_STRING_DSA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DSA PRIVATE KEY");
 }
 
 

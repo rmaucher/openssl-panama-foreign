@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1148 {
 
-    static final MemorySegment LN_international_organizations$SEGMENT = ResourceScope.globalScope().allocateUtf8String("International Organizations");
-    static final MemorySegment SN_wap$SEGMENT = ResourceScope.globalScope().allocateUtf8String("wap");
-    static final MemorySegment SN_wap_wsg$SEGMENT = ResourceScope.globalScope().allocateUtf8String("wap-wsg");
-    static final MemorySegment SN_selected_attribute_types$SEGMENT = ResourceScope.globalScope().allocateUtf8String("selected-attribute-types");
-    static final MemorySegment LN_selected_attribute_types$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Selected Attribute Types");
-    static final MemorySegment SN_clearance$SEGMENT = ResourceScope.globalScope().allocateUtf8String("clearance");
+    static final MemorySegment LN_international_organizations$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("International Organizations");
+    static final MemorySegment SN_wap$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("wap");
+    static final MemorySegment SN_wap_wsg$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("wap-wsg");
+    static final MemorySegment SN_selected_attribute_types$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("selected-attribute-types");
+    static final MemorySegment LN_selected_attribute_types$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Selected Attribute Types");
+    static final MemorySegment SN_clearance$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("clearance");
 }
 
 

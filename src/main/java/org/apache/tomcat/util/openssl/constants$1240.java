@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1240 {
 
-    static final MemorySegment SN_ad_dvcs$SEGMENT = ResourceScope.globalScope().allocateUtf8String("AD_DVCS");
-    static final MemorySegment LN_ad_dvcs$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ad dvcs");
-    static final MemorySegment SN_caRepository$SEGMENT = ResourceScope.globalScope().allocateUtf8String("caRepository");
-    static final MemorySegment LN_caRepository$SEGMENT = ResourceScope.globalScope().allocateUtf8String("CA Repository");
-    static final MemorySegment SN_id_pkix_OCSP_basic$SEGMENT = ResourceScope.globalScope().allocateUtf8String("basicOCSPResponse");
-    static final MemorySegment LN_id_pkix_OCSP_basic$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Basic OCSP Response");
+    static final MemorySegment SN_ad_dvcs$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("AD_DVCS");
+    static final MemorySegment LN_ad_dvcs$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ad dvcs");
+    static final MemorySegment SN_caRepository$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("caRepository");
+    static final MemorySegment LN_caRepository$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("CA Repository");
+    static final MemorySegment SN_id_pkix_OCSP_basic$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("basicOCSPResponse");
+    static final MemorySegment LN_id_pkix_OCSP_basic$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Basic OCSP Response");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1159 {
 
-    static final MemorySegment SN_secp128r2$SEGMENT = ResourceScope.globalScope().allocateUtf8String("secp128r2");
-    static final MemorySegment SN_secp160k1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("secp160k1");
-    static final MemorySegment SN_secp160r1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("secp160r1");
-    static final MemorySegment SN_secp160r2$SEGMENT = ResourceScope.globalScope().allocateUtf8String("secp160r2");
-    static final MemorySegment SN_secp192k1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("secp192k1");
-    static final MemorySegment SN_secp224k1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("secp224k1");
+    static final MemorySegment SN_secp128r2$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("secp128r2");
+    static final MemorySegment SN_secp160k1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("secp160k1");
+    static final MemorySegment SN_secp160r1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("secp160r1");
+    static final MemorySegment SN_secp160r2$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("secp160r2");
+    static final MemorySegment SN_secp192k1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("secp192k1");
+    static final MemorySegment SN_secp224k1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("secp224k1");
 }
 
 

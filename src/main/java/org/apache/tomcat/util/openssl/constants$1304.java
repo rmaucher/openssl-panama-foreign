@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1304 {
 
-    static final MemorySegment SN_hmac_sha3_512$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-hmacWithSHA3-512");
-    static final MemorySegment LN_hmac_sha3_512$SEGMENT = ResourceScope.globalScope().allocateUtf8String("hmac-sha3-512");
-    static final MemorySegment SN_dsa_with_SHA224$SEGMENT = ResourceScope.globalScope().allocateUtf8String("dsa_with_SHA224");
-    static final MemorySegment SN_dsa_with_SHA256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("dsa_with_SHA256");
-    static final MemorySegment SN_dsa_with_SHA384$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-dsa-with-sha384");
-    static final MemorySegment LN_dsa_with_SHA384$SEGMENT = ResourceScope.globalScope().allocateUtf8String("dsa_with_SHA384");
+    static final MemorySegment SN_hmac_sha3_512$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-hmacWithSHA3-512");
+    static final MemorySegment LN_hmac_sha3_512$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hmac-sha3-512");
+    static final MemorySegment SN_dsa_with_SHA224$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("dsa_with_SHA224");
+    static final MemorySegment SN_dsa_with_SHA256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("dsa_with_SHA256");
+    static final MemorySegment SN_dsa_with_SHA384$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-dsa-with-sha384");
+    static final MemorySegment LN_dsa_with_SHA384$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("dsa_with_SHA384");
 }
 
 

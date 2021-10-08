@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1443 {
 
-    static final MemorySegment SSL_TXT_GOST$SEGMENT = ResourceScope.globalScope().allocateUtf8String("GOST89");
-    static final MemorySegment SSL_TXT_ARIA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ARIA");
-    static final MemorySegment SSL_TXT_ARIA_GCM$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ARIAGCM");
-    static final MemorySegment SSL_TXT_ARIA128$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ARIA128");
-    static final MemorySegment SSL_TXT_ARIA256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ARIA256");
-    static final MemorySegment SSL_TXT_MD5$SEGMENT = ResourceScope.globalScope().allocateUtf8String("MD5");
+    static final MemorySegment SSL_TXT_GOST$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("GOST89");
+    static final MemorySegment SSL_TXT_ARIA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ARIA");
+    static final MemorySegment SSL_TXT_ARIA_GCM$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ARIAGCM");
+    static final MemorySegment SSL_TXT_ARIA128$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ARIA128");
+    static final MemorySegment SSL_TXT_ARIA256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ARIA256");
+    static final MemorySegment SSL_TXT_MD5$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("MD5");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1444 {
 
-    static final MemorySegment SSL_TXT_SHA1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SHA1");
-    static final MemorySegment SSL_TXT_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SHA");
-    static final MemorySegment SSL_TXT_GOST94$SEGMENT = ResourceScope.globalScope().allocateUtf8String("GOST94");
-    static final MemorySegment SSL_TXT_GOST89MAC$SEGMENT = ResourceScope.globalScope().allocateUtf8String("GOST89MAC");
-    static final MemorySegment SSL_TXT_GOST12$SEGMENT = ResourceScope.globalScope().allocateUtf8String("GOST12");
-    static final MemorySegment SSL_TXT_GOST89MAC12$SEGMENT = ResourceScope.globalScope().allocateUtf8String("GOST89MAC12");
+    static final MemorySegment SSL_TXT_SHA1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SHA1");
+    static final MemorySegment SSL_TXT_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SHA");
+    static final MemorySegment SSL_TXT_GOST94$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("GOST94");
+    static final MemorySegment SSL_TXT_GOST89MAC$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("GOST89MAC");
+    static final MemorySegment SSL_TXT_GOST12$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("GOST12");
+    static final MemorySegment SSL_TXT_GOST89MAC12$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("GOST89MAC12");
 }
 
 

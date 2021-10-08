@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1136 {
 
-    static final MemorySegment SCNiFAST64$SEGMENT = ResourceScope.globalScope().allocateUtf8String("li");
-    static final MemorySegment SCNu8$SEGMENT = ResourceScope.globalScope().allocateUtf8String("hhu");
-    static final MemorySegment SCNu16$SEGMENT = ResourceScope.globalScope().allocateUtf8String("hu");
-    static final MemorySegment SCNu32$SEGMENT = ResourceScope.globalScope().allocateUtf8String("u");
-    static final MemorySegment SCNu64$SEGMENT = ResourceScope.globalScope().allocateUtf8String("lu");
-    static final MemorySegment SCNuLEAST8$SEGMENT = ResourceScope.globalScope().allocateUtf8String("hhu");
+    static final MemorySegment SCNiFAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("li");
+    static final MemorySegment SCNu8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hhu");
+    static final MemorySegment SCNu16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hu");
+    static final MemorySegment SCNu32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("u");
+    static final MemorySegment SCNu64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lu");
+    static final MemorySegment SCNuLEAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hhu");
 }
 
 

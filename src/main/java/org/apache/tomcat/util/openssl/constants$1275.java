@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1275 {
 
-    static final MemorySegment LN_target_information$SEGMENT = ResourceScope.globalScope().allocateUtf8String("X509v3 AC Targeting");
-    static final MemorySegment SN_no_rev_avail$SEGMENT = ResourceScope.globalScope().allocateUtf8String("noRevAvail");
-    static final MemorySegment LN_no_rev_avail$SEGMENT = ResourceScope.globalScope().allocateUtf8String("X509v3 No Revocation Available");
-    static final MemorySegment SN_anyExtendedKeyUsage$SEGMENT = ResourceScope.globalScope().allocateUtf8String("anyExtendedKeyUsage");
-    static final MemorySegment LN_anyExtendedKeyUsage$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Any Extended Key Usage");
-    static final MemorySegment SN_netscape$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Netscape");
+    static final MemorySegment LN_target_information$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X509v3 AC Targeting");
+    static final MemorySegment SN_no_rev_avail$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("noRevAvail");
+    static final MemorySegment LN_no_rev_avail$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X509v3 No Revocation Available");
+    static final MemorySegment SN_anyExtendedKeyUsage$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("anyExtendedKeyUsage");
+    static final MemorySegment LN_anyExtendedKeyUsage$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Any Extended Key Usage");
+    static final MemorySegment SN_netscape$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Netscape");
 }
 
 

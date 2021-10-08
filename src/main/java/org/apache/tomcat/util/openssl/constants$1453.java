@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1453 {
 
-    static final MemorySegment SSL3_TXT_EDH_RSA_DES_64_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("EDH-RSA-DES-CBC-SHA");
-    static final MemorySegment SSL3_TXT_EDH_RSA_DES_192_CBC3_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("EDH-RSA-DES-CBC3-SHA");
-    static final MemorySegment SSL3_TXT_ADH_RC4_40_MD5$SEGMENT = ResourceScope.globalScope().allocateUtf8String("EXP-ADH-RC4-MD5");
-    static final MemorySegment SSL3_TXT_ADH_RC4_128_MD5$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ADH-RC4-MD5");
-    static final MemorySegment SSL3_TXT_ADH_DES_40_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("EXP-ADH-DES-CBC-SHA");
-    static final MemorySegment SSL3_TXT_ADH_DES_64_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ADH-DES-CBC-SHA");
+    static final MemorySegment SSL3_TXT_EDH_RSA_DES_64_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("EDH-RSA-DES-CBC-SHA");
+    static final MemorySegment SSL3_TXT_EDH_RSA_DES_192_CBC3_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("EDH-RSA-DES-CBC3-SHA");
+    static final MemorySegment SSL3_TXT_ADH_RC4_40_MD5$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("EXP-ADH-RC4-MD5");
+    static final MemorySegment SSL3_TXT_ADH_RC4_128_MD5$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ADH-RC4-MD5");
+    static final MemorySegment SSL3_TXT_ADH_DES_40_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("EXP-ADH-DES-CBC-SHA");
+    static final MemorySegment SSL3_TXT_ADH_DES_64_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ADH-DES-CBC-SHA");
 }
 
 

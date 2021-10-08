@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1446 {
 
-    static final MemorySegment SSL_TXT_ALL$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ALL");
-    static final MemorySegment SSL_TXT_CMPALL$SEGMENT = ResourceScope.globalScope().allocateUtf8String("COMPLEMENTOFALL");
-    static final MemorySegment SSL_TXT_CMPDEF$SEGMENT = ResourceScope.globalScope().allocateUtf8String("COMPLEMENTOFDEFAULT");
-    static final MemorySegment SSL_DEFAULT_CIPHER_LIST$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ALL:!COMPLEMENTOFDEFAULT:!eNULL");
-    static final MemorySegment TLS_DEFAULT_CIPHERSUITES$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256");
-    static final MemorySegment SSL_SYSTEM_DEFAULT_CIPHER_LIST$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ALL:!COMPLEMENTOFDEFAULT:!eNULL");
+    static final MemorySegment SSL_TXT_ALL$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ALL");
+    static final MemorySegment SSL_TXT_CMPALL$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("COMPLEMENTOFALL");
+    static final MemorySegment SSL_TXT_CMPDEF$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("COMPLEMENTOFDEFAULT");
+    static final MemorySegment SSL_DEFAULT_CIPHER_LIST$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ALL:!COMPLEMENTOFDEFAULT:!eNULL");
+    static final MemorySegment TLS_DEFAULT_CIPHERSUITES$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256");
+    static final MemorySegment SSL_SYSTEM_DEFAULT_CIPHER_LIST$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ALL:!COMPLEMENTOFDEFAULT:!eNULL");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1314 {
 
-    static final MemorySegment LN_domainRelatedObject$SEGMENT = ResourceScope.globalScope().allocateUtf8String("domainRelatedObject");
-    static final MemorySegment LN_friendlyCountry$SEGMENT = ResourceScope.globalScope().allocateUtf8String("friendlyCountry");
-    static final MemorySegment LN_simpleSecurityObject$SEGMENT = ResourceScope.globalScope().allocateUtf8String("simpleSecurityObject");
-    static final MemorySegment LN_pilotOrganization$SEGMENT = ResourceScope.globalScope().allocateUtf8String("pilotOrganization");
-    static final MemorySegment LN_pilotDSA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("pilotDSA");
-    static final MemorySegment LN_qualityLabelledData$SEGMENT = ResourceScope.globalScope().allocateUtf8String("qualityLabelledData");
+    static final MemorySegment LN_domainRelatedObject$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("domainRelatedObject");
+    static final MemorySegment LN_friendlyCountry$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("friendlyCountry");
+    static final MemorySegment LN_simpleSecurityObject$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("simpleSecurityObject");
+    static final MemorySegment LN_pilotOrganization$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("pilotOrganization");
+    static final MemorySegment LN_pilotDSA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("pilotDSA");
+    static final MemorySegment LN_qualityLabelledData$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("qualityLabelledData");
 }
 
 

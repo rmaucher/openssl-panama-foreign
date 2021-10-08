@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1243 {
 
-    static final MemorySegment SN_id_pkix_OCSP_extendedStatus$SEGMENT = ResourceScope.globalScope().allocateUtf8String("extendedStatus");
-    static final MemorySegment LN_id_pkix_OCSP_extendedStatus$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Extended OCSP Status");
-    static final MemorySegment SN_id_pkix_OCSP_valid$SEGMENT = ResourceScope.globalScope().allocateUtf8String("valid");
-    static final MemorySegment SN_id_pkix_OCSP_path$SEGMENT = ResourceScope.globalScope().allocateUtf8String("path");
-    static final MemorySegment SN_id_pkix_OCSP_trustRoot$SEGMENT = ResourceScope.globalScope().allocateUtf8String("trustRoot");
-    static final MemorySegment LN_id_pkix_OCSP_trustRoot$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Trust Root");
+    static final MemorySegment SN_id_pkix_OCSP_extendedStatus$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("extendedStatus");
+    static final MemorySegment LN_id_pkix_OCSP_extendedStatus$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Extended OCSP Status");
+    static final MemorySegment SN_id_pkix_OCSP_valid$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("valid");
+    static final MemorySegment SN_id_pkix_OCSP_path$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("path");
+    static final MemorySegment SN_id_pkix_OCSP_trustRoot$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("trustRoot");
+    static final MemorySegment LN_id_pkix_OCSP_trustRoot$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Trust Root");
 }
 
 

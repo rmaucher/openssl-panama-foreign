@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1359 {
 
-    static final MemorySegment SN_id_GostR3410_94_bBis$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-GostR3410-94-bBis");
-    static final MemorySegment SN_id_Gost28147_89_cc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-Gost28147-89-cc");
-    static final MemorySegment LN_id_Gost28147_89_cc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("GOST 28147-89 Cryptocom ParamSet");
-    static final MemorySegment SN_id_GostR3410_94_cc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("gost94cc");
-    static final MemorySegment LN_id_GostR3410_94_cc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("GOST 34.10-94 Cryptocom");
-    static final MemorySegment SN_id_GostR3410_2001_cc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("gost2001cc");
+    static final MemorySegment SN_id_GostR3410_94_bBis$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-GostR3410-94-bBis");
+    static final MemorySegment SN_id_Gost28147_89_cc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-Gost28147-89-cc");
+    static final MemorySegment LN_id_Gost28147_89_cc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("GOST 28147-89 Cryptocom ParamSet");
+    static final MemorySegment SN_id_GostR3410_94_cc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("gost94cc");
+    static final MemorySegment LN_id_GostR3410_94_cc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("GOST 34.10-94 Cryptocom");
+    static final MemorySegment SN_id_GostR3410_2001_cc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("gost2001cc");
 }
 
 

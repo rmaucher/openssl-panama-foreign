@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1279 {
 
-    static final MemorySegment LN_netscape_ssl_server_name$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Netscape SSL Server Name");
-    static final MemorySegment SN_netscape_comment$SEGMENT = ResourceScope.globalScope().allocateUtf8String("nsComment");
-    static final MemorySegment LN_netscape_comment$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Netscape Comment");
-    static final MemorySegment SN_netscape_cert_sequence$SEGMENT = ResourceScope.globalScope().allocateUtf8String("nsCertSequence");
-    static final MemorySegment LN_netscape_cert_sequence$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Netscape Certificate Sequence");
-    static final MemorySegment SN_ns_sgc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("nsSGC");
+    static final MemorySegment LN_netscape_ssl_server_name$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Netscape SSL Server Name");
+    static final MemorySegment SN_netscape_comment$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("nsComment");
+    static final MemorySegment LN_netscape_comment$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Netscape Comment");
+    static final MemorySegment SN_netscape_cert_sequence$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("nsCertSequence");
+    static final MemorySegment LN_netscape_cert_sequence$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Netscape Certificate Sequence");
+    static final MemorySegment SN_ns_sgc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("nsSGC");
 }
 
 

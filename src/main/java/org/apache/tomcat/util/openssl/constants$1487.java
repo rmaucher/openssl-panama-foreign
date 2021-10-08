@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1487 {
 
-    static final MemorySegment TLS1_TXT_DH_RSA_WITH_AES_128_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DH-RSA-AES128-SHA");
-    static final MemorySegment TLS1_TXT_DHE_DSS_WITH_AES_128_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DHE-DSS-AES128-SHA");
-    static final MemorySegment TLS1_TXT_DHE_RSA_WITH_AES_128_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DHE-RSA-AES128-SHA");
-    static final MemorySegment TLS1_TXT_ADH_WITH_AES_128_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ADH-AES128-SHA");
-    static final MemorySegment TLS1_TXT_RSA_WITH_AES_256_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("AES256-SHA");
-    static final MemorySegment TLS1_TXT_DH_DSS_WITH_AES_256_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DH-DSS-AES256-SHA");
+    static final MemorySegment TLS1_TXT_DH_RSA_WITH_AES_128_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DH-RSA-AES128-SHA");
+    static final MemorySegment TLS1_TXT_DHE_DSS_WITH_AES_128_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DHE-DSS-AES128-SHA");
+    static final MemorySegment TLS1_TXT_DHE_RSA_WITH_AES_128_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DHE-RSA-AES128-SHA");
+    static final MemorySegment TLS1_TXT_ADH_WITH_AES_128_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ADH-AES128-SHA");
+    static final MemorySegment TLS1_TXT_RSA_WITH_AES_256_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("AES256-SHA");
+    static final MemorySegment TLS1_TXT_DH_DSS_WITH_AES_256_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DH-DSS-AES256-SHA");
 }
 
 

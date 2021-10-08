@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1187 {
 
-    static final MemorySegment SN_id_smime_aa_timeStampToken$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-aa-timeStampToken");
-    static final MemorySegment SN_id_smime_aa_ets_sigPolicyId$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-aa-ets-sigPolicyId");
-    static final MemorySegment SN_id_smime_aa_ets_commitmentType$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-aa-ets-commitmentType");
-    static final MemorySegment SN_id_smime_aa_ets_signerLocation$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-aa-ets-signerLocation");
-    static final MemorySegment SN_id_smime_aa_ets_signerAttr$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-aa-ets-signerAttr");
-    static final MemorySegment SN_id_smime_aa_ets_otherSigCert$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-aa-ets-otherSigCert");
+    static final MemorySegment SN_id_smime_aa_timeStampToken$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-aa-timeStampToken");
+    static final MemorySegment SN_id_smime_aa_ets_sigPolicyId$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-aa-ets-sigPolicyId");
+    static final MemorySegment SN_id_smime_aa_ets_commitmentType$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-aa-ets-commitmentType");
+    static final MemorySegment SN_id_smime_aa_ets_signerLocation$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-aa-ets-signerLocation");
+    static final MemorySegment SN_id_smime_aa_ets_signerAttr$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-aa-ets-signerAttr");
+    static final MemorySegment SN_id_smime_aa_ets_otherSigCert$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-aa-ets-otherSigCert");
 }
 
 

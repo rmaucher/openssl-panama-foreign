@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1483 {
 
-    static final MemorySegment TLS1_RFC_DH_DSS_WITH_ARIA_128_GCM_SHA256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_DH_DSS_WITH_ARIA_128_GCM_SHA256");
-    static final MemorySegment TLS1_RFC_DH_DSS_WITH_ARIA_256_GCM_SHA384$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_DH_DSS_WITH_ARIA_256_GCM_SHA384");
-    static final MemorySegment TLS1_RFC_DH_anon_WITH_ARIA_128_GCM_SHA256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_DH_anon_WITH_ARIA_128_GCM_SHA256");
-    static final MemorySegment TLS1_RFC_DH_anon_WITH_ARIA_256_GCM_SHA384$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_DH_anon_WITH_ARIA_256_GCM_SHA384");
-    static final MemorySegment TLS1_RFC_ECDHE_ECDSA_WITH_ARIA_128_GCM_SHA256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_ECDHE_ECDSA_WITH_ARIA_128_GCM_SHA256");
-    static final MemorySegment TLS1_RFC_ECDHE_ECDSA_WITH_ARIA_256_GCM_SHA384$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_ECDHE_ECDSA_WITH_ARIA_256_GCM_SHA384");
+    static final MemorySegment TLS1_RFC_DH_DSS_WITH_ARIA_128_GCM_SHA256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_DH_DSS_WITH_ARIA_128_GCM_SHA256");
+    static final MemorySegment TLS1_RFC_DH_DSS_WITH_ARIA_256_GCM_SHA384$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_DH_DSS_WITH_ARIA_256_GCM_SHA384");
+    static final MemorySegment TLS1_RFC_DH_anon_WITH_ARIA_128_GCM_SHA256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_DH_anon_WITH_ARIA_128_GCM_SHA256");
+    static final MemorySegment TLS1_RFC_DH_anon_WITH_ARIA_256_GCM_SHA384$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_DH_anon_WITH_ARIA_256_GCM_SHA384");
+    static final MemorySegment TLS1_RFC_ECDHE_ECDSA_WITH_ARIA_128_GCM_SHA256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_ECDHE_ECDSA_WITH_ARIA_128_GCM_SHA256");
+    static final MemorySegment TLS1_RFC_ECDHE_ECDSA_WITH_ARIA_256_GCM_SHA384$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_ECDHE_ECDSA_WITH_ARIA_256_GCM_SHA384");
 }
 
 

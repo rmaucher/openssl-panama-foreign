@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1229 {
 
-    static final MemorySegment SN_id_it_origPKIMessage$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-it-origPKIMessage");
-    static final MemorySegment SN_id_it_suppLangTags$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-it-suppLangTags");
-    static final MemorySegment SN_id_regCtrl$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-regCtrl");
-    static final MemorySegment SN_id_regInfo$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-regInfo");
-    static final MemorySegment SN_id_regCtrl_regToken$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-regCtrl-regToken");
-    static final MemorySegment SN_id_regCtrl_authenticator$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-regCtrl-authenticator");
+    static final MemorySegment SN_id_it_origPKIMessage$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-it-origPKIMessage");
+    static final MemorySegment SN_id_it_suppLangTags$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-it-suppLangTags");
+    static final MemorySegment SN_id_regCtrl$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-regCtrl");
+    static final MemorySegment SN_id_regInfo$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-regInfo");
+    static final MemorySegment SN_id_regCtrl_regToken$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-regCtrl-regToken");
+    static final MemorySegment SN_id_regCtrl_authenticator$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-regCtrl-authenticator");
 }
 
 

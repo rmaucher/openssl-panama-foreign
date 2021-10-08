@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1434 {
 
-    static final MemorySegment SSL_TXT_kDH$SEGMENT = ResourceScope.globalScope().allocateUtf8String("kDH");
-    static final MemorySegment SSL_TXT_kEDH$SEGMENT = ResourceScope.globalScope().allocateUtf8String("kEDH");
-    static final MemorySegment SSL_TXT_kDHE$SEGMENT = ResourceScope.globalScope().allocateUtf8String("kDHE");
-    static final MemorySegment SSL_TXT_kECDHr$SEGMENT = ResourceScope.globalScope().allocateUtf8String("kECDHr");
-    static final MemorySegment SSL_TXT_kECDHe$SEGMENT = ResourceScope.globalScope().allocateUtf8String("kECDHe");
-    static final MemorySegment SSL_TXT_kECDH$SEGMENT = ResourceScope.globalScope().allocateUtf8String("kECDH");
+    static final MemorySegment SSL_TXT_kDH$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("kDH");
+    static final MemorySegment SSL_TXT_kEDH$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("kEDH");
+    static final MemorySegment SSL_TXT_kDHE$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("kDHE");
+    static final MemorySegment SSL_TXT_kECDHr$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("kECDHr");
+    static final MemorySegment SSL_TXT_kECDHe$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("kECDHe");
+    static final MemorySegment SSL_TXT_kECDH$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("kECDH");
 }
 
 

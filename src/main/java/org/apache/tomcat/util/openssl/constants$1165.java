@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1165 {
 
-    static final MemorySegment SN_wap_wsg_idm_ecid_wtls10$SEGMENT = ResourceScope.globalScope().allocateUtf8String("wap-wsg-idm-ecid-wtls10");
-    static final MemorySegment SN_wap_wsg_idm_ecid_wtls11$SEGMENT = ResourceScope.globalScope().allocateUtf8String("wap-wsg-idm-ecid-wtls11");
-    static final MemorySegment SN_wap_wsg_idm_ecid_wtls12$SEGMENT = ResourceScope.globalScope().allocateUtf8String("wap-wsg-idm-ecid-wtls12");
-    static final MemorySegment SN_cast5_cbc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("CAST5-CBC");
-    static final MemorySegment LN_cast5_cbc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("cast5-cbc");
-    static final MemorySegment SN_cast5_ecb$SEGMENT = ResourceScope.globalScope().allocateUtf8String("CAST5-ECB");
+    static final MemorySegment SN_wap_wsg_idm_ecid_wtls10$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("wap-wsg-idm-ecid-wtls10");
+    static final MemorySegment SN_wap_wsg_idm_ecid_wtls11$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("wap-wsg-idm-ecid-wtls11");
+    static final MemorySegment SN_wap_wsg_idm_ecid_wtls12$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("wap-wsg-idm-ecid-wtls12");
+    static final MemorySegment SN_cast5_cbc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("CAST5-CBC");
+    static final MemorySegment LN_cast5_cbc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("cast5-cbc");
+    static final MemorySegment SN_cast5_ecb$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("CAST5-ECB");
 }
 
 

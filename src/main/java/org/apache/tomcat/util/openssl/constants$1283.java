@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1283 {
 
-    static final MemorySegment LN_SNMPv2$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SNMPv2");
-    static final MemorySegment LN_Mail$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Mail");
-    static final MemorySegment SN_Enterprises$SEGMENT = ResourceScope.globalScope().allocateUtf8String("enterprises");
-    static final MemorySegment LN_Enterprises$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Enterprises");
-    static final MemorySegment SN_dcObject$SEGMENT = ResourceScope.globalScope().allocateUtf8String("dcobject");
-    static final MemorySegment LN_dcObject$SEGMENT = ResourceScope.globalScope().allocateUtf8String("dcObject");
+    static final MemorySegment LN_SNMPv2$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SNMPv2");
+    static final MemorySegment LN_Mail$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Mail");
+    static final MemorySegment SN_Enterprises$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("enterprises");
+    static final MemorySegment LN_Enterprises$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Enterprises");
+    static final MemorySegment SN_dcObject$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("dcobject");
+    static final MemorySegment LN_dcObject$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("dcObject");
 }
 
 

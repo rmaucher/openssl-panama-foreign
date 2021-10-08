@@ -14,11 +14,11 @@ class constants$1117 {
         "ENGINE_get_static_state",
         constants$1117.ENGINE_get_static_state$FUNC, false
     );
-    static final MemorySegment OPENSSL_VERSION_TEXT$SEGMENT = ResourceScope.globalScope().allocateUtf8String("OpenSSL 1.1.1l  FIPS 24 Aug 2021");
-    static final MemorySegment SHLIB_VERSION_HISTORY$SEGMENT = ResourceScope.globalScope().allocateUtf8String("");
-    static final MemorySegment SHLIB_VERSION_NUMBER$SEGMENT = ResourceScope.globalScope().allocateUtf8String("1.1");
-    static final MemorySegment OPENSSL_FILE$SEGMENT = ResourceScope.globalScope().allocateUtf8String("/tmp/jextract$8976318511067573528.h");
-    static final MemorySegment __PRI64_PREFIX$SEGMENT = ResourceScope.globalScope().allocateUtf8String("l");
+    static final MemorySegment OPENSSL_VERSION_TEXT$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("OpenSSL 1.1.1l  FIPS 24 Aug 2021");
+    static final MemorySegment SHLIB_VERSION_HISTORY$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("");
+    static final MemorySegment SHLIB_VERSION_NUMBER$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("1.1");
+    static final MemorySegment OPENSSL_FILE$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("/tmp/jextract$1812253536371568688.h");
+    static final MemorySegment __PRI64_PREFIX$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("l");
 }
 
 

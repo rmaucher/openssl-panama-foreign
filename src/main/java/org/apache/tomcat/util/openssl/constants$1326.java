@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1326 {
 
-    static final MemorySegment SN_setct_PI$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-PI");
-    static final MemorySegment SN_setct_PIData$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-PIData");
-    static final MemorySegment SN_setct_PIDataUnsigned$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-PIDataUnsigned");
-    static final MemorySegment SN_setct_HODInput$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-HODInput");
-    static final MemorySegment SN_setct_AuthResBaggage$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-AuthResBaggage");
-    static final MemorySegment SN_setct_AuthRevReqBaggage$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-AuthRevReqBaggage");
+    static final MemorySegment SN_setct_PI$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-PI");
+    static final MemorySegment SN_setct_PIData$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-PIData");
+    static final MemorySegment SN_setct_PIDataUnsigned$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-PIDataUnsigned");
+    static final MemorySegment SN_setct_HODInput$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-HODInput");
+    static final MemorySegment SN_setct_AuthResBaggage$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-AuthResBaggage");
+    static final MemorySegment SN_setct_AuthRevReqBaggage$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-AuthRevReqBaggage");
 }
 
 

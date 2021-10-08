@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1349 {
 
-    static final MemorySegment SN_cryptopro$SEGMENT = ResourceScope.globalScope().allocateUtf8String("cryptopro");
-    static final MemorySegment SN_cryptocom$SEGMENT = ResourceScope.globalScope().allocateUtf8String("cryptocom");
-    static final MemorySegment SN_id_tc26$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-tc26");
-    static final MemorySegment SN_id_GostR3411_94_with_GostR3410_2001$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-GostR3411-94-with-GostR3410-2001");
-    static final MemorySegment LN_id_GostR3411_94_with_GostR3410_2001$SEGMENT = ResourceScope.globalScope().allocateUtf8String("GOST R 34.11-94 with GOST R 34.10-2001");
-    static final MemorySegment SN_id_GostR3411_94_with_GostR3410_94$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-GostR3411-94-with-GostR3410-94");
+    static final MemorySegment SN_cryptopro$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("cryptopro");
+    static final MemorySegment SN_cryptocom$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("cryptocom");
+    static final MemorySegment SN_id_tc26$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-tc26");
+    static final MemorySegment SN_id_GostR3411_94_with_GostR3410_2001$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-GostR3411-94-with-GostR3410-2001");
+    static final MemorySegment LN_id_GostR3411_94_with_GostR3410_2001$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("GOST R 34.11-94 with GOST R 34.10-2001");
+    static final MemorySegment SN_id_GostR3411_94_with_GostR3410_94$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-GostR3411-94-with-GostR3410-94");
 }
 
 

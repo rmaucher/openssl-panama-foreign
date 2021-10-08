@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1203 {
 
-    static final MemorySegment LN_rc4$SEGMENT = ResourceScope.globalScope().allocateUtf8String("rc4");
-    static final MemorySegment SN_rc4_40$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RC4-40");
-    static final MemorySegment LN_rc4_40$SEGMENT = ResourceScope.globalScope().allocateUtf8String("rc4-40");
-    static final MemorySegment SN_des_ede3_cbc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DES-EDE3-CBC");
-    static final MemorySegment LN_des_ede3_cbc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("des-ede3-cbc");
-    static final MemorySegment SN_rc5_cbc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RC5-CBC");
+    static final MemorySegment LN_rc4$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("rc4");
+    static final MemorySegment SN_rc4_40$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RC4-40");
+    static final MemorySegment LN_rc4_40$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("rc4-40");
+    static final MemorySegment SN_des_ede3_cbc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DES-EDE3-CBC");
+    static final MemorySegment LN_des_ede3_cbc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("des-ede3-cbc");
+    static final MemorySegment SN_rc5_cbc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RC5-CBC");
 }
 
 

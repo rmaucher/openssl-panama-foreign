@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1332 {
 
-    static final MemorySegment SN_setct_BatchAdminResData$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-BatchAdminResData");
-    static final MemorySegment SN_setct_CardCInitResTBS$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-CardCInitResTBS");
-    static final MemorySegment SN_setct_MeAqCInitResTBS$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-MeAqCInitResTBS");
-    static final MemorySegment SN_setct_RegFormResTBS$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-RegFormResTBS");
-    static final MemorySegment SN_setct_CertReqData$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-CertReqData");
-    static final MemorySegment SN_setct_CertReqTBS$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-CertReqTBS");
+    static final MemorySegment SN_setct_BatchAdminResData$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-BatchAdminResData");
+    static final MemorySegment SN_setct_CardCInitResTBS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-CardCInitResTBS");
+    static final MemorySegment SN_setct_MeAqCInitResTBS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-MeAqCInitResTBS");
+    static final MemorySegment SN_setct_RegFormResTBS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-RegFormResTBS");
+    static final MemorySegment SN_setct_CertReqData$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-CertReqData");
+    static final MemorySegment SN_setct_CertReqTBS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-CertReqTBS");
 }
 
 

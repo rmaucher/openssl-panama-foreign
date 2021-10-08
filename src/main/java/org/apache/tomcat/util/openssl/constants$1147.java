@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1147 {
 
-    static final MemorySegment LN_x509ExtAdmission$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Professional Information or basis for Admission");
-    static final MemorySegment SN_certicom_arc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("certicom-arc");
-    static final MemorySegment SN_ieee$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ieee");
-    static final MemorySegment SN_ieee_siswg$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ieee-siswg");
-    static final MemorySegment LN_ieee_siswg$SEGMENT = ResourceScope.globalScope().allocateUtf8String("IEEE Security in Storage Working Group");
-    static final MemorySegment SN_international_organizations$SEGMENT = ResourceScope.globalScope().allocateUtf8String("international-organizations");
+    static final MemorySegment LN_x509ExtAdmission$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Professional Information or basis for Admission");
+    static final MemorySegment SN_certicom_arc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("certicom-arc");
+    static final MemorySegment SN_ieee$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ieee");
+    static final MemorySegment SN_ieee_siswg$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ieee-siswg");
+    static final MemorySegment LN_ieee_siswg$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("IEEE Security in Storage Working Group");
+    static final MemorySegment SN_international_organizations$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("international-organizations");
 }
 
 

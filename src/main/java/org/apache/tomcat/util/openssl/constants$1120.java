@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1120 {
 
-    static final MemorySegment PRIdFAST64$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ld");
-    static final MemorySegment PRIi8$SEGMENT = ResourceScope.globalScope().allocateUtf8String("i");
-    static final MemorySegment PRIi16$SEGMENT = ResourceScope.globalScope().allocateUtf8String("i");
-    static final MemorySegment PRIi32$SEGMENT = ResourceScope.globalScope().allocateUtf8String("i");
-    static final MemorySegment PRIi64$SEGMENT = ResourceScope.globalScope().allocateUtf8String("li");
-    static final MemorySegment PRIiLEAST8$SEGMENT = ResourceScope.globalScope().allocateUtf8String("i");
+    static final MemorySegment PRIdFAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ld");
+    static final MemorySegment PRIi8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("i");
+    static final MemorySegment PRIi16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("i");
+    static final MemorySegment PRIi32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("i");
+    static final MemorySegment PRIi64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("li");
+    static final MemorySegment PRIiLEAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("i");
 }
 
 

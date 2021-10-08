@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1145 {
 
-    static final MemorySegment SN_iso$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ISO");
-    static final MemorySegment LN_iso$SEGMENT = ResourceScope.globalScope().allocateUtf8String("iso");
-    static final MemorySegment SN_joint_iso_itu_t$SEGMENT = ResourceScope.globalScope().allocateUtf8String("JOINT-ISO-ITU-T");
-    static final MemorySegment LN_joint_iso_itu_t$SEGMENT = ResourceScope.globalScope().allocateUtf8String("joint-iso-itu-t");
-    static final MemorySegment SN_member_body$SEGMENT = ResourceScope.globalScope().allocateUtf8String("member-body");
-    static final MemorySegment LN_member_body$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ISO Member Body");
+    static final MemorySegment SN_iso$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ISO");
+    static final MemorySegment LN_iso$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("iso");
+    static final MemorySegment SN_joint_iso_itu_t$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("JOINT-ISO-ITU-T");
+    static final MemorySegment LN_joint_iso_itu_t$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("joint-iso-itu-t");
+    static final MemorySegment SN_member_body$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("member-body");
+    static final MemorySegment LN_member_body$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ISO Member Body");
 }
 
 

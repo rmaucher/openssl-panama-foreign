@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1274 {
 
-    static final MemorySegment LN_ext_key_usage$SEGMENT = ResourceScope.globalScope().allocateUtf8String("X509v3 Extended Key Usage");
-    static final MemorySegment SN_freshest_crl$SEGMENT = ResourceScope.globalScope().allocateUtf8String("freshestCRL");
-    static final MemorySegment LN_freshest_crl$SEGMENT = ResourceScope.globalScope().allocateUtf8String("X509v3 Freshest CRL");
-    static final MemorySegment SN_inhibit_any_policy$SEGMENT = ResourceScope.globalScope().allocateUtf8String("inhibitAnyPolicy");
-    static final MemorySegment LN_inhibit_any_policy$SEGMENT = ResourceScope.globalScope().allocateUtf8String("X509v3 Inhibit Any Policy");
-    static final MemorySegment SN_target_information$SEGMENT = ResourceScope.globalScope().allocateUtf8String("targetInformation");
+    static final MemorySegment LN_ext_key_usage$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X509v3 Extended Key Usage");
+    static final MemorySegment SN_freshest_crl$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("freshestCRL");
+    static final MemorySegment LN_freshest_crl$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X509v3 Freshest CRL");
+    static final MemorySegment SN_inhibit_any_policy$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("inhibitAnyPolicy");
+    static final MemorySegment LN_inhibit_any_policy$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X509v3 Inhibit Any Policy");
+    static final MemorySegment SN_target_information$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("targetInformation");
 }
 
 

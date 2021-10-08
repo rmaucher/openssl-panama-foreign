@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1230 {
 
-    static final MemorySegment SN_id_regCtrl_pkiPublicationInfo$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-regCtrl-pkiPublicationInfo");
-    static final MemorySegment SN_id_regCtrl_pkiArchiveOptions$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-regCtrl-pkiArchiveOptions");
-    static final MemorySegment SN_id_regCtrl_oldCertID$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-regCtrl-oldCertID");
-    static final MemorySegment SN_id_regCtrl_protocolEncrKey$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-regCtrl-protocolEncrKey");
-    static final MemorySegment SN_id_regInfo_utf8Pairs$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-regInfo-utf8Pairs");
-    static final MemorySegment SN_id_regInfo_certReq$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-regInfo-certReq");
+    static final MemorySegment SN_id_regCtrl_pkiPublicationInfo$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-regCtrl-pkiPublicationInfo");
+    static final MemorySegment SN_id_regCtrl_pkiArchiveOptions$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-regCtrl-pkiArchiveOptions");
+    static final MemorySegment SN_id_regCtrl_oldCertID$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-regCtrl-oldCertID");
+    static final MemorySegment SN_id_regCtrl_protocolEncrKey$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-regCtrl-protocolEncrKey");
+    static final MemorySegment SN_id_regInfo_utf8Pairs$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-regInfo-utf8Pairs");
+    static final MemorySegment SN_id_regInfo_certReq$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-regInfo-certReq");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1366 {
 
-    static final MemorySegment SN_id_tc26_agreement_gost_3410_2012_256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-tc26-agreement-gost-3410-2012-256");
-    static final MemorySegment SN_id_tc26_agreement_gost_3410_2012_512$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-tc26-agreement-gost-3410-2012-512");
-    static final MemorySegment SN_id_tc26_wrap$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-tc26-wrap");
-    static final MemorySegment SN_id_tc26_wrap_gostr3412_2015_magma$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-tc26-wrap-gostr3412-2015-magma");
-    static final MemorySegment SN_id_tc26_wrap_gostr3412_2015_magma_kexp15$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-tc26-wrap-gostr3412-2015-magma-kexp15");
-    static final MemorySegment SN_id_tc26_wrap_gostr3412_2015_kuznyechik$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-tc26-wrap-gostr3412-2015-kuznyechik");
+    static final MemorySegment SN_id_tc26_agreement_gost_3410_2012_256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-tc26-agreement-gost-3410-2012-256");
+    static final MemorySegment SN_id_tc26_agreement_gost_3410_2012_512$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-tc26-agreement-gost-3410-2012-512");
+    static final MemorySegment SN_id_tc26_wrap$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-tc26-wrap");
+    static final MemorySegment SN_id_tc26_wrap_gostr3412_2015_magma$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-tc26-wrap-gostr3412-2015-magma");
+    static final MemorySegment SN_id_tc26_wrap_gostr3412_2015_magma_kexp15$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-tc26-wrap-gostr3412-2015-magma-kexp15");
+    static final MemorySegment SN_id_tc26_wrap_gostr3412_2015_kuznyechik$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-tc26-wrap-gostr3412-2015-kuznyechik");
 }
 
 

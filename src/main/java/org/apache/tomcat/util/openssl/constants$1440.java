@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1440 {
 
-    static final MemorySegment SSL_TXT_PSK$SEGMENT = ResourceScope.globalScope().allocateUtf8String("PSK");
-    static final MemorySegment SSL_TXT_SRP$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SRP");
-    static final MemorySegment SSL_TXT_DES$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DES");
-    static final MemorySegment SSL_TXT_3DES$SEGMENT = ResourceScope.globalScope().allocateUtf8String("3DES");
-    static final MemorySegment SSL_TXT_RC4$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RC4");
-    static final MemorySegment SSL_TXT_RC2$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RC2");
+    static final MemorySegment SSL_TXT_PSK$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("PSK");
+    static final MemorySegment SSL_TXT_SRP$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SRP");
+    static final MemorySegment SSL_TXT_DES$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DES");
+    static final MemorySegment SSL_TXT_3DES$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("3DES");
+    static final MemorySegment SSL_TXT_RC4$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RC4");
+    static final MemorySegment SSL_TXT_RC2$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RC2");
 }
 
 

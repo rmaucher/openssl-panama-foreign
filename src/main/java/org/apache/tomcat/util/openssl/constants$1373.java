@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1373 {
 
-    static final MemorySegment SN_grasshopper_ecb$SEGMENT = ResourceScope.globalScope().allocateUtf8String("grasshopper-ecb");
-    static final MemorySegment SN_grasshopper_ctr$SEGMENT = ResourceScope.globalScope().allocateUtf8String("grasshopper-ctr");
-    static final MemorySegment SN_grasshopper_ofb$SEGMENT = ResourceScope.globalScope().allocateUtf8String("grasshopper-ofb");
-    static final MemorySegment SN_grasshopper_cbc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("grasshopper-cbc");
-    static final MemorySegment SN_grasshopper_cfb$SEGMENT = ResourceScope.globalScope().allocateUtf8String("grasshopper-cfb");
-    static final MemorySegment SN_grasshopper_mac$SEGMENT = ResourceScope.globalScope().allocateUtf8String("grasshopper-mac");
+    static final MemorySegment SN_grasshopper_ecb$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("grasshopper-ecb");
+    static final MemorySegment SN_grasshopper_ctr$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("grasshopper-ctr");
+    static final MemorySegment SN_grasshopper_ofb$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("grasshopper-ofb");
+    static final MemorySegment SN_grasshopper_cbc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("grasshopper-cbc");
+    static final MemorySegment SN_grasshopper_cfb$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("grasshopper-cfb");
+    static final MemorySegment SN_grasshopper_mac$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("grasshopper-mac");
 }
 
 

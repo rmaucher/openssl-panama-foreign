@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1246 {
 
-    static final MemorySegment SN_rsaSignature$SEGMENT = ResourceScope.globalScope().allocateUtf8String("rsaSignature");
-    static final MemorySegment SN_dsa_2$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DSA-old");
-    static final MemorySegment LN_dsa_2$SEGMENT = ResourceScope.globalScope().allocateUtf8String("dsaEncryption-old");
-    static final MemorySegment SN_dsaWithSHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DSA-SHA");
-    static final MemorySegment LN_dsaWithSHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("dsaWithSHA");
-    static final MemorySegment SN_shaWithRSAEncryption$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RSA-SHA");
+    static final MemorySegment SN_rsaSignature$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("rsaSignature");
+    static final MemorySegment SN_dsa_2$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DSA-old");
+    static final MemorySegment LN_dsa_2$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("dsaEncryption-old");
+    static final MemorySegment SN_dsaWithSHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DSA-SHA");
+    static final MemorySegment LN_dsaWithSHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("dsaWithSHA");
+    static final MemorySegment SN_shaWithRSAEncryption$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RSA-SHA");
 }
 
 

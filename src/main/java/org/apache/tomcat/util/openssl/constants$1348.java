@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1348 {
 
-    static final MemorySegment SN_rsaOAEPEncryptionSET$SEGMENT = ResourceScope.globalScope().allocateUtf8String("rsaOAEPEncryptionSET");
-    static final MemorySegment SN_ipsec3$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Oakley-EC2N-3");
-    static final MemorySegment LN_ipsec3$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ipsec3");
-    static final MemorySegment SN_ipsec4$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Oakley-EC2N-4");
-    static final MemorySegment LN_ipsec4$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ipsec4");
-    static final MemorySegment SN_whirlpool$SEGMENT = ResourceScope.globalScope().allocateUtf8String("whirlpool");
+    static final MemorySegment SN_rsaOAEPEncryptionSET$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("rsaOAEPEncryptionSET");
+    static final MemorySegment SN_ipsec3$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Oakley-EC2N-3");
+    static final MemorySegment LN_ipsec3$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ipsec3");
+    static final MemorySegment SN_ipsec4$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Oakley-EC2N-4");
+    static final MemorySegment LN_ipsec4$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ipsec4");
+    static final MemorySegment SN_whirlpool$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("whirlpool");
 }
 
 

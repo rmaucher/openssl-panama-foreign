@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1391 {
 
-    static final MemorySegment LN_aria_192_cfb1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("aria-192-cfb1");
-    static final MemorySegment SN_aria_256_cfb1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ARIA-256-CFB1");
-    static final MemorySegment LN_aria_256_cfb1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("aria-256-cfb1");
-    static final MemorySegment SN_aria_128_cfb8$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ARIA-128-CFB8");
-    static final MemorySegment LN_aria_128_cfb8$SEGMENT = ResourceScope.globalScope().allocateUtf8String("aria-128-cfb8");
-    static final MemorySegment SN_aria_192_cfb8$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ARIA-192-CFB8");
+    static final MemorySegment LN_aria_192_cfb1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("aria-192-cfb1");
+    static final MemorySegment SN_aria_256_cfb1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ARIA-256-CFB1");
+    static final MemorySegment LN_aria_256_cfb1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("aria-256-cfb1");
+    static final MemorySegment SN_aria_128_cfb8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ARIA-128-CFB8");
+    static final MemorySegment LN_aria_128_cfb8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("aria-128-cfb8");
+    static final MemorySegment SN_aria_192_cfb8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ARIA-192-CFB8");
 }
 
 

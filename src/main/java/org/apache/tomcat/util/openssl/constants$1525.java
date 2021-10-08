@@ -9,9 +9,9 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1525 {
 
-    static final MemorySegment TLS_MD_IV_BLOCK_CONST$SEGMENT = ResourceScope.globalScope().allocateUtf8String("IV block");
-    static final MemorySegment TLS_MD_MASTER_SECRET_CONST$SEGMENT = ResourceScope.globalScope().allocateUtf8String("master secret");
-    static final MemorySegment TLS_MD_EXTENDED_MASTER_SECRET_CONST$SEGMENT = ResourceScope.globalScope().allocateUtf8String("extended master secret");
+    static final MemorySegment TLS_MD_IV_BLOCK_CONST$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("IV block");
+    static final MemorySegment TLS_MD_MASTER_SECRET_CONST$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("master secret");
+    static final MemorySegment TLS_MD_EXTENDED_MASTER_SECRET_CONST$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("extended master secret");
 }
 
 

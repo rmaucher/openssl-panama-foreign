@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1210 {
 
-    static final MemorySegment LN_bf_cfb64$SEGMENT = ResourceScope.globalScope().allocateUtf8String("bf-cfb");
-    static final MemorySegment SN_bf_ofb64$SEGMENT = ResourceScope.globalScope().allocateUtf8String("BF-OFB");
-    static final MemorySegment LN_bf_ofb64$SEGMENT = ResourceScope.globalScope().allocateUtf8String("bf-ofb");
-    static final MemorySegment SN_id_pkix$SEGMENT = ResourceScope.globalScope().allocateUtf8String("PKIX");
-    static final MemorySegment SN_id_pkix_mod$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-pkix-mod");
-    static final MemorySegment SN_id_pe$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-pe");
+    static final MemorySegment LN_bf_cfb64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("bf-cfb");
+    static final MemorySegment SN_bf_ofb64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("BF-OFB");
+    static final MemorySegment LN_bf_ofb64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("bf-ofb");
+    static final MemorySegment SN_id_pkix$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("PKIX");
+    static final MemorySegment SN_id_pkix_mod$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-pkix-mod");
+    static final MemorySegment SN_id_pe$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-pe");
 }
 
 

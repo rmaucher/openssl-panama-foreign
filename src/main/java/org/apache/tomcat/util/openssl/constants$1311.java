@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1311 {
 
-    static final MemorySegment SN_ucl$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ucl");
-    static final MemorySegment SN_pilot$SEGMENT = ResourceScope.globalScope().allocateUtf8String("pilot");
-    static final MemorySegment LN_pilotAttributeType$SEGMENT = ResourceScope.globalScope().allocateUtf8String("pilotAttributeType");
-    static final MemorySegment LN_pilotAttributeSyntax$SEGMENT = ResourceScope.globalScope().allocateUtf8String("pilotAttributeSyntax");
-    static final MemorySegment LN_pilotObjectClass$SEGMENT = ResourceScope.globalScope().allocateUtf8String("pilotObjectClass");
-    static final MemorySegment LN_pilotGroups$SEGMENT = ResourceScope.globalScope().allocateUtf8String("pilotGroups");
+    static final MemorySegment SN_ucl$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ucl");
+    static final MemorySegment SN_pilot$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("pilot");
+    static final MemorySegment LN_pilotAttributeType$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("pilotAttributeType");
+    static final MemorySegment LN_pilotAttributeSyntax$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("pilotAttributeSyntax");
+    static final MemorySegment LN_pilotObjectClass$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("pilotObjectClass");
+    static final MemorySegment LN_pilotGroups$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("pilotGroups");
 }
 
 

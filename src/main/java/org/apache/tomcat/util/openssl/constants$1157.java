@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1157 {
 
-    static final MemorySegment SN_X9_62_prime239v3$SEGMENT = ResourceScope.globalScope().allocateUtf8String("prime239v3");
-    static final MemorySegment SN_X9_62_prime256v1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("prime256v1");
-    static final MemorySegment SN_ecdsa_with_SHA1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ecdsa-with-SHA1");
-    static final MemorySegment SN_ecdsa_with_Recommended$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ecdsa-with-Recommended");
-    static final MemorySegment SN_ecdsa_with_Specified$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ecdsa-with-Specified");
-    static final MemorySegment SN_ecdsa_with_SHA224$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ecdsa-with-SHA224");
+    static final MemorySegment SN_X9_62_prime239v3$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("prime239v3");
+    static final MemorySegment SN_X9_62_prime256v1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("prime256v1");
+    static final MemorySegment SN_ecdsa_with_SHA1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ecdsa-with-SHA1");
+    static final MemorySegment SN_ecdsa_with_Recommended$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ecdsa-with-Recommended");
+    static final MemorySegment SN_ecdsa_with_Specified$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ecdsa-with-Specified");
+    static final MemorySegment SN_ecdsa_with_SHA224$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ecdsa-with-SHA224");
 }
 
 

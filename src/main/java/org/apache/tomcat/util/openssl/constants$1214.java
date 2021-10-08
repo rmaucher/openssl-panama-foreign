@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1214 {
 
-    static final MemorySegment SN_id_mod_cmc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-mod-cmc");
-    static final MemorySegment SN_id_mod_kea_profile_88$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-mod-kea-profile-88");
-    static final MemorySegment SN_id_mod_kea_profile_93$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-mod-kea-profile-93");
-    static final MemorySegment SN_id_mod_cmp$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-mod-cmp");
-    static final MemorySegment SN_id_mod_qualified_cert_88$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-mod-qualified-cert-88");
-    static final MemorySegment SN_id_mod_qualified_cert_93$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-mod-qualified-cert-93");
+    static final MemorySegment SN_id_mod_cmc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-mod-cmc");
+    static final MemorySegment SN_id_mod_kea_profile_88$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-mod-kea-profile-88");
+    static final MemorySegment SN_id_mod_kea_profile_93$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-mod-kea-profile-93");
+    static final MemorySegment SN_id_mod_cmp$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-mod-cmp");
+    static final MemorySegment SN_id_mod_qualified_cert_88$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-mod-qualified-cert-88");
+    static final MemorySegment SN_id_mod_qualified_cert_93$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-mod-qualified-cert-93");
 }
 
 

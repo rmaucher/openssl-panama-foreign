@@ -9,11 +9,11 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1143 {
 
-    static final MemorySegment SCNdPTR$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ld");
-    static final MemorySegment SCNiPTR$SEGMENT = ResourceScope.globalScope().allocateUtf8String("li");
-    static final MemorySegment SCNoPTR$SEGMENT = ResourceScope.globalScope().allocateUtf8String("lo");
-    static final MemorySegment SCNuPTR$SEGMENT = ResourceScope.globalScope().allocateUtf8String("lu");
-    static final MemorySegment SCNxPTR$SEGMENT = ResourceScope.globalScope().allocateUtf8String("lx");
+    static final MemorySegment SCNdPTR$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ld");
+    static final MemorySegment SCNiPTR$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("li");
+    static final MemorySegment SCNoPTR$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lo");
+    static final MemorySegment SCNuPTR$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lu");
+    static final MemorySegment SCNxPTR$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lx");
     static final MemoryAddress NULL$ADDR = MemoryAddress.ofLong(0L);
 }
 

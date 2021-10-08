@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1351 {
 
-    static final MemorySegment LN_id_GostR3410_2001$SEGMENT = ResourceScope.globalScope().allocateUtf8String("GOST R 34.10-2001");
-    static final MemorySegment SN_id_GostR3410_94$SEGMENT = ResourceScope.globalScope().allocateUtf8String("gost94");
-    static final MemorySegment LN_id_GostR3410_94$SEGMENT = ResourceScope.globalScope().allocateUtf8String("GOST R 34.10-94");
-    static final MemorySegment SN_id_Gost28147_89$SEGMENT = ResourceScope.globalScope().allocateUtf8String("gost89");
-    static final MemorySegment LN_id_Gost28147_89$SEGMENT = ResourceScope.globalScope().allocateUtf8String("GOST 28147-89");
-    static final MemorySegment SN_gost89_cnt$SEGMENT = ResourceScope.globalScope().allocateUtf8String("gost89-cnt");
+    static final MemorySegment LN_id_GostR3410_2001$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("GOST R 34.10-2001");
+    static final MemorySegment SN_id_GostR3410_94$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("gost94");
+    static final MemorySegment LN_id_GostR3410_94$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("GOST R 34.10-94");
+    static final MemorySegment SN_id_Gost28147_89$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("gost89");
+    static final MemorySegment LN_id_Gost28147_89$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("GOST 28147-89");
+    static final MemorySegment SN_gost89_cnt$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("gost89-cnt");
 }
 
 

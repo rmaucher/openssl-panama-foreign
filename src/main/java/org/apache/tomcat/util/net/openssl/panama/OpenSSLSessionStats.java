@@ -16,7 +16,9 @@
  */
 package org.apache.tomcat.util.net.openssl.panama;
 
-import org.apache.tomcat.jni.SSLContext;
+import static org.apache.tomcat.util.openssl.openssl_h.*;
+
+import jdk.incubator.foreign.MemoryAddress;
 
 /**
  * Stats exposed by an OpenSSL session context.
@@ -25,59 +27,59 @@ import org.apache.tomcat.jni.SSLContext;
  */
 public final class OpenSSLSessionStats {
 
-    private final long context;
+    private final MemoryAddress ctx;
 
-    OpenSSLSessionStats(long context) {
-        this.context = context;
+    OpenSSLSessionStats(MemoryAddress ctx) {
+        this.ctx = ctx;
     }
 
     /**
      * @return The current number of sessions in the internal session cache.
      */
     public long number() {
-        return SSLContext.sessionNumber(context);
+        return SSL_CTX_ctrl(ctx, SSL_CTRL_SESS_NUMBER(), 0, null);
     }
 
     /**
      * @return The number of started SSL/TLS handshakes in client mode.
      */
     public long connect() {
-        return SSLContext.sessionConnect(context);
+        return SSL_CTX_ctrl(ctx, SSL_CTRL_SESS_CONNECT() ,0, null);
     }
 
     /**
      * @return The number of successfully established SSL/TLS sessions in client mode.
      */
     public long connectGood() {
-        return SSLContext.sessionConnectGood(context);
+        return SSL_CTX_ctrl(ctx, SSL_CTRL_SESS_CONNECT_GOOD() , 0, null);
     }
 
     /**
      * @return The number of start renegotiations in client mode.
      */
     public long connectRenegotiate() {
-        return SSLContext.sessionConnectRenegotiate(context);
+        return SSL_CTX_ctrl(ctx, SSL_CTRL_SESS_CONNECT_RENEGOTIATE() , 0, null);
     }
 
     /**
      * @return The number of started SSL/TLS handshakes in server mode.
      */
     public long accept() {
-        return SSLContext.sessionAccept(context);
+        return SSL_CTX_ctrl(ctx, SSL_CTRL_SESS_ACCEPT(), 0, null);
     }
 
     /**
      * @return The number of successfully established SSL/TLS sessions in server mode.
      */
     public long acceptGood() {
-        return SSLContext.sessionAcceptGood(context);
+        return SSL_CTX_ctrl(ctx, SSL_CTRL_SESS_ACCEPT_GOOD(), 0, null);
     }
 
     /**
      * @return The number of start renegotiations in server mode.
      */
     public long acceptRenegotiate() {
-        return SSLContext.sessionAcceptRenegotiate(context);
+        return SSL_CTX_ctrl(ctx, SSL_CTRL_SESS_ACCEPT_RENEGOTIATE(), 0, null);
     }
 
     /**
@@ -87,7 +89,7 @@ public final class OpenSSLSessionStats {
      *         retrieved from internal or external cache is counted as a hit.
      */
     public long hits() {
-        return SSLContext.sessionHits(context);
+        return SSL_CTX_ctrl(ctx, SSL_CTRL_SESS_HIT(), 0, null);
     }
 
     /**
@@ -95,7 +97,7 @@ public final class OpenSSLSessionStats {
      *         session cache in server mode.
      */
     public long cbHits() {
-        return SSLContext.sessionCbHits(context);
+        return SSL_CTX_ctrl(ctx, SSL_CTRL_SESS_CB_HIT(), 0, null);
     }
 
     /**
@@ -103,7 +105,7 @@ public final class OpenSSLSessionStats {
      *         the internal session cache in server mode.
      */
     public long misses() {
-        return SSLContext.sessionMisses(context);
+        return SSL_CTX_ctrl(ctx, SSL_CTRL_SESS_MISSES(), 0, null);
     }
 
     /**
@@ -113,7 +115,7 @@ public final class OpenSSLSessionStats {
      *         the {@link #hits()} count.
      */
     public long timeouts() {
-        return SSLContext.sessionTimeouts(context);
+        return SSL_CTX_ctrl(ctx, SSL_CTRL_SESS_TIMEOUTS(), 0, null);
     }
 
     /**
@@ -121,6 +123,6 @@ public final class OpenSSLSessionStats {
      *         session cache size was exceeded.
      */
     public long cacheFull() {
-        return SSLContext.sessionCacheFull(context);
+        return SSL_CTX_ctrl(ctx, SSL_CTRL_SESS_CACHE_FULL(), 0, null);
     }
 }

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1201 {
 
-    static final MemorySegment LN_rc2_cbc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("rc2-cbc");
-    static final MemorySegment SN_rc2_ecb$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RC2-ECB");
-    static final MemorySegment LN_rc2_ecb$SEGMENT = ResourceScope.globalScope().allocateUtf8String("rc2-ecb");
-    static final MemorySegment SN_rc2_cfb64$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RC2-CFB");
-    static final MemorySegment LN_rc2_cfb64$SEGMENT = ResourceScope.globalScope().allocateUtf8String("rc2-cfb");
-    static final MemorySegment SN_rc2_ofb64$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RC2-OFB");
+    static final MemorySegment LN_rc2_cbc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("rc2-cbc");
+    static final MemorySegment SN_rc2_ecb$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RC2-ECB");
+    static final MemorySegment LN_rc2_ecb$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("rc2-ecb");
+    static final MemorySegment SN_rc2_cfb64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RC2-CFB");
+    static final MemorySegment LN_rc2_cfb64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("rc2-cfb");
+    static final MemorySegment SN_rc2_ofb64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RC2-OFB");
 }
 
 

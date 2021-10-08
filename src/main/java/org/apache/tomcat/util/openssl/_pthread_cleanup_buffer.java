@@ -114,6 +114,10 @@ public class _pthread_cleanup_buffer {
     public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
+    public static MemorySegment allocate(ResourceScope scope) { return allocate(SegmentAllocator.nativeAllocator(scope)); }
+    public static MemorySegment allocateArray(int len, ResourceScope scope) {
+        return allocateArray(len, SegmentAllocator.nativeAllocator(scope));
+    }
     public static MemorySegment ofAddress(MemoryAddress addr, ResourceScope scope) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, scope); }
 }
 

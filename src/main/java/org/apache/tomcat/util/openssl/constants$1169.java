@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1169 {
 
-    static final MemorySegment SN_md4WithRSAEncryption$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RSA-MD4");
-    static final MemorySegment LN_md4WithRSAEncryption$SEGMENT = ResourceScope.globalScope().allocateUtf8String("md4WithRSAEncryption");
-    static final MemorySegment SN_md5WithRSAEncryption$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RSA-MD5");
-    static final MemorySegment LN_md5WithRSAEncryption$SEGMENT = ResourceScope.globalScope().allocateUtf8String("md5WithRSAEncryption");
-    static final MemorySegment SN_sha1WithRSAEncryption$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RSA-SHA1");
-    static final MemorySegment LN_sha1WithRSAEncryption$SEGMENT = ResourceScope.globalScope().allocateUtf8String("sha1WithRSAEncryption");
+    static final MemorySegment SN_md4WithRSAEncryption$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RSA-MD4");
+    static final MemorySegment LN_md4WithRSAEncryption$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("md4WithRSAEncryption");
+    static final MemorySegment SN_md5WithRSAEncryption$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RSA-MD5");
+    static final MemorySegment LN_md5WithRSAEncryption$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("md5WithRSAEncryption");
+    static final MemorySegment SN_sha1WithRSAEncryption$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RSA-SHA1");
+    static final MemorySegment LN_sha1WithRSAEncryption$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("sha1WithRSAEncryption");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1261 {
 
-    static final MemorySegment LN_crossCertificatePair$SEGMENT = ResourceScope.globalScope().allocateUtf8String("crossCertificatePair");
-    static final MemorySegment SN_name$SEGMENT = ResourceScope.globalScope().allocateUtf8String("name");
-    static final MemorySegment LN_name$SEGMENT = ResourceScope.globalScope().allocateUtf8String("name");
-    static final MemorySegment SN_givenName$SEGMENT = ResourceScope.globalScope().allocateUtf8String("GN");
-    static final MemorySegment LN_givenName$SEGMENT = ResourceScope.globalScope().allocateUtf8String("givenName");
-    static final MemorySegment SN_initials$SEGMENT = ResourceScope.globalScope().allocateUtf8String("initials");
+    static final MemorySegment LN_crossCertificatePair$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("crossCertificatePair");
+    static final MemorySegment SN_name$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("name");
+    static final MemorySegment LN_name$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("name");
+    static final MemorySegment SN_givenName$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("GN");
+    static final MemorySegment LN_givenName$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("givenName");
+    static final MemorySegment SN_initials$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("initials");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1467 {
 
-    static final MemorySegment TLS1_RFC_PSK_WITH_AES_256_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_PSK_WITH_AES_256_CBC_SHA");
-    static final MemorySegment TLS1_RFC_DHE_PSK_WITH_3DES_EDE_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_DHE_PSK_WITH_3DES_EDE_CBC_SHA");
-    static final MemorySegment TLS1_RFC_DHE_PSK_WITH_AES_128_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_DHE_PSK_WITH_AES_128_CBC_SHA");
-    static final MemorySegment TLS1_RFC_DHE_PSK_WITH_AES_256_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_DHE_PSK_WITH_AES_256_CBC_SHA");
-    static final MemorySegment TLS1_RFC_RSA_PSK_WITH_3DES_EDE_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_RSA_PSK_WITH_3DES_EDE_CBC_SHA");
-    static final MemorySegment TLS1_RFC_RSA_PSK_WITH_AES_128_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("TLS_RSA_PSK_WITH_AES_128_CBC_SHA");
+    static final MemorySegment TLS1_RFC_PSK_WITH_AES_256_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_PSK_WITH_AES_256_CBC_SHA");
+    static final MemorySegment TLS1_RFC_DHE_PSK_WITH_3DES_EDE_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_DHE_PSK_WITH_3DES_EDE_CBC_SHA");
+    static final MemorySegment TLS1_RFC_DHE_PSK_WITH_AES_128_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_DHE_PSK_WITH_AES_128_CBC_SHA");
+    static final MemorySegment TLS1_RFC_DHE_PSK_WITH_AES_256_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_DHE_PSK_WITH_AES_256_CBC_SHA");
+    static final MemorySegment TLS1_RFC_RSA_PSK_WITH_3DES_EDE_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_RSA_PSK_WITH_3DES_EDE_CBC_SHA");
+    static final MemorySegment TLS1_RFC_RSA_PSK_WITH_AES_128_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("TLS_RSA_PSK_WITH_AES_128_CBC_SHA");
 }
 
 

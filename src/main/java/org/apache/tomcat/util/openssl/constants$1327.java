@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1327 {
 
-    static final MemorySegment SN_setct_AuthRevResBaggage$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-AuthRevResBaggage");
-    static final MemorySegment SN_setct_CapTokenSeq$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-CapTokenSeq");
-    static final MemorySegment SN_setct_PInitResData$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-PInitResData");
-    static final MemorySegment SN_setct_PI_TBS$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-PI-TBS");
-    static final MemorySegment SN_setct_PResData$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-PResData");
-    static final MemorySegment SN_setct_AuthReqTBS$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setct-AuthReqTBS");
+    static final MemorySegment SN_setct_AuthRevResBaggage$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-AuthRevResBaggage");
+    static final MemorySegment SN_setct_CapTokenSeq$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-CapTokenSeq");
+    static final MemorySegment SN_setct_PInitResData$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-PInitResData");
+    static final MemorySegment SN_setct_PI_TBS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-PI-TBS");
+    static final MemorySegment SN_setct_PResData$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-PResData");
+    static final MemorySegment SN_setct_AuthReqTBS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setct-AuthReqTBS");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1410 {
 
-    static final MemorySegment LN_hkdf$SEGMENT = ResourceScope.globalScope().allocateUtf8String("hkdf");
-    static final MemorySegment SN_sshkdf$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SSHKDF");
-    static final MemorySegment LN_sshkdf$SEGMENT = ResourceScope.globalScope().allocateUtf8String("sshkdf");
-    static final MemorySegment SN_kbkdf$SEGMENT = ResourceScope.globalScope().allocateUtf8String("KBKDF");
-    static final MemorySegment LN_kbkdf$SEGMENT = ResourceScope.globalScope().allocateUtf8String("kbkdf");
-    static final MemorySegment SN_krb5kdf$SEGMENT = ResourceScope.globalScope().allocateUtf8String("KRB5KDF");
+    static final MemorySegment LN_hkdf$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hkdf");
+    static final MemorySegment SN_sshkdf$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SSHKDF");
+    static final MemorySegment LN_sshkdf$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("sshkdf");
+    static final MemorySegment SN_kbkdf$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("KBKDF");
+    static final MemorySegment LN_kbkdf$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("kbkdf");
+    static final MemorySegment SN_krb5kdf$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("KRB5KDF");
 }
 
 

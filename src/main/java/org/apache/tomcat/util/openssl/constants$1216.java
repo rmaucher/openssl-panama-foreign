@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1216 {
 
-    static final MemorySegment LN_info_access$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Authority Information Access");
-    static final MemorySegment SN_biometricInfo$SEGMENT = ResourceScope.globalScope().allocateUtf8String("biometricInfo");
-    static final MemorySegment LN_biometricInfo$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Biometric Info");
-    static final MemorySegment SN_qcStatements$SEGMENT = ResourceScope.globalScope().allocateUtf8String("qcStatements");
-    static final MemorySegment SN_ac_auditEntity$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ac-auditEntity");
-    static final MemorySegment SN_ac_targeting$SEGMENT = ResourceScope.globalScope().allocateUtf8String("ac-targeting");
+    static final MemorySegment LN_info_access$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Authority Information Access");
+    static final MemorySegment SN_biometricInfo$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("biometricInfo");
+    static final MemorySegment LN_biometricInfo$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Biometric Info");
+    static final MemorySegment SN_qcStatements$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("qcStatements");
+    static final MemorySegment SN_ac_auditEntity$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ac-auditEntity");
+    static final MemorySegment SN_ac_targeting$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ac-targeting");
 }
 
 

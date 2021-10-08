@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1372 {
 
-    static final MemorySegment SN_SNILS$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SNILS");
-    static final MemorySegment LN_SNILS$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SNILS");
-    static final MemorySegment SN_subjectSignTool$SEGMENT = ResourceScope.globalScope().allocateUtf8String("subjectSignTool");
-    static final MemorySegment LN_subjectSignTool$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Signing Tool of Subject");
-    static final MemorySegment SN_issuerSignTool$SEGMENT = ResourceScope.globalScope().allocateUtf8String("issuerSignTool");
-    static final MemorySegment LN_issuerSignTool$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Signing Tool of Issuer");
+    static final MemorySegment SN_SNILS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SNILS");
+    static final MemorySegment LN_SNILS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SNILS");
+    static final MemorySegment SN_subjectSignTool$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("subjectSignTool");
+    static final MemorySegment LN_subjectSignTool$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Signing Tool of Subject");
+    static final MemorySegment SN_issuerSignTool$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("issuerSignTool");
+    static final MemorySegment LN_issuerSignTool$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Signing Tool of Issuer");
 }
 
 

@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1224 {
 
-    static final MemorySegment SN_sshClient$SEGMENT = ResourceScope.globalScope().allocateUtf8String("secureShellClient");
-    static final MemorySegment LN_sshClient$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SSH Client");
-    static final MemorySegment SN_sshServer$SEGMENT = ResourceScope.globalScope().allocateUtf8String("secureShellServer");
-    static final MemorySegment LN_sshServer$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SSH Server");
-    static final MemorySegment SN_sendRouter$SEGMENT = ResourceScope.globalScope().allocateUtf8String("sendRouter");
-    static final MemorySegment LN_sendRouter$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Send Router");
+    static final MemorySegment SN_sshClient$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("secureShellClient");
+    static final MemorySegment LN_sshClient$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SSH Client");
+    static final MemorySegment SN_sshServer$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("secureShellServer");
+    static final MemorySegment LN_sshServer$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SSH Server");
+    static final MemorySegment SN_sendRouter$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("sendRouter");
+    static final MemorySegment LN_sendRouter$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Send Router");
 }
 
 

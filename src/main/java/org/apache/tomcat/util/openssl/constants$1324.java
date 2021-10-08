@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1324 {
 
-    static final MemorySegment LN_set_ctype$SEGMENT = ResourceScope.globalScope().allocateUtf8String("content types");
-    static final MemorySegment SN_set_msgExt$SEGMENT = ResourceScope.globalScope().allocateUtf8String("set-msgExt");
-    static final MemorySegment LN_set_msgExt$SEGMENT = ResourceScope.globalScope().allocateUtf8String("message extensions");
-    static final MemorySegment SN_set_attr$SEGMENT = ResourceScope.globalScope().allocateUtf8String("set-attr");
-    static final MemorySegment SN_set_policy$SEGMENT = ResourceScope.globalScope().allocateUtf8String("set-policy");
-    static final MemorySegment SN_set_certExt$SEGMENT = ResourceScope.globalScope().allocateUtf8String("set-certExt");
+    static final MemorySegment LN_set_ctype$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("content types");
+    static final MemorySegment SN_set_msgExt$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("set-msgExt");
+    static final MemorySegment LN_set_msgExt$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("message extensions");
+    static final MemorySegment SN_set_attr$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("set-attr");
+    static final MemorySegment SN_set_policy$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("set-policy");
+    static final MemorySegment SN_set_certExt$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("set-certExt");
 }
 
 

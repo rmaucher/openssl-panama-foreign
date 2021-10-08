@@ -16,6 +16,21 @@
  */
 package org.apache.tomcat.util.net.openssl.panama;
 
+import jdk.incubator.foreign.Addressable;
+import jdk.incubator.foreign.CLinker;
+import jdk.incubator.foreign.FunctionDescriptor;
+import jdk.incubator.foreign.MemoryAddress;
+import jdk.incubator.foreign.MemorySegment;
+import jdk.incubator.foreign.NativeSymbol;
+import jdk.incubator.foreign.ResourceScope;
+import jdk.incubator.foreign.SegmentAllocator;
+import jdk.incubator.foreign.ValueLayout;
+
+import static org.apache.tomcat.util.openssl.openssl_h.*;
+
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles;
+import java.lang.invoke.MethodType;
 import java.lang.ref.Cleaner;
 import java.lang.ref.Cleaner.Cleanable;
 import java.nio.charset.StandardCharsets;
@@ -47,7 +62,6 @@ import org.apache.tomcat.jni.Pool;
 import org.apache.tomcat.jni.SSL;
 import org.apache.tomcat.jni.SSLConf;
 import org.apache.tomcat.jni.SSLContext;
-import org.apache.tomcat.util.net.AbstractEndpoint;
 import org.apache.tomcat.util.net.Constants;
 import org.apache.tomcat.util.net.SSLHostConfig;
 import org.apache.tomcat.util.net.SSLHostConfig.CertificateVerification;
@@ -61,14 +75,15 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
 
     private static final Log log = LogFactory.getLog(OpenSSLContext.class);
 
-    // Note: this uses the main "net" package strings as many are common with APR
-    private static final StringManager netSm = StringManager.getManager(AbstractEndpoint.class);
     private static final StringManager sm = StringManager.getManager(OpenSSLContext.class);
 
     private static final String defaultProtocol = "TLS";
 
     private static final String BEGIN_KEY = "-----BEGIN PRIVATE KEY-----\n";
     private static final Object END_KEY = "\n-----END PRIVATE KEY-----";
+
+    private static final byte[] DEFAULT_SESSION_ID_CONTEXT =
+            new byte[] { 'd', 'e', 'f', 'a', 'u', 'l', 't' };
 
     static final CertificateFactory X509_CERT_FACTORY;
     static {
@@ -93,13 +108,17 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
     private final OpenSSLState state;
     private final Cleanable cleanable;
 
+    private final ResourceScope scope;
+    private final MemoryAddress ctx;
+
     public OpenSSLContext(SSLHostConfigCertificate certificate, List<String> negotiableProtocols)
             throws SSLException {
         this.sslHostConfig = certificate.getSSLHostConfig();
         this.certificate = certificate;
+        scope = ResourceScope.newSharedScope(cleaner);
+        
         long aprPool = Pool.create(0);
         long cctx = 0;
-        long ctx = 0;
         boolean success = false;
         try {
             // Create OpenSSLConfCmd context if used
@@ -118,9 +137,13 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                     throw new SSLException(sm.getString("openssl.errMakeConf"), e);
                 }
             }
-            sslHostConfig.setOpenSslConfContext(Long.valueOf(cctx));
 
             // SSL protocol
+            // FIXME: According to the OpenSSL documentation, this is a really
+            // bad idea, and every call is deprecated. Instead, using the
+            // auto TLS_server_method is heavily recommended. Also TLSv1_3_server_method
+            // is apparently not part of the public API.
+            /*
             int value = SSL.SSL_PROTOCOL_NONE;
             for (String protocol : sslHostConfig.getEnabledProtocols()) {
                 if (Constants.SSL_PROTO_SSLv2Hello.equalsIgnoreCase(protocol)) {
@@ -145,18 +168,9 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                     throw new Exception(netSm.getString(
                             "endpoint.apr.invalidSslProtocol", protocol));
                 }
-            }
+            }*/
 
-            // Create SSL Context
-            try {
-                ctx = SSLContext.make(aprPool, value, SSL.SSL_MODE_SERVER);
-            } catch (Exception e) {
-                // If the sslEngine is disabled on the AprLifecycleListener
-                // there will be an Exception here but there is no way to check
-                // the AprLifecycleListener settings from here
-                throw new Exception(
-                        netSm.getString("endpoint.apr.failSslContextMake"), e);
-            }
+            ctx = SSL_CTX_new(TLS_server_method());
 
             this.negotiableProtocols = negotiableProtocols;
 
@@ -164,7 +178,9 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
         } catch(Exception e) {
             throw new SSLException(sm.getString("openssl.errorSSLCtxInit"), e);
         } finally {
-            state = new OpenSSLState(aprPool, cctx, ctx);
+            // FIXME: probably not needed with Panama, the shared scope is the only
+            // thing that should be needed in the cleaner
+            state = new OpenSSLState(0,0,0);
             /*
              * When an SSLHostConfig is replaced at runtime, it is not possible to
              * call destroy() on the associated OpenSSLContext since it is likely
@@ -302,35 +318,37 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
         }
         try {
             if (sslHostConfig.getInsecureRenegotiation()) {
-                SSLContext.setOptions(state.ctx, SSL.SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION);
+                SSL_CTX_set_options(ctx, SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION());
             } else {
-                SSLContext.clearOptions(state.ctx, SSL.SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION);
+                SSL_CTX_clear_options(ctx, SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION());
             }
 
             // Use server's preference order for ciphers (rather than
             // client's)
             if (sslHostConfig.getHonorCipherOrder()) {
-                SSLContext.setOptions(state.ctx, SSL.SSL_OP_CIPHER_SERVER_PREFERENCE);
+                SSL_CTX_set_options(ctx, SSL_OP_CIPHER_SERVER_PREFERENCE());
             } else {
-                SSLContext.clearOptions(state.ctx, SSL.SSL_OP_CIPHER_SERVER_PREFERENCE);
+                SSL_CTX_clear_options(ctx, SSL_OP_CIPHER_SERVER_PREFERENCE());
             }
 
             // Disable compression if requested
             if (sslHostConfig.getDisableCompression()) {
-                SSLContext.setOptions(state.ctx, SSL.SSL_OP_NO_COMPRESSION);
+                SSL_CTX_set_options(ctx, SSL_OP_NO_COMPRESSION());
             } else {
-                SSLContext.clearOptions(state.ctx, SSL.SSL_OP_NO_COMPRESSION);
+                SSL_CTX_clear_options(ctx, SSL_OP_NO_COMPRESSION());
             }
 
             // Disable TLS Session Tickets (RFC4507) to protect perfect forward secrecy
             if (sslHostConfig.getDisableSessionTickets()) {
-                SSLContext.setOptions(state.ctx, SSL.SSL_OP_NO_TICKET);
+                SSL_CTX_set_options(ctx, SSL_OP_NO_TICKET());
             } else {
-                SSLContext.clearOptions(state.ctx, SSL.SSL_OP_NO_TICKET);
+                SSL_CTX_clear_options(ctx, SSL_OP_NO_TICKET());
             }
 
             // List the ciphers that the client is permitted to negotiate
-            SSLContext.setCipherSuite(state.ctx, sslHostConfig.getCiphers());
+            if (SSL_CTX_set_cipher_list(ctx, SegmentAllocator.nativeAllocator(scope).allocateUtf8String(sslHostConfig.getCiphers())) <= 0) {
+                log.warn(sm.getString("engine.failedCipherSuite", sslHostConfig.getCiphers()));
+            }
 
             if (certificate.getCertificateFile() == null) {
                 certificate.setCertificateKeyManager(OpenSSLUtil.chooseKeyManager(kms));
@@ -342,20 +360,33 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
             int value = 0;
             switch (sslHostConfig.getCertificateVerification()) {
             case NONE:
-                value = SSL.SSL_CVERIFY_NONE;
+                value = SSL_VERIFY_NONE();
                 break;
             case OPTIONAL:
-                value = SSL.SSL_CVERIFY_OPTIONAL;
+                value = SSL_VERIFY_PEER();
                 break;
             case OPTIONAL_NO_CA:
-                value = SSL.SSL_CVERIFY_OPTIONAL_NO_CA;
+                value = SSL_VERIFY_PEER() | SSL_VERIFY_FAIL_IF_NO_PEER_CERT();
                 break;
             case REQUIRED:
-                value = SSL.SSL_CVERIFY_REQUIRE;
+                value = SSL_VERIFY_FAIL_IF_NO_PEER_CERT();
                 break;
             }
-            SSLContext.setVerify(state.ctx, value, sslHostConfig.getCertificateVerificationDepth());
+            if (SSL_CTX_set_default_verify_paths(ctx) > 0) {
+                var store = SSL_CTX_get_cert_store(ctx);
+                X509_STORE_set_flags(store, 0);
+            }
 
+            // Set int verify_callback(int preverify_ok, X509_STORE_CTX *x509_ctx) callback
+            MethodHandles.Lookup lookup = MethodHandles.lookup();
+            MethodHandle verifyCertificateHandle = lookup.findVirtual(OpenSSLContext.class, "verifyCallback",
+                    MethodType.methodType(int.class, Addressable.class));
+            NativeSymbol veryfyCallback = CLinker.systemCLinker().upcallStub(verifyCertificateHandle,
+                    FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS), scope);
+            SSL_CTX_set_verify(ctx, value, veryfyCallback);
+
+            // FIXME: Implement trust and certificate verification
+            // FIXME: Learn to recover complex objects from Addressable
             if (tms != null) {
                 // Client certificate verification based on custom trust managers
                 x509TrustManager = chooseTrustManager(tms);
@@ -389,6 +420,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                         SSLHostConfig.adjustRelativePath(sslHostConfig.getCaCertificatePath()));
             }
 
+            // FIXME: Implement APLN and NPN callbacks
             if (negotiableProtocols != null && negotiableProtocols.size() > 0) {
                 List<String> protocols = new ArrayList<>(negotiableProtocols);
                 protocols.add("http/1.1");
@@ -397,6 +429,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                 SSLContext.setNpnProtos(state.ctx, protocolsArray, SSL.SSL_SELECTOR_FAILURE_NO_ADVERTISE);
             }
 
+            // FIXME: reimplement
             // Apply OpenSSLConfCmd if used
             OpenSSLConf openSslConf = sslHostConfig.getOpenSslConf();
             if (openSslConf != null && state.cctx != 0) {
@@ -454,13 +487,35 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
             // If client authentication is being used, OpenSSL requires that
             // this is set so always set it in case an app is configured to
             // require it
-            sessionContext.setSessionIdContext(SSLContext.DEFAULT_SESSION_ID_CONTEXT);
-            sslHostConfig.setOpenSslContext(Long.valueOf(state.ctx));
+            sessionContext.setSessionIdContext(DEFAULT_SESSION_ID_CONTEXT);
+            sslHostConfig.setOpenSslContext(ctx.toRawLongValue());
             initialized = true;
         } catch (Exception e) {
             log.warn(sm.getString("openssl.errorSSLCtxInit"), e);
             destroy();
         }
+    }
+
+
+    public ResourceScope getResourceScope() {
+        return scope;
+    }
+
+
+    public MemoryAddress getSSLContext() {
+        return ctx;
+    }
+
+
+    public int verifyCallback(int preverify_ok, Addressable /*X509_STORE_CTX*/ x509_ctx) {
+        // FIXME: X509_STORE_CTX
+        return 1;
+    }
+
+
+    public int certVerifyCallback(Addressable /*X509_STORE_CTX*/ x509_ctx, Addressable param) {
+        // FIXME: X509_STORE_CTX
+        return 1;
     }
 
 
@@ -565,11 +620,6 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
             peerCerts[i] = new OpenSSLX509Certificate(chain[i]);
         }
         return peerCerts;
-    }
-
-
-    long getSSLContextID() {
-        return state.ctx;
     }
 
 

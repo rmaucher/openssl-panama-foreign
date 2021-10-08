@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1425 {
 
-    static final MemorySegment LN_uacurve0$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DSTU curve 0");
-    static final MemorySegment SN_uacurve1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("uacurve1");
-    static final MemorySegment LN_uacurve1$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DSTU curve 1");
-    static final MemorySegment SN_uacurve2$SEGMENT = ResourceScope.globalScope().allocateUtf8String("uacurve2");
-    static final MemorySegment LN_uacurve2$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DSTU curve 2");
-    static final MemorySegment SN_uacurve3$SEGMENT = ResourceScope.globalScope().allocateUtf8String("uacurve3");
+    static final MemorySegment LN_uacurve0$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DSTU curve 0");
+    static final MemorySegment SN_uacurve1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("uacurve1");
+    static final MemorySegment LN_uacurve1$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DSTU curve 1");
+    static final MemorySegment SN_uacurve2$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("uacurve2");
+    static final MemorySegment LN_uacurve2$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DSTU curve 2");
+    static final MemorySegment SN_uacurve3$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("uacurve3");
 }
 
 

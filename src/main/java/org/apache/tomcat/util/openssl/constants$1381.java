@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1381 {
 
-    static final MemorySegment LN_camellia_192_cmac$SEGMENT = ResourceScope.globalScope().allocateUtf8String("camellia-192-cmac");
-    static final MemorySegment SN_camellia_256_ecb$SEGMENT = ResourceScope.globalScope().allocateUtf8String("CAMELLIA-256-ECB");
-    static final MemorySegment LN_camellia_256_ecb$SEGMENT = ResourceScope.globalScope().allocateUtf8String("camellia-256-ecb");
-    static final MemorySegment SN_camellia_256_ofb128$SEGMENT = ResourceScope.globalScope().allocateUtf8String("CAMELLIA-256-OFB");
-    static final MemorySegment LN_camellia_256_ofb128$SEGMENT = ResourceScope.globalScope().allocateUtf8String("camellia-256-ofb");
-    static final MemorySegment SN_camellia_256_cfb128$SEGMENT = ResourceScope.globalScope().allocateUtf8String("CAMELLIA-256-CFB");
+    static final MemorySegment LN_camellia_192_cmac$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("camellia-192-cmac");
+    static final MemorySegment SN_camellia_256_ecb$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("CAMELLIA-256-ECB");
+    static final MemorySegment LN_camellia_256_ecb$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("camellia-256-ecb");
+    static final MemorySegment SN_camellia_256_ofb128$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("CAMELLIA-256-OFB");
+    static final MemorySegment LN_camellia_256_ofb128$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("camellia-256-ofb");
+    static final MemorySegment SN_camellia_256_cfb128$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("CAMELLIA-256-CFB");
 }
 
 

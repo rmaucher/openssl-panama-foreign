@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1263 {
 
-    static final MemorySegment LN_protocolInformation$SEGMENT = ResourceScope.globalScope().allocateUtf8String("protocolInformation");
-    static final MemorySegment LN_distinguishedName$SEGMENT = ResourceScope.globalScope().allocateUtf8String("distinguishedName");
-    static final MemorySegment LN_uniqueMember$SEGMENT = ResourceScope.globalScope().allocateUtf8String("uniqueMember");
-    static final MemorySegment LN_houseIdentifier$SEGMENT = ResourceScope.globalScope().allocateUtf8String("houseIdentifier");
-    static final MemorySegment LN_supportedAlgorithms$SEGMENT = ResourceScope.globalScope().allocateUtf8String("supportedAlgorithms");
-    static final MemorySegment LN_deltaRevocationList$SEGMENT = ResourceScope.globalScope().allocateUtf8String("deltaRevocationList");
+    static final MemorySegment LN_protocolInformation$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("protocolInformation");
+    static final MemorySegment LN_distinguishedName$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("distinguishedName");
+    static final MemorySegment LN_uniqueMember$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("uniqueMember");
+    static final MemorySegment LN_houseIdentifier$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("houseIdentifier");
+    static final MemorySegment LN_supportedAlgorithms$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("supportedAlgorithms");
+    static final MemorySegment LN_deltaRevocationList$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("deltaRevocationList");
 }
 
 

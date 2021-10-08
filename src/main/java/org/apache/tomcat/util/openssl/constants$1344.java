@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1344 {
 
-    static final MemorySegment SN_setAttr_Token_EMV$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setAttr-Token-EMV");
-    static final MemorySegment SN_setAttr_Token_B0Prime$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setAttr-Token-B0Prime");
-    static final MemorySegment SN_setAttr_IssCap_CVM$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setAttr-IssCap-CVM");
-    static final MemorySegment SN_setAttr_IssCap_T2$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setAttr-IssCap-T2");
-    static final MemorySegment SN_setAttr_IssCap_Sig$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setAttr-IssCap-Sig");
-    static final MemorySegment SN_setAttr_GenCryptgrm$SEGMENT = ResourceScope.globalScope().allocateUtf8String("setAttr-GenCryptgrm");
+    static final MemorySegment SN_setAttr_Token_EMV$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setAttr-Token-EMV");
+    static final MemorySegment SN_setAttr_Token_B0Prime$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setAttr-Token-B0Prime");
+    static final MemorySegment SN_setAttr_IssCap_CVM$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setAttr-IssCap-CVM");
+    static final MemorySegment SN_setAttr_IssCap_T2$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setAttr-IssCap-T2");
+    static final MemorySegment SN_setAttr_IssCap_Sig$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setAttr-IssCap-Sig");
+    static final MemorySegment SN_setAttr_GenCryptgrm$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("setAttr-GenCryptgrm");
 }
 
 

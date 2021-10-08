@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1185 {
 
-    static final MemorySegment SN_id_smime_aa_securityLabel$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-aa-securityLabel");
-    static final MemorySegment SN_id_smime_aa_mlExpandHistory$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-aa-mlExpandHistory");
-    static final MemorySegment SN_id_smime_aa_contentHint$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-aa-contentHint");
-    static final MemorySegment SN_id_smime_aa_msgSigDigest$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-aa-msgSigDigest");
-    static final MemorySegment SN_id_smime_aa_encapContentType$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-aa-encapContentType");
-    static final MemorySegment SN_id_smime_aa_contentIdentifier$SEGMENT = ResourceScope.globalScope().allocateUtf8String("id-smime-aa-contentIdentifier");
+    static final MemorySegment SN_id_smime_aa_securityLabel$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-aa-securityLabel");
+    static final MemorySegment SN_id_smime_aa_mlExpandHistory$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-aa-mlExpandHistory");
+    static final MemorySegment SN_id_smime_aa_contentHint$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-aa-contentHint");
+    static final MemorySegment SN_id_smime_aa_msgSigDigest$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-aa-msgSigDigest");
+    static final MemorySegment SN_id_smime_aa_encapContentType$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-aa-encapContentType");
+    static final MemorySegment SN_id_smime_aa_contentIdentifier$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("id-smime-aa-contentIdentifier");
 }
 
 

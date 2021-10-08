@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1252 {
 
-    static final MemorySegment LN_blake2b512$SEGMENT = ResourceScope.globalScope().allocateUtf8String("blake2b512");
-    static final MemorySegment SN_blake2s256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("BLAKE2s256");
-    static final MemorySegment LN_blake2s256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("blake2s256");
-    static final MemorySegment SN_sxnet$SEGMENT = ResourceScope.globalScope().allocateUtf8String("SXNetID");
-    static final MemorySegment LN_sxnet$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Strong Extranet ID");
-    static final MemorySegment SN_X500$SEGMENT = ResourceScope.globalScope().allocateUtf8String("X500");
+    static final MemorySegment LN_blake2b512$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("blake2b512");
+    static final MemorySegment SN_blake2s256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("BLAKE2s256");
+    static final MemorySegment LN_blake2s256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("blake2s256");
+    static final MemorySegment SN_sxnet$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SXNetID");
+    static final MemorySegment LN_sxnet$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Strong Extranet ID");
+    static final MemorySegment SN_X500$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X500");
 }
 
 

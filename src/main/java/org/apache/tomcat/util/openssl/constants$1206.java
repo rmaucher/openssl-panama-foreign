@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1206 {
 
-    static final MemorySegment LN_ms_code_com$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Microsoft Commercial Code Signing");
-    static final MemorySegment SN_ms_ctl_sign$SEGMENT = ResourceScope.globalScope().allocateUtf8String("msCTLSign");
-    static final MemorySegment LN_ms_ctl_sign$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Microsoft Trust List Signing");
-    static final MemorySegment SN_ms_sgc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("msSGC");
-    static final MemorySegment LN_ms_sgc$SEGMENT = ResourceScope.globalScope().allocateUtf8String("Microsoft Server Gated Crypto");
-    static final MemorySegment SN_ms_efs$SEGMENT = ResourceScope.globalScope().allocateUtf8String("msEFS");
+    static final MemorySegment LN_ms_code_com$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Microsoft Commercial Code Signing");
+    static final MemorySegment SN_ms_ctl_sign$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("msCTLSign");
+    static final MemorySegment LN_ms_ctl_sign$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Microsoft Trust List Signing");
+    static final MemorySegment SN_ms_sgc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("msSGC");
+    static final MemorySegment LN_ms_sgc$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Microsoft Server Gated Crypto");
+    static final MemorySegment SN_ms_efs$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("msEFS");
 }
 
 

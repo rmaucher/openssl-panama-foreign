@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1494 {
 
-    static final MemorySegment TLS1_TXT_DHE_PSK_WITH_AES_256_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("DHE-PSK-AES256-CBC-SHA");
-    static final MemorySegment TLS1_TXT_RSA_PSK_WITH_RC4_128_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RSA-PSK-RC4-SHA");
-    static final MemorySegment TLS1_TXT_RSA_PSK_WITH_3DES_EDE_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RSA-PSK-3DES-EDE-CBC-SHA");
-    static final MemorySegment TLS1_TXT_RSA_PSK_WITH_AES_128_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RSA-PSK-AES128-CBC-SHA");
-    static final MemorySegment TLS1_TXT_RSA_PSK_WITH_AES_256_CBC_SHA$SEGMENT = ResourceScope.globalScope().allocateUtf8String("RSA-PSK-AES256-CBC-SHA");
-    static final MemorySegment TLS1_TXT_PSK_WITH_AES_128_GCM_SHA256$SEGMENT = ResourceScope.globalScope().allocateUtf8String("PSK-AES128-GCM-SHA256");
+    static final MemorySegment TLS1_TXT_DHE_PSK_WITH_AES_256_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DHE-PSK-AES256-CBC-SHA");
+    static final MemorySegment TLS1_TXT_RSA_PSK_WITH_RC4_128_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RSA-PSK-RC4-SHA");
+    static final MemorySegment TLS1_TXT_RSA_PSK_WITH_3DES_EDE_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RSA-PSK-3DES-EDE-CBC-SHA");
+    static final MemorySegment TLS1_TXT_RSA_PSK_WITH_AES_128_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RSA-PSK-AES128-CBC-SHA");
+    static final MemorySegment TLS1_TXT_RSA_PSK_WITH_AES_256_CBC_SHA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RSA-PSK-AES256-CBC-SHA");
+    static final MemorySegment TLS1_TXT_PSK_WITH_AES_128_GCM_SHA256$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("PSK-AES128-GCM-SHA256");
 }
 
 

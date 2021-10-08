@@ -9,12 +9,12 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1432 {
 
-    static final MemorySegment PEM_STRING_PARAMETERS$SEGMENT = ResourceScope.globalScope().allocateUtf8String("PARAMETERS");
-    static final MemorySegment PEM_STRING_CMS$SEGMENT = ResourceScope.globalScope().allocateUtf8String("CMS");
-    static final MemorySegment SSL_TXT_LOW$SEGMENT = ResourceScope.globalScope().allocateUtf8String("LOW");
-    static final MemorySegment SSL_TXT_MEDIUM$SEGMENT = ResourceScope.globalScope().allocateUtf8String("MEDIUM");
-    static final MemorySegment SSL_TXT_HIGH$SEGMENT = ResourceScope.globalScope().allocateUtf8String("HIGH");
-    static final MemorySegment SSL_TXT_FIPS$SEGMENT = ResourceScope.globalScope().allocateUtf8String("FIPS");
+    static final MemorySegment PEM_STRING_PARAMETERS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("PARAMETERS");
+    static final MemorySegment PEM_STRING_CMS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("CMS");
+    static final MemorySegment SSL_TXT_LOW$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("LOW");
+    static final MemorySegment SSL_TXT_MEDIUM$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("MEDIUM");
+    static final MemorySegment SSL_TXT_HIGH$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("HIGH");
+    static final MemorySegment SSL_TXT_FIPS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("FIPS");
 }
 
 
