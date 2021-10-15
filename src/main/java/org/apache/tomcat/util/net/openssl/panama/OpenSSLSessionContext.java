@@ -71,7 +71,9 @@ public class OpenSSLSessionContext implements SSLSessionContext {
         }
         try (var scope = ResourceScope.newConfinedScope()) {
             var array = SegmentAllocator.nativeAllocator(scope).allocateArray(ValueLayout.JAVA_BYTE, keys);
-            // FIXME: Not documented ... SSL_CTX_set_tlsext_ticket_keys(context.getSSLContext(), array);
+            // #define SSL_CTX_set_tlsext_ticket_keys(ctx, keys, keylen)
+            //     SSL_CTX_ctrl((ctx),SSL_CTRL_SET_TLSEXT_TICKET_KEYS, (keylen), (keys))
+            SSL_CTX_ctrl(context.getSSLContext(), SSL_CTRL_SET_TLSEXT_TICKET_KEYS(), TICKET_KEYS_SIZE, array);
         }
     }
 
