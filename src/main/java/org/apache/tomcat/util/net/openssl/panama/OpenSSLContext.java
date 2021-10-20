@@ -99,6 +99,9 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
     private final SSLHostConfig sslHostConfig;
     private final SSLHostConfigCertificate certificate;
     private final List<String> negotiableProtocols;
+    private String[] negotiableProtocolsArray;
+
+    private int certificateVerifyMode = -1;
 
     private OpenSSLSessionContext sessionContext;
     private X509TrustManager x509TrustManager;
@@ -107,6 +110,21 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
 
     private final OpenSSLState state;
     private final Cleanable cleanable;
+
+    private static String[] getCiphers(MemoryAddress sslCtx) {
+        MemoryAddress sk = SSL_CTX_get_ciphers(sslCtx);
+        int len = sk_SSL_CIPHER_num(sk);
+        if (len <= 0) {
+            return null;
+        }
+        ArrayList<String> ciphers = new ArrayList<>(len);
+        for (int i = 0; i < len; i++) {
+            MemoryAddress cipher = sk_SSL_CIPHER_value(sk, i);
+            MemoryAddress cipherName = SSL_CIPHER_get_name(cipher);
+            ciphers.add(cipherName.getUtf8String(0));
+        }
+        return ciphers.toArray(new String[0]);
+    }
 
     public OpenSSLContext(SSLHostConfigCertificate certificate, List<String> negotiableProtocols)
             throws SSLException {
@@ -177,8 +195,6 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
         } catch(Exception e) {
             throw new SSLException(sm.getString("openssl.errorSSLCtxInit"), e);
         } finally {
-            // FIXME: probably not needed with Panama, the shared scope is the only
-            // thing that should be needed in the cleaner
             state = new OpenSSLState(scope, cctx, ctx);
             /*
              * When an SSLHostConfig is replaced at runtime, it is not possible to
@@ -372,6 +388,9 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                 value = SSL_VERIFY_FAIL_IF_NO_PEER_CERT();
                 break;
             }
+            certificateVerifyMode = value;
+
+            // SSLContext.setVerify(state.ctx, value, sslHostConfig.getCertificateVerificationDepth());
             if (SSL_CTX_set_default_verify_paths(state.ctx) > 0) {
                 var store = SSL_CTX_get_cert_store(state.ctx);
                 X509_STORE_set_flags(store, 0);
@@ -379,30 +398,24 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
 
             // Set int verify_callback(int preverify_ok, X509_STORE_CTX *x509_ctx) callback
             MethodHandles.Lookup lookup = MethodHandles.lookup();
-            MethodHandle verifyCertificateHandle = lookup.findVirtual(OpenSSLContext.class, "verifyCallback",
-                    MethodType.methodType(int.class, Addressable.class));
-            NativeSymbol veryfyCallback = CLinker.systemCLinker().upcallStub(verifyCertificateHandle,
+            MethodHandle verifyCertificateHandle = lookup.findVirtual(OpenSSLContext.class, "openSSLCallbackVerify",
+                    MethodType.methodType(int.class, int.class, MemoryAddress.class));
+            verifyCertificateHandle = verifyCertificateHandle.bindTo(this);
+            NativeSymbol verifyCallback = CLinker.systemCLinker().upcallStub(verifyCertificateHandle,
                     FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS), state.scope);
-            SSL_CTX_set_verify(state.ctx, value, veryfyCallback);
+            SSL_CTX_set_verify(state.ctx, value, verifyCallback);
 
             // FIXME: Implement trust and certificate verification
-            // FIXME: Learn to recover complex objects from Addressable
             if (tms != null) {
                 // Client certificate verification based on custom trust managers
                 x509TrustManager = chooseTrustManager(tms);
-                SSLContext.setCertVerifyCallback(state.ctx, new CertificateVerifier() {
-                    @Override
-                    public boolean verify(long ssl, byte[][] chain, String auth) {
-                        X509Certificate[] peerCerts = certificates(chain);
-                        try {
-                            x509TrustManager.checkClientTrusted(peerCerts, auth);
-                            return true;
-                        } catch (Exception e) {
-                            log.debug(sm.getString("openssl.certificateVerificationFailed"), e);
-                        }
-                        return false;
-                    }
-                });
+                MethodHandle certVerifyCallbackHandle = lookup.findVirtual(OpenSSLContext.class, "openSSLCallbackCertVerify",
+                        MethodType.methodType(int.class, MemoryAddress.class, MemoryAddress.class));
+                certVerifyCallbackHandle = certVerifyCallbackHandle.bindTo(this);
+                NativeSymbol certVerifyCallback = CLinker.systemCLinker().upcallStub(verifyCertificateHandle,
+                        FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS), state.scope);
+                SSL_CTX_set_cert_verify_callback(state.ctx, certVerifyCallback, MemoryAddress.NULL);
+
                 // Pass along the DER encoded certificates of the accepted client
                 // certificate issuers, so that their subjects can be presented
                 // by the server during the handshake to allow the client choosing
@@ -420,13 +433,24 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                         SSLHostConfig.adjustRelativePath(sslHostConfig.getCaCertificatePath()));
             }
 
-            // FIXME: Implement APLN and NPN callbacks
             if (negotiableProtocols != null && negotiableProtocols.size() > 0) {
                 List<String> protocols = new ArrayList<>(negotiableProtocols);
                 protocols.add("http/1.1");
-                String[] protocolsArray = protocols.toArray(new String[0]);
-                SSLContext.setAlpnProtos(state.ctx, protocolsArray, SSL.SSL_SELECTOR_FAILURE_NO_ADVERTISE);
-                SSLContext.setNpnProtos(state.ctx, protocolsArray, SSL.SSL_SELECTOR_FAILURE_NO_ADVERTISE);
+                negotiableProtocolsArray = protocols.toArray(new String[0]);
+
+                // int openSSLCallbackAlpnSelectProto(MemoryAddress ssl, MemoryAddress out, MemoryAddress outlen,
+                //        MemoryAddress in, int inlen, MemoryAddress arg
+                MethodHandle alpnSelectProtoCallbackHandle = lookup.findVirtual(OpenSSLContext.class, "openSSLCallbackAlpnSelectProto",
+                        MethodType.methodType(int.class, MemoryAddress.class, MemoryAddress.class,
+                                MemoryAddress.class, MemoryAddress.class, int.class, MemoryAddress.class));
+                alpnSelectProtoCallbackHandle = alpnSelectProtoCallbackHandle.bindTo(this);
+                NativeSymbol alpnSelectProtoCallback = CLinker.systemCLinker().upcallStub(alpnSelectProtoCallbackHandle,
+                        FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS
+                                , ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS), state.scope);
+                SSL_CTX_set_alpn_select_cb(state.ctx, alpnSelectProtoCallback, MemoryAddress.NULL);
+
+                // FIXME: Implement NPN (annoying and likely not useful anymore)
+                //SSLContext.setNpnProtos(state.ctx, protocolsArray, SSL.SSL_SELECTOR_FAILURE_NO_ADVERTISE);
             }
 
             // FIXME: reimplement
@@ -457,30 +481,33 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                     throw new SSLException(sm.getString("openssl.errApplyConf"), e);
                 }
                 // Reconfigure the enabled protocols
-                int opts = SSLContext.getOptions(state.ctx);
+                long opts = SSL_CTX_get_options(state.ctx);
                 List<String> enabled = new ArrayList<>();
                 // Seems like there is no way to explicitly disable SSLv2Hello
                 // in OpenSSL so it is always enabled
                 enabled.add(Constants.SSL_PROTO_SSLv2Hello);
-                if ((opts & SSL.SSL_OP_NO_TLSv1) == 0) {
+                if ((opts & SSL_OP_NO_TLSv1()) == 0) {
                     enabled.add(Constants.SSL_PROTO_TLSv1);
                 }
-                if ((opts & SSL.SSL_OP_NO_TLSv1_1) == 0) {
+                if ((opts & SSL_OP_NO_TLSv1_1()) == 0) {
                     enabled.add(Constants.SSL_PROTO_TLSv1_1);
                 }
-                if ((opts & SSL.SSL_OP_NO_TLSv1_2) == 0) {
+                if ((opts & SSL_OP_NO_TLSv1_2()) == 0) {
                     enabled.add(Constants.SSL_PROTO_TLSv1_2);
                 }
-                if ((opts & SSL.SSL_OP_NO_SSLv2) == 0) {
+                if ((opts & SSL_OP_NO_TLSv1_3()) == 0) {
+                    enabled.add(Constants.SSL_PROTO_TLSv1_3);
+                }
+                if ((opts & SSL_OP_NO_SSLv2()) == 0) {
                     enabled.add(Constants.SSL_PROTO_SSLv2);
                 }
-                if ((opts & SSL.SSL_OP_NO_SSLv3) == 0) {
+                if ((opts & SSL_OP_NO_SSLv3()) == 0) {
                     enabled.add(Constants.SSL_PROTO_SSLv3);
                 }
                 sslHostConfig.setEnabledProtocols(
                         enabled.toArray(new String[0]));
                 // Reconfigure the enabled ciphers
-                sslHostConfig.setEnabledCiphers(SSLContext.getCiphers(state.ctx));
+                sslHostConfig.setEnabledCiphers(getCiphers(state.ctx));
             }
 
             sessionContext = new OpenSSLSessionContext(this);
@@ -502,35 +529,128 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
     }
 
 
-    public int verifyCallback(int preverify_ok, Addressable /*X509_STORE_CTX*/ x509_ctx) {
-        // FIXME: X509_STORE_CTX
-        return 1;
+    // int SSL_callback_alpn_select_proto(SSL* ssl, const unsigned char **out, unsigned char *outlen,
+    //        const unsigned char *in, unsigned int inlen, void *arg)
+    public int openSSLCallbackAlpnSelectProto(MemoryAddress ssl, MemoryAddress out, MemoryAddress outlen,
+            MemoryAddress in, int inlen, MemoryAddress arg) {
+        // FIXME: implement ALPN
+        return SSL_TLSEXT_ERR_NOACK();
+    }
+
+    public int openSSLCallbackVerify(int preverify_ok, MemoryAddress /*X509_STORE_CTX*/ x509_ctx) {
+        MemoryAddress ssl = X509_STORE_CTX_get_ex_data(x509_ctx, SSL_get_ex_data_X509_STORE_CTX_idx());
+        //HandshakeState handshakeState = handshakeStateMap.get(Long.valueOf(ssl.address().toRawLongValue()));
+        int ok = preverify_ok;
+        int errnum = X509_STORE_CTX_get_error(x509_ctx);
+        int errdepth = X509_STORE_CTX_get_error_depth(x509_ctx);
+        if (certificateVerifyMode == -1 /*SSL_CVERIFY_UNSET*/
+                || certificateVerifyMode == SSL_VERIFY_NONE()) {
+            return 1;
+        }
+        /*SSL_VERIFY_ERROR_IS_OPTIONAL(errnum) -> ((errnum == X509_V_ERR_DEPTH_ZERO_SELF_SIGNED_CERT) \
+                || (errnum == X509_V_ERR_SELF_SIGNED_CERT_IN_CHAIN) \
+                || (errnum == X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY) \
+                || (errnum == X509_V_ERR_CERT_UNTRUSTED) \
+                || (errnum == X509_V_ERR_UNABLE_TO_VERIFY_LEAF_SIGNATURE))*/
+        if ((errnum == X509_V_ERR_DEPTH_ZERO_SELF_SIGNED_CERT())
+                || (errnum == X509_V_ERR_SELF_SIGNED_CERT_IN_CHAIN())
+                || (errnum == X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY())
+                || (errnum == X509_V_ERR_CERT_UNTRUSTED())
+                || (errnum == X509_V_ERR_UNABLE_TO_VERIFY_LEAF_SIGNATURE()) &&
+                (certificateVerifyMode == (SSL_VERIFY_PEER()
+                        | SSL_VERIFY_FAIL_IF_NO_PEER_CERT()))) {
+            ok = 1;
+            SSL_set_verify_result(ssl, X509_V_OK());
+        }
+        /*
+         * Expired certificates vs. "expired" CRLs: by default, OpenSSL
+         * turns X509_V_ERR_CRL_HAS_EXPIRED into a "certificate_expired(45)"
+         * SSL alert, but that's not really the message we should convey to the
+         * peer (at the very least, it's confusing, and in many cases, it's also
+         * inaccurate, as the certificate itself may very well not have expired
+         * yet). We set the X509_STORE_CTX error to something which OpenSSL's
+         * s3_both.c:ssl_verify_alarm_type() maps to SSL_AD_CERTIFICATE_UNKNOWN,
+         * i.e. the peer will receive a "certificate_unknown(46)" alert.
+         * We do not touch errnum, though, so that later on we will still log
+         * the "real" error, as returned by OpenSSL.
+         */
+        if (ok == 0 && errnum == X509_V_ERR_CRL_HAS_EXPIRED()) {
+            X509_STORE_CTX_set_error(x509_ctx, -1);
+        }
+        // FIXME: Implement OCSP again
+        // FIXME: GLORIOUS PURPOSE !!!!!
+        if (ok == 0) {
+            // FIXME: debug logging
+        }
+        if (errdepth > sslHostConfig.getCertificateVerificationDepth()) {
+            // Certificate Verification: Certificate Chain too long
+            ok = 0;
+        }
+        return ok;
     }
 
 
-    public int certVerifyCallback(Addressable /*X509_STORE_CTX*/ x509_ctx, Addressable param) {
-        // FIXME: X509_STORE_CTX
-        return 1;
+    public int openSSLCallbackCertVerify(MemoryAddress /*X509_STORE_CTX*/ x509_ctx, MemoryAddress param) {
+        MemoryAddress ssl = X509_STORE_CTX_get_ex_data(x509_ctx, SSL_get_ex_data_X509_STORE_CTX_idx());
+        MemoryAddress /*STACK_OF(X509)*/ sk = X509_STORE_CTX_get0_untrusted(x509_ctx);
+        int len = sk_X509_num(sk);
+        byte[][] certificateChain = new byte[len][];
+        try (var scope = ResourceScope.newConfinedScope()) {
+            var allocator = SegmentAllocator.nativeAllocator(scope);
+            for (int i = 0; i < len; i++) {
+                MemoryAddress/*(X509*)*/ certificatePointer = sk_X509_value(sk, i);
+                MemorySegment bufPointer = allocator.allocate(ValueLayout.ADDRESS);
+                int length = i2d_X509(certificatePointer, bufPointer);
+                if (length < 0) {
+                    certificateChain[i] = new byte[0];
+                    CRYPTO_free(bufPointer, OPENSSL_FILE(), OPENSSL_LINE()); // OPENSSL_free macro
+                    continue;
+                }
+                byte[] certificate = new byte[length];
+                for (int j = 0; j < length; j++) {
+                    certificate[j] = certificatePointer.get(ValueLayout.JAVA_BYTE, j);
+                }
+                certificateChain[i] = certificate;
+                CRYPTO_free(bufPointer, OPENSSL_FILE(), OPENSSL_LINE()); // OPENSSL_free macro
+            }
+            SSL_get_current_cipher(ssl); // FIXME: SSL_CIPHER_authentication_method(SSL_get_current_cipher(ssl)) !
+            String authMethod = "UNKNOWN";
+            X509Certificate[] peerCerts = certificates(certificateChain);
+            try {
+                x509TrustManager.checkClientTrusted(peerCerts, authMethod);
+                return 1;
+            } catch (Exception e) {
+                log.debug(sm.getString("openssl.certificateVerificationFailed"), e);
+            }
+        }
+        return 0;
     }
 
 
     public void addCertificate(SSLHostConfigCertificate certificate) throws Exception {
         // Load Server key and certificate
         if (certificate.getCertificateFile() != null) {
-            // Set certificate
-            SSLContext.setCertificate(state.ctx,
-                    SSLHostConfig.adjustRelativePath(certificate.getCertificateFile()),
-                    SSLHostConfig.adjustRelativePath(certificate.getCertificateKeyFile()),
-                    certificate.getCertificateKeyPassword(), getCertificateIndex(certificate));
-            // Set certificate chain file
-            SSLContext.setCertificateChainFile(state.ctx,
-                    SSLHostConfig.adjustRelativePath(certificate.getCertificateChainFile()), false);
-            // Set revocation
-            SSLContext.setCARevocation(state.ctx,
-                    SSLHostConfig.adjustRelativePath(
-                            sslHostConfig.getCertificateRevocationListFile()),
-                    SSLHostConfig.adjustRelativePath(
-                            sslHostConfig.getCertificateRevocationListPath()));
+            try (var scope = ResourceScope.newConfinedScope()) {
+                var allocator = SegmentAllocator.nativeAllocator(scope);
+                // Set certificate
+                SSLContext.setCertificate(state.ctx,
+                        SSLHostConfig.adjustRelativePath(certificate.getCertificateFile()),
+                        SSLHostConfig.adjustRelativePath(certificate.getCertificateKeyFile()),
+                        certificate.getCertificateKeyPassword(), getCertificateIndex(certificate));
+                // Set certificate chain file
+                var certificateChainFileNative = allocator.allocateUtf8String(SSLHostConfig.adjustRelativePath(certificate.getCertificateChainFile()));
+                // SSLContext.setCertificateChainFile(state.ctx,
+                //        SSLHostConfig.adjustRelativePath(certificate.getCertificateChainFile()), false);
+                if (SSL_CTX_use_certificate_chain_file(state.ctx, certificateChainFileNative) <= 0) {
+                    // FIXME: log error
+                }
+                // Set revocation
+                SSLContext.setCARevocation(state.ctx,
+                        SSLHostConfig.adjustRelativePath(
+                                sslHostConfig.getCertificateRevocationListFile()),
+                        SSLHostConfig.adjustRelativePath(
+                                sslHostConfig.getCertificateRevocationListPath()));
+            }
         } else {
             String alias = certificate.getCertificateKeyAlias();
             X509KeyManager x509KeyManager = certificate.getCertificateKeyManager();

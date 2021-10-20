@@ -122,7 +122,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         IMPLEMENTED_PROTOCOLS_SET = Collections.unmodifiableSet(protocols);
     }
 
-    private static String[] getCiphers(MemoryAddress ssl) {
+    static String[] getCiphers(MemoryAddress ssl) {
         MemoryAddress sk = SSL_get_ciphers(ssl);
         int len = sk_SSL_CIPHER_num(sk);
         if (len <= 0) {
@@ -224,7 +224,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         OPTIONAL,
         REQUIRE,
     }
-    enum PHAState {
+    private enum PHAState {
         NONE,
         START,
         COMPLETE,
@@ -314,6 +314,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             MethodHandles.Lookup lookup = MethodHandles.lookup();
             MethodHandle infoHandle = lookup.findVirtual(OpenSSLContext.class, "openSSLCallbackInfo",
                     MethodType.methodType(void.class, MemoryAddress.class, int.class, int.class));
+            infoHandle = infoHandle.bindTo(this);
             NativeSymbol infoCallback = CLinker.systemCLinker().upcallStub(infoHandle,
                     FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT), scope);
             // FIXME: since this is set on the SSL context, it might be enough to set it just once ...
@@ -1285,7 +1286,8 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             try {
                 MethodHandles.Lookup lookup = MethodHandles.lookup();
                 MethodHandle verifyCertificateHandle = lookup.findVirtual(OpenSSLContext.class, "openSSLCallbackVerify",
-                        MethodType.methodType(int.class, MemoryAddress.class));
+                        MethodType.methodType(int.class, int.class, MemoryAddress.class));
+                verifyCertificateHandle = verifyCertificateHandle.bindTo(this);
                 NativeSymbol verifyCallback = CLinker.systemCLinker().upcallStub(verifyCertificateHandle,
                         FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS), state.scope);
                 SSL_set_verify(state.ssl, value, verifyCallback);
@@ -1297,16 +1299,16 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         }
     }
 
-    public static void openSSLCallbackInfo(MemoryAddress ssl, int where, int ret) {
-        HandshakeState handshakeState = handshakeStateMap.get(Long.valueOf(ssl.address().toRawLongValue()));
+    public /*static*/ void openSSLCallbackInfo(MemoryAddress ssl, int where, int ret) {
+        //HandshakeState handshakeState = handshakeStateMap.get(Long.valueOf(ssl.address().toRawLongValue()));
         if (0 != (where & SSL_CB_HANDSHAKE_DONE())) {
             handshakeState.handshakeCount++;
         }
     }
 
-    public static int openSSLCallbackVerify(int preverify_ok, MemoryAddress /*X509_STORE_CTX*/ x509_ctx) {
+    public /*static*/ int openSSLCallbackVerify(int preverify_ok, MemoryAddress /*X509_STORE_CTX*/ x509_ctx) {
         MemoryAddress ssl = X509_STORE_CTX_get_ex_data(x509_ctx, SSL_get_ex_data_X509_STORE_CTX_idx());
-        HandshakeState handshakeState = handshakeStateMap.get(Long.valueOf(ssl.address().toRawLongValue()));
+        //HandshakeState handshakeState = handshakeStateMap.get(Long.valueOf(ssl.address().toRawLongValue()));
         int ok = preverify_ok;
         int errnum = X509_STORE_CTX_get_error(x509_ctx);
         int errdepth = X509_STORE_CTX_get_error_depth(x509_ctx);
