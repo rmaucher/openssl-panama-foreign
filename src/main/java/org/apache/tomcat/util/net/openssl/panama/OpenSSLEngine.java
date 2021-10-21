@@ -124,13 +124,13 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
 
     static String[] getCiphers(MemoryAddress ssl) {
         MemoryAddress sk = SSL_get_ciphers(ssl);
-        int len = sk_SSL_CIPHER_num(sk);
+        int len = OPENSSL_sk_num(sk);
         if (len <= 0) {
             return null;
         }
         ArrayList<String> ciphers = new ArrayList<>(len);
         for (int i = 0; i < len; i++) {
-            MemoryAddress cipher = sk_SSL_CIPHER_value(sk, i);
+            MemoryAddress cipher = OPENSSL_sk_value(sk, i);
             MemoryAddress cipherName = SSL_CIPHER_get_name(cipher);
             ciphers.add(cipherName.getUtf8String(0));
         }
@@ -149,7 +149,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             }
             byte[] certificate = new byte[length];
             for (int j = 0; j < length; j++) {
-                certificate[j] = certificatePointer.get(ValueLayout.JAVA_BYTE, j);
+                certificate[j] = bufPointer.get(ValueLayout.JAVA_BYTE, j);
             }
             X509_free(certificatePointer);
             CRYPTO_free(bufPointer, OPENSSL_FILE(), OPENSSL_LINE()); // OPENSSL_free macro
@@ -159,7 +159,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
 
     private static byte[][] getPeerCertChain(MemoryAddress ssl) {
         MemoryAddress/*STACK_OF(X509)*/ sk = SSL_get_peer_cert_chain(ssl);
-        int len = sk_X509_num(sk);
+        int len = OPENSSL_sk_num(sk);
         if (len <= 0) {
             return null;
         }
@@ -167,7 +167,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         try (var scope = ResourceScope.newConfinedScope()) {
             var allocator = SegmentAllocator.nativeAllocator(scope);
             for (int i = 0; i < len; i++) {
-                MemoryAddress/*(X509*)*/ certificatePointer = sk_X509_value(sk, i);
+                MemoryAddress/*(X509*)*/ certificatePointer = OPENSSL_sk_value(sk, i);
                 MemorySegment bufPointer = allocator.allocate(ValueLayout.ADDRESS);
                 int length = i2d_X509(certificatePointer, bufPointer);
                 if (length < 0) {
@@ -177,7 +177,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                 }
                 byte[] certificate = new byte[length];
                 for (int j = 0; j < length; j++) {
-                    certificate[j] = certificatePointer.get(ValueLayout.JAVA_BYTE, j);
+                    certificate[j] = bufPointer.get(ValueLayout.JAVA_BYTE, j);
                 }
                 certificateChain[i] = certificate;
                 CRYPTO_free(bufPointer, OPENSSL_FILE(), OPENSSL_LINE()); // OPENSSL_free macro
@@ -1134,7 +1134,8 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             while ((error = ERR_get_error()) != SSL_ERROR_NONE()) {
                 // Loop until getLastErrorNumber() returns SSL_ERROR_NONE
                 var buf = allocator.allocateArray(ValueLayout.JAVA_BYTE, new byte[128]);
-                String err = ERR_error_string(error, buf).getUtf8String(0);
+                ERR_error_string(error, buf);
+                String err = buf.getUtf8String(0);
                 if (sslError == null) {
                     sslError = err;
                 }

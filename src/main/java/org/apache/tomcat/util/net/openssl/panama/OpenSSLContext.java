@@ -16,7 +16,6 @@
  */
 package org.apache.tomcat.util.net.openssl.panama;
 
-import jdk.incubator.foreign.Addressable;
 import jdk.incubator.foreign.CLinker;
 import jdk.incubator.foreign.FunctionDescriptor;
 import jdk.incubator.foreign.MemoryAddress;
@@ -57,11 +56,6 @@ import javax.net.ssl.X509TrustManager;
 
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
-import org.apache.tomcat.jni.CertificateVerifier;
-import org.apache.tomcat.jni.Pool;
-import org.apache.tomcat.jni.SSL;
-import org.apache.tomcat.jni.SSLConf;
-import org.apache.tomcat.jni.SSLContext;
 import org.apache.tomcat.util.net.Constants;
 import org.apache.tomcat.util.net.SSLHostConfig;
 import org.apache.tomcat.util.net.SSLHostConfig.CertificateVerification;
@@ -78,6 +72,11 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
     private static final StringManager sm = StringManager.getManager(OpenSSLContext.class);
 
     private static final String defaultProtocol = "TLS";
+
+    private static final int SSL_AIDX_RSA     = 0;
+    private static final int SSL_AIDX_DSA     = 1;
+    private static final int SSL_AIDX_ECC     = 3;
+    private static final int SSL_AIDX_MAX     = 4;
 
     private static final String BEGIN_KEY = "-----BEGIN PRIVATE KEY-----\n";
     private static final Object END_KEY = "\n-----END PRIVATE KEY-----";
@@ -113,13 +112,13 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
 
     private static String[] getCiphers(MemoryAddress sslCtx) {
         MemoryAddress sk = SSL_CTX_get_ciphers(sslCtx);
-        int len = sk_SSL_CIPHER_num(sk);
+        int len = OPENSSL_sk_num(sk);
         if (len <= 0) {
             return null;
         }
         ArrayList<String> ciphers = new ArrayList<>(len);
         for (int i = 0; i < len; i++) {
-            MemoryAddress cipher = sk_SSL_CIPHER_value(sk, i);
+            MemoryAddress cipher = OPENSSL_sk_value(sk, i);
             MemoryAddress cipherName = SSL_CIPHER_get_name(cipher);
             ciphers.add(cipherName.getUtf8String(0));
         }
@@ -143,7 +142,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                     if (log.isDebugEnabled()) {
                         log.debug(sm.getString("openssl.makeConf"));
                     }
-                    // FIXME: reimplement
+                    // FIXME: reimplement SSLConf
                     /*
                     cctx = SSLConf.make(aprPool,
                                         SSL.SSL_CONF_FLAG_FILE |
@@ -156,7 +155,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
             }
 
             // SSL protocol
-            // FIXME: According to the OpenSSL documentation, this is a really
+            // According to the OpenSSL documentation, this is a
             // bad idea, and every call is deprecated. Instead, using the
             // auto TLS_server_method is heavily recommended. Also TLSv1_3_server_method
             // is apparently not part of the public API.
@@ -186,8 +185,19 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                             "endpoint.apr.invalidSslProtocol", protocol));
                 }
             }*/
-
             ctx = SSL_CTX_new(TLS_server_method());
+
+            // FIXME: Add the rest of SSLContext.make
+
+            // Set int pem_password_cb(char *buf, int size, int rwflag, void *u) callback
+            MethodHandles.Lookup lookup = MethodHandles.lookup();
+            MethodHandle passwordHandle = lookup.findVirtual(OpenSSLContext.class, "openSSLCallbackPassword",
+                    MethodType.methodType(int.class, MemoryAddress.class, int.class, int.class, MemoryAddress.class));
+            passwordHandle = passwordHandle.bindTo(this);
+            NativeSymbol passwordCallback = CLinker.systemCLinker().upcallStub(passwordHandle,
+                    FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT,
+                            ValueLayout.JAVA_INT, ValueLayout.ADDRESS), scope);
+            SSL_CTX_set_default_passwd_cb(ctx, passwordCallback);
 
             this.negotiableProtocols = negotiableProtocols;
 
@@ -232,6 +242,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
     }
 
 
+    // FIXME: reimplement OpenSSLConf
     protected static boolean checkConf(OpenSSLConf conf, MemoryAddress cctx) throws Exception {
         boolean result = true;
         OpenSSLConfCmd cmd;
@@ -251,7 +262,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                 log.debug(sm.getString("opensslconf.checkCommand", name, value));
             }
             try {
-                rc = SSLConf.check(cctx, name, value);
+                rc = 0;//SSLConf.check(cctx, name, value);
             } catch (Exception e) {
                 log.error(sm.getString("opensslconf.checkFailed"));
                 return false;
@@ -273,7 +284,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
 
     protected static boolean applyConf(OpenSSLConf conf, MemoryAddress cctx, MemoryAddress ctx) throws Exception {
         boolean result = true;
-        SSLConf.assign(cctx, ctx);
+        //SSLConf.assign(cctx, ctx);
         OpenSSLConfCmd cmd;
         String name;
         String value;
@@ -291,7 +302,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                 log.debug(sm.getString("opensslconf.applyCommand", name, value));
             }
             try {
-                rc = SSLConf.apply(cctx, name, value);
+                rc = 0;//SSLConf.apply(cctx, name, value);
             } catch (Exception e) {
                 log.error(sm.getString("opensslconf.applyFailed"));
                 return false;
@@ -305,7 +316,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                         Integer.toString(rc)));
             }
         }
-        rc = SSLConf.finish(cctx);
+        rc = 0;//SSLConf.finish(cctx);
         if (rc <= 0) {
             log.error(sm.getString("opensslconf.finishFailed", Integer.toString(rc)));
             result = false;
@@ -405,32 +416,74 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                     FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS), state.scope);
             SSL_CTX_set_verify(state.ctx, value, verifyCallback);
 
-            // FIXME: Implement trust and certificate verification
-            if (tms != null) {
-                // Client certificate verification based on custom trust managers
-                x509TrustManager = chooseTrustManager(tms);
-                MethodHandle certVerifyCallbackHandle = lookup.findVirtual(OpenSSLContext.class, "openSSLCallbackCertVerify",
-                        MethodType.methodType(int.class, MemoryAddress.class, MemoryAddress.class));
-                certVerifyCallbackHandle = certVerifyCallbackHandle.bindTo(this);
-                NativeSymbol certVerifyCallback = CLinker.systemCLinker().upcallStub(verifyCertificateHandle,
-                        FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS), state.scope);
-                SSL_CTX_set_cert_verify_callback(state.ctx, certVerifyCallback, MemoryAddress.NULL);
+            // Trust and certificate verification
+            try (var scope = ResourceScope.newConfinedScope()) {
+                var allocator = SegmentAllocator.nativeAllocator(scope);
+                if (tms != null) {
+                    // Client certificate verification based on custom trust managers
+                    x509TrustManager = chooseTrustManager(tms);
+                    MethodHandle certVerifyCallbackHandle = lookup.findVirtual(OpenSSLContext.class, "openSSLCallbackCertVerify",
+                            MethodType.methodType(int.class, MemoryAddress.class, MemoryAddress.class));
+                    certVerifyCallbackHandle = certVerifyCallbackHandle.bindTo(this);
+                    NativeSymbol certVerifyCallback = CLinker.systemCLinker().upcallStub(verifyCertificateHandle,
+                            FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS), state.scope);
+                    SSL_CTX_set_cert_verify_callback(state.ctx, certVerifyCallback, MemoryAddress.NULL);
 
-                // Pass along the DER encoded certificates of the accepted client
-                // certificate issuers, so that their subjects can be presented
-                // by the server during the handshake to allow the client choosing
-                // an acceptable certificate
-                for (X509Certificate caCert : x509TrustManager.getAcceptedIssuers()) {
-                    SSLContext.addClientCACertificateRaw(state.ctx, caCert.getEncoded());
-                    if (log.isDebugEnabled()) {
-                        log.debug(sm.getString("openssl.addedClientCaCert", caCert.toString()));
+                    // Pass along the DER encoded certificates of the accepted client
+                    // certificate issuers, so that their subjects can be presented
+                    // by the server during the handshake to allow the client choosing
+                    // an acceptable certificate
+                    for (X509Certificate caCert : x509TrustManager.getAcceptedIssuers()) {
+                        //SSLContext.addClientCACertificateRaw(state.ctx, caCert.getEncoded());
+                        var rawCACertificate = MemorySegment.ofArray(caCert.getEncoded());
+                        var x509CACert = d2i_X509(MemoryAddress.NULL, rawCACertificate.address(), rawCACertificate.byteSize());
+                        if (MemoryAddress.NULL.equals(x509CACert)) {
+                            var buf = allocator.allocateArray(ValueLayout.JAVA_BYTE, new byte[128]);
+                            ERR_error_string(ERR_get_error(), buf);
+                            String err = buf.getUtf8String(0);
+                            log.error(sm.getString("openssl.errorLoadingCertificate", err));
+                        } else if (SSL_CTX_add_client_CA(state.ctx, x509CACert) <= 0) {
+                            var buf = allocator.allocateArray(ValueLayout.JAVA_BYTE, new byte[128]);
+                            ERR_error_string(ERR_get_error(), buf);
+                            String err = buf.getUtf8String(0);
+                            log.error(sm.getString("openssl.errorAddingCertificate", err));
+                        } else if (log.isDebugEnabled()) {
+                            log.debug(sm.getString("openssl.addedClientCaCert", caCert.toString()));
+                        }
+                    }
+                } else {
+                    // Client certificate verification based on trusted CA files and dirs
+                    //SSLContext.setCACertificate(state.ctx,
+                    //        SSLHostConfig.adjustRelativePath(sslHostConfig.getCaCertificateFile()),
+                    //        SSLHostConfig.adjustRelativePath(sslHostConfig.getCaCertificatePath()));
+                    MemorySegment caCertificateFileNative = sslHostConfig.getCaCertificateFile() != null
+                            ? allocator.allocateUtf8String(SSLHostConfig.adjustRelativePath(sslHostConfig.getCaCertificateFile())) : null;
+                    MemorySegment caCertificatePathNative =sslHostConfig.getCaCertificatePath() != null
+                            ? allocator.allocateUtf8String(SSLHostConfig.adjustRelativePath(sslHostConfig.getCaCertificatePath())) : null;
+                    if (SSL_CTX_load_verify_locations(state.ctx,
+                            caCertificateFileNative == null ? MemoryAddress.NULL : caCertificateFileNative,
+                            caCertificatePathNative == null ? MemoryAddress.NULL : caCertificatePathNative) <= 0) {
+                        var buf = allocator.allocateArray(ValueLayout.JAVA_BYTE, new byte[128]);
+                        ERR_error_string(ERR_get_error(), buf);
+                        String err = buf.getUtf8String(0);
+                        log.error(sm.getString("openssl.errorConfiguringLocations", err));
+                    } else {
+                        var caCerts = SSL_CTX_get_client_CA_list(state.ctx);
+                        if (MemoryAddress.NULL.equals(caCerts)) {
+                            caCerts = SSL_load_client_CA_file(caCertificateFileNative);
+                            if (!MemoryAddress.NULL.equals(caCerts)) {
+                                SSL_CTX_set_client_CA_list(state.ctx, caCerts);
+                            }
+                        } else {
+                            if (SSL_add_file_cert_subjects_to_stack(caCerts, caCertificateFileNative) <= 0) {
+                                caCerts = MemoryAddress.NULL;
+                            }
+                        }
+                        if (MemoryAddress.NULL.equals(caCerts)) {
+                            log.warn(sm.getString("openssl.noCACerts"));
+                        }
                     }
                 }
-            } else {
-                // Client certificate verification based on trusted CA files and dirs
-                SSLContext.setCACertificate(state.ctx,
-                        SSLHostConfig.adjustRelativePath(sslHostConfig.getCaCertificateFile()),
-                        SSLHostConfig.adjustRelativePath(sslHostConfig.getCaCertificatePath()));
             }
 
             if (negotiableProtocols != null && negotiableProtocols.size() > 0) {
@@ -453,7 +506,6 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                 //SSLContext.setNpnProtos(state.ctx, protocolsArray, SSL.SSL_SELECTOR_FAILURE_NO_ADVERTISE);
             }
 
-            // FIXME: reimplement
             // Apply OpenSSLConfCmd if used
             OpenSSLConf openSslConf = sslHostConfig.getOpenSslConf();
             if (openSslConf != null && !MemoryAddress.NULL.equals(state.cctx)) {
@@ -593,12 +645,12 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
     public int openSSLCallbackCertVerify(MemoryAddress /*X509_STORE_CTX*/ x509_ctx, MemoryAddress param) {
         MemoryAddress ssl = X509_STORE_CTX_get_ex_data(x509_ctx, SSL_get_ex_data_X509_STORE_CTX_idx());
         MemoryAddress /*STACK_OF(X509)*/ sk = X509_STORE_CTX_get0_untrusted(x509_ctx);
-        int len = sk_X509_num(sk);
+        int len = OPENSSL_sk_num(sk);
         byte[][] certificateChain = new byte[len][];
         try (var scope = ResourceScope.newConfinedScope()) {
             var allocator = SegmentAllocator.nativeAllocator(scope);
             for (int i = 0; i < len; i++) {
-                MemoryAddress/*(X509*)*/ certificatePointer = sk_X509_value(sk, i);
+                MemoryAddress/*(X509*)*/ certificatePointer = OPENSSL_sk_value(sk, i);
                 MemorySegment bufPointer = allocator.allocate(ValueLayout.ADDRESS);
                 int length = i2d_X509(certificatePointer, bufPointer);
                 if (length < 0) {
@@ -608,12 +660,13 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                 }
                 byte[] certificate = new byte[length];
                 for (int j = 0; j < length; j++) {
-                    certificate[j] = certificatePointer.get(ValueLayout.JAVA_BYTE, j);
+                    certificate[j] = bufPointer.get(ValueLayout.JAVA_BYTE, j);
                 }
                 certificateChain[i] = certificate;
                 CRYPTO_free(bufPointer, OPENSSL_FILE(), OPENSSL_LINE()); // OPENSSL_free macro
             }
-            SSL_get_current_cipher(ssl); // FIXME: SSL_CIPHER_authentication_method(SSL_get_current_cipher(ssl)) !
+            // FIXME: SSL_CIPHER_authentication_method(SSL_get_current_cipher(ssl)) !
+            SSL_get_current_cipher(ssl);
             String authMethod = "UNKNOWN";
             X509Certificate[] peerCerts = certificates(certificateChain);
             try {
@@ -626,51 +679,168 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
         return 0;
     }
 
+    private String callbackPassword = null;
+
+    public int openSSLCallbackPassword(MemoryAddress /*char **/ buf, int bufsiz, int verify, MemoryAddress /*void **/ cb) {
+        try (var scope = ResourceScope.newConfinedScope()) {
+            var allocator = SegmentAllocator.nativeAllocator(scope);
+            MemorySegment callbackPasswordNative = allocator.allocateUtf8String(callbackPassword);
+            if (callbackPasswordNative.byteSize() > bufsiz) {
+                // The password is too long
+                log.error(sm.getString("openssl.passwordTooLong"));
+            } else {
+                MemorySegment bufSegment = MemorySegment.ofAddressNative(buf, bufsiz, scope);
+                bufSegment.copyFrom(callbackPasswordNative);
+                return (int) callbackPasswordNative.byteSize();
+            }
+        }        
+        return 0;
+    }
+
 
     public void addCertificate(SSLHostConfigCertificate certificate) throws Exception {
-        // Load Server key and certificate
-        if (certificate.getCertificateFile() != null) {
-            try (var scope = ResourceScope.newConfinedScope()) {
-                var allocator = SegmentAllocator.nativeAllocator(scope);
+        try (var scope = ResourceScope.newConfinedScope()) {
+            var allocator = SegmentAllocator.nativeAllocator(scope);
+            // Load Server key and certificate
+            if (certificate.getCertificateFile() != null) {
                 // Set certificate
-                SSLContext.setCertificate(state.ctx,
-                        SSLHostConfig.adjustRelativePath(certificate.getCertificateFile()),
-                        SSLHostConfig.adjustRelativePath(certificate.getCertificateKeyFile()),
-                        certificate.getCertificateKeyPassword(), getCertificateIndex(certificate));
+                // Make the password available for the callback
+                callbackPassword = certificate.getCertificateKeyPassword();
+                //SSLContext.setCertificate(state.ctx,
+                //        SSLHostConfig.adjustRelativePath(certificate.getCertificateFile()),
+                //        SSLHostConfig.adjustRelativePath(certificate.getCertificateKeyFile()),
+                //        certificate.getCertificateKeyPassword(), getCertificateIndex(certificate));
+                // FIXME: this would only handle PEM files, not PKCS12 anymore
+                var certificateFileNative = allocator.allocateUtf8String(SSLHostConfig.adjustRelativePath(certificate.getCertificateFile()));
+                if (SSL_CTX_use_certificate_file(state.ctx, certificateFileNative.address(), SSL_FILETYPE_PEM()) <= 0) {
+                    log.error(sm.getString("openssl.errorLoadingCertificate", certificate.getCertificateFile()));
+                }
+                var certificateKeyFileNative = allocator.allocateUtf8String(SSLHostConfig.adjustRelativePath(certificate.getCertificateKeyFile()));
+                if (SSL_CTX_use_PrivateKey_file(state.ctx, certificateKeyFileNative.address(), SSL_FILETYPE_PEM()) <= 0) {
+                    log.error(sm.getString("openssl.errorLoadingCertificate", certificate.getCertificateKeyFile()));
+                }
+                if (SSL_CTX_check_private_key(state.ctx) <= 0) {
+                    log.error(sm.getString("openssl.errorPrivateKeyCheck", certificate.getCertificateFile()));
+                }
+                callbackPassword = null;
                 // Set certificate chain file
                 var certificateChainFileNative = allocator.allocateUtf8String(SSLHostConfig.adjustRelativePath(certificate.getCertificateChainFile()));
                 // SSLContext.setCertificateChainFile(state.ctx,
                 //        SSLHostConfig.adjustRelativePath(certificate.getCertificateChainFile()), false);
                 if (SSL_CTX_use_certificate_chain_file(state.ctx, certificateChainFileNative) <= 0) {
-                    // FIXME: log error
+                    log.error(sm.getString("openssl.errorLoadingCertificate", certificate.getCertificateChainFile()));
                 }
                 // Set revocation
-                SSLContext.setCARevocation(state.ctx,
-                        SSLHostConfig.adjustRelativePath(
-                                sslHostConfig.getCertificateRevocationListFile()),
-                        SSLHostConfig.adjustRelativePath(
-                                sslHostConfig.getCertificateRevocationListPath()));
-            }
-        } else {
-            String alias = certificate.getCertificateKeyAlias();
-            X509KeyManager x509KeyManager = certificate.getCertificateKeyManager();
-            if (alias == null) {
-                alias = "tomcat";
-            }
-            X509Certificate[] chain = x509KeyManager.getCertificateChain(alias);
-            if (chain == null) {
-                alias = findAlias(x509KeyManager, certificate);
-                chain = x509KeyManager.getCertificateChain(alias);
-            }
-            PrivateKey key = x509KeyManager.getPrivateKey(alias);
-            StringBuilder sb = new StringBuilder(BEGIN_KEY);
-            sb.append(Base64.getMimeEncoder(64, new byte[] {'\n'}).encodeToString(key.getEncoded()));
-            sb.append(END_KEY);
-            SSLContext.setCertificateRaw(state.ctx, chain[0].getEncoded(),
-                    sb.toString().getBytes(StandardCharsets.US_ASCII),
-                    getCertificateIndex(certificate));
-            for (int i = 1; i < chain.length; i++) {
-                SSLContext.addChainCertificateRaw(state.ctx, chain[i].getEncoded());
+                //SSLContext.setCARevocation(state.ctx,
+                //        SSLHostConfig.adjustRelativePath(
+                //                sslHostConfig.getCertificateRevocationListFile()),
+                //        SSLHostConfig.adjustRelativePath(
+                //                sslHostConfig.getCertificateRevocationListPath()));
+                MemoryAddress certificateStore = (state.ctx);
+                if (sslHostConfig.getCertificateRevocationListFile() != null) {
+                    MemoryAddress x509Lookup = X509_STORE_add_lookup(certificateStore, X509_LOOKUP_file());
+                    var certificateRevocationListFileNative =
+                            allocator.allocateUtf8String(SSLHostConfig.adjustRelativePath(sslHostConfig.getCertificateRevocationListFile()));
+                    //X509_LOOKUP_ctrl(lookup,X509_L_FILE_LOAD,file,type,NULL)
+                    if (X509_LOOKUP_ctrl(x509Lookup, X509_L_FILE_LOAD(), certificateRevocationListFileNative.address(),
+                            X509_FILETYPE_PEM(), MemoryAddress.NULL) <= 0) {
+                        log.error(sm.getString("openssl.errorLoadingCertificateRevocationList", sslHostConfig.getCertificateRevocationListFile()));
+                    }
+                }
+                if (sslHostConfig.getCertificateRevocationListPath() != null) {
+                    MemoryAddress x509Lookup = X509_STORE_add_lookup(certificateStore, X509_LOOKUP_hash_dir());
+                    var certificateRevocationListPathNative =
+                            allocator.allocateUtf8String(SSLHostConfig.adjustRelativePath(sslHostConfig.getCertificateRevocationListPath()));
+                    //X509_LOOKUP_ctrl(lookup,X509_L_ADD_DIR,path,type,NULL)
+                    if (X509_LOOKUP_ctrl(x509Lookup, X509_L_ADD_DIR(), certificateRevocationListPathNative.address(),
+                            X509_FILETYPE_PEM(), MemoryAddress.NULL) <= 0) {
+                        log.error(sm.getString("openssl.errorLoadingCertificateRevocationList", sslHostConfig.getCertificateRevocationListPath()));
+                    }
+                }
+                X509_STORE_set_flags(certificateStore, X509_V_FLAG_CRL_CHECK() | X509_V_FLAG_CRL_CHECK_ALL());
+            } else {
+                String alias = certificate.getCertificateKeyAlias();
+                X509KeyManager x509KeyManager = certificate.getCertificateKeyManager();
+                if (alias == null) {
+                    alias = "tomcat";
+                }
+                X509Certificate[] chain = x509KeyManager.getCertificateChain(alias);
+                if (chain == null) {
+                    alias = findAlias(x509KeyManager, certificate);
+                    chain = x509KeyManager.getCertificateChain(alias);
+                }
+                PrivateKey key = x509KeyManager.getPrivateKey(alias);
+                StringBuilder sb = new StringBuilder(BEGIN_KEY);
+                sb.append(Base64.getMimeEncoder(64, new byte[] {'\n'}).encodeToString(key.getEncoded()));
+                sb.append(END_KEY);
+                //SSLContext.setCertificateRaw(state.ctx, chain[0].getEncoded(),
+                //        sb.toString().getBytes(StandardCharsets.US_ASCII),
+                //        getCertificateIndex(certificate));
+                var rawCertificate = MemorySegment.ofArray(chain[0].getEncoded());
+                var rawKey = MemorySegment.ofArray(sb.toString().getBytes(StandardCharsets.US_ASCII));
+                var x509cert = d2i_X509(MemoryAddress.NULL, rawCertificate.address(), rawCertificate.byteSize());
+                if (MemoryAddress.NULL.equals(x509cert)) {
+                    var buf = allocator.allocateArray(ValueLayout.JAVA_BYTE, new byte[128]);
+                    ERR_error_string(ERR_get_error(), buf);
+                    String err = buf.getUtf8String(0);
+                    log.error(sm.getString("openssl.errorLoadingCertificate", err));
+                    return;
+                }
+                var bio = BIO_new(BIO_s_mem());
+                try {
+                    BIO_write(bio, rawKey.address(), (int) rawKey.byteSize());
+                    var evp = PEM_read_bio_PrivateKey(bio, MemoryAddress.NULL, MemoryAddress.NULL, MemoryAddress.NULL);
+                    if (MemoryAddress.NULL.equals(evp)) {
+                        var buf = allocator.allocateArray(ValueLayout.JAVA_BYTE, new byte[128]);
+                        ERR_error_string(ERR_get_error(), buf);
+                        String err = buf.getUtf8String(0);
+                        log.error(sm.getString("openssl.errorLoadingPrivateKey", err));
+                        return;
+                    }
+                    if (SSL_CTX_use_certificate(state.ctx, x509cert) <= 0) {
+                        var buf = allocator.allocateArray(ValueLayout.JAVA_BYTE, new byte[128]);
+                        ERR_error_string(ERR_get_error(), buf);
+                        String err = buf.getUtf8String(0);
+                        log.error(sm.getString("openssl.errorLoadingCertificate", err));
+                        return;
+                    }
+                    if (SSL_CTX_use_PrivateKey(state.ctx, evp) <= 0) {
+                        var buf = allocator.allocateArray(ValueLayout.JAVA_BYTE, new byte[128]);
+                        ERR_error_string(ERR_get_error(), buf);
+                        String err = buf.getUtf8String(0);
+                        log.error(sm.getString("openssl.errorLoadingPrivateKey", err));
+                        return;
+                    }
+                    if (SSL_CTX_check_private_key(state.ctx) <= 0) {
+                        var buf = allocator.allocateArray(ValueLayout.JAVA_BYTE, new byte[128]);
+                        ERR_error_string(ERR_get_error(), buf);
+                        String err = buf.getUtf8String(0);
+                        log.error(sm.getString("openssl.errorPrivateKeyCheck", err));
+                        return;
+                    }
+                } finally {
+                    BIO_free(bio);
+                }
+                for (int i = 1; i < chain.length; i++) {
+                    //SSLContext.addChainCertificateRaw(state.ctx, chain[i].getEncoded());
+                    var rawCertificateChain = MemorySegment.ofArray(chain[i].getEncoded());
+                    var x509certChain = d2i_X509(MemoryAddress.NULL, rawCertificateChain.address(), rawCertificateChain.byteSize());
+                    if (MemoryAddress.NULL.equals(x509certChain)) {
+                        var buf = allocator.allocateArray(ValueLayout.JAVA_BYTE, new byte[128]);
+                        ERR_error_string(ERR_get_error(), buf);
+                        String err = buf.getUtf8String(0);
+                        log.error(sm.getString("openssl.errorLoadingCertificate", err));
+                        return;
+                    }
+                    // # define SSL_CTX_add0_chain_cert(ctx,x509) SSL_CTX_ctrl(ctx,SSL_CTRL_CHAIN_CERT,0,(char *)(x509))
+                    if (SSL_CTX_ctrl(state.ctx, SSL_CTRL_CHAIN_CERT(), 0, x509certChain) <= 0) {
+                        var buf = allocator.allocateArray(ValueLayout.JAVA_BYTE, new byte[128]);
+                        ERR_error_string(ERR_get_error(), buf);
+                        String err = buf.getUtf8String(0);
+                        log.error(sm.getString("openssl.errorAddingCertificate", err));
+                        return;
+                    }
+                }
             }
         }
     }
@@ -681,13 +851,13 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
         // If the type is undefined there will only be one certificate (enforced
         // in SSLHostConfig) so use the RSA slot.
         if (certificate.getType() == Type.RSA || certificate.getType() == Type.UNDEFINED) {
-            result = SSL.SSL_AIDX_RSA;
+            result = SSL_AIDX_RSA;
         } else if (certificate.getType() == Type.EC) {
-            result = SSL.SSL_AIDX_ECC;
+            result = SSL_AIDX_ECC;
         } else if (certificate.getType() == Type.DSA) {
-            result = SSL.SSL_AIDX_DSA;
+            result = SSL_AIDX_DSA;
         } else {
-            result = SSL.SSL_AIDX_MAX;
+            result = SSL_AIDX_MAX;
         }
         return result;
     }
