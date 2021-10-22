@@ -232,7 +232,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
 
     private static final String INVALID_CIPHER = "SSL_NULL_WITH_NULL_NULL";
 
-    private static final MemorySegment EMPTY_ADDR = MemorySegment.ofByteBuffer(ByteBuffer.allocate(0));
+    private static final MemorySegment EMPTY_ADDR = MemorySegment.ofByteBuffer(ByteBuffer.allocateDirect(0));
 
     private final OpenSSLState state;
     private final Cleanable cleanable;
@@ -328,12 +328,10 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             SSL_set_accept_state(ssl);
         }
         SSL_set_verify_result(ssl, X509_V_OK());
-        var allocator = SegmentAllocator.nativeAllocator(scope);
-        MemorySegment internalBIO = allocator.allocate(ValueLayout.ADDRESS);
-        MemorySegment networkBIO = allocator.allocate(ValueLayout.ADDRESS);
-        if (BIO_new_bio_pair(internalBIO, 0, networkBIO, 0) != 1) {
-            throw new IllegalArgumentException(sm.getString("engine.noSSLContext"));
-        }
+        MemoryAddress internalBIO = BIO_new(BIO_s_mem());
+        MemoryAddress networkBIO = BIO_new(BIO_s_mem());
+        //BIO_ctrl(b1,BIO_C_MAKE_BIO_PAIR,0,b2)
+        BIO_ctrl(internalBIO, BIO_C_MAKE_BIO_PAIR(), 0, networkBIO);
         SSL_set_bio(ssl, internalBIO, internalBIO);
         state = new OpenSSLState(scope, ssl, networkBIO);
         cleanable = cleaner.register(this, state);
@@ -385,7 +383,6 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                 return sslWrote;
             }
         } else {
-            // FIXME: MemorySegment.ofByteBuffer might work fine with a heap ByteBuffer, making this copy useless
             ByteBuffer buf = ByteBuffer.allocateDirect(len);
             try {
                 src.limit(pos + len);
@@ -417,7 +414,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
      * Write encrypted data to the OpenSSL network BIO.
      * @throws SSLException if the OpenSSL error check fails
      */
-    private int writeEncryptedData(final MemorySegment networkBIO, final ByteBuffer src) throws SSLException {
+    private int writeEncryptedData(final MemoryAddress networkBIO, final ByteBuffer src) throws SSLException {
         clearLastError();
         final int pos = src.position();
         final int len = src.remaining();
@@ -431,14 +428,11 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                 return netWrote;
             }
         } else {
-            // FIXME: MemorySegment.ofByteBuffer might work fine with a heap ByteBuffer, making this copy useless
             ByteBuffer buf = ByteBuffer.allocateDirect(len);
             try {
-
                 buf.put(src);
                 buf.flip();
-
-                final int netWrote = BIO_write(networkBIO, MemorySegment.ofByteBuffer(src), len);
+                final int netWrote = BIO_write(networkBIO, MemorySegment.ofByteBuffer(buf), len);
                 if (netWrote <= 0) {
                     checkLastError();
                 }
@@ -474,7 +468,6 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                 checkLastError();
             }
         } else {
-            // FIXME: MemorySegment.ofByteBuffer might work fine with a heap ByteBuffer, making this copy useless
             final int pos = dst.position();
             final int limit = dst.limit();
             final int len = Math.min(MAX_ENCRYPTED_PACKET_LENGTH, limit - pos);
@@ -503,7 +496,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
      * Read encrypted data from the OpenSSL network BIO
      * @throws SSLException if the OpenSSL error check fails
      */
-    private int readEncryptedData(final MemorySegment networkBIO, final ByteBuffer dst, final int pending) throws SSLException {
+    private int readEncryptedData(final MemoryAddress networkBIO, final ByteBuffer dst, final int pending) throws SSLException {
         clearLastError();
         if (dst.isDirect() && dst.remaining() >= pending) {
             final int pos = dst.position();
@@ -515,7 +508,6 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                 checkLastError();
             }
         } else {
-            // FIXME: MemorySegment.ofByteBuffer might work fine with a heap ByteBuffer, making this copy useless
             final ByteBuffer buf = ByteBuffer.allocateDirect(pending);
             try {
                 final int bioRead = BIO_read(networkBIO, MemorySegment.ofByteBuffer(buf), pending);
@@ -540,7 +532,6 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
 
     @Override
     public synchronized SSLEngineResult wrap(final ByteBuffer[] srcs, final int offset, final int length, final ByteBuffer dst) throws SSLException {
-
         // Check to make sure the engine has not been closed
         if (destroyed) {
             return new SSLEngineResult(SSLEngineResult.Status.CLOSED, SSLEngineResult.HandshakeStatus.NOT_HANDSHAKING, 0, 0);
@@ -1694,9 +1685,9 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
 
         private final ResourceScope scope;
         private final MemoryAddress ssl;
-        private final MemorySegment networkBIO;
+        private final MemoryAddress networkBIO;
 
-        private OpenSSLState(ResourceScope scope, MemoryAddress ssl, MemorySegment networkBIO) {
+        private OpenSSLState(ResourceScope scope, MemoryAddress ssl, MemoryAddress networkBIO) {
             this.scope = scope;
             this.ssl = ssl;
             this.networkBIO = networkBIO;
