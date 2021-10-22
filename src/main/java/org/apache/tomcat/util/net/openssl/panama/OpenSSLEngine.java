@@ -312,7 +312,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         // Set ssl_info_callback
         try {
             MethodHandles.Lookup lookup = MethodHandles.lookup();
-            MethodHandle infoHandle = lookup.findVirtual(OpenSSLContext.class, "openSSLCallbackInfo",
+            MethodHandle infoHandle = lookup.findVirtual(OpenSSLEngine.class, "openSSLCallbackInfo",
                     MethodType.methodType(void.class, MemoryAddress.class, int.class, int.class));
             infoHandle = infoHandle.bindTo(this);
             NativeSymbol infoCallback = CLinker.systemCLinker().upcallStub(infoHandle,
@@ -320,8 +320,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             // FIXME: since this is set on the SSL context, it might be enough to set it just once ...
             SSL_CTX_set_info_callback(sslCtx, infoCallback);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            throw new IllegalArgumentException(sm.getString("engine.noSSLContext"), e);
         }
         if (clientMode) {
             SSL_set_connect_state(ssl);
@@ -329,7 +328,6 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             SSL_set_accept_state(ssl);
         }
         SSL_set_verify_result(ssl, X509_V_OK());
-        // FIXME: Call SSL_rand_seed
         var allocator = SegmentAllocator.nativeAllocator(scope);
         MemorySegment internalBIO = allocator.allocate(ValueLayout.ADDRESS);
         MemorySegment networkBIO = allocator.allocate(ValueLayout.ADDRESS);
@@ -1286,7 +1284,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             handshakeState.certificateVerifyMode = value;
             try {
                 MethodHandles.Lookup lookup = MethodHandles.lookup();
-                MethodHandle verifyCertificateHandle = lookup.findVirtual(OpenSSLContext.class, "openSSLCallbackVerify",
+                MethodHandle verifyCertificateHandle = lookup.findVirtual(OpenSSLEngine.class, "openSSLCallbackVerify",
                         MethodType.methodType(int.class, int.class, MemoryAddress.class));
                 verifyCertificateHandle = verifyCertificateHandle.bindTo(this);
                 NativeSymbol verifyCallback = CLinker.systemCLinker().upcallStub(verifyCertificateHandle,

@@ -25,12 +25,16 @@ import static org.apache.tomcat.util.openssl.openssl_h.*;
 public class HelloOpenSSL {
 
     public static void main(String[] args) {
+        MemoryAddress ssl = MemoryAddress.NULL;
+        MemoryAddress sslCtx = MemoryAddress.NULL;
         try (var scope = ResourceScope.newConfinedScope()) {
             var allocator = SegmentAllocator.nativeAllocator(scope);
-            var sslCtx = SSL_CTX_new(TLS_server_method());
+            OPENSSL_init_ssl(OPENSSL_INIT_ENGINE_ALL_BUILTIN(), MemoryAddress.NULL);
+            System.out.println("Using " + OPENSSL_VERSION_TEXT().getUtf8String(0));
+            sslCtx = SSL_CTX_new(TLS_server_method());
             SSL_CTX_set_options(sslCtx, SSL_OP_ALL());
             SSL_CTX_set_cipher_list(sslCtx, allocator.allocateUtf8String("ALL"));
-            var ssl = SSL_new(sslCtx);
+            ssl = SSL_new(sslCtx);
             SSL_set_accept_state(ssl);
             MemoryAddress sk = SSL_get_ciphers(ssl);
             int len = OPENSSL_sk_num(sk);
@@ -38,9 +42,18 @@ public class HelloOpenSSL {
                 return;
             }
             for (int i = 0; i < len; i++) {
-                MemoryAddress cipher = OPENSSL_sk_value(sk, i);
-                MemoryAddress cipherName = SSL_CIPHER_get_name(cipher);
+                var cipher = OPENSSL_sk_value(sk, i);
+                var cipherName = SSL_CIPHER_get_name(cipher);
                 System.out.println("Cipher: " + cipherName.getUtf8String(0));
+            }
+        } finally {
+            if (!MemoryAddress.NULL.equals(ssl)) {
+                System.out.println("SSL_free " + ssl.toRawLongValue());
+                SSL_free(ssl);
+            }
+            if (!MemoryAddress.NULL.equals(sslCtx)) {
+                System.out.println("SSL_free CTX " + sslCtx.toRawLongValue());
+                //SSL_free(sslCtx);
             }
         }
     }

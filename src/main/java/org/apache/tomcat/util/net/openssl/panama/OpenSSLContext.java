@@ -127,10 +127,20 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
 
     public OpenSSLContext(SSLHostConfigCertificate certificate, List<String> negotiableProtocols)
             throws SSLException {
+
+        // Check that OpenSSL was initialized
+        if (!OpenSSLStatus.isInitialized()) {
+            try {
+                OpenSSLLifecycleListener.init();
+            } catch (Exception e) {
+                throw new SSLException(e);
+            }
+        }
+
         this.sslHostConfig = certificate.getSSLHostConfig();
         this.certificate = certificate;
         ResourceScope scope = ResourceScope.newSharedScope();
-        
+
         MemoryAddress ctx = MemoryAddress.NULL;
         MemoryAddress cctx = MemoryAddress.NULL;
         boolean success = false;
@@ -188,6 +198,23 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
             ctx = SSL_CTX_new(TLS_server_method());
 
             // FIXME: Add the rest of SSLContext.make
+
+            SSL_CTX_set_options(ctx, SSL_OP_SINGLE_DH_USE());
+            SSL_CTX_set_options(ctx, SSL_OP_SINGLE_ECDH_USE());
+            // Option for SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION ?
+            // Default session context id and cache size
+            // # define SSL_CTX_sess_set_cache_size(ctx,t) \
+            // SSL_CTX_ctrl(ctx,SSL_CTRL_SET_SESS_CACHE_SIZE,t,NULL)
+            SSL_CTX_ctrl(ctx, SSL_CTRL_SET_SESS_CACHE_SIZE(), 256, MemoryAddress.NULL);
+            // Session cache is disabled by default
+            // # define SSL_CTX_set_session_cache_mode(ctx,m) \
+            // SSL_CTX_ctrl(ctx,SSL_CTRL_SET_SESS_CACHE_MODE,m,NULL)
+            SSL_CTX_ctrl(ctx, SSL_CTRL_SET_SESS_CACHE_MODE(), SSL_SESS_CACHE_OFF(), MemoryAddress.NULL);
+            // Longer session timeout
+            SSL_CTX_set_timeout(ctx, 14400);
+
+            // FIXME: From SSLContext.make, possibly set ssl_callback_ServerNameIndication
+            // FIXME: From SSLContext.make, possibly set ssl_callback_ClientHello
 
             // Set int pem_password_cb(char *buf, int size, int rwflag, void *u) callback
             MethodHandles.Lookup lookup = MethodHandles.lookup();
@@ -451,14 +478,14 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                             log.debug(sm.getString("openssl.addedClientCaCert", caCert.toString()));
                         }
                     }
-                } else {
+                } else if (sslHostConfig.getCaCertificateFile() != null || sslHostConfig.getCaCertificatePath() != null) {
                     // Client certificate verification based on trusted CA files and dirs
                     //SSLContext.setCACertificate(state.ctx,
                     //        SSLHostConfig.adjustRelativePath(sslHostConfig.getCaCertificateFile()),
                     //        SSLHostConfig.adjustRelativePath(sslHostConfig.getCaCertificatePath()));
                     MemorySegment caCertificateFileNative = sslHostConfig.getCaCertificateFile() != null
                             ? allocator.allocateUtf8String(SSLHostConfig.adjustRelativePath(sslHostConfig.getCaCertificateFile())) : null;
-                    MemorySegment caCertificatePathNative =sslHostConfig.getCaCertificatePath() != null
+                    MemorySegment caCertificatePathNative = sslHostConfig.getCaCertificatePath() != null
                             ? allocator.allocateUtf8String(SSLHostConfig.adjustRelativePath(sslHostConfig.getCaCertificatePath())) : null;
                     if (SSL_CTX_load_verify_locations(state.ctx,
                             caCertificateFileNative == null ? MemoryAddress.NULL : caCertificateFileNative,
