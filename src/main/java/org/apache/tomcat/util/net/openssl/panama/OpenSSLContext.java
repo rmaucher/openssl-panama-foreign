@@ -739,11 +739,11 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                 //        certificate.getCertificateKeyPassword(), getCertificateIndex(certificate));
                 // FIXME: this would only handle PEM files, not PKCS12 anymore
                 var certificateFileNative = allocator.allocateUtf8String(SSLHostConfig.adjustRelativePath(certificate.getCertificateFile()));
-                if (SSL_CTX_use_certificate_file(state.ctx, certificateFileNative.address(), SSL_FILETYPE_PEM()) <= 0) {
+                if (SSL_CTX_use_certificate_file(state.ctx, certificateFileNative, SSL_FILETYPE_PEM()) <= 0) {
                     log.error(sm.getString("openssl.errorLoadingCertificate", certificate.getCertificateFile()));
                 }
                 var certificateKeyFileNative = allocator.allocateUtf8String(SSLHostConfig.adjustRelativePath(certificate.getCertificateKeyFile()));
-                if (SSL_CTX_use_PrivateKey_file(state.ctx, certificateKeyFileNative.address(), SSL_FILETYPE_PEM()) <= 0) {
+                if (SSL_CTX_use_PrivateKey_file(state.ctx, certificateKeyFileNative, SSL_FILETYPE_PEM()) <= 0) {
                     log.error(sm.getString("openssl.errorLoadingCertificate", certificate.getCertificateKeyFile()));
                 }
                 if (SSL_CTX_check_private_key(state.ctx) <= 0) {
@@ -769,7 +769,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                     var certificateRevocationListFileNative =
                             allocator.allocateUtf8String(SSLHostConfig.adjustRelativePath(sslHostConfig.getCertificateRevocationListFile()));
                     //X509_LOOKUP_ctrl(lookup,X509_L_FILE_LOAD,file,type,NULL)
-                    if (X509_LOOKUP_ctrl(x509Lookup, X509_L_FILE_LOAD(), certificateRevocationListFileNative.address(),
+                    if (X509_LOOKUP_ctrl(x509Lookup, X509_L_FILE_LOAD(), certificateRevocationListFileNative,
                             X509_FILETYPE_PEM(), MemoryAddress.NULL) <= 0) {
                         log.error(sm.getString("openssl.errorLoadingCertificateRevocationList", sslHostConfig.getCertificateRevocationListFile()));
                     }
@@ -779,7 +779,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                     var certificateRevocationListPathNative =
                             allocator.allocateUtf8String(SSLHostConfig.adjustRelativePath(sslHostConfig.getCertificateRevocationListPath()));
                     //X509_LOOKUP_ctrl(lookup,X509_L_ADD_DIR,path,type,NULL)
-                    if (X509_LOOKUP_ctrl(x509Lookup, X509_L_ADD_DIR(), certificateRevocationListPathNative.address(),
+                    if (X509_LOOKUP_ctrl(x509Lookup, X509_L_ADD_DIR(), certificateRevocationListPathNative,
                             X509_FILETYPE_PEM(), MemoryAddress.NULL) <= 0) {
                         log.error(sm.getString("openssl.errorLoadingCertificateRevocationList", sslHostConfig.getCertificateRevocationListPath()));
                     }
@@ -803,9 +803,10 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                 //SSLContext.setCertificateRaw(state.ctx, chain[0].getEncoded(),
                 //        sb.toString().getBytes(StandardCharsets.US_ASCII),
                 //        getCertificateIndex(certificate));
-                var rawCertificate = MemorySegment.ofArray(chain[0].getEncoded());
-                var rawKey = MemorySegment.ofArray(sb.toString().getBytes(StandardCharsets.US_ASCII));
-                var x509cert = d2i_X509(MemoryAddress.NULL, rawCertificate.address(), rawCertificate.byteSize());
+                var rawCertificate = allocator.allocateArray(ValueLayout.JAVA_BYTE, chain[0].getEncoded());
+                var rawCertificatePointer = allocator.allocate(ValueLayout.ADDRESS, rawCertificate);
+                var rawKey = allocator.allocateArray(ValueLayout.JAVA_BYTE, sb.toString().getBytes(StandardCharsets.US_ASCII));
+                var x509cert = d2i_X509(MemoryAddress.NULL, rawCertificatePointer, rawCertificate.byteSize());
                 if (MemoryAddress.NULL.equals(x509cert)) {
                     var buf = allocator.allocateArray(ValueLayout.JAVA_BYTE, new byte[128]);
                     ERR_error_string(ERR_get_error(), buf);
@@ -850,8 +851,9 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                 }
                 for (int i = 1; i < chain.length; i++) {
                     //SSLContext.addChainCertificateRaw(state.ctx, chain[i].getEncoded());
-                    var rawCertificateChain = MemorySegment.ofArray(chain[i].getEncoded());
-                    var x509certChain = d2i_X509(MemoryAddress.NULL, rawCertificateChain.address(), rawCertificateChain.byteSize());
+                    var rawCertificateChain = allocator.allocateArray(ValueLayout.JAVA_BYTE, chain[i].getEncoded());
+                    var rawCertificateChainPointer = allocator.allocate(ValueLayout.ADDRESS, rawCertificateChain);
+                    var x509certChain = d2i_X509(MemoryAddress.NULL, rawCertificateChainPointer, rawCertificateChain.byteSize());
                     if (MemoryAddress.NULL.equals(x509certChain)) {
                         var buf = allocator.allocateArray(ValueLayout.JAVA_BYTE, new byte[128]);
                         ERR_error_string(ERR_get_error(), buf);

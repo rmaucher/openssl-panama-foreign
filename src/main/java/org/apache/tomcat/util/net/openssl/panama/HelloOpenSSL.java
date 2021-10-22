@@ -46,6 +46,7 @@ public class HelloOpenSSL {
                 var cipherName = SSL_CIPHER_get_name(cipher);
                 System.out.println("Cipher: " + cipherName.getUtf8String(0));
             }
+            System.out.println("Handshake: " + SSL_do_handshake(ssl));
         } finally {
             if (!MemoryAddress.NULL.equals(ssl)) {
                 System.out.println("SSL_free " + ssl.toRawLongValue());
