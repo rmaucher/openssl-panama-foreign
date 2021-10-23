@@ -33,7 +33,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 import javax.net.ssl.SSLEngine;
 import javax.net.ssl.SSLEngineResult;
@@ -79,7 +78,20 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
 
     public static final Set<String> IMPLEMENTED_PROTOCOLS_SET;
 
+    private static final MethodHandle openSSLCallbackInfoHandle;
+    private static final MethodHandle openSSLCallbackVerifyHandle;
+
     static {
+        MethodHandles.Lookup lookup = MethodHandles.lookup();
+        try {
+            openSSLCallbackInfoHandle = lookup.findVirtual(OpenSSLEngine.class, "openSSLCallbackInfo",
+                    MethodType.methodType(void.class, MemoryAddress.class, int.class, int.class));
+            openSSLCallbackVerifyHandle = lookup.findVirtual(OpenSSLEngine.class, "openSSLCallbackVerify",
+                    MethodType.methodType(int.class, int.class, MemoryAddress.class));
+        } catch (Exception e) {
+            throw new IllegalStateException(e);
+        }
+
         final Set<String> availableCipherSuites = new LinkedHashSet<>(128);
         try (var scope = ResourceScope.newConfinedScope()) {
             var allocator = SegmentAllocator.nativeAllocator(scope);
@@ -140,19 +152,19 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
     private static byte[] getPeerCertificate(MemoryAddress ssl) {
         try (var scope = ResourceScope.newConfinedScope()) {
             var allocator = SegmentAllocator.nativeAllocator(scope);
-            MemoryAddress/*(X509*)*/ certificatePointer = SSL_get_peer_certificate(ssl);
-            MemorySegment bufPointer = allocator.allocate(ValueLayout.ADDRESS);
-            int length = i2d_X509(certificatePointer, bufPointer);
+            MemoryAddress/*(X509*)*/ x509 = SSL_get_peer_certificate(ssl);
+            MemorySegment bufPointer = allocator.allocate(ValueLayout.ADDRESS, MemoryAddress.NULL);
+            int length = i2d_X509(x509, bufPointer);
             if (length < 0) {
-                CRYPTO_free(bufPointer, OPENSSL_FILE(), OPENSSL_LINE()); // OPENSSL_free macro
                 return null;
             }
+            MemoryAddress buf = bufPointer.get(ValueLayout.ADDRESS, 0);
             byte[] certificate = new byte[length];
             for (int j = 0; j < length; j++) {
-                certificate[j] = bufPointer.get(ValueLayout.JAVA_BYTE, j);
+                certificate[j] = buf.get(ValueLayout.JAVA_BYTE, j);
             }
-            X509_free(certificatePointer);
-            CRYPTO_free(bufPointer, OPENSSL_FILE(), OPENSSL_LINE()); // OPENSSL_free macro
+            X509_free(x509);
+            CRYPTO_free(buf, OPENSSL_FILE(), OPENSSL_LINE()); // OPENSSL_free macro
             return certificate;
         }
     }
@@ -167,20 +179,20 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         try (var scope = ResourceScope.newConfinedScope()) {
             var allocator = SegmentAllocator.nativeAllocator(scope);
             for (int i = 0; i < len; i++) {
-                MemoryAddress/*(X509*)*/ certificatePointer = OPENSSL_sk_value(sk, i);
-                MemorySegment bufPointer = allocator.allocate(ValueLayout.ADDRESS);
-                int length = i2d_X509(certificatePointer, bufPointer);
+                MemoryAddress/*(X509*)*/ x509 = OPENSSL_sk_value(sk, i);
+                MemorySegment bufPointer = allocator.allocate(ValueLayout.ADDRESS, MemoryAddress.NULL);
+                int length = i2d_X509(x509, bufPointer);
                 if (length < 0) {
                     certificateChain[i] = new byte[0];
-                    CRYPTO_free(bufPointer, OPENSSL_FILE(), OPENSSL_LINE()); // OPENSSL_free macro
                     continue;
                 }
+                MemoryAddress buf = bufPointer.get(ValueLayout.ADDRESS, 0);
                 byte[] certificate = new byte[length];
                 for (int j = 0; j < length; j++) {
-                    certificate[j] = bufPointer.get(ValueLayout.JAVA_BYTE, j);
+                    certificate[j] = buf.get(ValueLayout.JAVA_BYTE, j);
                 }
                 certificateChain[i] = certificate;
-                CRYPTO_free(bufPointer, OPENSSL_FILE(), OPENSSL_LINE()); // OPENSSL_free macro
+                CRYPTO_free(buf, OPENSSL_FILE(), OPENSSL_LINE()); // OPENSSL_free macro
             }
         }
         return certificateChain;
@@ -224,11 +236,6 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         OPTIONAL,
         REQUIRE,
     }
-    private enum PHAState {
-        NONE,
-        START,
-        COMPLETE,
-    }
 
     private static final String INVALID_CIPHER = "SSL_NULL_WITH_NULL_NULL";
 
@@ -239,8 +246,11 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
 
     private enum Accepted { NOT, IMPLICIT, EXPLICIT }
     private Accepted accepted = Accepted.NOT;
+    private enum PHAState { NONE, START, COMPLETE }
+    private PHAState phaState = PHAState.NONE;
     private boolean handshakeFinished;
     private int currentHandshake;
+    private int handshakeCount = 0;
     private boolean receivedShutdown;
     private volatile boolean destroyed;
 
@@ -267,13 +277,13 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
     private final boolean alpn;
     private final boolean initialized;
     private final boolean certificateVerificationOptionalNoCA;
+    private final int certificateVerificationDepth;
+
+    private int certificateVerifyMode = 0;
 
     private String selectedProtocol = null;
 
     private final OpenSSLSession session;
-
-    private final HandshakeState handshakeState;
-    private static ConcurrentHashMap<Long, HandshakeState> handshakeStateMap = new ConcurrentHashMap<>();
 
     /**
      * Creates a new instance
@@ -304,32 +314,20 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         ResourceScope scope = ResourceScope.newSharedScope();
         session = new OpenSSLSession();
         MemoryAddress ssl = SSL_new(sslCtx);
-        // Although it is possible to store and associate the data with the *ssl in the native code,
-        // it feels more comfortable storing this in Java form since the native code is non
-        // trivial
-        handshakeState = new HandshakeState(certificateVerificationDepth);
-        handshakeStateMap.put(Long.valueOf(ssl.address().toRawLongValue()), handshakeState);
+        this.certificateVerificationDepth = certificateVerificationDepth;
         // Set ssl_info_callback
-        try {
-            MethodHandles.Lookup lookup = MethodHandles.lookup();
-            MethodHandle infoHandle = lookup.findVirtual(OpenSSLEngine.class, "openSSLCallbackInfo",
-                    MethodType.methodType(void.class, MemoryAddress.class, int.class, int.class));
-            infoHandle = infoHandle.bindTo(this);
-            NativeSymbol infoCallback = CLinker.systemCLinker().upcallStub(infoHandle,
-                    FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT), scope);
-            // FIXME: since this is set on the SSL context, it might be enough to set it just once ...
-            SSL_CTX_set_info_callback(sslCtx, infoCallback);
-        } catch (Exception e) {
-            throw new IllegalArgumentException(sm.getString("engine.noSSLContext"), e);
-        }
+        MethodHandle boundOpenSSLCallbackInfoHandle = openSSLCallbackInfoHandle.bindTo(this);
+        NativeSymbol openSSLCallbackInfo = CLinker.systemCLinker().upcallStub(boundOpenSSLCallbackInfoHandle,
+                FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT), scope);
+        SSL_set_info_callback(ssl, openSSLCallbackInfo);
         if (clientMode) {
             SSL_set_connect_state(ssl);
         } else {
             SSL_set_accept_state(ssl);
         }
         SSL_set_verify_result(ssl, X509_V_OK());
-        MemoryAddress internalBIO = BIO_new(BIO_s_mem());
-        MemoryAddress networkBIO = BIO_new(BIO_s_mem());
+        MemoryAddress internalBIO = BIO_new(BIO_s_bio());
+        MemoryAddress networkBIO = BIO_new(BIO_s_bio());
         //BIO_ctrl(b1,BIO_C_MAKE_BIO_PAIR,0,b2)
         BIO_ctrl(internalBIO, BIO_C_MAKE_BIO_PAIR(), 0, networkBIO);
         SSL_set_bio(ssl, internalBIO, internalBIO);
@@ -457,18 +455,17 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
      */
     private int readPlaintextData(final MemoryAddress ssl, final ByteBuffer dst) throws SSLException {
         clearLastError();
+        final int pos = dst.position();
         if (dst.isDirect()) {
-            final int pos = dst.position();
-            final int len = dst.limit() - pos;
+            final int len = dst.remaining();
             final int sslRead = SSL_read(ssl, MemorySegment.ofByteBuffer(dst), len);
             if (sslRead > 0) {
-                dst.position(pos + sslRead);
+                dst.position(dst.position() + sslRead);
                 return sslRead;
             } else {
                 checkLastError();
             }
         } else {
-            final int pos = dst.position();
             final int limit = dst.limit();
             final int len = Math.min(MAX_ENCRYPTED_PACKET_LENGTH, limit - pos);
             final ByteBuffer buf = ByteBuffer.allocateDirect(len);
@@ -549,7 +546,6 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         if (dst.isReadOnly()) {
             throw new ReadOnlyBufferException();
         }
-
         // Prepare OpenSSL to work in server mode and receive handshake
         if (accepted == Accepted.NOT) {
             beginHandshakeImplicitly();
@@ -630,6 +626,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                 }
             }
         }
+
         return new SSLEngineResult(getEngineStatus(), getHandshakeStatus(), bytesConsumed, bytesProduced);
     }
 
@@ -759,6 +756,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             closeOutbound();
             closeInbound();
         }
+
         if (bytesProduced == 0 && (written == 0 || (written > 0 && !src.hasRemaining() && handshakeFinished))) {
             return new SSLEngineResult(SSLEngineResult.Status.BUFFER_UNDERFLOW, getHandshakeStatus(), written, 0);
         } else {
@@ -1048,7 +1046,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
     }
 
     private void handshake() throws SSLException {
-        currentHandshake = handshakeState.handshakeCount;
+        currentHandshake = handshakeCount;
         clearLastError();
         int code = SSL_do_handshake(state.ssl);
         if (code <= 0) {
@@ -1068,7 +1066,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         clearLastError();
         int code;
         if (SSL_get_version(state.ssl).getUtf8String(0).equals(Constants.SSL_PROTO_TLSv1_3)) {
-            handshakeState.phaState = PHAState.START;
+            phaState = PHAState.START;
             code = SSL_verify_client_post_handshake(state.ssl);
         } else {
             code = SSL_renegotiate(state.ssl);
@@ -1079,7 +1077,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         handshakeFinished = false;
         peerCerts = null;
         x509PeerCerts = null;
-        currentHandshake = handshakeState.handshakeCount;
+        currentHandshake = handshakeCount;
         int code2 = SSL_do_handshake(state.ssl);
         if (code2 <= 0) {
             checkLastError();
@@ -1192,9 +1190,8 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
 
             // No pending data to be sent to the peer
             // Check to see if we have finished handshaking
-            int handshakeCount = handshakeState.handshakeCount;
             if (handshakeCount != currentHandshake && SSL_renegotiate_pending(state.ssl) == 0 &&
-                    (handshakeState.phaState == PHAState.START)) {
+                    (phaState != PHAState.START)) {
                 if (alpn) {
                     selectedProtocol = getProtocolNegotiated(state.ssl);
                 }
@@ -1272,39 +1269,28 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             };
             // SSL.setVerify(state.ssl, value, certificateVerificationDepth);
             // Set int verify_callback(int preverify_ok, X509_STORE_CTX *x509_ctx) callback
-            handshakeState.certificateVerifyMode = value;
-            try {
-                MethodHandles.Lookup lookup = MethodHandles.lookup();
-                MethodHandle verifyCertificateHandle = lookup.findVirtual(OpenSSLEngine.class, "openSSLCallbackVerify",
-                        MethodType.methodType(int.class, int.class, MemoryAddress.class));
-                verifyCertificateHandle = verifyCertificateHandle.bindTo(this);
-                NativeSymbol verifyCallback = CLinker.systemCLinker().upcallStub(verifyCertificateHandle,
-                        FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS), state.scope);
-                SSL_set_verify(state.ssl, value, verifyCallback);
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+            certificateVerifyMode = value;
+            MethodHandle boundOpenSSLCallbackVerifyHandle = openSSLCallbackVerifyHandle.bindTo(this);
+            NativeSymbol openSSLCallbackVerify = CLinker.systemCLinker().upcallStub(boundOpenSSLCallbackVerifyHandle,
+                    FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS), state.scope);
+            SSL_set_verify(state.ssl, value, openSSLCallbackVerify);
             clientAuth = mode;
         }
     }
 
-    public /*static*/ void openSSLCallbackInfo(MemoryAddress ssl, int where, int ret) {
-        //HandshakeState handshakeState = handshakeStateMap.get(Long.valueOf(ssl.address().toRawLongValue()));
+    public void openSSLCallbackInfo(MemoryAddress ssl, int where, int ret) {
         if (0 != (where & SSL_CB_HANDSHAKE_DONE())) {
-            handshakeState.handshakeCount++;
+            handshakeCount++;
         }
     }
 
-    public /*static*/ int openSSLCallbackVerify(int preverify_ok, MemoryAddress /*X509_STORE_CTX*/ x509_ctx) {
+    public int openSSLCallbackVerify(int preverify_ok, MemoryAddress /*X509_STORE_CTX*/ x509_ctx) {
         MemoryAddress ssl = X509_STORE_CTX_get_ex_data(x509_ctx, SSL_get_ex_data_X509_STORE_CTX_idx());
-        //HandshakeState handshakeState = handshakeStateMap.get(Long.valueOf(ssl.address().toRawLongValue()));
         int ok = preverify_ok;
         int errnum = X509_STORE_CTX_get_error(x509_ctx);
         int errdepth = X509_STORE_CTX_get_error_depth(x509_ctx);
-        handshakeState.phaState = PHAState.COMPLETE;
-        if (handshakeState.certificateVerifyMode == -1 /*SSL_CVERIFY_UNSET*/
-                || handshakeState.certificateVerifyMode == SSL_VERIFY_NONE()) {
+        phaState = PHAState.COMPLETE;
+        if (certificateVerifyMode == -1 /*SSL_CVERIFY_UNSET*/ || certificateVerifyMode == SSL_VERIFY_NONE()) {
             return 1;
         }
         /*SSL_VERIFY_ERROR_IS_OPTIONAL(errnum) -> ((errnum == X509_V_ERR_DEPTH_ZERO_SELF_SIGNED_CERT) \
@@ -1317,8 +1303,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                 || (errnum == X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY())
                 || (errnum == X509_V_ERR_CERT_UNTRUSTED())
                 || (errnum == X509_V_ERR_UNABLE_TO_VERIFY_LEAF_SIGNATURE()) &&
-                (handshakeState.certificateVerifyMode == (SSL_VERIFY_PEER()
-                        | SSL_VERIFY_FAIL_IF_NO_PEER_CERT()))) {
+                (certificateVerifyMode == (SSL_VERIFY_PEER() | SSL_VERIFY_FAIL_IF_NO_PEER_CERT()))) {
             ok = 1;
             SSL_set_verify_result(ssl, X509_V_OK());
         }
@@ -1342,7 +1327,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         if (ok == 0) {
             // FIXME: debug logging
         }
-        if (errdepth > handshakeState.certificateVerificationDepth) {
+        if (errdepth > certificateVerificationDepth) {
             // Certificate Verification: Certificate Chain too long
             ok = 0;
         }
@@ -1671,17 +1656,9 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
 
     }
 
-    private static class HandshakeState {
-        private HandshakeState(int certificateVerificationDepth) {
-            this.certificateVerificationDepth = certificateVerificationDepth;
-        }
-        int handshakeCount = 0;
-        PHAState phaState = PHAState.NONE;
-        int certificateVerifyMode = 0;
-        final int certificateVerificationDepth;
-    }
-
     private static class OpenSSLState implements Runnable {
+
+        private static final Log logger = LogFactory.getLog(OpenSSLState.class);
 
         private final ResourceScope scope;
         private final MemoryAddress ssl;
@@ -1695,12 +1672,13 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
 
         @Override
         public void run() {
+            if (logger.isDebugEnabled()) {
+                logger.debug("Cleanup for SSL instance " + ssl.toRawLongValue());
+            }
             try {
                 BIO_free(networkBIO);
-                // FIXME: destroy any app data that was outside of the scope
                 SSL_free(ssl);
             } finally {
-                handshakeStateMap.remove(Long.valueOf(ssl.address().toRawLongValue()));
                 scope.close();
             }
         }

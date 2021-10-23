@@ -93,6 +93,28 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
         }
     }
 
+    private static final MethodHandle openSSLCallbackVerifyHandle;
+    private static final MethodHandle openSSLCallbackPasswordHandle;
+    private static final MethodHandle openSSLCallbackCertVerifyHandle;
+    private static final MethodHandle openSSLCallbackAlpnSelectProtoHandle;
+
+    static {
+        MethodHandles.Lookup lookup = MethodHandles.lookup();
+        try {
+            openSSLCallbackVerifyHandle = lookup.findVirtual(OpenSSLContext.class, "openSSLCallbackVerify",
+                    MethodType.methodType(int.class, int.class, MemoryAddress.class));
+            openSSLCallbackPasswordHandle = lookup.findVirtual(OpenSSLContext.class, "openSSLCallbackPassword",
+                    MethodType.methodType(int.class, MemoryAddress.class, int.class, int.class, MemoryAddress.class));
+            openSSLCallbackCertVerifyHandle = lookup.findVirtual(OpenSSLContext.class, "openSSLCallbackCertVerify",
+                    MethodType.methodType(int.class, MemoryAddress.class, MemoryAddress.class));
+            openSSLCallbackAlpnSelectProtoHandle = lookup.findVirtual(OpenSSLContext.class, "openSSLCallbackAlpnSelectProto",
+                    MethodType.methodType(int.class, MemoryAddress.class, MemoryAddress.class,
+                            MemoryAddress.class, MemoryAddress.class, int.class, MemoryAddress.class));
+        } catch (Exception e) {
+            throw new IllegalStateException(e);
+        }
+    }
+
     private static final Cleaner cleaner = Cleaner.create();
 
     private final SSLHostConfig sslHostConfig;
@@ -213,18 +235,16 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
             // Longer session timeout
             SSL_CTX_set_timeout(ctx, 14400);
 
-            // FIXME: From SSLContext.make, possibly set ssl_callback_ServerNameIndication
-            // FIXME: From SSLContext.make, possibly set ssl_callback_ClientHello
+            // From SSLContext.make, possibly set ssl_callback_ServerNameIndication
+            // From SSLContext.make, possibly set ssl_callback_ClientHello
+            // Probably not needed ...
 
             // Set int pem_password_cb(char *buf, int size, int rwflag, void *u) callback
-            MethodHandles.Lookup lookup = MethodHandles.lookup();
-            MethodHandle passwordHandle = lookup.findVirtual(OpenSSLContext.class, "openSSLCallbackPassword",
-                    MethodType.methodType(int.class, MemoryAddress.class, int.class, int.class, MemoryAddress.class));
-            passwordHandle = passwordHandle.bindTo(this);
-            NativeSymbol passwordCallback = CLinker.systemCLinker().upcallStub(passwordHandle,
+            MethodHandle boundOpenSSLCallbackPasswordHandle = openSSLCallbackPasswordHandle.bindTo(this);
+            NativeSymbol openSSLCallbackPassword = CLinker.systemCLinker().upcallStub(boundOpenSSLCallbackPasswordHandle,
                     FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT,
                             ValueLayout.JAVA_INT, ValueLayout.ADDRESS), scope);
-            SSL_CTX_set_default_passwd_cb(ctx, passwordCallback);
+            SSL_CTX_set_default_passwd_cb(ctx, openSSLCallbackPassword);
 
             this.negotiableProtocols = negotiableProtocols;
 
@@ -435,13 +455,10 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
             }
 
             // Set int verify_callback(int preverify_ok, X509_STORE_CTX *x509_ctx) callback
-            MethodHandles.Lookup lookup = MethodHandles.lookup();
-            MethodHandle verifyCertificateHandle = lookup.findVirtual(OpenSSLContext.class, "openSSLCallbackVerify",
-                    MethodType.methodType(int.class, int.class, MemoryAddress.class));
-            verifyCertificateHandle = verifyCertificateHandle.bindTo(this);
-            NativeSymbol verifyCallback = CLinker.systemCLinker().upcallStub(verifyCertificateHandle,
+            MethodHandle boundOpenSSLCallbackVerifyHandle = openSSLCallbackVerifyHandle.bindTo(this);
+            NativeSymbol openSSLCallbackVerify = CLinker.systemCLinker().upcallStub(boundOpenSSLCallbackVerifyHandle,
                     FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS), state.scope);
-            SSL_CTX_set_verify(state.ctx, value, verifyCallback);
+            SSL_CTX_set_verify(state.ctx, value, openSSLCallbackVerify);
 
             // Trust and certificate verification
             try (var scope = ResourceScope.newConfinedScope()) {
@@ -449,12 +466,10 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                 if (tms != null) {
                     // Client certificate verification based on custom trust managers
                     x509TrustManager = chooseTrustManager(tms);
-                    MethodHandle certVerifyCallbackHandle = lookup.findVirtual(OpenSSLContext.class, "openSSLCallbackCertVerify",
-                            MethodType.methodType(int.class, MemoryAddress.class, MemoryAddress.class));
-                    certVerifyCallbackHandle = certVerifyCallbackHandle.bindTo(this);
-                    NativeSymbol certVerifyCallback = CLinker.systemCLinker().upcallStub(verifyCertificateHandle,
+                    MethodHandle boundOpenSSLCallbackCertVerifyHandle = openSSLCallbackCertVerifyHandle.bindTo(this);
+                    NativeSymbol openSSLCallbackCertVerify = CLinker.systemCLinker().upcallStub(boundOpenSSLCallbackCertVerifyHandle,
                             FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS), state.scope);
-                    SSL_CTX_set_cert_verify_callback(state.ctx, certVerifyCallback, MemoryAddress.NULL);
+                    SSL_CTX_set_cert_verify_callback(state.ctx, openSSLCallbackCertVerify, MemoryAddress.NULL);
 
                     // Pass along the DER encoded certificates of the accepted client
                     // certificate issuers, so that their subjects can be presented
@@ -520,16 +535,13 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
 
                 // int openSSLCallbackAlpnSelectProto(MemoryAddress ssl, MemoryAddress out, MemoryAddress outlen,
                 //        MemoryAddress in, int inlen, MemoryAddress arg
-                MethodHandle alpnSelectProtoCallbackHandle = lookup.findVirtual(OpenSSLContext.class, "openSSLCallbackAlpnSelectProto",
-                        MethodType.methodType(int.class, MemoryAddress.class, MemoryAddress.class,
-                                MemoryAddress.class, MemoryAddress.class, int.class, MemoryAddress.class));
-                alpnSelectProtoCallbackHandle = alpnSelectProtoCallbackHandle.bindTo(this);
-                NativeSymbol alpnSelectProtoCallback = CLinker.systemCLinker().upcallStub(alpnSelectProtoCallbackHandle,
+                MethodHandle boundOpenSSLCallbackAlpnSelectProtoHandle = openSSLCallbackAlpnSelectProtoHandle.bindTo(this);
+                NativeSymbol openSSLCallbackAlpnSelectProto = CLinker.systemCLinker().upcallStub(boundOpenSSLCallbackAlpnSelectProtoHandle,
                         FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS
                                 , ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS), state.scope);
-                SSL_CTX_set_alpn_select_cb(state.ctx, alpnSelectProtoCallback, MemoryAddress.NULL);
+                SSL_CTX_set_alpn_select_cb(state.ctx, openSSLCallbackAlpnSelectProto, MemoryAddress.NULL);
 
-                // FIXME: Implement NPN (annoying and likely not useful anymore)
+                // Skip NPN (annoying and likely not useful anymore)
                 //SSLContext.setNpnProtos(state.ctx, protocolsArray, SSL.SSL_SELECTOR_FAILURE_NO_ADVERTISE);
             }
 
@@ -607,12 +619,11 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
         return state.ctx;
     }
 
-
     // int SSL_callback_alpn_select_proto(SSL* ssl, const unsigned char **out, unsigned char *outlen,
     //        const unsigned char *in, unsigned int inlen, void *arg)
     public int openSSLCallbackAlpnSelectProto(MemoryAddress ssl, MemoryAddress out, MemoryAddress outlen,
             MemoryAddress in, int inlen, MemoryAddress arg) {
-        // FIXME: implement ALPN
+        // FIXME: implement ALPN from select_next_proto in sslutils.c
         return SSL_TLSEXT_ERR_NOACK();
     }
 
@@ -658,9 +669,6 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
         }
         // FIXME: Implement OCSP again
         // FIXME: GLORIOUS PURPOSE !!!!!
-        if (ok == 0) {
-            // FIXME: debug logging
-        }
         if (errdepth > sslHostConfig.getCertificateVerificationDepth()) {
             // Certificate Verification: Certificate Chain too long
             ok = 0;
@@ -677,20 +685,21 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
         try (var scope = ResourceScope.newConfinedScope()) {
             var allocator = SegmentAllocator.nativeAllocator(scope);
             for (int i = 0; i < len; i++) {
-                MemoryAddress/*(X509*)*/ certificatePointer = OPENSSL_sk_value(sk, i);
-                MemorySegment bufPointer = allocator.allocate(ValueLayout.ADDRESS);
-                int length = i2d_X509(certificatePointer, bufPointer);
+                MemoryAddress/*(X509*)*/ x509 = OPENSSL_sk_value(sk, i);
+                MemorySegment bufPointer = allocator.allocate(ValueLayout.ADDRESS, MemoryAddress.NULL);
+                int length = i2d_X509(x509, bufPointer);
                 if (length < 0) {
                     certificateChain[i] = new byte[0];
                     CRYPTO_free(bufPointer, OPENSSL_FILE(), OPENSSL_LINE()); // OPENSSL_free macro
                     continue;
                 }
+                MemoryAddress buf = bufPointer.get(ValueLayout.ADDRESS, 0);
                 byte[] certificate = new byte[length];
                 for (int j = 0; j < length; j++) {
-                    certificate[j] = bufPointer.get(ValueLayout.JAVA_BYTE, j);
+                    certificate[j] = buf.get(ValueLayout.JAVA_BYTE, j);
                 }
                 certificateChain[i] = certificate;
-                CRYPTO_free(bufPointer, OPENSSL_FILE(), OPENSSL_LINE()); // OPENSSL_free macro
+                CRYPTO_free(buf, OPENSSL_FILE(), OPENSSL_LINE()); // OPENSSL_free macro
             }
             // FIXME: SSL_CIPHER_authentication_method(SSL_get_current_cipher(ssl)) !
             SSL_get_current_cipher(ssl);
