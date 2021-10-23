@@ -1015,7 +1015,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
         public void run() {
             try {
             // FIXME: Cleanup
-                SSL_free(ctx);
+                SSL_CTX_free(ctx);
             /*
             if (ctx != null) {
                 SSLContext.free(ctx);
