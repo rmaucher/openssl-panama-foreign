@@ -81,6 +81,9 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
     private static final String BEGIN_KEY = "-----BEGIN PRIVATE KEY-----\n";
     private static final Object END_KEY = "\n-----END PRIVATE KEY-----";
 
+    private static final byte[] HTTP_11_PROTOCOL =
+            new byte[] { 'h', 't', 't', 'p', '/', '1', '.', '1' };
+
     private static final byte[] DEFAULT_SESSION_ID_CONTEXT =
             new byte[] { 'd', 'e', 'f', 'a', 'u', 'l', 't' };
 
@@ -120,7 +123,6 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
     private final SSLHostConfig sslHostConfig;
     private final SSLHostConfigCertificate certificate;
     private final List<String> negotiableProtocols;
-    private String[] negotiableProtocolsArray;
 
     private int certificateVerifyMode = -1;
 
@@ -529,10 +531,6 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
             }
 
             if (negotiableProtocols != null && negotiableProtocols.size() > 0) {
-                List<String> protocols = new ArrayList<>(negotiableProtocols);
-                protocols.add("http/1.1");
-                negotiableProtocolsArray = protocols.toArray(new String[0]);
-
                 // int openSSLCallbackAlpnSelectProto(MemoryAddress ssl, MemoryAddress out, MemoryAddress outlen,
                 //        MemoryAddress in, int inlen, MemoryAddress arg
                 MethodHandle boundOpenSSLCallbackAlpnSelectProtoHandle = openSSLCallbackAlpnSelectProtoHandle.bindTo(this);
@@ -623,7 +621,33 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
     //        const unsigned char *in, unsigned int inlen, void *arg)
     public int openSSLCallbackAlpnSelectProto(MemoryAddress ssl, MemoryAddress out, MemoryAddress outlen,
             MemoryAddress in, int inlen, MemoryAddress arg) {
-        // FIXME: implement ALPN from select_next_proto in sslutils.c
+        byte[] advertisedBytes = new byte[inlen];
+        for (int i = 0; i < inlen; i++) {
+            advertisedBytes[i] = in.get(ValueLayout.JAVA_BYTE, i);
+        }
+        ArrayList<byte[]> negotiableProtocolsBytes = new ArrayList<>(negotiableProtocols.size() + 1);
+        for (String negotiableProtocol : negotiableProtocols) {
+            negotiableProtocolsBytes.add(negotiableProtocol.getBytes());
+        }
+        negotiableProtocolsBytes.add(HTTP_11_PROTOCOL);
+        for (byte[] negotiableProtocolBytes : negotiableProtocolsBytes) {
+            for (int i = 0; i <= advertisedBytes.length - negotiableProtocolBytes.length; i++) {
+                if (advertisedBytes[i] == negotiableProtocolBytes[0]) {
+                    for (int j = 0; j < negotiableProtocolBytes.length; j++) {
+                        if (advertisedBytes[i + j] == negotiableProtocolBytes[j]) {
+                            if (j == negotiableProtocolBytes.length - 1) {
+                                // Match
+                                out.set(ValueLayout.ADDRESS, 0, in.addOffset(i));
+                                outlen.set(ValueLayout.JAVA_BYTE, 0, (byte) negotiableProtocolBytes.length);
+                                return SSL_TLSEXT_ERR_OK();
+                            }
+                        } else {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
         return SSL_TLSEXT_ERR_NOACK();
     }
 
@@ -690,7 +714,6 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                 int length = i2d_X509(x509, bufPointer);
                 if (length < 0) {
                     certificateChain[i] = new byte[0];
-                    CRYPTO_free(bufPointer, OPENSSL_FILE(), OPENSSL_LINE()); // OPENSSL_free macro
                     continue;
                 }
                 MemoryAddress buf = bufPointer.get(ValueLayout.ADDRESS, 0);
@@ -1022,9 +1045,6 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
             }
             if (cctx != 0) {
                 SSLConf.free(cctx);
-            }
-            if (aprPool != 0) {
-                Pool.destroy(aprPool);
             }*/
             } finally {
                 scope.close();

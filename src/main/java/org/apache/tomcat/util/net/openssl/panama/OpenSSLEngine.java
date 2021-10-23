@@ -201,19 +201,23 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
     private static String getProtocolNegotiated(MemoryAddress ssl) {
         try (var scope = ResourceScope.newConfinedScope()) {
             var allocator = SegmentAllocator.nativeAllocator(scope);
-            MemorySegment lenPointer = allocator.allocate(ValueLayout.ADDRESS);
-            MemorySegment protocolPointer = allocator.allocate(ValueLayout.ADDRESS);
-            SSL_get0_alpn_selected(ssl, protocolPointer, lenPointer);
+            MemorySegment lenAddress = allocator.allocate(ValueLayout.JAVA_INT, 0);
+            MemorySegment protocolPointer = allocator.allocate(ValueLayout.ADDRESS, MemoryAddress.NULL);
+            SSL_get0_alpn_selected(ssl, protocolPointer, lenAddress);
             if (MemoryAddress.NULL.equals(protocolPointer.address())) {
-                SSL_get0_next_proto_negotiated(ssl, protocolPointer, lenPointer);
+                SSL_get0_next_proto_negotiated(ssl, protocolPointer, lenAddress);
             }
             if (MemoryAddress.NULL.equals(protocolPointer.address())) {
                 return null;
             }
-            int len = lenPointer.get(ValueLayout.JAVA_INT, 0);
+            int len = lenAddress.get(ValueLayout.JAVA_INT, 0);
             byte[] name = new byte[len];
+            MemoryAddress protocolAddress = protocolPointer.get(ValueLayout.ADDRESS, 0);
             for (int i = 0; i < len; i++) {
-                name[i] = protocolPointer.get(ValueLayout.JAVA_BYTE, i);
+                name[i] = protocolAddress.get(ValueLayout.JAVA_BYTE, i);
+            }
+            if (logger.isDebugEnabled()) {
+                logger.debug("Protocol negotiated [" + new String(name) + "]");
             }
             return new String(name);
         }
@@ -238,8 +242,6 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
     }
 
     private static final String INVALID_CIPHER = "SSL_NULL_WITH_NULL_NULL";
-
-    private static final MemorySegment EMPTY_ADDR = MemorySegment.ofByteBuffer(ByteBuffer.allocateDirect(0));
 
     private final OpenSSLState state;
     private final Cleanable cleanable;
@@ -770,7 +772,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         // SSL_pending will return 0 if OpenSSL has not started the current TLS record
         // See https://www.openssl.org/docs/manmaster/man3/SSL_pending.html
         clearLastError();
-        int lastPrimingReadResult = SSL_read(state.ssl, EMPTY_ADDR, 0); // priming read
+        int lastPrimingReadResult = SSL_read(state.ssl, MemoryAddress.NULL, 0); // priming read
         // check if SSL_read returned <= 0. In this case we need to check the error and see if it was something
         // fatal.
         if (lastPrimingReadResult <= 0) {
@@ -782,7 +784,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         if (Constants.SSL_PROTO_TLSv1.equals(version) && lastPrimingReadResult == 0 &&
                 pendingReadableBytesInSSL == 0) {
             // Perform another priming read
-            lastPrimingReadResult = SSL_read(state.ssl, EMPTY_ADDR, 0);
+            lastPrimingReadResult = SSL_read(state.ssl, MemoryAddress.NULL, 0);
             if (lastPrimingReadResult <= 0) {
                 checkLastError();
             }
@@ -1606,7 +1608,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             if (applicationProtocol == null) {
                 synchronized (OpenSSLEngine.this) {
                     if (!destroyed) {
-                        // FIXME: this only used NPN which seems odd
+                        // Note: This only used NPN which seems odd
                         applicationProtocol = getProtocolNegotiated(state.ssl);
                     }
                 }
