@@ -15,6 +15,10 @@ Find include paths using "gcc -xc -E -v -", on Fedora it is /usr/lib/gcc/x86_64-
 export JAVA_HOME=<pathto>/panama-foreign/build/linux-x86_64-server-release/jdk
 $JAVA_HOME/bin/jextract --source -t org.apache.tomcat.util.openssl -lssl -I /usr/lib/gcc/x86_64-redhat-linux/11/include openssl.h -d src/main/java
 ```
+The code included was generated for OpenSSL 1.1.1. As long as things remain API
+compatible, this will still work. It is possible eventually to only generate code
+for APIs that are actually used, but this is time consuming and can be done
+later. 
 
 # Building
 
