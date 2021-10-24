@@ -435,6 +435,8 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
         return result;
     }
 
+    private static final int OPTIONAL_NO_CA = 3;
+
     /**
      * Setup the SSL_CTX.
      *
@@ -501,7 +503,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                 value = SSL_VERIFY_PEER();
                 break;
             case OPTIONAL_NO_CA:
-                value = SSL_VERIFY_PEER() | SSL_VERIFY_FAIL_IF_NO_PEER_CERT();
+                value = OPTIONAL_NO_CA;
                 break;
             case REQUIRED:
                 value = SSL_VERIFY_FAIL_IF_NO_PEER_CERT();
@@ -733,8 +735,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                 || (errnum == X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY())
                 || (errnum == X509_V_ERR_CERT_UNTRUSTED())
                 || (errnum == X509_V_ERR_UNABLE_TO_VERIFY_LEAF_SIGNATURE()) &&
-                (certificateVerifyMode == (SSL_VERIFY_PEER()
-                        | SSL_VERIFY_FAIL_IF_NO_PEER_CERT()))) {
+                (certificateVerifyMode == OPTIONAL_NO_CA)) {
             ok = 1;
             SSL_set_verify_result(ssl, X509_V_OK());
         }

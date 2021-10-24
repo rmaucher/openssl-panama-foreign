@@ -1255,6 +1255,8 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         return clientAuth == ClientAuthMode.OPTIONAL;
     }
 
+    private static final int OPTIONAL_NO_CA = 3;
+
     private void setClientAuth(ClientAuthMode mode) {
         if (clientMode) {
             return;
@@ -1263,18 +1265,21 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             if (clientAuth == mode) {
                 return;
             }
-            int value = switch (mode) {
+            certificateVerifyMode = switch (mode) {
                 case NONE -> SSL_VERIFY_NONE();
-                case REQUIRE -> SSL_VERIFY_PEER() | SSL_VERIFY_FAIL_IF_NO_PEER_CERT();
-                case OPTIONAL -> SSL_VERIFY_PEER();
-                // Note: certificateVerificationOptionalNoCA is normally used here, but the end result is the same SSL_VERIFY_PEER
+                case REQUIRE -> SSL_VERIFY_FAIL_IF_NO_PEER_CERT();
+                case OPTIONAL -> certificateVerificationOptionalNoCA ? OPTIONAL_NO_CA : SSL_VERIFY_PEER();
             };
             // SSL.setVerify(state.ssl, value, certificateVerificationDepth);
             // Set int verify_callback(int preverify_ok, X509_STORE_CTX *x509_ctx) callback
-            certificateVerifyMode = value;
             MethodHandle boundOpenSSLCallbackVerifyHandle = openSSLCallbackVerifyHandle.bindTo(this);
             NativeSymbol openSSLCallbackVerify = CLinker.systemCLinker().upcallStub(boundOpenSSLCallbackVerifyHandle,
                     FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS), state.scope);
+            int value = switch (mode) {
+                case NONE -> SSL_VERIFY_NONE();
+                case REQUIRE -> SSL_VERIFY_FAIL_IF_NO_PEER_CERT();
+                case OPTIONAL -> SSL_VERIFY_PEER();
+            };
             SSL_set_verify(state.ssl, value, openSSLCallbackVerify);
             clientAuth = mode;
         }
@@ -1307,7 +1312,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                 || (errnum == X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY())
                 || (errnum == X509_V_ERR_CERT_UNTRUSTED())
                 || (errnum == X509_V_ERR_UNABLE_TO_VERIFY_LEAF_SIGNATURE()) &&
-                (certificateVerifyMode == (SSL_VERIFY_PEER() | SSL_VERIFY_FAIL_IF_NO_PEER_CERT()))) {
+                (certificateVerifyMode == OPTIONAL_NO_CA)) {
             ok = 1;
             SSL_set_verify_result(state.ssl, X509_V_OK());
         }
