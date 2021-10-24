@@ -27,6 +27,7 @@ import jdk.incubator.foreign.ValueLayout;
 
 import static org.apache.tomcat.util.openssl.openssl_h.*;
 
+import java.io.File;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
@@ -131,6 +132,8 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
     private String enabledProtocol;
     private boolean initialized = false;
 
+    private boolean noOcspCheck = false;
+
     private final OpenSSLState state;
     private final Cleanable cleanable;
 
@@ -172,17 +175,22 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
             // Create OpenSSLConfCmd context if used
             OpenSSLConf openSslConf = sslHostConfig.getOpenSslConf();
             if (openSslConf != null) {
+                var allocator = SegmentAllocator.nativeAllocator(scope);
                 try {
                     if (log.isDebugEnabled()) {
                         log.debug(sm.getString("openssl.makeConf"));
                     }
-                    // FIXME: reimplement SSLConf
-                    /*
-                    cctx = SSLConf.make(aprPool,
-                                        SSL.SSL_CONF_FLAG_FILE |
-                                        SSL.SSL_CONF_FLAG_SERVER |
-                                        SSL.SSL_CONF_FLAG_CERTIFICATE |
-                                        SSL.SSL_CONF_FLAG_SHOW_ERRORS);*/
+                    cctx = SSL_CONF_CTX_new();
+                    long errCode = ERR_get_error();
+                    if (errCode != 0) {
+                        var buf = allocator.allocateArray(ValueLayout.JAVA_BYTE, new byte[128]);
+                        ERR_error_string(errCode, buf);
+                        log.error(sm.getString("openssl.errorLoadingCertificate", buf.getUtf8String(0)));
+                    }
+                    SSL_CONF_CTX_set_flags(cctx, SSL_CONF_FLAG_FILE() |
+                            SSL_CONF_FLAG_SERVER() |
+                            SSL_CONF_FLAG_CERTIFICATE() |
+                            SSL_CONF_FLAG_SHOW_ERRORS());
                 } catch (Exception e) {
                     throw new SSLException(sm.getString("openssl.errMakeConf"), e);
                 }
@@ -291,8 +299,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
     }
 
 
-    // FIXME: reimplement OpenSSLConf
-    protected static boolean checkConf(OpenSSLConf conf, MemoryAddress cctx) throws Exception {
+    private boolean checkConf(OpenSSLConf conf) throws Exception {
         boolean result = true;
         OpenSSLConfCmd cmd;
         String name;
@@ -310,10 +317,44 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
             if (log.isDebugEnabled()) {
                 log.debug(sm.getString("opensslconf.checkCommand", name, value));
             }
-            try {
-                rc = 0;//SSLConf.check(cctx, name, value);
+            try (var scope = ResourceScope.newConfinedScope()) {
+                // rc = SSLConf.check(cctx, name, value);
+                if (name.equals("NO_OCSP_CHECK")) {
+                    rc = 1;
+                } else {
+                    var allocator = SegmentAllocator.nativeAllocator(scope);
+                    int code = SSL_CONF_cmd_value_type(state.cctx, allocator.allocateUtf8String(name));
+                    rc = 1;
+                    long errCode = ERR_get_error();
+                    if (errCode != 0) {
+                        var buf = allocator.allocateArray(ValueLayout.JAVA_BYTE, new byte[128]);
+                        ERR_error_string(errCode, buf);
+                        log.error(sm.getString("opensslconf.checkFailed", buf.getUtf8String(0)));
+                        rc = 0;
+                    }
+                    if (code == SSL_CONF_TYPE_UNKNOWN()) {
+                        log.error(sm.getString("opensslconf.typeUnknown", name));
+                        rc = 0;
+                    }
+                    if (code == SSL_CONF_TYPE_FILE()) {
+                        // Check file
+                        File file = new File(value);
+                        if (!file.isFile() && !file.canRead()) {
+                            log.error(sm.getString("opensslconf.badFile", name, value));
+                            rc = 0;
+                        }
+                    }
+                    if (code == SSL_CONF_TYPE_DIR()) {
+                        // Check dir
+                        File file = new File(value);
+                        if (!file.isDirectory()) {
+                            log.error(sm.getString("opensslconf.badDirectory", name, value));
+                            rc = 0;
+                        }
+                    }
+                }
             } catch (Exception e) {
-                log.error(sm.getString("opensslconf.checkFailed"));
+                log.error(sm.getString("opensslconf.checkFailed", e.getLocalizedMessage()));
                 return false;
             }
             if (rc <= 0) {
@@ -331,9 +372,11 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
         return result;
     }
 
-    protected static boolean applyConf(OpenSSLConf conf, MemoryAddress cctx, MemoryAddress ctx) throws Exception {
+
+    private boolean applyConf(OpenSSLConf conf) throws Exception {
         boolean result = true;
-        //SSLConf.assign(cctx, ctx);
+        // SSLConf.assign(cctx, ctx);
+        SSL_CONF_CTX_set_ssl_ctx(state.cctx, state.ctx);
         OpenSSLConfCmd cmd;
         String name;
         String value;
@@ -350,8 +393,23 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
             if (log.isDebugEnabled()) {
                 log.debug(sm.getString("opensslconf.applyCommand", name, value));
             }
-            try {
-                rc = 0;//SSLConf.apply(cctx, name, value);
+            try (var scope = ResourceScope.newConfinedScope()) {
+                // rc = SSLConf.apply(cctx, name, value);
+                if (name.equals("NO_OCSP_CHECK")) {
+                    noOcspCheck = Boolean.valueOf(value);
+                    rc = 1;
+                } else {
+                    var allocator = SegmentAllocator.nativeAllocator(scope);
+                    rc = SSL_CONF_cmd(state.cctx, allocator.allocateUtf8String(name),
+                            allocator.allocateUtf8String(value));
+                    long errCode = ERR_get_error();
+                    if (rc <= 0 || errCode != 0) {
+                        var buf = allocator.allocateArray(ValueLayout.JAVA_BYTE, new byte[128]);
+                        ERR_error_string(errCode, buf);
+                        log.error(sm.getString("opensslconf.commandError", name, value, buf.getUtf8String(0)));
+                        rc = 0;
+                    }
+                }
             } catch (Exception e) {
                 log.error(sm.getString("opensslconf.applyFailed"));
                 return false;
@@ -365,7 +423,8 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                         Integer.toString(rc)));
             }
         }
-        rc = 0;//SSLConf.finish(cctx);
+        // rc = SSLConf.finish(cctx);
+        rc = SSL_CONF_CTX_finish(state.cctx);
         if (rc <= 0) {
             log.error(sm.getString("opensslconf.finishFailed", Integer.toString(rc)));
             result = false;
@@ -479,8 +538,9 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                     // an acceptable certificate
                     for (X509Certificate caCert : x509TrustManager.getAcceptedIssuers()) {
                         //SSLContext.addClientCACertificateRaw(state.ctx, caCert.getEncoded());
-                        var rawCACertificate = MemorySegment.ofArray(caCert.getEncoded());
-                        var x509CACert = d2i_X509(MemoryAddress.NULL, rawCACertificate.address(), rawCACertificate.byteSize());
+                        var rawCACertificate = allocator.allocateArray(ValueLayout.JAVA_BYTE, caCert.getEncoded());
+                        var rawCACertificatePointer = allocator.allocate(ValueLayout.ADDRESS, rawCACertificate);
+                        var x509CACert = d2i_X509(MemoryAddress.NULL, rawCACertificatePointer, rawCACertificate.byteSize());
                         if (MemoryAddress.NULL.equals(x509CACert)) {
                             var buf = allocator.allocateArray(ValueLayout.JAVA_BYTE, new byte[128]);
                             ERR_error_string(ERR_get_error(), buf);
@@ -551,7 +611,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                     log.debug(sm.getString("openssl.checkConf"));
                 }
                 try {
-                    if (!checkConf(openSslConf, state.cctx)) {
+                    if (!checkConf(openSslConf)) {
                         log.error(sm.getString("openssl.errCheckConf"));
                         throw new Exception(sm.getString("openssl.errCheckConf"));
                     }
@@ -562,7 +622,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                     log.debug(sm.getString("openssl.applyConf"));
                 }
                 try {
-                    if (!applyConf(openSslConf, state.cctx, state.ctx)) {
+                    if (!applyConf(openSslConf)) {
                         log.error(sm.getString("openssl.errApplyConf"));
                         throw new SSLException(sm.getString("openssl.errApplyConf"));
                     }
@@ -652,8 +712,10 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
     }
 
     public int openSSLCallbackVerify(int preverify_ok, MemoryAddress /*X509_STORE_CTX*/ x509_ctx) {
+        if (log.isDebugEnabled()) {
+            log.debug("Verification with mode [" + certificateVerifyMode + "]");
+        }
         MemoryAddress ssl = X509_STORE_CTX_get_ex_data(x509_ctx, SSL_get_ex_data_X509_STORE_CTX_idx());
-        //HandshakeState handshakeState = handshakeStateMap.get(Long.valueOf(ssl.address().toRawLongValue()));
         int ok = preverify_ok;
         int errnum = X509_STORE_CTX_get_error(x509_ctx);
         int errdepth = X509_STORE_CTX_get_error_depth(x509_ctx);
@@ -702,6 +764,9 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
 
 
     public int openSSLCallbackCertVerify(MemoryAddress /*X509_STORE_CTX*/ x509_ctx, MemoryAddress param) {
+        if (log.isDebugEnabled()) {
+            log.debug("Certificate verification");
+        }
         MemoryAddress ssl = X509_STORE_CTX_get_ex_data(x509_ctx, SSL_get_ex_data_X509_STORE_CTX_idx());
         MemoryAddress /*STACK_OF(X509)*/ sk = X509_STORE_CTX_get0_untrusted(x509_ctx);
         int len = OPENSSL_sk_num(sk);
@@ -724,9 +789,8 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                 certificateChain[i] = certificate;
                 CRYPTO_free(buf, OPENSSL_FILE(), OPENSSL_LINE()); // OPENSSL_free macro
             }
-            // FIXME: SSL_CIPHER_authentication_method(SSL_get_current_cipher(ssl)) !
-            SSL_get_current_cipher(ssl);
-            String authMethod = "UNKNOWN";
+            MemoryAddress cipher = SSL_get_current_cipher(ssl);
+            String authMethod = getCipherAuthenticationMethod(SSL_CIPHER_get_auth_nid(cipher), SSL_CIPHER_get_kx_nid(cipher));
             X509Certificate[] peerCerts = certificates(certificateChain);
             try {
                 x509TrustManager.checkClientTrusted(peerCerts, authMethod);
@@ -738,9 +802,95 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
         return 0;
     }
 
+    private static final int NID_kx_rsa = 1037/*NID_kx_rsa()*/;
+    //private static final int NID_kx_dhe = NID_kx_dhe();
+    //private static final int NID_kx_ecdhe = NID_kx_ecdhe();
+
+    //private static final int NID_auth_rsa = NID_auth_rsa();
+    //private static final int NID_auth_dss = NID_auth_dss();
+    //private static final int NID_auth_null = NID_auth_null();
+    //private static final int NID_auth_ecdsa = NID_auth_ecdsa();
+
+    //private static final int SSL_kRSA = 1;
+    private static final int SSL_kDHr = 2;
+    private static final int SSL_kDHd = 4;
+    private static final int SSL_kEDH = 8;
+    private static final int SSL_kDHE = SSL_kEDH;
+    private static final int SSL_kKRB5 = 10;
+    private static final int SSL_kECDHr = 20;
+    private static final int SSL_kECDHe = 40;
+    private static final int SSL_kEECDH = 80;
+    private static final int SSL_kECDHE = SSL_kEECDH;
+    //private static final int SSL_kPSK = 100;
+    //private static final int SSL_kGOST = 200;
+    //private static final int SSL_kSRP = 400;
+
+    private static final int SSL_aRSA = 1;
+    private static final int SSL_aDSS = 2;
+    private static final int SSL_aNULL = 4;
+    //private static final int SSL_aDH = 8;
+    //private static final int SSL_aECDH = 10;
+    //private static final int SSL_aKRB5 = 20;
+    private static final int SSL_aECDSA = 40;
+    //private static final int SSL_aPSK = 80;
+    //private static final int SSL_aGOST94 = 100;
+    //private static final int SSL_aGOST01 = 200;
+    //private static final int SSL_aSRP = 400;
+
+    private static final String SSL_TXT_RSA = SSL_TXT_RSA().getUtf8String(0);
+    private static final String SSL_TXT_DH = SSL_TXT_DH().getUtf8String(0);
+    private static final String SSL_TXT_DSS = SSL_TXT_DSS().getUtf8String(0);
+    private static final String SSL_TXT_KRB5 = "KRB5";
+    private static final String SSL_TXT_ECDH = SSL_TXT_ECDH().getUtf8String(0);
+    private static final String SSL_TXT_ECDSA = SSL_TXT_ECDSA().getUtf8String(0);
+
+    private static String getCipherAuthenticationMethod(int auth, int kx) {
+        switch (kx) {
+        case NID_kx_rsa:
+            return SSL_TXT_RSA;
+        case SSL_kDHr:
+            return SSL_TXT_DH + "_" + SSL_TXT_RSA;
+        case SSL_kDHd:
+            return SSL_TXT_DH + "_" + SSL_TXT_DSS;
+        case SSL_kDHE:
+            switch (auth) {
+            case SSL_aDSS:
+                return "DHE_" + SSL_TXT_DSS;
+            case SSL_aRSA:
+                return "DHE_" + SSL_TXT_RSA;
+            case SSL_aNULL:
+                return SSL_TXT_DH + "_anon";
+            default:
+                return "UNKNOWN";
+            }
+        case SSL_kKRB5:
+            return SSL_TXT_KRB5;
+        case SSL_kECDHr:
+            return SSL_TXT_ECDH + "_" + SSL_TXT_RSA;
+        case SSL_kECDHe:
+            return SSL_TXT_ECDH + "_" + SSL_TXT_ECDSA;
+        case SSL_kECDHE:
+            switch (auth) {
+            case SSL_aECDSA:
+                return "ECDHE_" + SSL_TXT_ECDSA;
+            case SSL_aRSA:
+                return "ECDHE_" + SSL_TXT_RSA;
+            case SSL_aNULL:
+                return SSL_TXT_ECDH + "_anon";
+            default:
+                return "UNKNOWN";
+            }
+        default:
+            return "UNKNOWN";
+        }
+    }
+
     private String callbackPassword = null;
 
     public int openSSLCallbackPassword(MemoryAddress /*char **/ buf, int bufsiz, int verify, MemoryAddress /*void **/ cb) {
+        if (log.isDebugEnabled()) {
+            log.debug("Return password for certificate");
+        }
         try (var scope = ResourceScope.newConfinedScope()) {
             var allocator = SegmentAllocator.nativeAllocator(scope);
             MemorySegment callbackPasswordNative = allocator.allocateUtf8String(callbackPassword);
@@ -1037,15 +1187,10 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
         @Override
         public void run() {
             try {
-            // FIXME: Cleanup
                 SSL_CTX_free(ctx);
-            /*
-            if (ctx != null) {
-                SSLContext.free(ctx);
-            }
-            if (cctx != 0) {
-                SSLConf.free(cctx);
-            }*/
+                if (!MemoryAddress.NULL.equals(cctx)) {
+                    SSL_CONF_CTX_free(cctx);
+                }
             } finally {
                 scope.close();
             }

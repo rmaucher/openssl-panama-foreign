@@ -1264,10 +1264,10 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                 return;
             }
             int value = switch (mode) {
-                case NONE ->  SSL_VERIFY_NONE();
-                case REQUIRE -> SSL_VERIFY_FAIL_IF_NO_PEER_CERT();
-                case OPTIONAL -> certificateVerificationOptionalNoCA ? SSL_VERIFY_PEER()
-                        | SSL_VERIFY_FAIL_IF_NO_PEER_CERT() : SSL_VERIFY_PEER();
+                case NONE -> SSL_VERIFY_NONE();
+                case REQUIRE -> SSL_VERIFY_PEER() | SSL_VERIFY_FAIL_IF_NO_PEER_CERT();
+                case OPTIONAL -> SSL_VERIFY_PEER();
+                // Note: certificateVerificationOptionalNoCA is normally used here, but the end result is the same SSL_VERIFY_PEER
             };
             // SSL.setVerify(state.ssl, value, certificateVerificationDepth);
             // Set int verify_callback(int preverify_ok, X509_STORE_CTX *x509_ctx) callback
@@ -1287,7 +1287,9 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
     }
 
     public int openSSLCallbackVerify(int preverify_ok, MemoryAddress /*X509_STORE_CTX*/ x509_ctx) {
-        MemoryAddress ssl = X509_STORE_CTX_get_ex_data(x509_ctx, SSL_get_ex_data_X509_STORE_CTX_idx());
+        if (logger.isDebugEnabled()) {
+            logger.debug("Verification in engine with mode [" + certificateVerifyMode + "]");
+        }
         int ok = preverify_ok;
         int errnum = X509_STORE_CTX_get_error(x509_ctx);
         int errdepth = X509_STORE_CTX_get_error_depth(x509_ctx);
@@ -1307,7 +1309,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                 || (errnum == X509_V_ERR_UNABLE_TO_VERIFY_LEAF_SIGNATURE()) &&
                 (certificateVerifyMode == (SSL_VERIFY_PEER() | SSL_VERIFY_FAIL_IF_NO_PEER_CERT()))) {
             ok = 1;
-            SSL_set_verify_result(ssl, X509_V_OK());
+            SSL_set_verify_result(state.ssl, X509_V_OK());
         }
         /*
          * Expired certificates vs. "expired" CRLs: by default, OpenSSL
