@@ -57,6 +57,7 @@ import javax.net.ssl.X509TrustManager;
 
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
+import org.apache.tomcat.util.net.AbstractEndpoint;
 import org.apache.tomcat.util.net.Constants;
 import org.apache.tomcat.util.net.SSLHostConfig;
 import org.apache.tomcat.util.net.SSLHostConfig.CertificateVerification;
@@ -70,6 +71,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
 
     private static final Log log = LogFactory.getLog(OpenSSLContext.class);
 
+    private static final StringManager netSm = StringManager.getManager(AbstractEndpoint.class);
     private static final StringManager sm = StringManager.getManager(OpenSSLContext.class);
 
     private static final String defaultProtocol = "TLS";
@@ -78,6 +80,16 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
     private static final int SSL_AIDX_DSA     = 1;
     private static final int SSL_AIDX_ECC     = 3;
     private static final int SSL_AIDX_MAX     = 4;
+
+    public static final int SSL_PROTOCOL_NONE  = 0;
+    public static final int SSL_PROTOCOL_SSLV2 = (1<<0);
+    public static final int SSL_PROTOCOL_SSLV3 = (1<<1);
+    public static final int SSL_PROTOCOL_TLSV1 = (1<<2);
+    public static final int SSL_PROTOCOL_TLSV1_1 = (1<<3);
+    public static final int SSL_PROTOCOL_TLSV1_2 = (1<<4);
+    public static final int SSL_PROTOCOL_TLSV1_3 = (1<<5);
+    public static final int SSL_PROTOCOL_ALL = (SSL_PROTOCOL_TLSV1 | SSL_PROTOCOL_TLSV1_1 | SSL_PROTOCOL_TLSV1_2 |
+            SSL_PROTOCOL_TLSV1_3);
 
     private static final String BEGIN_KEY = "-----BEGIN PRIVATE KEY-----\n";
     private static final Object END_KEY = "\n-----END PRIVATE KEY-----";
@@ -197,37 +209,64 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
             }
 
             // SSL protocol
-            // According to the OpenSSL documentation, this is a
-            // bad idea, and every call is deprecated. Instead, using the
-            // auto TLS_server_method is heavily recommended. Also TLSv1_3_server_method
-            // is apparently not part of the public API.
-            /*
-            int value = SSL.SSL_PROTOCOL_NONE;
-            for (String protocol : sslHostConfig.getEnabledProtocols()) {
-                if (Constants.SSL_PROTO_SSLv2Hello.equalsIgnoreCase(protocol)) {
+            ctx = SSL_CTX_new(TLS_server_method());
+
+            int protocol = SSL_PROTOCOL_NONE;
+            for (String enabledProtocol : sslHostConfig.getEnabledProtocols()) {
+                if (Constants.SSL_PROTO_SSLv2Hello.equalsIgnoreCase(enabledProtocol)) {
                     // NO-OP. OpenSSL always supports SSLv2Hello
-                } else if (Constants.SSL_PROTO_SSLv2.equalsIgnoreCase(protocol)) {
-                    value |= SSL.SSL_PROTOCOL_SSLV2;
-                } else if (Constants.SSL_PROTO_SSLv3.equalsIgnoreCase(protocol)) {
-                    value |= SSL.SSL_PROTOCOL_SSLV3;
-                } else if (Constants.SSL_PROTO_TLSv1.equalsIgnoreCase(protocol)) {
-                    value |= SSL.SSL_PROTOCOL_TLSV1;
-                } else if (Constants.SSL_PROTO_TLSv1_1.equalsIgnoreCase(protocol)) {
-                    value |= SSL.SSL_PROTOCOL_TLSV1_1;
-                } else if (Constants.SSL_PROTO_TLSv1_2.equalsIgnoreCase(protocol)) {
-                    value |= SSL.SSL_PROTOCOL_TLSV1_2;
-                } else if (Constants.SSL_PROTO_TLSv1_3.equalsIgnoreCase(protocol)) {
-                    value |= SSL.SSL_PROTOCOL_TLSV1_3;
-                } else if (Constants.SSL_PROTO_ALL.equalsIgnoreCase(protocol)) {
-                    value |= SSL.SSL_PROTOCOL_ALL;
+                } else if (Constants.SSL_PROTO_SSLv2.equalsIgnoreCase(enabledProtocol)) {
+                    protocol |= SSL_PROTOCOL_SSLV2;
+                } else if (Constants.SSL_PROTO_SSLv3.equalsIgnoreCase(enabledProtocol)) {
+                    protocol |= SSL_PROTOCOL_SSLV3;
+                } else if (Constants.SSL_PROTO_TLSv1.equalsIgnoreCase(enabledProtocol)) {
+                    protocol |= SSL_PROTOCOL_TLSV1;
+                } else if (Constants.SSL_PROTO_TLSv1_1.equalsIgnoreCase(enabledProtocol)) {
+                    protocol |= SSL_PROTOCOL_TLSV1_1;
+                } else if (Constants.SSL_PROTO_TLSv1_2.equalsIgnoreCase(enabledProtocol)) {
+                    protocol |= SSL_PROTOCOL_TLSV1_2;
+                } else if (Constants.SSL_PROTO_TLSv1_3.equalsIgnoreCase(enabledProtocol)) {
+                    protocol |= SSL_PROTOCOL_TLSV1_3;
+                } else if (Constants.SSL_PROTO_ALL.equalsIgnoreCase(enabledProtocol)) {
+                    protocol |= SSL_PROTOCOL_ALL;
                 } else {
                     // Should not happen since filtering to build
                     // enabled protocols removes invalid values.
                     throw new Exception(netSm.getString(
-                            "endpoint.apr.invalidSslProtocol", protocol));
+                            "endpoint.apr.invalidSslProtocol", enabledProtocol));
                 }
-            }*/
-            ctx = SSL_CTX_new(TLS_server_method());
+            }
+            // Set maximum and minimum protocol versions
+            int prot = SSL2_VERSION();
+            if ((protocol & SSL_PROTOCOL_TLSV1_3) > 0) {
+                prot = TLS1_3_VERSION();
+            } else if ((protocol & SSL_PROTOCOL_TLSV1_2) > 0) {
+                prot = TLS1_2_VERSION();
+            } else if ((protocol & SSL_PROTOCOL_TLSV1_1) > 0) {
+                prot = TLS1_1_VERSION();
+            } else if ((protocol & SSL_PROTOCOL_TLSV1) > 0) {
+                prot = TLS1_VERSION();
+            } else if ((protocol & SSL_PROTOCOL_SSLV3) > 0) {
+                prot = SSL3_VERSION();
+            }
+            // # define SSL_CTX_set_max_proto_version(ctx, version) \
+            //          SSL_CTX_ctrl(ctx, SSL_CTRL_SET_MAX_PROTO_VERSION, version, NULL)
+            SSL_CTX_ctrl(ctx, SSL_CTRL_SET_MAX_PROTO_VERSION(), prot, MemoryAddress.NULL);
+            if (prot == TLS1_3_VERSION() && (protocol & SSL_PROTOCOL_TLSV1_2) > 0) {
+                prot = TLS1_2_VERSION();
+            }
+            if (prot == TLS1_2_VERSION() && (protocol & SSL_PROTOCOL_TLSV1_1) > 0) {
+                prot = TLS1_1_VERSION();
+            }
+            if (prot == TLS1_1_VERSION() && (protocol & SSL_PROTOCOL_TLSV1) > 0) {
+                prot = TLS1_VERSION();
+            }
+            if (prot == TLS1_VERSION() && (protocol & SSL_PROTOCOL_SSLV3) > 0) {
+                prot = SSL3_VERSION();
+            }
+            //# define SSL_CTX_set_min_proto_version(ctx, version) \
+            //         SSL_CTX_ctrl(ctx, SSL_CTRL_SET_MIN_PROTO_VERSION, version, NULL)
+            SSL_CTX_ctrl(ctx, SSL_CTRL_SET_MIN_PROTO_VERSION(), prot, MemoryAddress.NULL);
 
             // FIXME: Add the rest of SSLContext.make
 
@@ -236,11 +275,11 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
             // Option for SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION ?
             // Default session context id and cache size
             // # define SSL_CTX_sess_set_cache_size(ctx,t) \
-            // SSL_CTX_ctrl(ctx,SSL_CTRL_SET_SESS_CACHE_SIZE,t,NULL)
+            //          SSL_CTX_ctrl(ctx,SSL_CTRL_SET_SESS_CACHE_SIZE,t,NULL)
             SSL_CTX_ctrl(ctx, SSL_CTRL_SET_SESS_CACHE_SIZE(), 256, MemoryAddress.NULL);
             // Session cache is disabled by default
             // # define SSL_CTX_set_session_cache_mode(ctx,m) \
-            // SSL_CTX_ctrl(ctx,SSL_CTRL_SET_SESS_CACHE_MODE,m,NULL)
+            //          SSL_CTX_ctrl(ctx,SSL_CTRL_SET_SESS_CACHE_MODE,m,NULL)
             SSL_CTX_ctrl(ctx, SSL_CTRL_SET_SESS_CACHE_MODE(), SSL_SESS_CACHE_OFF(), MemoryAddress.NULL);
             // Longer session timeout
             SSL_CTX_set_timeout(ctx, 14400);
