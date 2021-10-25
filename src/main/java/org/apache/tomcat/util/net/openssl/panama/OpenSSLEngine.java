@@ -155,7 +155,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             MemoryAddress/*(X509*)*/ x509 = SSL_get_peer_certificate(ssl);
             MemorySegment bufPointer = allocator.allocate(ValueLayout.ADDRESS, MemoryAddress.NULL);
             int length = i2d_X509(x509, bufPointer);
-            if (length < 0) {
+            if (length <= 0) {
                 return null;
             }
             MemoryAddress buf = bufPointer.get(ValueLayout.ADDRESS, 0);
@@ -211,6 +211,9 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                 return null;
             }
             int len = lenAddress.get(ValueLayout.JAVA_INT, 0);
+            if (len == 0) {
+                return null;
+            }
             byte[] name = new byte[len];
             MemoryAddress protocolAddress = protocolPointer.get(ValueLayout.ADDRESS, 0);
             for (int i = 0; i < len; i++) {
