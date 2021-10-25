@@ -127,10 +127,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         protocols.add(Constants.SSL_PROTO_TLSv1);
         protocols.add(Constants.SSL_PROTO_TLSv1_1);
         protocols.add(Constants.SSL_PROTO_TLSv1_2);
-        if (OpenSSL_version_num() >= 0x1010100f) {
-            protocols.add(Constants.SSL_PROTO_TLSv1_3);
-        }
-
+        protocols.add(Constants.SSL_PROTO_TLSv1_3);
         IMPLEMENTED_PROTOCOLS_SET = Collections.unmodifiableSet(protocols);
     }
 
@@ -1068,6 +1065,9 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
     }
 
     private synchronized void renegotiate() throws SSLException {
+        if (logger.isDebugEnabled()) {
+            logger.debug("Start renegotiate");
+        }
         clearLastError();
         int code;
         if (SSL_get_version(state.ssl).getUtf8String(0).equals(Constants.SSL_PROTO_TLSv1_3)) {
@@ -1120,20 +1120,22 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
      */
     private static String getLastError() {
         String sslError = null;
-        long error;
-        try (var scope = ResourceScope.newConfinedScope()) {
-            var allocator = SegmentAllocator.nativeAllocator(scope);
-            while ((error = ERR_get_error()) != SSL_ERROR_NONE()) {
-                // Loop until getLastErrorNumber() returns SSL_ERROR_NONE
-                var buf = allocator.allocateArray(ValueLayout.JAVA_BYTE, new byte[128]);
-                ERR_error_string(error, buf);
-                String err = buf.getUtf8String(0);
-                if (sslError == null) {
-                    sslError = err;
-                }
-                if (logger.isDebugEnabled()) {
-                    logger.debug(sm.getString("engine.openSSLError", Long.toString(error), err));
-                }
+        long error = ERR_get_error();
+        if (error != SSL_ERROR_NONE()) {
+            try (var scope = ResourceScope.newConfinedScope()) {
+                var allocator = SegmentAllocator.nativeAllocator(scope);
+                do {
+                    // Loop until getLastErrorNumber() returns SSL_ERROR_NONE
+                    var buf = allocator.allocateArray(ValueLayout.JAVA_BYTE, new byte[128]);
+                    ERR_error_string(error, buf);
+                    String err = buf.getUtf8String(0);
+                    if (sslError == null) {
+                        sslError = err;
+                    }
+                    if (logger.isDebugEnabled()) {
+                        logger.debug(sm.getString("engine.openSSLError", Long.toString(error), err));
+                    }
+                } while ((error = ERR_get_error()) != SSL_ERROR_NONE());
             }
         }
         return sslError;

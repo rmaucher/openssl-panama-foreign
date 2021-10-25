@@ -125,6 +125,8 @@ public class OpenSSLLifecycleListener implements LifecycleListener {
 
     }
 
+    static MemoryAddress enginePointer = MemoryAddress.NULL;
+
     static void init() throws Exception {
 
         if (OpenSSLStatus.isInitialized()) {
@@ -153,7 +155,7 @@ public class OpenSSLLifecycleListener implements LifecycleListener {
                     ENGINE_register_all_complete();
                 } else {
                     var engine = allocator.allocateUtf8String(engineName);
-                    var enginePointer = ENGINE_by_id(engine);
+                    enginePointer = ENGINE_by_id(engine);
                     if (MemoryAddress.NULL.equals(enginePointer)) {
                         enginePointer = ENGINE_by_id(allocator.allocateUtf8String("dynamic"));
                         if (enginePointer != null) {
