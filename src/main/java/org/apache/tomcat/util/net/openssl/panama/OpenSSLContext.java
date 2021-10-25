@@ -973,11 +973,14 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                 }
                 callbackPassword = null;
                 // Set certificate chain file
-                var certificateChainFileNative = allocator.allocateUtf8String(SSLHostConfig.adjustRelativePath(certificate.getCertificateChainFile()));
-                // SSLContext.setCertificateChainFile(state.ctx,
-                //        SSLHostConfig.adjustRelativePath(certificate.getCertificateChainFile()), false);
-                if (SSL_CTX_use_certificate_chain_file(state.ctx, certificateChainFileNative) <= 0) {
-                    log.error(sm.getString("openssl.errorLoadingCertificate", certificate.getCertificateChainFile()));
+                if (certificate.getCertificateChainFile() != null) {
+                    var certificateChainFileNative =
+                            allocator.allocateUtf8String(SSLHostConfig.adjustRelativePath(certificate.getCertificateChainFile()));
+                    // SSLContext.setCertificateChainFile(state.ctx,
+                    //        SSLHostConfig.adjustRelativePath(certificate.getCertificateChainFile()), false);
+                    if (SSL_CTX_use_certificate_chain_file(state.ctx, certificateChainFileNative) <= 0) {
+                        log.error(sm.getString("openssl.errorLoadingCertificate", certificate.getCertificateChainFile()));
+                    }
                 }
                 // Set revocation
                 //SSLContext.setCARevocation(state.ctx,
