@@ -1062,38 +1062,38 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                     //        (int)BIO_ctrl(b,BIO_C_SET_FILENAME, BIO_CLOSE|BIO_FP_READ,(char *)(name))
                     if (BIO_ctrl(bio, BIO_C_SET_FILENAME(), BIO_CLOSE() | BIO_FP_READ(), certificateFileNative) <= 0) {
                         BIO_free(bio);
-                        log.error(sm.getString("openssl.errorLoadingCertificate", certificate.getCertificateFile()));
+                        log.error(sm.getString("openssl.errorLoadingCertificate", "[0]:" + certificate.getCertificateFile()));
                         return;
                     }
                     MemoryAddress p12 = d2i_PKCS12_bio(bio, MemoryAddress.NULL);
                     BIO_free(bio);
                     if (MemoryAddress.NULL.equals(p12)) {
-                        log.error(sm.getString("openssl.errorLoadingCertificate", certificate.getCertificateFile()));
+                        log.error(sm.getString("openssl.errorLoadingCertificate", "[1]:" + certificate.getCertificateFile()));
                         return;
                     }
                     MemoryAddress passwordAddress = MemoryAddress.NULL;
                     int passwordLength = 0;
-                    if (callbackPassword != null) {
+                    if (callbackPassword != null && callbackPassword.length() > 0) {
                         MemorySegment password = allocator.allocateUtf8String(callbackPassword);
                         passwordAddress = password.address();
-                        passwordLength = (int) password.byteSize();
+                        passwordLength = (int) (password.byteSize() - 1);
                     }
                     if (PKCS12_verify_mac(p12, passwordAddress, passwordLength) <= 0) {
                         // Bad password
-                        log.error(sm.getString("openssl.errorLoadingCertificate", certificate.getCertificateFile()));
+                        log.error(sm.getString("openssl.errorLoadingCertificate", "[2]:" + certificate.getCertificateFile()));
                         PKCS12_free(p12);
                         return;
                     }
-                    cert = allocator.allocate(ValueLayout.ADDRESS).address();
-                    key = allocator.allocate(ValueLayout.ADDRESS).address();
-                    MemorySegment certPointer = allocator.allocate(ValueLayout.ADDRESS, cert);
-                    MemorySegment keyPointer = allocator.allocate(ValueLayout.ADDRESS, key);
+                    MemorySegment certPointer = allocator.allocate(ValueLayout.ADDRESS);
+                    MemorySegment keyPointer = allocator.allocate(ValueLayout.ADDRESS);
                     if (PKCS12_parse(p12, passwordAddress, keyPointer, certPointer, MemoryAddress.NULL) <= 0) {
-                        log.error(sm.getString("openssl.errorLoadingCertificate", certificate.getCertificateFile()));
+                        log.error(sm.getString("openssl.errorLoadingCertificate", "[3]:" + certificate.getCertificateFile()));
                         PKCS12_free(p12);
                         return;
                     }
                     PKCS12_free(p12);
+                    cert = certPointer.get(ValueLayout.ADDRESS, 0);
+                    key = keyPointer.get(ValueLayout.ADDRESS, 0);
                 } else {
                     // Load key
                     bio = BIO_new(BIO_s_file());
