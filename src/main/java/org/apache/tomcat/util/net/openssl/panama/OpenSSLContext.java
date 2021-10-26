@@ -329,7 +329,12 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
             //         SSL_CTX_ctrl(ctx, SSL_CTRL_SET_MIN_PROTO_VERSION, version, NULL)
             SSL_CTX_ctrl(ctx, SSL_CTRL_SET_MIN_PROTO_VERSION(), prot, MemoryAddress.NULL);
 
-            // FIXME: Add the rest of SSLContext.make
+            // Disable compression, usually unsafe
+            SSL_CTX_set_options(ctx, SSL_OP_NO_COMPRESSION());
+
+            // Disallow a session from being resumed during a renegotiation,
+            // so that an acceptable cipher suite can be negotiated.
+            SSL_CTX_set_options(ctx, SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION());
 
             SSL_CTX_set_options(ctx, SSL_OP_SINGLE_DH_USE());
             SSL_CTX_set_options(ctx, SSL_OP_SINGLE_ECDH_USE());
@@ -347,7 +352,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
 
             // From SSLContext.make, possibly set ssl_callback_ServerNameIndication
             // From SSLContext.make, possibly set ssl_callback_ClientHello
-            // Probably not needed ...
+            // Probably not needed
 
             // Set int pem_password_cb(char *buf, int size, int rwflag, void *u) callback
             MethodHandle boundOpenSSLCallbackPasswordHandle = openSSLCallbackPasswordHandle.bindTo(this);
@@ -919,7 +924,8 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                 CRYPTO_free(buf, OPENSSL_FILE(), OPENSSL_LINE()); // OPENSSL_free macro
             }
             MemoryAddress cipher = SSL_get_current_cipher(ssl);
-            String authMethod = getCipherAuthenticationMethod(SSL_CIPHER_get_auth_nid(cipher), SSL_CIPHER_get_kx_nid(cipher));
+            String authMethod = (MemoryAddress.NULL.equals(cipher)) ? "UNKNOWN"
+                    : getCipherAuthenticationMethod(SSL_CIPHER_get_auth_nid(cipher), SSL_CIPHER_get_kx_nid(cipher));
             X509Certificate[] peerCerts = certificates(certificateChain);
             try {
                 x509TrustManager.checkClientTrusted(peerCerts, authMethod);
