@@ -1282,7 +1282,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                     FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS), state.scope);
             int value = switch (mode) {
                 case NONE -> SSL_VERIFY_NONE();
-                case REQUIRE -> SSL_VERIFY_FAIL_IF_NO_PEER_CERT();
+                case REQUIRE -> SSL_VERIFY_PEER() | SSL_VERIFY_FAIL_IF_NO_PEER_CERT();
                 case OPTIONAL -> SSL_VERIFY_PEER();
             };
             SSL_set_verify(state.ssl, value, openSSLCallbackVerify);
