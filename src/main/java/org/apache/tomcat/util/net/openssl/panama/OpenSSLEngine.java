@@ -328,10 +328,16 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             SSL_set_accept_state(ssl);
         }
         SSL_set_verify_result(ssl, X509_V_OK());
-        MemoryAddress internalBIO = BIO_new(BIO_s_bio());
-        MemoryAddress networkBIO = BIO_new(BIO_s_bio());
-        //BIO_ctrl(b1,BIO_C_MAKE_BIO_PAIR,0,b2)
-        BIO_ctrl(internalBIO, BIO_C_MAKE_BIO_PAIR(), 0, networkBIO);
+        MemoryAddress internalBIO = MemoryAddress.NULL;
+        MemoryAddress networkBIO = MemoryAddress.NULL;
+        try (var confinedScope = ResourceScope.newConfinedScope()) {
+            var allocator = SegmentAllocator.nativeAllocator(confinedScope);
+            MemorySegment internalBIOPointer = allocator.allocate(ValueLayout.ADDRESS);
+            MemorySegment networkBIOPointer = allocator.allocate(ValueLayout.ADDRESS);
+            BIO_new_bio_pair(internalBIOPointer, 0, networkBIOPointer, 0);
+            internalBIO = internalBIOPointer.get(ValueLayout.ADDRESS, 0);
+            networkBIO = networkBIOPointer.get(ValueLayout.ADDRESS, 0);
+        }
         SSL_set_bio(ssl, internalBIO, internalBIO);
         state = new OpenSSLState(scope, ssl, networkBIO);
         cleanable = cleaner.register(this, state);
