@@ -241,9 +241,6 @@ public class openssl_h  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static ValueLayout.OfInt ASN1_BOOLEAN = JAVA_INT;
-    public static ValueLayout.OfInt ASN1_NULL = JAVA_INT;
-    public static ValueLayout.OfLong ossl_intmax_t = JAVA_LONG;
     public static MethodHandle CRYPTO_free$MH() {
         return RuntimeHelper.requireNonNull(constants$0.CRYPTO_free$MH,"CRYPTO_free");
     }

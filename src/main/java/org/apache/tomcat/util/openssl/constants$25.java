@@ -10,7 +10,7 @@ import static jdk.incubator.foreign.ValueLayout.*;
 class constants$25 {
 
     static final MemorySegment SHLIB_VERSION_NUMBER$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("1.1");
-    static final MemorySegment OPENSSL_FILE$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("/tmp/jextract$7847030838059152857.h");
+    static final MemorySegment OPENSSL_FILE$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("/tmp/jextract$53551959430998703.h");
     static final MemorySegment SSL_TXT_DSS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DSS");
     static final MemorySegment SSL_TXT_DH$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DH");
     static final MemorySegment SSL_TXT_RSA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RSA");

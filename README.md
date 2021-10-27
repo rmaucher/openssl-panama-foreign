@@ -22,9 +22,16 @@ export JAVA_HOME=<pathto>/panama-foreign/build/linux-x86_64-server-release/jdk
 $JAVA_HOME/bin/jextract @openssl-tomcat.conf openssl.h
 ```
 The code included was generated for OpenSSL 1.1.1. As long as things remain API
-compatible, this will still work. It is possible eventually to only generate code
-for APIs that are actually used, but this is time consuming and can be done
+compatible, this will still work. It is possible eventually to only generate
+code for APIs that are actually used, but this is time consuming and can be done
 later.
+
+The openssl-tomcat.conf will generate a trimmed down OpenSSL API. When
+developing new features, the full API should be generated instead using:
+
+```
+-$JAVA_HOME/bin/jextract --source -t org.apache.tomcat.util.openssl -lssl -I /usr/lib/gcc/x86_64-redhat-linux/11/include openssl.h -d src/main/java
+``` 
 
 # Building
 
