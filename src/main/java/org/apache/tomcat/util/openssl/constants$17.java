@@ -9,65 +9,48 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$17 {
 
-    static final FunctionDescriptor fcvt$FUNC = FunctionDescriptor.of(ADDRESS,
-        JAVA_DOUBLE,
-        JAVA_INT,
+    static final FunctionDescriptor SSL_renegotiate$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS
+    );
+    static final MethodHandle SSL_renegotiate$MH = RuntimeHelper.downcallHandle(
+        "SSL_renegotiate",
+        constants$17.SSL_renegotiate$FUNC, false
+    );
+    static final FunctionDescriptor SSL_renegotiate_pending$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS
+    );
+    static final MethodHandle SSL_renegotiate_pending$MH = RuntimeHelper.downcallHandle(
+        "SSL_renegotiate_pending",
+        constants$17.SSL_renegotiate_pending$FUNC, false
+    );
+    static final FunctionDescriptor SSL_shutdown$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS
+    );
+    static final MethodHandle SSL_shutdown$MH = RuntimeHelper.downcallHandle(
+        "SSL_shutdown",
+        constants$17.SSL_shutdown$FUNC, false
+    );
+    static final FunctionDescriptor SSL_verify_client_post_handshake$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS
+    );
+    static final MethodHandle SSL_verify_client_post_handshake$MH = RuntimeHelper.downcallHandle(
+        "SSL_verify_client_post_handshake",
+        constants$17.SSL_verify_client_post_handshake$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CTX_set_client_CA_list$FUNC = FunctionDescriptor.ofVoid(
         ADDRESS,
         ADDRESS
     );
-    static final MethodHandle fcvt$MH = RuntimeHelper.downcallHandle(
-        "fcvt",
-        constants$17.fcvt$FUNC, false
+    static final MethodHandle SSL_CTX_set_client_CA_list$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_set_client_CA_list",
+        constants$17.SSL_CTX_set_client_CA_list$FUNC, false
     );
-    static final FunctionDescriptor gcvt$FUNC = FunctionDescriptor.of(ADDRESS,
-        JAVA_DOUBLE,
-        JAVA_INT,
+    static final FunctionDescriptor SSL_CTX_get_client_CA_list$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS
     );
-    static final MethodHandle gcvt$MH = RuntimeHelper.downcallHandle(
-        "gcvt",
-        constants$17.gcvt$FUNC, false
-    );
-    static final FunctionDescriptor ecvt_r$FUNC = FunctionDescriptor.of(JAVA_INT,
-        JAVA_DOUBLE,
-        JAVA_INT,
-        ADDRESS,
-        ADDRESS,
-        ADDRESS,
-        JAVA_LONG
-    );
-    static final MethodHandle ecvt_r$MH = RuntimeHelper.downcallHandle(
-        "ecvt_r",
-        constants$17.ecvt_r$FUNC, false
-    );
-    static final FunctionDescriptor fcvt_r$FUNC = FunctionDescriptor.of(JAVA_INT,
-        JAVA_DOUBLE,
-        JAVA_INT,
-        ADDRESS,
-        ADDRESS,
-        ADDRESS,
-        JAVA_LONG
-    );
-    static final MethodHandle fcvt_r$MH = RuntimeHelper.downcallHandle(
-        "fcvt_r",
-        constants$17.fcvt_r$FUNC, false
-    );
-    static final FunctionDescriptor mblen$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
-        JAVA_LONG
-    );
-    static final MethodHandle mblen$MH = RuntimeHelper.downcallHandle(
-        "mblen",
-        constants$17.mblen$FUNC, false
-    );
-    static final FunctionDescriptor mbtowc$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
-        ADDRESS,
-        JAVA_LONG
-    );
-    static final MethodHandle mbtowc$MH = RuntimeHelper.downcallHandle(
-        "mbtowc",
-        constants$17.mbtowc$FUNC, false
+    static final MethodHandle SSL_CTX_get_client_CA_list$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_get_client_CA_list",
+        constants$17.SSL_CTX_get_client_CA_list$FUNC, false
     );
 }
 

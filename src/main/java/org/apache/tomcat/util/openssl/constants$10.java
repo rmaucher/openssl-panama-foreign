@@ -9,52 +9,51 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$10 {
 
-    static final FunctionDescriptor realloc$FUNC = FunctionDescriptor.of(ADDRESS,
+    static final FunctionDescriptor SSL_get0_alpn_selected$FUNC = FunctionDescriptor.ofVoid(
         ADDRESS,
-        JAVA_LONG
-    );
-    static final MethodHandle realloc$MH = RuntimeHelper.downcallHandle(
-        "realloc",
-        constants$10.realloc$FUNC, false
-    );
-    static final FunctionDescriptor reallocarray$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS,
-        JAVA_LONG,
-        JAVA_LONG
-    );
-    static final MethodHandle reallocarray$MH = RuntimeHelper.downcallHandle(
-        "reallocarray",
-        constants$10.reallocarray$FUNC, false
-    );
-    static final FunctionDescriptor free$FUNC = FunctionDescriptor.ofVoid(
         ADDRESS
     );
-    static final MethodHandle free$MH = RuntimeHelper.downcallHandle(
-        "free",
-        constants$10.free$FUNC, false
+    static final MethodHandle SSL_get0_alpn_selected$MH = RuntimeHelper.downcallHandle(
+        "SSL_get0_alpn_selected",
+        constants$10.SSL_get0_alpn_selected$FUNC, false
     );
-    static final FunctionDescriptor alloca$FUNC = FunctionDescriptor.of(ADDRESS,
-        JAVA_LONG
+    static final FunctionDescriptor SSL_in_init$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS
     );
-    static final MethodHandle alloca$MH = RuntimeHelper.downcallHandle(
-        "alloca",
-        constants$10.alloca$FUNC, false
+    static final MethodHandle SSL_in_init$MH = RuntimeHelper.downcallHandle(
+        "SSL_in_init",
+        constants$10.SSL_in_init$FUNC, false
     );
-    static final FunctionDescriptor valloc$FUNC = FunctionDescriptor.of(ADDRESS,
-        JAVA_LONG
-    );
-    static final MethodHandle valloc$MH = RuntimeHelper.downcallHandle(
-        "valloc",
-        constants$10.valloc$FUNC, false
-    );
-    static final FunctionDescriptor posix_memalign$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor SSL_CTX_set_cipher_list$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
-        JAVA_LONG,
+        ADDRESS
+    );
+    static final MethodHandle SSL_CTX_set_cipher_list$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_set_cipher_list",
+        constants$10.SSL_CTX_set_cipher_list$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CTX_new$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_CTX_new$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_new",
+        constants$10.SSL_CTX_new$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CTX_free$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS
+    );
+    static final MethodHandle SSL_CTX_free$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_free",
+        constants$10.SSL_CTX_free$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CTX_set_timeout$FUNC = FunctionDescriptor.of(JAVA_LONG,
+        ADDRESS,
         JAVA_LONG
     );
-    static final MethodHandle posix_memalign$MH = RuntimeHelper.downcallHandle(
-        "posix_memalign",
-        constants$10.posix_memalign$FUNC, false
+    static final MethodHandle SSL_CTX_set_timeout$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_set_timeout",
+        constants$10.SSL_CTX_set_timeout$FUNC, false
     );
 }
 

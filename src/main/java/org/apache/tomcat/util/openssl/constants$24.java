@@ -9,55 +9,43 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$24 {
 
-    static final FunctionDescriptor timer_create$FUNC = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
+    static final FunctionDescriptor ENGINE_ctrl_cmd_string$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle timer_create$MH = RuntimeHelper.downcallHandle(
-        "timer_create",
-        constants$24.timer_create$FUNC, false
-    );
-    static final FunctionDescriptor timer_delete$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS
-    );
-    static final MethodHandle timer_delete$MH = RuntimeHelper.downcallHandle(
-        "timer_delete",
-        constants$24.timer_delete$FUNC, false
-    );
-    static final FunctionDescriptor timer_settime$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
-        JAVA_INT,
-        ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle timer_settime$MH = RuntimeHelper.downcallHandle(
-        "timer_settime",
-        constants$24.timer_settime$FUNC, false
-    );
-    static final FunctionDescriptor timer_gettime$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle timer_gettime$MH = RuntimeHelper.downcallHandle(
-        "timer_gettime",
-        constants$24.timer_gettime$FUNC, false
-    );
-    static final FunctionDescriptor timer_getoverrun$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS
-    );
-    static final MethodHandle timer_getoverrun$MH = RuntimeHelper.downcallHandle(
-        "timer_getoverrun",
-        constants$24.timer_getoverrun$FUNC, false
-    );
-    static final FunctionDescriptor timespec_get$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
         JAVA_INT
     );
-    static final MethodHandle timespec_get$MH = RuntimeHelper.downcallHandle(
-        "timespec_get",
-        constants$24.timespec_get$FUNC, false
+    static final MethodHandle ENGINE_ctrl_cmd_string$MH = RuntimeHelper.downcallHandle(
+        "ENGINE_ctrl_cmd_string",
+        constants$24.ENGINE_ctrl_cmd_string$FUNC, false
     );
+    static final FunctionDescriptor ENGINE_free$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS
+    );
+    static final MethodHandle ENGINE_free$MH = RuntimeHelper.downcallHandle(
+        "ENGINE_free",
+        constants$24.ENGINE_free$FUNC, false
+    );
+    static final FunctionDescriptor ENGINE_load_private_key$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS,
+        ADDRESS,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle ENGINE_load_private_key$MH = RuntimeHelper.downcallHandle(
+        "ENGINE_load_private_key",
+        constants$24.ENGINE_load_private_key$FUNC, false
+    );
+    static final FunctionDescriptor ENGINE_set_default$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        JAVA_INT
+    );
+    static final MethodHandle ENGINE_set_default$MH = RuntimeHelper.downcallHandle(
+        "ENGINE_set_default",
+        constants$24.ENGINE_set_default$FUNC, false
+    );
+    static final MemorySegment OPENSSL_VERSION_TEXT$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("OpenSSL 1.1.1l  FIPS 24 Aug 2021");
+    static final MemorySegment SHLIB_VERSION_HISTORY$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("");
 }
 
 

@@ -9,49 +9,51 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$13 {
 
-    static final FunctionDescriptor quick_exit$FUNC = FunctionDescriptor.ofVoid(
-        JAVA_INT
-    );
-    static final MethodHandle quick_exit$MH = RuntimeHelper.downcallHandle(
-        "quick_exit",
-        constants$13.quick_exit$FUNC, false
-    );
-    static final FunctionDescriptor _Exit$FUNC = FunctionDescriptor.ofVoid(
-        JAVA_INT
-    );
-    static final MethodHandle _Exit$MH = RuntimeHelper.downcallHandle(
-        "_Exit",
-        constants$13._Exit$FUNC, false
-    );
-    static final FunctionDescriptor getenv$FUNC = FunctionDescriptor.of(ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle getenv$MH = RuntimeHelper.downcallHandle(
-        "getenv",
-        constants$13.getenv$FUNC, false
-    );
-    static final FunctionDescriptor putenv$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS
-    );
-    static final MethodHandle putenv$MH = RuntimeHelper.downcallHandle(
-        "putenv",
-        constants$13.putenv$FUNC, false
-    );
-    static final FunctionDescriptor setenv$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor SSL_add_file_cert_subjects_to_stack$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
-        ADDRESS,
-        JAVA_INT
-    );
-    static final MethodHandle setenv$MH = RuntimeHelper.downcallHandle(
-        "setenv",
-        constants$13.setenv$FUNC, false
-    );
-    static final FunctionDescriptor unsetenv$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS
     );
-    static final MethodHandle unsetenv$MH = RuntimeHelper.downcallHandle(
-        "unsetenv",
-        constants$13.unsetenv$FUNC, false
+    static final MethodHandle SSL_add_file_cert_subjects_to_stack$MH = RuntimeHelper.downcallHandle(
+        "SSL_add_file_cert_subjects_to_stack",
+        constants$13.SSL_add_file_cert_subjects_to_stack$FUNC, false
+    );
+    static final FunctionDescriptor SSL_SESSION_get_time$FUNC = FunctionDescriptor.of(JAVA_LONG,
+        ADDRESS
+    );
+    static final MethodHandle SSL_SESSION_get_time$MH = RuntimeHelper.downcallHandle(
+        "SSL_SESSION_get_time",
+        constants$13.SSL_SESSION_get_time$FUNC, false
+    );
+    static final FunctionDescriptor SSL_SESSION_get_id$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_SESSION_get_id$MH = RuntimeHelper.downcallHandle(
+        "SSL_SESSION_get_id",
+        constants$13.SSL_SESSION_get_id$FUNC, false
+    );
+    static final FunctionDescriptor SSL_get_peer_certificate$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_get_peer_certificate$MH = RuntimeHelper.downcallHandle(
+        "SSL_get_peer_certificate",
+        constants$13.SSL_get_peer_certificate$FUNC, false
+    );
+    static final FunctionDescriptor SSL_get_peer_cert_chain$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_get_peer_cert_chain$MH = RuntimeHelper.downcallHandle(
+        "SSL_get_peer_cert_chain",
+        constants$13.SSL_get_peer_cert_chain$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CTX_set_verify$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS,
+        JAVA_INT,
+        ADDRESS
+    );
+    static final MethodHandle SSL_CTX_set_verify$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_set_verify",
+        constants$13.SSL_CTX_set_verify$FUNC, false
     );
 }
 

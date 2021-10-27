@@ -9,32 +9,54 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$21 {
 
-    static final FunctionDescriptor asctime_r$FUNC = FunctionDescriptor.of(ADDRESS,
+    static final FunctionDescriptor SSL_CONF_CTX_free$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS
+    );
+    static final MethodHandle SSL_CONF_CTX_free$MH = RuntimeHelper.downcallHandle(
+        "SSL_CONF_CTX_free",
+        constants$21.SSL_CONF_CTX_free$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CONF_CTX_set_flags$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        JAVA_INT
+    );
+    static final MethodHandle SSL_CONF_CTX_set_flags$MH = RuntimeHelper.downcallHandle(
+        "SSL_CONF_CTX_set_flags",
+        constants$21.SSL_CONF_CTX_set_flags$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CONF_CTX_set_ssl_ctx$FUNC = FunctionDescriptor.ofVoid(
         ADDRESS,
         ADDRESS
     );
-    static final MethodHandle asctime_r$MH = RuntimeHelper.downcallHandle(
-        "asctime_r",
-        constants$21.asctime_r$FUNC, false
+    static final MethodHandle SSL_CONF_CTX_set_ssl_ctx$MH = RuntimeHelper.downcallHandle(
+        "SSL_CONF_CTX_set_ssl_ctx",
+        constants$21.SSL_CONF_CTX_set_ssl_ctx$FUNC, false
     );
-    static final FunctionDescriptor ctime_r$FUNC = FunctionDescriptor.of(ADDRESS,
+    static final FunctionDescriptor SSL_CONF_cmd$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
         ADDRESS,
         ADDRESS
     );
-    static final MethodHandle ctime_r$MH = RuntimeHelper.downcallHandle(
-        "ctime_r",
-        constants$21.ctime_r$FUNC, false
+    static final MethodHandle SSL_CONF_cmd$MH = RuntimeHelper.downcallHandle(
+        "SSL_CONF_cmd",
+        constants$21.SSL_CONF_cmd$FUNC, false
     );
-    static final MemoryLayout __tzname$LAYOUT = MemoryLayout.sequenceLayout(2, ADDRESS);
-    static final MemorySegment __tzname$SEGMENT = RuntimeHelper.lookupGlobalVariable("__tzname", constants$21.__tzname$LAYOUT);
-    static final MemoryLayout __daylight$LAYOUT = JAVA_INT;
-    static final VarHandle __daylight$VH = constants$21.__daylight$LAYOUT.varHandle();
-    static final MemorySegment __daylight$SEGMENT = RuntimeHelper.lookupGlobalVariable("__daylight", constants$21.__daylight$LAYOUT);
-    static final MemoryLayout __timezone$LAYOUT = JAVA_LONG;
-    static final VarHandle __timezone$VH = constants$21.__timezone$LAYOUT.varHandle();
-    static final MemorySegment __timezone$SEGMENT = RuntimeHelper.lookupGlobalVariable("__timezone", constants$21.__timezone$LAYOUT);
-    static final MemoryLayout tzname$LAYOUT = MemoryLayout.sequenceLayout(2, ADDRESS);
-    static final MemorySegment tzname$SEGMENT = RuntimeHelper.lookupGlobalVariable("tzname", constants$21.tzname$LAYOUT);
+    static final FunctionDescriptor SSL_CONF_cmd_value_type$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_CONF_cmd_value_type$MH = RuntimeHelper.downcallHandle(
+        "SSL_CONF_cmd_value_type",
+        constants$21.SSL_CONF_cmd_value_type$FUNC, false
+    );
+    static final FunctionDescriptor OPENSSL_init_ssl$FUNC = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        ADDRESS
+    );
+    static final MethodHandle OPENSSL_init_ssl$MH = RuntimeHelper.downcallHandle(
+        "OPENSSL_init_ssl",
+        constants$21.OPENSSL_init_ssl$FUNC, false
+    );
 }
 
 

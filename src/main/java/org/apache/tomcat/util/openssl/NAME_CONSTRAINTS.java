@@ -7,7 +7,7 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
-public class NAME_CONSTRAINTS extends NAME_CONSTRAINTS_st {
+public class NAME_CONSTRAINTS {
 
 }
 

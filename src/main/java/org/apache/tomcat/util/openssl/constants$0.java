@@ -9,59 +9,48 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$0 {
 
-    static final FunctionDescriptor imaxabs$FUNC = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG
+    static final FunctionDescriptor OPENSSL_sk_num$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS
     );
-    static final MethodHandle imaxabs$MH = RuntimeHelper.downcallHandle(
-        "imaxabs",
-        constants$0.imaxabs$FUNC, false
+    static final MethodHandle OPENSSL_sk_num$MH = RuntimeHelper.downcallHandle(
+        "OPENSSL_sk_num",
+        constants$0.OPENSSL_sk_num$FUNC, false
     );
-    static final FunctionDescriptor imaxdiv$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        JAVA_LONG.withName("quot"),
-        JAVA_LONG.withName("rem")
-    ),
-        JAVA_LONG,
-        JAVA_LONG
+    static final FunctionDescriptor OPENSSL_sk_value$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS,
+        JAVA_INT
     );
-    static final MethodHandle imaxdiv$MH = RuntimeHelper.downcallHandle(
-        "imaxdiv",
-        constants$0.imaxdiv$FUNC, false
+    static final MethodHandle OPENSSL_sk_value$MH = RuntimeHelper.downcallHandle(
+        "OPENSSL_sk_value",
+        constants$0.OPENSSL_sk_value$FUNC, false
     );
-    static final FunctionDescriptor strtoimax$FUNC = FunctionDescriptor.of(JAVA_LONG,
+    static final FunctionDescriptor CRYPTO_free$FUNC = FunctionDescriptor.ofVoid(
         ADDRESS,
         ADDRESS,
         JAVA_INT
     );
-    static final MethodHandle strtoimax$MH = RuntimeHelper.downcallHandle(
-        "strtoimax",
-        constants$0.strtoimax$FUNC, false
+    static final MethodHandle CRYPTO_free$MH = RuntimeHelper.downcallHandle(
+        "CRYPTO_free",
+        constants$0.CRYPTO_free$FUNC, false
     );
-    static final FunctionDescriptor strtoumax$FUNC = FunctionDescriptor.of(JAVA_LONG,
-        ADDRESS,
-        ADDRESS,
+    static final FunctionDescriptor FIPS_mode$FUNC = FunctionDescriptor.of(JAVA_INT);
+    static final MethodHandle FIPS_mode$MH = RuntimeHelper.downcallHandle(
+        "FIPS_mode",
+        constants$0.FIPS_mode$FUNC, false
+    );
+    static final FunctionDescriptor FIPS_mode_set$FUNC = FunctionDescriptor.of(JAVA_INT,
         JAVA_INT
     );
-    static final MethodHandle strtoumax$MH = RuntimeHelper.downcallHandle(
-        "strtoumax",
-        constants$0.strtoumax$FUNC, false
+    static final MethodHandle FIPS_mode_set$MH = RuntimeHelper.downcallHandle(
+        "FIPS_mode_set",
+        constants$0.FIPS_mode_set$FUNC, false
     );
-    static final FunctionDescriptor wcstoimax$FUNC = FunctionDescriptor.of(JAVA_LONG,
-        ADDRESS,
-        ADDRESS,
-        JAVA_INT
+    static final FunctionDescriptor BIO_ctrl_pending$FUNC = FunctionDescriptor.of(JAVA_LONG,
+        ADDRESS
     );
-    static final MethodHandle wcstoimax$MH = RuntimeHelper.downcallHandle(
-        "wcstoimax",
-        constants$0.wcstoimax$FUNC, false
-    );
-    static final FunctionDescriptor wcstoumax$FUNC = FunctionDescriptor.of(JAVA_LONG,
-        ADDRESS,
-        ADDRESS,
-        JAVA_INT
-    );
-    static final MethodHandle wcstoumax$MH = RuntimeHelper.downcallHandle(
-        "wcstoumax",
-        constants$0.wcstoumax$FUNC, false
+    static final MethodHandle BIO_ctrl_pending$MH = RuntimeHelper.downcallHandle(
+        "BIO_ctrl_pending",
+        constants$0.BIO_ctrl_pending$FUNC, false
     );
 }
 

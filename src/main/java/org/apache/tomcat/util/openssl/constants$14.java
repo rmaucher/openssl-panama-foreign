@@ -9,46 +9,45 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$14 {
 
-    static final FunctionDescriptor clearenv$FUNC = FunctionDescriptor.of(JAVA_INT);
-    static final MethodHandle clearenv$MH = RuntimeHelper.downcallHandle(
-        "clearenv",
-        constants$14.clearenv$FUNC, false
-    );
-    static final FunctionDescriptor mktemp$FUNC = FunctionDescriptor.of(ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle mktemp$MH = RuntimeHelper.downcallHandle(
-        "mktemp",
-        constants$14.mktemp$FUNC, false
-    );
-    static final FunctionDescriptor mkstemp$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS
-    );
-    static final MethodHandle mkstemp$MH = RuntimeHelper.downcallHandle(
-        "mkstemp",
-        constants$14.mkstemp$FUNC, false
-    );
-    static final FunctionDescriptor mkstemps$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor SSL_CTX_set_cert_verify_callback$cb$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
-        JAVA_INT
-    );
-    static final MethodHandle mkstemps$MH = RuntimeHelper.downcallHandle(
-        "mkstemps",
-        constants$14.mkstemps$FUNC, false
-    );
-    static final FunctionDescriptor mkdtemp$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS
     );
-    static final MethodHandle mkdtemp$MH = RuntimeHelper.downcallHandle(
-        "mkdtemp",
-        constants$14.mkdtemp$FUNC, false
+    static final MethodHandle SSL_CTX_set_cert_verify_callback$cb$MH = RuntimeHelper.downcallHandle(
+        constants$14.SSL_CTX_set_cert_verify_callback$cb$FUNC, false
     );
-    static final FunctionDescriptor system$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor SSL_CTX_set_cert_verify_callback$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS,
+        ADDRESS,
         ADDRESS
     );
-    static final MethodHandle system$MH = RuntimeHelper.downcallHandle(
-        "system",
-        constants$14.system$FUNC, false
+    static final MethodHandle SSL_CTX_set_cert_verify_callback$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_set_cert_verify_callback",
+        constants$14.SSL_CTX_set_cert_verify_callback$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CTX_use_PrivateKey$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_CTX_use_PrivateKey$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_use_PrivateKey",
+        constants$14.SSL_CTX_use_PrivateKey$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CTX_use_certificate$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_CTX_use_certificate$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_use_certificate",
+        constants$14.SSL_CTX_use_certificate$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CTX_set_default_passwd_cb$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_CTX_set_default_passwd_cb$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_set_default_passwd_cb",
+        constants$14.SSL_CTX_set_default_passwd_cb$FUNC, false
     );
 }
 

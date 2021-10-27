@@ -7,7 +7,7 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
-public class CRYPTO_EX_DATA extends crypto_ex_data_st {
+public class CRYPTO_EX_DATA {
 
 }
 

@@ -7,7 +7,7 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
-public class ISSUING_DIST_POINT extends ISSUING_DIST_POINT_st {
+public class ISSUING_DIST_POINT {
 
 }
 

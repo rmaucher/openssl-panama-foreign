@@ -7,7 +7,7 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
-public class openssl_h extends openssl_h_15 {
+public class openssl_h  {
 
     /* package-private */ openssl_h() {}
     public static ValueLayout.OfByte C_CHAR = JAVA_BYTE;
@@ -21,3002 +21,1852 @@ public class openssl_h extends openssl_h_15 {
     public static int OPENSSL_MIN_API() {
         return (int)0L;
     }
-    public static int _INTTYPES_H() {
-        return (int)1L;
-    }
-    public static int _FEATURES_H() {
-        return (int)1L;
-    }
-    public static int _DEFAULT_SOURCE() {
-        return (int)1L;
-    }
-    public static int __GLIBC_USE_ISOC2X() {
-        return (int)0L;
-    }
-    public static int __USE_ISOC11() {
-        return (int)1L;
-    }
-    public static int __USE_ISOC99() {
-        return (int)1L;
-    }
-    public static int __USE_ISOC95() {
-        return (int)1L;
-    }
-    public static int __USE_POSIX_IMPLICITLY() {
-        return (int)1L;
-    }
-    public static int _POSIX_SOURCE() {
-        return (int)1L;
-    }
-    public static int __USE_POSIX() {
-        return (int)1L;
-    }
-    public static int __USE_POSIX2() {
-        return (int)1L;
-    }
-    public static int __USE_POSIX199309() {
-        return (int)1L;
-    }
-    public static int __USE_POSIX199506() {
-        return (int)1L;
-    }
-    public static int __USE_XOPEN2K() {
-        return (int)1L;
-    }
-    public static int __USE_XOPEN2K8() {
-        return (int)1L;
-    }
-    public static int _ATFILE_SOURCE() {
-        return (int)1L;
-    }
-    public static int __USE_MISC() {
-        return (int)1L;
-    }
-    public static int __USE_ATFILE() {
-        return (int)1L;
-    }
-    public static int __USE_FORTIFY_LEVEL() {
-        return (int)0L;
-    }
-    public static int __GLIBC_USE_DEPRECATED_GETS() {
-        return (int)0L;
-    }
-    public static int __GLIBC_USE_DEPRECATED_SCANF() {
-        return (int)0L;
-    }
-    public static int _STDC_PREDEF_H() {
-        return (int)1L;
-    }
-    public static int __STDC_IEC_559__() {
-        return (int)1L;
-    }
-    public static int __STDC_IEC_559_COMPLEX__() {
-        return (int)1L;
-    }
-    public static int __GNU_LIBRARY__() {
-        return (int)6L;
-    }
-    public static int __GLIBC__() {
-        return (int)2L;
-    }
-    public static int __GLIBC_MINOR__() {
-        return (int)33L;
-    }
-    public static int _SYS_CDEFS_H() {
-        return (int)1L;
-    }
-    public static int __glibc_c99_flexarr_available() {
-        return (int)1L;
-    }
-    public static int __WORDSIZE() {
-        return (int)64L;
-    }
-    public static int __WORDSIZE_TIME64_COMPAT32() {
-        return (int)1L;
-    }
-    public static int __SYSCALL_WORDSIZE() {
-        return (int)64L;
-    }
-    public static int __LDOUBLE_REDIRECTS_TO_FLOAT128_ABI() {
-        return (int)0L;
-    }
-    public static int __HAVE_GENERIC_SELECTION() {
-        return (int)1L;
-    }
-    public static int _STDINT_H() {
-        return (int)1L;
-    }
-    public static int __GLIBC_USE_LIB_EXT2() {
-        return (int)0L;
-    }
-    public static int __GLIBC_USE_IEC_60559_BFP_EXT() {
-        return (int)0L;
-    }
-    public static int __GLIBC_USE_IEC_60559_BFP_EXT_C2X() {
-        return (int)0L;
-    }
-    public static int __GLIBC_USE_IEC_60559_FUNCS_EXT() {
-        return (int)0L;
-    }
-    public static int __GLIBC_USE_IEC_60559_FUNCS_EXT_C2X() {
-        return (int)0L;
-    }
-    public static int __GLIBC_USE_IEC_60559_TYPES_EXT() {
-        return (int)0L;
-    }
-    public static int _BITS_TYPES_H() {
-        return (int)1L;
-    }
-    public static int _BITS_TYPESIZES_H() {
-        return (int)1L;
-    }
-    public static int __OFF_T_MATCHES_OFF64_T() {
-        return (int)1L;
-    }
-    public static int __INO_T_MATCHES_INO64_T() {
-        return (int)1L;
-    }
-    public static int __RLIM_T_MATCHES_RLIM64_T() {
-        return (int)1L;
-    }
-    public static int __STATFS_MATCHES_STATFS64() {
-        return (int)1L;
-    }
-    public static int __KERNEL_OLD_TIMEVAL_MATCHES_TIMEVAL64() {
-        return (int)1L;
-    }
-    public static int __FD_SETSIZE() {
-        return (int)1024L;
-    }
-    public static int _BITS_TIME64_H() {
-        return (int)1L;
-    }
-    public static int _BITS_WCHAR_H() {
-        return (int)1L;
-    }
-    public static int _BITS_STDINT_INTN_H() {
-        return (int)1L;
-    }
-    public static int _BITS_STDINT_UINTN_H() {
-        return (int)1L;
-    }
-    public static int ____gwchar_t_defined() {
-        return (int)1L;
-    }
-    public static int _STDLIB_H() {
-        return (int)1L;
-    }
-    public static int WNOHANG() {
-        return (int)1L;
-    }
-    public static int WUNTRACED() {
-        return (int)2L;
-    }
-    public static int WSTOPPED() {
-        return (int)2L;
-    }
-    public static int WEXITED() {
-        return (int)4L;
-    }
-    public static int WCONTINUED() {
-        return (int)8L;
-    }
-    public static int WNOWAIT() {
-        return (int)16777216L;
-    }
-    public static int __WNOTHREAD() {
-        return (int)536870912L;
-    }
-    public static int __WALL() {
-        return (int)1073741824L;
-    }
-    public static int __W_CONTINUED() {
-        return (int)65535L;
-    }
-    public static int __WCOREFLAG() {
-        return (int)128L;
-    }
-    public static int __HAVE_FLOAT128() {
-        return (int)0L;
-    }
-    public static int __HAVE_DISTINCT_FLOAT128() {
-        return (int)0L;
-    }
-    public static int __HAVE_FLOAT64X() {
-        return (int)1L;
-    }
-    public static int __HAVE_FLOAT64X_LONG_DOUBLE() {
-        return (int)1L;
-    }
-    public static int __HAVE_FLOAT16() {
-        return (int)0L;
-    }
-    public static int __HAVE_FLOAT32() {
-        return (int)1L;
-    }
-    public static int __HAVE_FLOAT64() {
-        return (int)1L;
-    }
-    public static int __HAVE_FLOAT32X() {
-        return (int)1L;
-    }
-    public static int __HAVE_FLOAT128X() {
-        return (int)0L;
-    }
-    public static int __HAVE_DISTINCT_FLOAT32() {
-        return (int)0L;
-    }
-    public static int __HAVE_DISTINCT_FLOAT64() {
-        return (int)0L;
-    }
-    public static int __HAVE_DISTINCT_FLOAT32X() {
-        return (int)0L;
-    }
-    public static int __HAVE_DISTINCT_FLOAT64X() {
-        return (int)0L;
-    }
-    public static int __HAVE_FLOATN_NOT_TYPEDEF() {
-        return (int)0L;
-    }
-    public static int __ldiv_t_defined() {
-        return (int)1L;
-    }
-    public static int __lldiv_t_defined() {
-        return (int)1L;
-    }
-    public static int RAND_MAX() {
-        return (int)2147483647L;
-    }
-    public static int EXIT_FAILURE() {
-        return (int)1L;
-    }
-    public static int EXIT_SUCCESS() {
-        return (int)0L;
-    }
-    public static int _SYS_TYPES_H() {
-        return (int)1L;
-    }
-    public static int __clock_t_defined() {
-        return (int)1L;
-    }
-    public static int __clockid_t_defined() {
-        return (int)1L;
-    }
-    public static int __time_t_defined() {
-        return (int)1L;
-    }
-    public static int __timer_t_defined() {
-        return (int)1L;
-    }
-    public static int __BIT_TYPES_DEFINED__() {
-        return (int)1L;
-    }
-    public static int _ENDIAN_H() {
-        return (int)1L;
-    }
-    public static int _BITS_ENDIAN_H() {
-        return (int)1L;
-    }
-    public static int __LITTLE_ENDIAN() {
-        return (int)1234L;
-    }
-    public static int __BIG_ENDIAN() {
-        return (int)4321L;
-    }
-    public static int __PDP_ENDIAN() {
-        return (int)3412L;
-    }
-    public static int _BITS_ENDIANNESS_H() {
-        return (int)1L;
-    }
-    public static int _BITS_BYTESWAP_H() {
-        return (int)1L;
-    }
-    public static int _BITS_UINTN_IDENTITY_H() {
-        return (int)1L;
-    }
-    public static int _SYS_SELECT_H() {
-        return (int)1L;
-    }
-    public static int __sigset_t_defined() {
-        return (int)1L;
-    }
-    public static int __timeval_defined() {
-        return (int)1L;
-    }
-    public static int _STRUCT_TIMESPEC() {
-        return (int)1L;
-    }
-    public static int _BITS_PTHREADTYPES_COMMON_H() {
-        return (int)1L;
-    }
-    public static int _THREAD_SHARED_TYPES_H() {
-        return (int)1L;
-    }
-    public static int _BITS_PTHREADTYPES_ARCH_H() {
-        return (int)1L;
-    }
-    public static int __SIZEOF_PTHREAD_MUTEX_T() {
-        return (int)40L;
-    }
-    public static int __SIZEOF_PTHREAD_ATTR_T() {
-        return (int)56L;
-    }
-    public static int __SIZEOF_PTHREAD_RWLOCK_T() {
-        return (int)56L;
-    }
-    public static int __SIZEOF_PTHREAD_BARRIER_T() {
-        return (int)32L;
-    }
-    public static int __SIZEOF_PTHREAD_MUTEXATTR_T() {
-        return (int)4L;
-    }
-    public static int __SIZEOF_PTHREAD_COND_T() {
-        return (int)48L;
-    }
-    public static int __SIZEOF_PTHREAD_CONDATTR_T() {
-        return (int)4L;
-    }
-    public static int __SIZEOF_PTHREAD_RWLOCKATTR_T() {
-        return (int)8L;
-    }
-    public static int __SIZEOF_PTHREAD_BARRIERATTR_T() {
-        return (int)4L;
-    }
-    public static int _THREAD_MUTEX_INTERNAL_H() {
-        return (int)1L;
-    }
-    public static int __PTHREAD_MUTEX_HAVE_PREV() {
-        return (int)1L;
-    }
-    public static int __have_pthread_attr_t() {
-        return (int)1L;
-    }
-    public static int _ALLOCA_H() {
-        return (int)1L;
-    }
-    public static int _TIME_H() {
-        return (int)1L;
-    }
-    public static int _BITS_TIME_H() {
-        return (int)1L;
-    }
-    public static int CLOCK_REALTIME() {
-        return (int)0L;
-    }
-    public static int CLOCK_MONOTONIC() {
-        return (int)1L;
-    }
-    public static int CLOCK_PROCESS_CPUTIME_ID() {
-        return (int)2L;
-    }
-    public static int CLOCK_THREAD_CPUTIME_ID() {
-        return (int)3L;
-    }
-    public static int CLOCK_MONOTONIC_RAW() {
-        return (int)4L;
-    }
-    public static int CLOCK_REALTIME_COARSE() {
-        return (int)5L;
-    }
-    public static int CLOCK_MONOTONIC_COARSE() {
-        return (int)6L;
-    }
-    public static int CLOCK_BOOTTIME() {
-        return (int)7L;
-    }
-    public static int CLOCK_REALTIME_ALARM() {
-        return (int)8L;
-    }
-    public static int CLOCK_BOOTTIME_ALARM() {
-        return (int)9L;
-    }
-    public static int CLOCK_TAI() {
-        return (int)11L;
-    }
-    public static int TIMER_ABSTIME() {
-        return (int)1L;
-    }
-    public static int __struct_tm_defined() {
-        return (int)1L;
-    }
-    public static int __itimerspec_defined() {
-        return (int)1L;
-    }
-    public static int _BITS_TYPES_LOCALE_T_H() {
-        return (int)1L;
-    }
-    public static int _BITS_TYPES___LOCALE_T_H() {
-        return (int)1L;
-    }
-    public static int TIME_UTC() {
-        return (int)1L;
-    }
-    public static int _STDIO_H() {
-        return (int)1L;
-    }
-    public static int _____fpos_t_defined() {
-        return (int)1L;
-    }
-    public static int ____mbstate_t_defined() {
-        return (int)1L;
-    }
-    public static int _____fpos64_t_defined() {
-        return (int)1L;
-    }
-    public static int ____FILE_defined() {
-        return (int)1L;
-    }
-    public static int __FILE_defined() {
-        return (int)1L;
-    }
-    public static int __struct_FILE_defined() {
-        return (int)1L;
-    }
-    public static int _IO_EOF_SEEN() {
-        return (int)16L;
-    }
-    public static int _IO_ERR_SEEN() {
-        return (int)32L;
-    }
-    public static int _IO_USER_LOCK() {
-        return (int)32768L;
-    }
-    public static int _IOFBF() {
-        return (int)0L;
-    }
-    public static int _IOLBF() {
-        return (int)1L;
-    }
-    public static int _IONBF() {
-        return (int)2L;
-    }
-    public static int BUFSIZ() {
-        return (int)8192L;
-    }
-    public static int SEEK_SET() {
-        return (int)0L;
-    }
-    public static int SEEK_CUR() {
-        return (int)1L;
-    }
-    public static int SEEK_END() {
-        return (int)2L;
-    }
-    public static int _BITS_STDIO_LIM_H() {
-        return (int)1L;
-    }
-    public static int L_tmpnam() {
-        return (int)20L;
-    }
-    public static int TMP_MAX() {
-        return (int)238328L;
-    }
-    public static int FILENAME_MAX() {
-        return (int)4096L;
-    }
-    public static int L_ctermid() {
-        return (int)9L;
-    }
-    public static int FOPEN_MAX() {
-        return (int)16L;
-    }
-    public static int _LIBC_LIMITS_H_() {
-        return (int)1L;
-    }
-    public static int MB_LEN_MAX() {
-        return (int)16L;
-    }
-    public static int _BITS_POSIX1_LIM_H() {
-        return (int)1L;
-    }
-    public static int _POSIX_AIO_LISTIO_MAX() {
-        return (int)2L;
-    }
-    public static int _POSIX_AIO_MAX() {
-        return (int)1L;
-    }
-    public static int _POSIX_ARG_MAX() {
-        return (int)4096L;
-    }
-    public static int _POSIX_CHILD_MAX() {
-        return (int)25L;
-    }
-    public static int _POSIX_DELAYTIMER_MAX() {
-        return (int)32L;
-    }
-    public static int _POSIX_HOST_NAME_MAX() {
-        return (int)255L;
-    }
-    public static int _POSIX_LINK_MAX() {
-        return (int)8L;
-    }
-    public static int _POSIX_LOGIN_NAME_MAX() {
-        return (int)9L;
-    }
-    public static int _POSIX_MAX_CANON() {
-        return (int)255L;
-    }
-    public static int _POSIX_MAX_INPUT() {
-        return (int)255L;
-    }
-    public static int _POSIX_MQ_OPEN_MAX() {
-        return (int)8L;
-    }
-    public static int _POSIX_MQ_PRIO_MAX() {
-        return (int)32L;
-    }
-    public static int _POSIX_NAME_MAX() {
-        return (int)14L;
-    }
-    public static int _POSIX_NGROUPS_MAX() {
-        return (int)8L;
-    }
-    public static int _POSIX_OPEN_MAX() {
-        return (int)20L;
-    }
-    public static int _POSIX_PATH_MAX() {
-        return (int)256L;
-    }
-    public static int _POSIX_PIPE_BUF() {
-        return (int)512L;
-    }
-    public static int _POSIX_RE_DUP_MAX() {
-        return (int)255L;
-    }
-    public static int _POSIX_RTSIG_MAX() {
-        return (int)8L;
-    }
-    public static int _POSIX_SEM_NSEMS_MAX() {
-        return (int)256L;
-    }
-    public static int _POSIX_SEM_VALUE_MAX() {
-        return (int)32767L;
-    }
-    public static int _POSIX_SIGQUEUE_MAX() {
-        return (int)32L;
-    }
-    public static int _POSIX_SSIZE_MAX() {
-        return (int)32767L;
-    }
-    public static int _POSIX_STREAM_MAX() {
-        return (int)8L;
-    }
-    public static int _POSIX_SYMLINK_MAX() {
-        return (int)255L;
-    }
-    public static int _POSIX_SYMLOOP_MAX() {
-        return (int)8L;
-    }
-    public static int _POSIX_TIMER_MAX() {
-        return (int)32L;
-    }
-    public static int _POSIX_TTY_NAME_MAX() {
-        return (int)9L;
-    }
-    public static int _POSIX_TZNAME_MAX() {
-        return (int)6L;
-    }
-    public static int _POSIX_CLOCKRES_MIN() {
-        return (int)20000000L;
-    }
-    public static int NR_OPEN() {
-        return (int)1024L;
-    }
-    public static int NGROUPS_MAX() {
-        return (int)65536L;
-    }
-    public static int ARG_MAX() {
-        return (int)131072L;
-    }
-    public static int LINK_MAX() {
-        return (int)127L;
-    }
-    public static int MAX_CANON() {
-        return (int)255L;
-    }
-    public static int MAX_INPUT() {
-        return (int)255L;
-    }
-    public static int NAME_MAX() {
-        return (int)255L;
-    }
-    public static int PATH_MAX() {
-        return (int)4096L;
-    }
-    public static int PIPE_BUF() {
-        return (int)4096L;
-    }
-    public static int XATTR_NAME_MAX() {
-        return (int)255L;
-    }
-    public static int XATTR_SIZE_MAX() {
-        return (int)65536L;
-    }
-    public static int XATTR_LIST_MAX() {
-        return (int)65536L;
-    }
-    public static int RTSIG_MAX() {
-        return (int)32L;
-    }
-    public static int _POSIX_THREAD_KEYS_MAX() {
-        return (int)128L;
-    }
-    public static int PTHREAD_KEYS_MAX() {
-        return (int)1024L;
-    }
-    public static int _POSIX_THREAD_DESTRUCTOR_ITERATIONS() {
-        return (int)4L;
-    }
-    public static int _POSIX_THREAD_THREADS_MAX() {
-        return (int)64L;
-    }
-    public static int AIO_PRIO_DELTA_MAX() {
-        return (int)20L;
-    }
-    public static int PTHREAD_STACK_MIN() {
-        return (int)16384L;
-    }
-    public static int DELAYTIMER_MAX() {
-        return (int)2147483647L;
-    }
-    public static int TTY_NAME_MAX() {
-        return (int)32L;
-    }
-    public static int LOGIN_NAME_MAX() {
-        return (int)256L;
-    }
-    public static int HOST_NAME_MAX() {
-        return (int)64L;
-    }
-    public static int MQ_PRIO_MAX() {
-        return (int)32768L;
-    }
-    public static int _BITS_POSIX2_LIM_H() {
-        return (int)1L;
-    }
-    public static int _POSIX2_BC_BASE_MAX() {
-        return (int)99L;
-    }
-    public static int _POSIX2_BC_DIM_MAX() {
-        return (int)2048L;
-    }
-    public static int _POSIX2_BC_SCALE_MAX() {
-        return (int)99L;
-    }
-    public static int _POSIX2_BC_STRING_MAX() {
-        return (int)1000L;
-    }
-    public static int _POSIX2_COLL_WEIGHTS_MAX() {
-        return (int)2L;
-    }
-    public static int _POSIX2_EXPR_NEST_MAX() {
-        return (int)32L;
-    }
-    public static int _POSIX2_LINE_MAX() {
-        return (int)2048L;
-    }
-    public static int _POSIX2_RE_DUP_MAX() {
-        return (int)255L;
-    }
-    public static int _POSIX2_CHARCLASS_NAME_MAX() {
-        return (int)14L;
-    }
-    public static int COLL_WEIGHTS_MAX() {
-        return (int)255L;
-    }
-    public static int CHARCLASS_NAME_MAX() {
-        return (int)2048L;
-    }
-    public static int CRYPTO_F_CMAC_CTX_NEW() {
-        return (int)120L;
-    }
-    public static int CRYPTO_F_CRYPTO_DUP_EX_DATA() {
-        return (int)110L;
-    }
-    public static int CRYPTO_F_CRYPTO_FREE_EX_DATA() {
-        return (int)111L;
-    }
-    public static int CRYPTO_F_CRYPTO_GET_EX_NEW_INDEX() {
-        return (int)100L;
-    }
-    public static int CRYPTO_F_CRYPTO_MEMDUP() {
-        return (int)115L;
-    }
-    public static int CRYPTO_F_CRYPTO_NEW_EX_DATA() {
-        return (int)112L;
-    }
-    public static int CRYPTO_F_CRYPTO_OCB128_COPY_CTX() {
-        return (int)121L;
-    }
-    public static int CRYPTO_F_CRYPTO_OCB128_INIT() {
-        return (int)122L;
-    }
-    public static int CRYPTO_F_CRYPTO_SET_EX_DATA() {
-        return (int)102L;
-    }
-    public static int CRYPTO_F_FIPS_MODE_SET() {
-        return (int)109L;
-    }
-    public static int CRYPTO_F_GET_AND_LOCK() {
-        return (int)113L;
-    }
-    public static int CRYPTO_F_OPENSSL_ATEXIT() {
-        return (int)114L;
-    }
-    public static int CRYPTO_F_OPENSSL_BUF2HEXSTR() {
-        return (int)117L;
-    }
-    public static int CRYPTO_F_OPENSSL_FOPEN() {
-        return (int)119L;
-    }
-    public static int CRYPTO_F_OPENSSL_HEXSTR2BUF() {
-        return (int)118L;
-    }
-    public static int CRYPTO_F_OPENSSL_INIT_CRYPTO() {
-        return (int)116L;
-    }
-    public static int CRYPTO_F_OPENSSL_LH_NEW() {
-        return (int)126L;
-    }
-    public static int CRYPTO_F_OPENSSL_SK_DEEP_COPY() {
-        return (int)127L;
-    }
-    public static int CRYPTO_F_OPENSSL_SK_DUP() {
-        return (int)128L;
-    }
-    public static int CRYPTO_F_PKEY_HMAC_INIT() {
-        return (int)123L;
-    }
-    public static int CRYPTO_F_PKEY_POLY1305_INIT() {
-        return (int)124L;
-    }
-    public static int CRYPTO_F_PKEY_SIPHASH_INIT() {
-        return (int)125L;
-    }
-    public static int CRYPTO_F_SK_RESERVE() {
-        return (int)129L;
-    }
-    public static int CRYPTO_R_FIPS_MODE_NOT_SUPPORTED() {
-        return (int)101L;
-    }
-    public static int CRYPTO_R_ILLEGAL_HEX_DIGIT() {
-        return (int)102L;
-    }
-    public static int CRYPTO_R_ODD_NUMBER_OF_DIGITS() {
-        return (int)103L;
-    }
-    public static int CRYPTO_MEM_CHECK_OFF() {
-        return (int)0L;
-    }
-    public static int CRYPTO_MEM_CHECK_ON() {
-        return (int)1L;
-    }
-    public static int CRYPTO_MEM_CHECK_ENABLE() {
-        return (int)2L;
-    }
-    public static int CRYPTO_MEM_CHECK_DISABLE() {
-        return (int)3L;
-    }
-    public static int CRYPTO_EX_INDEX_SSL() {
-        return (int)0L;
-    }
-    public static int CRYPTO_EX_INDEX_SSL_CTX() {
-        return (int)1L;
-    }
-    public static int CRYPTO_EX_INDEX_SSL_SESSION() {
-        return (int)2L;
-    }
-    public static int CRYPTO_EX_INDEX_X509() {
-        return (int)3L;
-    }
-    public static int CRYPTO_EX_INDEX_X509_STORE() {
-        return (int)4L;
-    }
-    public static int CRYPTO_EX_INDEX_X509_STORE_CTX() {
-        return (int)5L;
-    }
-    public static int CRYPTO_EX_INDEX_DH() {
-        return (int)6L;
-    }
-    public static int CRYPTO_EX_INDEX_DSA() {
-        return (int)7L;
-    }
-    public static int CRYPTO_EX_INDEX_EC_KEY() {
-        return (int)8L;
-    }
-    public static int CRYPTO_EX_INDEX_RSA() {
-        return (int)9L;
-    }
-    public static int CRYPTO_EX_INDEX_ENGINE() {
-        return (int)10L;
-    }
-    public static int CRYPTO_EX_INDEX_UI() {
-        return (int)11L;
-    }
-    public static int CRYPTO_EX_INDEX_BIO() {
-        return (int)12L;
-    }
-    public static int CRYPTO_EX_INDEX_APP() {
-        return (int)13L;
-    }
-    public static int CRYPTO_EX_INDEX_UI_METHOD() {
-        return (int)14L;
-    }
-    public static int CRYPTO_EX_INDEX_DRBG() {
-        return (int)15L;
-    }
-    public static int CRYPTO_EX_INDEX__COUNT() {
-        return (int)16L;
-    }
-    public static int OPENSSL_VERSION() {
-        return (int)0L;
-    }
-    public static int OPENSSL_CFLAGS() {
-        return (int)1L;
-    }
-    public static int OPENSSL_BUILT_ON() {
-        return (int)2L;
-    }
-    public static int OPENSSL_PLATFORM() {
-        return (int)3L;
-    }
-    public static int OPENSSL_DIR() {
-        return (int)4L;
-    }
-    public static int OPENSSL_ENGINES_DIR() {
-        return (int)5L;
-    }
-    public static int CRYPTO_LOCK() {
-        return (int)1L;
-    }
-    public static int CRYPTO_UNLOCK() {
-        return (int)2L;
-    }
-    public static int CRYPTO_READ() {
-        return (int)4L;
-    }
-    public static int CRYPTO_WRITE() {
-        return (int)8L;
-    }
-    public static int _PTHREAD_H() {
-        return (int)1L;
-    }
-    public static int _SCHED_H() {
-        return (int)1L;
-    }
-    public static int _BITS_SCHED_H() {
-        return (int)1L;
-    }
-    public static int SCHED_OTHER() {
-        return (int)0L;
-    }
-    public static int SCHED_FIFO() {
-        return (int)1L;
-    }
-    public static int SCHED_RR() {
-        return (int)2L;
-    }
-    public static int _BITS_TYPES_STRUCT_SCHED_PARAM() {
-        return (int)1L;
-    }
-    public static int _BITS_CPU_SET_H() {
-        return (int)1L;
-    }
-    public static int __CPU_SETSIZE() {
-        return (int)1024L;
-    }
-    public static int _BITS_SETJMP_H() {
-        return (int)1L;
-    }
-    public static int __jmp_buf_tag_defined() {
-        return (int)1L;
-    }
-    public static int PTHREAD_ONCE_INIT() {
-        return (int)0L;
-    }
-    public static int COMP_F_BIO_ZLIB_FLUSH() {
-        return (int)99L;
-    }
-    public static int COMP_F_BIO_ZLIB_NEW() {
-        return (int)100L;
-    }
-    public static int COMP_F_BIO_ZLIB_READ() {
-        return (int)101L;
-    }
-    public static int COMP_F_BIO_ZLIB_WRITE() {
-        return (int)102L;
-    }
-    public static int COMP_F_COMP_CTX_NEW() {
-        return (int)103L;
-    }
-    public static int COMP_R_ZLIB_DEFLATE_ERROR() {
-        return (int)99L;
-    }
-    public static int COMP_R_ZLIB_INFLATE_ERROR() {
-        return (int)100L;
-    }
-    public static int COMP_R_ZLIB_NOT_SUPPORTED() {
-        return (int)101L;
-    }
-    public static int BIO_F_ACPT_STATE() {
-        return (int)100L;
-    }
-    public static int BIO_F_ADDRINFO_WRAP() {
-        return (int)148L;
-    }
-    public static int BIO_F_ADDR_STRINGS() {
-        return (int)134L;
-    }
-    public static int BIO_F_BIO_ACCEPT() {
-        return (int)101L;
-    }
-    public static int BIO_F_BIO_ACCEPT_EX() {
-        return (int)137L;
-    }
-    public static int BIO_F_BIO_ACCEPT_NEW() {
-        return (int)152L;
-    }
-    public static int BIO_F_BIO_ADDR_NEW() {
-        return (int)144L;
-    }
-    public static int BIO_F_BIO_BIND() {
-        return (int)147L;
-    }
-    public static int BIO_F_BIO_CALLBACK_CTRL() {
-        return (int)131L;
-    }
-    public static int BIO_F_BIO_CONNECT() {
-        return (int)138L;
-    }
-    public static int BIO_F_BIO_CONNECT_NEW() {
-        return (int)153L;
-    }
-    public static int BIO_F_BIO_CTRL() {
-        return (int)103L;
-    }
-    public static int BIO_F_BIO_GETS() {
-        return (int)104L;
-    }
-    public static int BIO_F_BIO_GET_HOST_IP() {
-        return (int)106L;
-    }
-    public static int BIO_F_BIO_GET_NEW_INDEX() {
-        return (int)102L;
-    }
-    public static int BIO_F_BIO_GET_PORT() {
-        return (int)107L;
-    }
-    public static int BIO_F_BIO_LISTEN() {
-        return (int)139L;
-    }
-    public static int BIO_F_BIO_LOOKUP() {
-        return (int)135L;
-    }
-    public static int BIO_F_BIO_LOOKUP_EX() {
-        return (int)143L;
-    }
-    public static int BIO_F_BIO_MAKE_PAIR() {
-        return (int)121L;
-    }
-    public static int BIO_F_BIO_METH_NEW() {
-        return (int)146L;
-    }
-    public static int BIO_F_BIO_NEW() {
-        return (int)108L;
-    }
-    public static int BIO_F_BIO_NEW_DGRAM_SCTP() {
-        return (int)145L;
-    }
-    public static int BIO_F_BIO_NEW_FILE() {
-        return (int)109L;
-    }
-    public static int BIO_F_BIO_NEW_MEM_BUF() {
-        return (int)126L;
-    }
-    public static int BIO_F_BIO_NREAD() {
-        return (int)123L;
-    }
-    public static int BIO_F_BIO_NREAD0() {
-        return (int)124L;
-    }
-    public static int BIO_F_BIO_NWRITE() {
-        return (int)125L;
-    }
-    public static int BIO_F_BIO_NWRITE0() {
-        return (int)122L;
-    }
-    public static int BIO_F_BIO_PARSE_HOSTSERV() {
-        return (int)136L;
-    }
-    public static int BIO_F_BIO_PUTS() {
-        return (int)110L;
-    }
-    public static int BIO_F_BIO_READ() {
-        return (int)111L;
-    }
-    public static int BIO_F_BIO_READ_EX() {
-        return (int)105L;
-    }
-    public static int BIO_F_BIO_READ_INTERN() {
-        return (int)120L;
-    }
-    public static int BIO_F_BIO_SOCKET() {
-        return (int)140L;
-    }
-    public static int BIO_F_BIO_SOCKET_NBIO() {
-        return (int)142L;
-    }
-    public static int BIO_F_BIO_SOCK_INFO() {
-        return (int)141L;
-    }
-    public static int BIO_F_BIO_SOCK_INIT() {
-        return (int)112L;
-    }
-    public static int BIO_F_BIO_WRITE() {
-        return (int)113L;
-    }
-    public static int BIO_F_BIO_WRITE_EX() {
-        return (int)119L;
-    }
-    public static int BIO_F_BIO_WRITE_INTERN() {
-        return (int)128L;
-    }
-    public static int BIO_F_BUFFER_CTRL() {
-        return (int)114L;
-    }
-    public static int BIO_F_CONN_CTRL() {
-        return (int)127L;
-    }
-    public static int BIO_F_CONN_STATE() {
-        return (int)115L;
-    }
-    public static int BIO_F_DGRAM_SCTP_NEW() {
-        return (int)149L;
-    }
-    public static int BIO_F_DGRAM_SCTP_READ() {
-        return (int)132L;
-    }
-    public static int BIO_F_DGRAM_SCTP_WRITE() {
-        return (int)133L;
-    }
-    public static int BIO_F_DOAPR_OUTCH() {
-        return (int)150L;
-    }
-    public static int BIO_F_FILE_CTRL() {
-        return (int)116L;
-    }
-    public static int BIO_F_FILE_READ() {
-        return (int)130L;
-    }
-    public static int BIO_F_LINEBUFFER_CTRL() {
-        return (int)129L;
-    }
-    public static int BIO_F_LINEBUFFER_NEW() {
-        return (int)151L;
-    }
-    public static int BIO_F_MEM_WRITE() {
-        return (int)117L;
-    }
-    public static int BIO_F_NBIOF_NEW() {
-        return (int)154L;
-    }
-    public static int BIO_F_SLG_WRITE() {
-        return (int)155L;
-    }
-    public static int BIO_F_SSL_NEW() {
-        return (int)118L;
-    }
-    public static int BIO_R_ACCEPT_ERROR() {
-        return (int)100L;
-    }
-    public static int BIO_R_ADDRINFO_ADDR_IS_NOT_AF_INET() {
-        return (int)141L;
-    }
-    public static int BIO_R_AMBIGUOUS_HOST_OR_SERVICE() {
-        return (int)129L;
-    }
-    public static int BIO_R_BAD_FOPEN_MODE() {
-        return (int)101L;
-    }
-    public static int BIO_R_BROKEN_PIPE() {
-        return (int)124L;
-    }
-    public static int BIO_R_CONNECT_ERROR() {
-        return (int)103L;
-    }
-    public static int BIO_R_GETHOSTBYNAME_ADDR_IS_NOT_AF_INET() {
-        return (int)107L;
-    }
-    public static int BIO_R_GETSOCKNAME_ERROR() {
-        return (int)132L;
-    }
-    public static int BIO_R_GETSOCKNAME_TRUNCATED_ADDRESS() {
-        return (int)133L;
-    }
-    public static int BIO_R_GETTING_SOCKTYPE() {
-        return (int)134L;
-    }
-    public static int BIO_R_INVALID_ARGUMENT() {
-        return (int)125L;
-    }
-    public static int BIO_R_INVALID_SOCKET() {
-        return (int)135L;
-    }
-    public static int BIO_R_IN_USE() {
-        return (int)123L;
-    }
-    public static int BIO_R_LENGTH_TOO_LONG() {
-        return (int)102L;
-    }
-    public static int BIO_R_LISTEN_V6_ONLY() {
-        return (int)136L;
-    }
-    public static int BIO_R_LOOKUP_RETURNED_NOTHING() {
-        return (int)142L;
-    }
-    public static int BIO_R_MALFORMED_HOST_OR_SERVICE() {
-        return (int)130L;
-    }
-    public static int BIO_R_NBIO_CONNECT_ERROR() {
-        return (int)110L;
-    }
-    public static int BIO_R_NO_ACCEPT_ADDR_OR_SERVICE_SPECIFIED() {
-        return (int)143L;
-    }
-    public static int BIO_R_NO_HOSTNAME_OR_SERVICE_SPECIFIED() {
-        return (int)144L;
-    }
-    public static int BIO_R_NO_PORT_DEFINED() {
-        return (int)113L;
-    }
-    public static int BIO_R_NO_SUCH_FILE() {
-        return (int)128L;
-    }
-    public static int BIO_R_NULL_PARAMETER() {
-        return (int)115L;
-    }
-    public static int BIO_R_UNABLE_TO_BIND_SOCKET() {
-        return (int)117L;
-    }
-    public static int BIO_R_UNABLE_TO_CREATE_SOCKET() {
-        return (int)118L;
-    }
-    public static int BIO_R_UNABLE_TO_KEEPALIVE() {
-        return (int)137L;
-    }
-    public static int BIO_R_UNABLE_TO_LISTEN_SOCKET() {
-        return (int)119L;
-    }
-    public static int BIO_R_UNABLE_TO_NODELAY() {
-        return (int)138L;
-    }
-    public static int BIO_R_UNABLE_TO_REUSEADDR() {
-        return (int)139L;
-    }
-    public static int BIO_R_UNAVAILABLE_IP_FAMILY() {
-        return (int)145L;
-    }
-    public static int BIO_R_UNINITIALIZED() {
-        return (int)120L;
-    }
-    public static int BIO_R_UNKNOWN_INFO_TYPE() {
-        return (int)140L;
-    }
-    public static int BIO_R_UNSUPPORTED_IP_FAMILY() {
-        return (int)146L;
-    }
-    public static int BIO_R_UNSUPPORTED_METHOD() {
-        return (int)121L;
-    }
-    public static int BIO_R_UNSUPPORTED_PROTOCOL_FAMILY() {
-        return (int)131L;
-    }
-    public static int BIO_R_WRITE_TO_READ_ONLY_BIO() {
-        return (int)126L;
-    }
-    public static int BIO_R_WSASTARTUP() {
-        return (int)122L;
-    }
-    public static int BIO_TYPE_DESCRIPTOR() {
-        return (int)256L;
-    }
-    public static int BIO_TYPE_FILTER() {
-        return (int)512L;
-    }
-    public static int BIO_TYPE_SOURCE_SINK() {
-        return (int)1024L;
-    }
-    public static int BIO_TYPE_NONE() {
-        return (int)0L;
-    }
-    public static int BIO_TYPE_START() {
-        return (int)128L;
-    }
-    public static int BIO_NOCLOSE() {
-        return (int)0L;
-    }
     public static int BIO_CLOSE() {
         return (int)1L;
     }
     public static int BIO_CTRL_RESET() {
         return (int)1L;
     }
-    public static int BIO_CTRL_EOF() {
-        return (int)2L;
-    }
-    public static int BIO_CTRL_INFO() {
-        return (int)3L;
-    }
-    public static int BIO_CTRL_SET() {
-        return (int)4L;
-    }
-    public static int BIO_CTRL_GET() {
-        return (int)5L;
-    }
-    public static int BIO_CTRL_PUSH() {
-        return (int)6L;
-    }
-    public static int BIO_CTRL_POP() {
-        return (int)7L;
-    }
-    public static int BIO_CTRL_GET_CLOSE() {
-        return (int)8L;
-    }
-    public static int BIO_CTRL_SET_CLOSE() {
-        return (int)9L;
-    }
-    public static int BIO_CTRL_PENDING() {
-        return (int)10L;
-    }
-    public static int BIO_CTRL_FLUSH() {
-        return (int)11L;
-    }
-    public static int BIO_CTRL_DUP() {
-        return (int)12L;
-    }
-    public static int BIO_CTRL_WPENDING() {
-        return (int)13L;
-    }
-    public static int BIO_CTRL_SET_CALLBACK() {
-        return (int)14L;
-    }
-    public static int BIO_CTRL_GET_CALLBACK() {
-        return (int)15L;
-    }
-    public static int BIO_CTRL_PEEK() {
-        return (int)29L;
-    }
-    public static int BIO_CTRL_SET_FILENAME() {
-        return (int)30L;
-    }
-    public static int BIO_CTRL_DGRAM_CONNECT() {
-        return (int)31L;
-    }
-    public static int BIO_CTRL_DGRAM_SET_CONNECTED() {
-        return (int)32L;
-    }
-    public static int BIO_CTRL_DGRAM_SET_RECV_TIMEOUT() {
-        return (int)33L;
-    }
-    public static int BIO_CTRL_DGRAM_GET_RECV_TIMEOUT() {
-        return (int)34L;
-    }
-    public static int BIO_CTRL_DGRAM_SET_SEND_TIMEOUT() {
-        return (int)35L;
-    }
-    public static int BIO_CTRL_DGRAM_GET_SEND_TIMEOUT() {
-        return (int)36L;
-    }
-    public static int BIO_CTRL_DGRAM_GET_RECV_TIMER_EXP() {
-        return (int)37L;
-    }
-    public static int BIO_CTRL_DGRAM_GET_SEND_TIMER_EXP() {
-        return (int)38L;
-    }
-    public static int BIO_CTRL_DGRAM_MTU_DISCOVER() {
-        return (int)39L;
-    }
-    public static int BIO_CTRL_DGRAM_QUERY_MTU() {
-        return (int)40L;
-    }
-    public static int BIO_CTRL_DGRAM_GET_FALLBACK_MTU() {
-        return (int)47L;
-    }
-    public static int BIO_CTRL_DGRAM_GET_MTU() {
-        return (int)41L;
-    }
-    public static int BIO_CTRL_DGRAM_SET_MTU() {
-        return (int)42L;
-    }
-    public static int BIO_CTRL_DGRAM_MTU_EXCEEDED() {
-        return (int)43L;
-    }
-    public static int BIO_CTRL_DGRAM_GET_PEER() {
-        return (int)46L;
-    }
-    public static int BIO_CTRL_DGRAM_SET_PEER() {
-        return (int)44L;
-    }
-    public static int BIO_CTRL_DGRAM_SET_NEXT_TIMEOUT() {
-        return (int)45L;
-    }
-    public static int BIO_CTRL_DGRAM_SET_DONT_FRAG() {
-        return (int)48L;
-    }
-    public static int BIO_CTRL_DGRAM_GET_MTU_OVERHEAD() {
-        return (int)49L;
-    }
-    public static int BIO_CTRL_DGRAM_SCTP_SET_IN_HANDSHAKE() {
-        return (int)50L;
-    }
-    public static int BIO_CTRL_DGRAM_SCTP_ADD_AUTH_KEY() {
-        return (int)51L;
-    }
-    public static int BIO_CTRL_DGRAM_SCTP_NEXT_AUTH_KEY() {
-        return (int)52L;
-    }
-    public static int BIO_CTRL_DGRAM_SCTP_AUTH_CCS_RCVD() {
-        return (int)53L;
-    }
-    public static int BIO_CTRL_DGRAM_SCTP_GET_SNDINFO() {
-        return (int)60L;
-    }
-    public static int BIO_CTRL_DGRAM_SCTP_SET_SNDINFO() {
-        return (int)61L;
-    }
-    public static int BIO_CTRL_DGRAM_SCTP_GET_RCVINFO() {
-        return (int)62L;
-    }
-    public static int BIO_CTRL_DGRAM_SCTP_SET_RCVINFO() {
-        return (int)63L;
-    }
-    public static int BIO_CTRL_DGRAM_SCTP_GET_PRINFO() {
-        return (int)64L;
-    }
-    public static int BIO_CTRL_DGRAM_SCTP_SET_PRINFO() {
-        return (int)65L;
-    }
-    public static int BIO_CTRL_DGRAM_SCTP_SAVE_SHUTDOWN() {
-        return (int)70L;
-    }
-    public static int BIO_CTRL_DGRAM_SET_PEEK_MODE() {
-        return (int)71L;
-    }
     public static int BIO_FP_READ() {
         return (int)2L;
-    }
-    public static int BIO_FP_WRITE() {
-        return (int)4L;
-    }
-    public static int BIO_FP_APPEND() {
-        return (int)8L;
-    }
-    public static int BIO_FP_TEXT() {
-        return (int)16L;
-    }
-    public static int BIO_FLAGS_READ() {
-        return (int)1L;
-    }
-    public static int BIO_FLAGS_WRITE() {
-        return (int)2L;
-    }
-    public static int BIO_FLAGS_IO_SPECIAL() {
-        return (int)4L;
-    }
-    public static int BIO_FLAGS_SHOULD_RETRY() {
-        return (int)8L;
-    }
-    public static int BIO_FLAGS_UPLINK() {
-        return (int)0L;
-    }
-    public static int BIO_FLAGS_BASE64_NO_NL() {
-        return (int)256L;
-    }
-    public static int BIO_FLAGS_MEM_RDONLY() {
-        return (int)512L;
-    }
-    public static int BIO_FLAGS_NONCLEAR_RST() {
-        return (int)1024L;
-    }
-    public static int BIO_FLAGS_IN_EOF() {
-        return (int)2048L;
-    }
-    public static int BIO_RR_SSL_X509_LOOKUP() {
-        return (int)1L;
-    }
-    public static int BIO_RR_CONNECT() {
-        return (int)2L;
-    }
-    public static int BIO_RR_ACCEPT() {
-        return (int)3L;
-    }
-    public static int BIO_CB_FREE() {
-        return (int)1L;
-    }
-    public static int BIO_CB_READ() {
-        return (int)2L;
-    }
-    public static int BIO_CB_WRITE() {
-        return (int)3L;
-    }
-    public static int BIO_CB_PUTS() {
-        return (int)4L;
-    }
-    public static int BIO_CB_GETS() {
-        return (int)5L;
-    }
-    public static int BIO_CB_CTRL() {
-        return (int)6L;
-    }
-    public static int BIO_CB_RETURN() {
-        return (int)128L;
-    }
-    public static int BIO_C_SET_CONNECT() {
-        return (int)100L;
-    }
-    public static int BIO_C_DO_STATE_MACHINE() {
-        return (int)101L;
-    }
-    public static int BIO_C_SET_NBIO() {
-        return (int)102L;
-    }
-    public static int BIO_C_SET_FD() {
-        return (int)104L;
-    }
-    public static int BIO_C_GET_FD() {
-        return (int)105L;
-    }
-    public static int BIO_C_SET_FILE_PTR() {
-        return (int)106L;
-    }
-    public static int BIO_C_GET_FILE_PTR() {
-        return (int)107L;
     }
     public static int BIO_C_SET_FILENAME() {
         return (int)108L;
     }
-    public static int BIO_C_SET_SSL() {
-        return (int)109L;
-    }
-    public static int BIO_C_GET_SSL() {
-        return (int)110L;
-    }
-    public static int BIO_C_SET_MD() {
-        return (int)111L;
-    }
-    public static int BIO_C_GET_MD() {
-        return (int)112L;
-    }
-    public static int BIO_C_GET_CIPHER_STATUS() {
-        return (int)113L;
-    }
-    public static int BIO_C_SET_BUF_MEM() {
-        return (int)114L;
-    }
-    public static int BIO_C_GET_BUF_MEM_PTR() {
-        return (int)115L;
-    }
-    public static int BIO_C_GET_BUFF_NUM_LINES() {
-        return (int)116L;
-    }
-    public static int BIO_C_SET_BUFF_SIZE() {
-        return (int)117L;
-    }
-    public static int BIO_C_SET_ACCEPT() {
-        return (int)118L;
-    }
-    public static int BIO_C_SSL_MODE() {
-        return (int)119L;
-    }
-    public static int BIO_C_GET_MD_CTX() {
-        return (int)120L;
-    }
-    public static int BIO_C_SET_BUFF_READ_DATA() {
-        return (int)122L;
-    }
-    public static int BIO_C_GET_CONNECT() {
-        return (int)123L;
-    }
-    public static int BIO_C_GET_ACCEPT() {
-        return (int)124L;
-    }
-    public static int BIO_C_SET_SSL_RENEGOTIATE_BYTES() {
-        return (int)125L;
-    }
-    public static int BIO_C_GET_SSL_NUM_RENEGOTIATES() {
-        return (int)126L;
-    }
-    public static int BIO_C_SET_SSL_RENEGOTIATE_TIMEOUT() {
-        return (int)127L;
-    }
-    public static int BIO_C_FILE_SEEK() {
-        return (int)128L;
-    }
-    public static int BIO_C_GET_CIPHER_CTX() {
-        return (int)129L;
-    }
-    public static int BIO_C_SET_BUF_MEM_EOF_RETURN() {
-        return (int)130L;
-    }
-    public static int BIO_C_SET_BIND_MODE() {
-        return (int)131L;
-    }
-    public static int BIO_C_GET_BIND_MODE() {
-        return (int)132L;
-    }
-    public static int BIO_C_FILE_TELL() {
-        return (int)133L;
-    }
-    public static int BIO_C_GET_SOCKS() {
-        return (int)134L;
-    }
-    public static int BIO_C_SET_SOCKS() {
-        return (int)135L;
-    }
-    public static int BIO_C_SET_WRITE_BUF_SIZE() {
-        return (int)136L;
-    }
-    public static int BIO_C_GET_WRITE_BUF_SIZE() {
-        return (int)137L;
-    }
-    public static int BIO_C_MAKE_BIO_PAIR() {
-        return (int)138L;
-    }
-    public static int BIO_C_DESTROY_BIO_PAIR() {
-        return (int)139L;
-    }
-    public static int BIO_C_GET_WRITE_GUARANTEE() {
-        return (int)140L;
-    }
-    public static int BIO_C_GET_READ_REQUEST() {
-        return (int)141L;
-    }
-    public static int BIO_C_SHUTDOWN_WR() {
-        return (int)142L;
-    }
-    public static int BIO_C_NREAD0() {
-        return (int)143L;
-    }
-    public static int BIO_C_NREAD() {
-        return (int)144L;
-    }
-    public static int BIO_C_NWRITE0() {
-        return (int)145L;
-    }
-    public static int BIO_C_NWRITE() {
-        return (int)146L;
-    }
-    public static int BIO_C_RESET_READ_REQUEST() {
-        return (int)147L;
-    }
-    public static int BIO_C_SET_MD_CTX() {
-        return (int)148L;
-    }
-    public static int BIO_C_SET_PREFIX() {
-        return (int)149L;
-    }
-    public static int BIO_C_GET_PREFIX() {
-        return (int)150L;
-    }
-    public static int BIO_C_SET_SUFFIX() {
-        return (int)151L;
-    }
-    public static int BIO_C_GET_SUFFIX() {
-        return (int)152L;
-    }
-    public static int BIO_C_SET_EX_ARG() {
-        return (int)153L;
-    }
-    public static int BIO_C_GET_EX_ARG() {
-        return (int)154L;
-    }
-    public static int BIO_C_SET_CONNECT_MODE() {
-        return (int)155L;
-    }
-    public static int BIO_FAMILY_IPV4() {
-        return (int)4L;
-    }
-    public static int BIO_FAMILY_IPV6() {
-        return (int)6L;
-    }
-    public static int BIO_FAMILY_IPANY() {
-        return (int)256L;
-    }
-    public static int BIO_BIND_NORMAL() {
-        return (int)0L;
-    }
-    public static int BIO_SOCK_REUSEADDR() {
+    public static int X509_FILETYPE_PEM() {
         return (int)1L;
     }
-    public static int BIO_SOCK_V6_ONLY() {
+    public static int X509_L_FILE_LOAD() {
+        return (int)1L;
+    }
+    public static int X509_L_ADD_DIR() {
         return (int)2L;
     }
-    public static int BIO_SOCK_KEEPALIVE() {
-        return (int)4L;
-    }
-    public static int BIO_SOCK_NONBLOCK() {
-        return (int)8L;
-    }
-    public static int BIO_SOCK_NODELAY() {
-        return (int)16L;
-    }
-    public static int BUF_F_BUF_MEM_GROW() {
-        return (int)100L;
-    }
-    public static int BUF_F_BUF_MEM_GROW_CLEAN() {
-        return (int)105L;
-    }
-    public static int BUF_F_BUF_MEM_NEW() {
-        return (int)101L;
-    }
-    public static int BUF_MEM_FLAG_SECURE() {
-        return (int)1L;
-    }
-    public static int EVP_F_AESNI_INIT_KEY() {
-        return (int)165L;
-    }
-    public static int EVP_F_AESNI_XTS_INIT_KEY() {
-        return (int)233L;
-    }
-    public static int EVP_F_AES_GCM_CTRL() {
-        return (int)196L;
-    }
-    public static int EVP_F_AES_INIT_KEY() {
-        return (int)133L;
-    }
-    public static int EVP_F_AES_OCB_CIPHER() {
-        return (int)169L;
-    }
-    public static int EVP_F_AES_T4_INIT_KEY() {
-        return (int)178L;
-    }
-    public static int EVP_F_AES_T4_XTS_INIT_KEY() {
-        return (int)234L;
-    }
-    public static int EVP_F_AES_WRAP_CIPHER() {
-        return (int)170L;
-    }
-    public static int EVP_F_AES_XTS_CIPHER() {
-        return (int)229L;
-    }
-    public static int EVP_F_AES_XTS_INIT_KEY() {
-        return (int)235L;
-    }
-    public static int EVP_F_ALG_MODULE_INIT() {
-        return (int)177L;
-    }
-    public static int EVP_F_ARIA_CCM_INIT_KEY() {
-        return (int)175L;
-    }
-    public static int EVP_F_ARIA_GCM_CTRL() {
-        return (int)197L;
-    }
-    public static int EVP_F_ARIA_GCM_INIT_KEY() {
-        return (int)176L;
-    }
-    public static int EVP_F_ARIA_INIT_KEY() {
-        return (int)185L;
-    }
-    public static int EVP_F_B64_NEW() {
-        return (int)198L;
-    }
-    public static int EVP_F_CAMELLIA_INIT_KEY() {
-        return (int)159L;
-    }
-    public static int EVP_F_CHACHA20_POLY1305_CTRL() {
-        return (int)182L;
-    }
-    public static int EVP_F_CMLL_T4_INIT_KEY() {
-        return (int)179L;
-    }
-    public static int EVP_F_DES_EDE3_WRAP_CIPHER() {
-        return (int)171L;
-    }
-    public static int EVP_F_DO_SIGVER_INIT() {
-        return (int)161L;
-    }
-    public static int EVP_F_ENC_NEW() {
-        return (int)199L;
-    }
-    public static int EVP_F_EVP_CIPHERINIT_EX() {
-        return (int)123L;
-    }
-    public static int EVP_F_EVP_CIPHER_ASN1_TO_PARAM() {
-        return (int)204L;
-    }
-    public static int EVP_F_EVP_CIPHER_CTX_COPY() {
-        return (int)163L;
-    }
-    public static int EVP_F_EVP_CIPHER_CTX_CTRL() {
-        return (int)124L;
-    }
-    public static int EVP_F_EVP_CIPHER_CTX_SET_KEY_LENGTH() {
-        return (int)122L;
-    }
-    public static int EVP_F_EVP_CIPHER_PARAM_TO_ASN1() {
-        return (int)205L;
-    }
-    public static int EVP_F_EVP_DECRYPTFINAL_EX() {
-        return (int)101L;
-    }
-    public static int EVP_F_EVP_DECRYPTUPDATE() {
-        return (int)166L;
-    }
-    public static int EVP_F_EVP_DIGESTFINALXOF() {
-        return (int)174L;
-    }
-    public static int EVP_F_EVP_DIGESTINIT_EX() {
-        return (int)128L;
-    }
-    public static int EVP_F_EVP_ENCRYPTDECRYPTUPDATE() {
-        return (int)219L;
-    }
-    public static int EVP_F_EVP_ENCRYPTFINAL_EX() {
-        return (int)127L;
-    }
-    public static int EVP_F_EVP_ENCRYPTUPDATE() {
-        return (int)167L;
-    }
-    public static int EVP_F_EVP_KDF_CTRL() {
-        return (int)224L;
-    }
-    public static int EVP_F_EVP_KDF_CTRL_STR() {
-        return (int)225L;
-    }
-    public static int EVP_F_EVP_KDF_CTX_NEW_ID() {
-        return (int)226L;
-    }
-    public static int EVP_F_EVP_MD_CTX_COPY_EX() {
-        return (int)110L;
-    }
-    public static int EVP_F_EVP_MD_SIZE() {
-        return (int)162L;
-    }
-    public static int EVP_F_EVP_OPENINIT() {
-        return (int)102L;
-    }
-    public static int EVP_F_EVP_PBE_ALG_ADD() {
-        return (int)115L;
-    }
-    public static int EVP_F_EVP_PBE_ALG_ADD_TYPE() {
-        return (int)160L;
-    }
-    public static int EVP_F_EVP_PBE_CIPHERINIT() {
-        return (int)116L;
-    }
-    public static int EVP_F_EVP_PBE_SCRYPT() {
-        return (int)181L;
-    }
-    public static int EVP_F_EVP_PKCS82PKEY() {
-        return (int)111L;
-    }
-    public static int EVP_F_EVP_PKEY2PKCS8() {
-        return (int)113L;
-    }
-    public static int EVP_F_EVP_PKEY_ASN1_ADD0() {
-        return (int)188L;
-    }
-    public static int EVP_F_EVP_PKEY_CHECK() {
-        return (int)186L;
-    }
-    public static int EVP_F_EVP_PKEY_COPY_PARAMETERS() {
-        return (int)103L;
-    }
-    public static int EVP_F_EVP_PKEY_CTX_CTRL() {
-        return (int)137L;
-    }
-    public static int EVP_F_EVP_PKEY_CTX_CTRL_STR() {
-        return (int)150L;
-    }
-    public static int EVP_F_EVP_PKEY_CTX_DUP() {
-        return (int)156L;
-    }
-    public static int EVP_F_EVP_PKEY_CTX_MD() {
-        return (int)168L;
-    }
-    public static int EVP_F_EVP_PKEY_DECRYPT() {
-        return (int)104L;
-    }
-    public static int EVP_F_EVP_PKEY_DECRYPT_INIT() {
-        return (int)138L;
-    }
-    public static int EVP_F_EVP_PKEY_DECRYPT_OLD() {
-        return (int)151L;
-    }
-    public static int EVP_F_EVP_PKEY_DERIVE() {
-        return (int)153L;
-    }
-    public static int EVP_F_EVP_PKEY_DERIVE_INIT() {
-        return (int)154L;
-    }
-    public static int EVP_F_EVP_PKEY_DERIVE_SET_PEER() {
-        return (int)155L;
-    }
-    public static int EVP_F_EVP_PKEY_ENCRYPT() {
-        return (int)105L;
-    }
-    public static int EVP_F_EVP_PKEY_ENCRYPT_INIT() {
-        return (int)139L;
-    }
-    public static int EVP_F_EVP_PKEY_ENCRYPT_OLD() {
-        return (int)152L;
-    }
-    public static int EVP_F_EVP_PKEY_GET0_DH() {
-        return (int)119L;
-    }
-    public static int EVP_F_EVP_PKEY_GET0_DSA() {
-        return (int)120L;
-    }
-    public static int EVP_F_EVP_PKEY_GET0_EC_KEY() {
-        return (int)131L;
-    }
-    public static int EVP_F_EVP_PKEY_GET0_HMAC() {
-        return (int)183L;
-    }
-    public static int EVP_F_EVP_PKEY_GET0_POLY1305() {
-        return (int)184L;
-    }
-    public static int EVP_F_EVP_PKEY_GET0_RSA() {
-        return (int)121L;
-    }
-    public static int EVP_F_EVP_PKEY_GET0_SIPHASH() {
-        return (int)172L;
-    }
-    public static int EVP_F_EVP_PKEY_GET_RAW_PRIVATE_KEY() {
-        return (int)202L;
-    }
-    public static int EVP_F_EVP_PKEY_GET_RAW_PUBLIC_KEY() {
-        return (int)203L;
-    }
-    public static int EVP_F_EVP_PKEY_KEYGEN() {
-        return (int)146L;
-    }
-    public static int EVP_F_EVP_PKEY_KEYGEN_INIT() {
-        return (int)147L;
-    }
-    public static int EVP_F_EVP_PKEY_METH_ADD0() {
-        return (int)194L;
-    }
-    public static int EVP_F_EVP_PKEY_METH_NEW() {
-        return (int)195L;
-    }
-    public static int EVP_F_EVP_PKEY_NEW() {
-        return (int)106L;
-    }
-    public static int EVP_F_EVP_PKEY_NEW_CMAC_KEY() {
-        return (int)193L;
-    }
-    public static int EVP_F_EVP_PKEY_NEW_RAW_PRIVATE_KEY() {
-        return (int)191L;
-    }
-    public static int EVP_F_EVP_PKEY_NEW_RAW_PUBLIC_KEY() {
-        return (int)192L;
-    }
-    public static int EVP_F_EVP_PKEY_PARAMGEN() {
-        return (int)148L;
-    }
-    public static int EVP_F_EVP_PKEY_PARAMGEN_INIT() {
-        return (int)149L;
-    }
-    public static int EVP_F_EVP_PKEY_PARAM_CHECK() {
-        return (int)189L;
-    }
-    public static int EVP_F_EVP_PKEY_PUBLIC_CHECK() {
-        return (int)190L;
-    }
-    public static int EVP_F_EVP_PKEY_SET1_ENGINE() {
-        return (int)187L;
-    }
-    public static int EVP_F_EVP_PKEY_SET_ALIAS_TYPE() {
-        return (int)206L;
-    }
-    public static int EVP_F_EVP_PKEY_SIGN() {
-        return (int)140L;
-    }
-    public static int EVP_F_EVP_PKEY_SIGN_INIT() {
-        return (int)141L;
-    }
-    public static int EVP_F_EVP_PKEY_VERIFY() {
-        return (int)142L;
-    }
-    public static int EVP_F_EVP_PKEY_VERIFY_INIT() {
-        return (int)143L;
-    }
-    public static int EVP_F_EVP_PKEY_VERIFY_RECOVER() {
-        return (int)144L;
-    }
-    public static int EVP_F_EVP_PKEY_VERIFY_RECOVER_INIT() {
-        return (int)145L;
-    }
-    public static int EVP_F_EVP_SIGNFINAL() {
-        return (int)107L;
-    }
-    public static int EVP_F_EVP_VERIFYFINAL() {
-        return (int)108L;
-    }
-    public static int EVP_F_INT_CTX_NEW() {
-        return (int)157L;
-    }
-    public static int EVP_F_OK_NEW() {
-        return (int)200L;
-    }
-    public static int EVP_F_PKCS5_PBE_KEYIVGEN() {
-        return (int)117L;
-    }
-    public static int EVP_F_PKCS5_V2_PBE_KEYIVGEN() {
-        return (int)118L;
-    }
-    public static int EVP_F_PKCS5_V2_PBKDF2_KEYIVGEN() {
-        return (int)164L;
-    }
-    public static int EVP_F_PKCS5_V2_SCRYPT_KEYIVGEN() {
-        return (int)180L;
-    }
-    public static int EVP_F_PKEY_KDF_CTRL() {
-        return (int)227L;
-    }
-    public static int EVP_F_PKEY_SET_TYPE() {
-        return (int)158L;
-    }
-    public static int EVP_F_RC2_MAGIC_TO_METH() {
-        return (int)109L;
-    }
-    public static int EVP_F_RC5_CTRL() {
-        return (int)125L;
-    }
-    public static int EVP_F_R_32_12_16_INIT_KEY() {
-        return (int)242L;
-    }
-    public static int EVP_F_S390X_AES_GCM_CTRL() {
-        return (int)201L;
-    }
-    public static int EVP_F_SCRYPT_ALG() {
-        return (int)228L;
-    }
-    public static int EVP_F_UPDATE() {
-        return (int)173L;
-    }
-    public static int EVP_R_AES_KEY_SETUP_FAILED() {
-        return (int)143L;
-    }
-    public static int EVP_R_ARIA_KEY_SETUP_FAILED() {
-        return (int)176L;
-    }
-    public static int EVP_R_BAD_DECRYPT() {
-        return (int)100L;
-    }
-    public static int EVP_R_BAD_KEY_LENGTH() {
-        return (int)195L;
-    }
-    public static int EVP_R_BUFFER_TOO_SMALL() {
-        return (int)155L;
-    }
-    public static int EVP_R_CAMELLIA_KEY_SETUP_FAILED() {
-        return (int)157L;
-    }
-    public static int EVP_R_CIPHER_PARAMETER_ERROR() {
-        return (int)122L;
-    }
-    public static int EVP_R_COMMAND_NOT_SUPPORTED() {
-        return (int)147L;
-    }
-    public static int EVP_R_COPY_ERROR() {
-        return (int)173L;
-    }
-    public static int EVP_R_CTRL_NOT_IMPLEMENTED() {
-        return (int)132L;
-    }
-    public static int EVP_R_CTRL_OPERATION_NOT_IMPLEMENTED() {
-        return (int)133L;
-    }
-    public static int EVP_R_DATA_NOT_MULTIPLE_OF_BLOCK_LENGTH() {
-        return (int)138L;
-    }
-    public static int EVP_R_DECODE_ERROR() {
-        return (int)114L;
-    }
-    public static int EVP_R_DISABLED_FOR_FIPS() {
-        return (int)200L;
-    }
-    public static int EVP_R_DIFFERENT_KEY_TYPES() {
-        return (int)101L;
-    }
-    public static int EVP_R_DIFFERENT_PARAMETERS() {
-        return (int)153L;
-    }
-    public static int EVP_R_ERROR_LOADING_SECTION() {
-        return (int)165L;
-    }
-    public static int EVP_R_ERROR_SETTING_FIPS_MODE() {
-        return (int)166L;
-    }
-    public static int EVP_R_EXPECTING_AN_HMAC_KEY() {
-        return (int)174L;
-    }
-    public static int EVP_R_EXPECTING_AN_RSA_KEY() {
-        return (int)127L;
-    }
-    public static int EVP_R_EXPECTING_A_DH_KEY() {
-        return (int)128L;
-    }
-    public static int EVP_R_EXPECTING_A_DSA_KEY() {
-        return (int)129L;
-    }
-    public static int EVP_R_EXPECTING_A_EC_KEY() {
-        return (int)142L;
-    }
-    public static int EVP_R_EXPECTING_A_POLY1305_KEY() {
-        return (int)164L;
-    }
-    public static int EVP_R_EXPECTING_A_SIPHASH_KEY() {
-        return (int)175L;
-    }
-    public static int EVP_R_FIPS_MODE_NOT_SUPPORTED() {
-        return (int)167L;
-    }
-    public static int EVP_R_GET_RAW_KEY_FAILED() {
-        return (int)182L;
-    }
-    public static int EVP_R_ILLEGAL_SCRYPT_PARAMETERS() {
-        return (int)171L;
-    }
-    public static int EVP_R_INITIALIZATION_ERROR() {
-        return (int)134L;
-    }
-    public static int EVP_R_INPUT_NOT_INITIALIZED() {
-        return (int)111L;
-    }
-    public static int EVP_R_INVALID_DIGEST() {
-        return (int)152L;
-    }
-    public static int EVP_R_INVALID_FIPS_MODE() {
-        return (int)168L;
-    }
-    public static int EVP_R_INVALID_IV_LENGTH() {
-        return (int)194L;
-    }
-    public static int EVP_R_INVALID_KEY() {
-        return (int)163L;
-    }
-    public static int EVP_R_INVALID_KEY_LENGTH() {
-        return (int)130L;
-    }
-    public static int EVP_R_INVALID_OPERATION() {
-        return (int)148L;
-    }
-    public static int EVP_R_KEYGEN_FAILURE() {
-        return (int)120L;
-    }
-    public static int EVP_R_KEY_SETUP_FAILED() {
-        return (int)180L;
-    }
-    public static int EVP_R_MEMORY_LIMIT_EXCEEDED() {
-        return (int)172L;
-    }
-    public static int EVP_R_MESSAGE_DIGEST_IS_NULL() {
-        return (int)159L;
-    }
-    public static int EVP_R_METHOD_NOT_SUPPORTED() {
-        return (int)144L;
-    }
-    public static int EVP_R_MISSING_PARAMETERS() {
-        return (int)103L;
-    }
-    public static int EVP_R_NOT_XOF_OR_INVALID_LENGTH() {
-        return (int)178L;
-    }
-    public static int EVP_R_NO_CIPHER_SET() {
-        return (int)131L;
-    }
-    public static int EVP_R_NO_DEFAULT_DIGEST() {
-        return (int)158L;
-    }
-    public static int EVP_R_NO_DIGEST_SET() {
-        return (int)139L;
-    }
-    public static int EVP_R_NO_KEY_SET() {
-        return (int)154L;
-    }
-    public static int EVP_R_NO_OPERATION_SET() {
-        return (int)149L;
-    }
-    public static int EVP_R_ONLY_ONESHOT_SUPPORTED() {
-        return (int)177L;
-    }
-    public static int EVP_R_OPERATION_NOT_SUPPORTED_FOR_THIS_KEYTYPE() {
-        return (int)150L;
-    }
-    public static int EVP_R_OPERATON_NOT_INITIALIZED() {
-        return (int)151L;
-    }
-    public static int EVP_R_PARAMETER_TOO_LARGE() {
-        return (int)187L;
-    }
-    public static int EVP_R_OUTPUT_WOULD_OVERFLOW() {
-        return (int)184L;
-    }
-    public static int EVP_R_PARTIALLY_OVERLAPPING() {
-        return (int)162L;
-    }
-    public static int EVP_R_PBKDF2_ERROR() {
-        return (int)181L;
-    }
-    public static int EVP_R_PKEY_APPLICATION_ASN1_METHOD_ALREADY_REGISTERED() {
-        return (int)179L;
-    }
-    public static int EVP_R_PRIVATE_KEY_DECODE_ERROR() {
-        return (int)145L;
-    }
-    public static int EVP_R_PRIVATE_KEY_ENCODE_ERROR() {
-        return (int)146L;
-    }
-    public static int EVP_R_PUBLIC_KEY_NOT_RSA() {
-        return (int)106L;
-    }
-    public static int EVP_R_TOO_LARGE() {
-        return (int)201L;
-    }
-    public static int EVP_R_UNKNOWN_CIPHER() {
-        return (int)160L;
-    }
-    public static int EVP_R_UNKNOWN_DIGEST() {
-        return (int)161L;
-    }
-    public static int EVP_R_UNKNOWN_OPTION() {
-        return (int)169L;
-    }
-    public static int EVP_R_UNKNOWN_PBE_ALGORITHM() {
-        return (int)121L;
-    }
-    public static int EVP_R_UNSUPPORTED_ALGORITHM() {
-        return (int)156L;
-    }
-    public static int EVP_R_UNSUPPORTED_CIPHER() {
-        return (int)107L;
-    }
-    public static int EVP_R_UNSUPPORTED_KEYLENGTH() {
-        return (int)123L;
-    }
-    public static int EVP_R_UNSUPPORTED_KEY_DERIVATION_FUNCTION() {
-        return (int)124L;
-    }
-    public static int EVP_R_UNSUPPORTED_KEY_SIZE() {
-        return (int)108L;
-    }
-    public static int EVP_R_UNSUPPORTED_NUMBER_OF_ROUNDS() {
-        return (int)135L;
-    }
-    public static int EVP_R_UNSUPPORTED_PRF() {
-        return (int)125L;
-    }
-    public static int EVP_R_UNSUPPORTED_PRIVATE_KEY_ALGORITHM() {
-        return (int)118L;
-    }
-    public static int EVP_R_UNSUPPORTED_SALT_TYPE() {
-        return (int)126L;
-    }
-    public static int EVP_R_WRAP_MODE_NOT_ALLOWED() {
-        return (int)170L;
-    }
-    public static int EVP_R_WRONG_FINAL_BLOCK_LENGTH() {
-        return (int)109L;
-    }
-    public static int EVP_R_XTS_DATA_UNIT_IS_TOO_LARGE() {
-        return (int)191L;
-    }
-    public static int EVP_R_XTS_DUPLICATED_KEYS() {
-        return (int)192L;
-    }
-    public static int EVP_MAX_MD_SIZE() {
-        return (int)64L;
-    }
-    public static int EVP_MAX_KEY_LENGTH() {
-        return (int)64L;
-    }
-    public static int EVP_MAX_IV_LENGTH() {
-        return (int)16L;
-    }
-    public static int EVP_MAX_BLOCK_LENGTH() {
-        return (int)32L;
-    }
-    public static int PKCS5_SALT_LEN() {
-        return (int)8L;
-    }
-    public static int PKCS5_DEFAULT_ITER() {
-        return (int)2048L;
-    }
-    public static int NID_undef() {
+    public static int X509_V_OK() {
         return (int)0L;
     }
-    public static int NID_itu_t() {
-        return (int)645L;
+    public static int X509_V_ERR_CRL_HAS_EXPIRED() {
+        return (int)12L;
     }
-    public static int NID_ccitt() {
-        return (int)404L;
+    public static int X509_V_ERR_DEPTH_ZERO_SELF_SIGNED_CERT() {
+        return (int)18L;
     }
-    public static int NID_iso() {
-        return (int)181L;
+    public static int X509_V_ERR_SELF_SIGNED_CERT_IN_CHAIN() {
+        return (int)19L;
     }
-    public static int NID_joint_iso_itu_t() {
-        return (int)646L;
-    }
-    public static int NID_joint_iso_ccitt() {
-        return (int)393L;
-    }
-    public static int NID_member_body() {
-        return (int)182L;
-    }
-    public static int NID_identified_organization() {
-        return (int)676L;
-    }
-    public static int NID_hmac_md5() {
-        return (int)780L;
-    }
-    public static int NID_hmac_sha1() {
-        return (int)781L;
-    }
-    public static int NID_x509ExtAdmission() {
-        return (int)1093L;
-    }
-    public static int NID_certicom_arc() {
-        return (int)677L;
-    }
-    public static int NID_ieee() {
-        return (int)1170L;
-    }
-    public static int NID_ieee_siswg() {
-        return (int)1171L;
-    }
-    public static int NID_international_organizations() {
-        return (int)647L;
-    }
-    public static int NID_wap() {
-        return (int)678L;
-    }
-    public static int NID_wap_wsg() {
-        return (int)679L;
-    }
-    public static int NID_selected_attribute_types() {
-        return (int)394L;
-    }
-    public static int NID_clearance() {
-        return (int)395L;
-    }
-    public static int NID_ISO_US() {
-        return (int)183L;
-    }
-    public static int NID_X9_57() {
-        return (int)184L;
-    }
-    public static int NID_X9cm() {
-        return (int)185L;
-    }
-    public static int NID_ISO_CN() {
-        return (int)1140L;
-    }
-    public static int NID_oscca() {
-        return (int)1141L;
-    }
-    public static int NID_sm_scheme() {
-        return (int)1142L;
-    }
-    public static int NID_dsa() {
-        return (int)116L;
-    }
-    public static int NID_dsaWithSHA1() {
-        return (int)113L;
-    }
-    public static int NID_ansi_X9_62() {
-        return (int)405L;
-    }
-    public static int NID_X9_62_prime_field() {
-        return (int)406L;
-    }
-    public static int NID_X9_62_characteristic_two_field() {
-        return (int)407L;
-    }
-    public static int NID_X9_62_id_characteristic_two_basis() {
-        return (int)680L;
-    }
-    public static int NID_X9_62_onBasis() {
-        return (int)681L;
-    }
-    public static int NID_X9_62_tpBasis() {
-        return (int)682L;
-    }
-    public static int NID_X9_62_ppBasis() {
-        return (int)683L;
-    }
-    public static int NID_X9_62_id_ecPublicKey() {
-        return (int)408L;
-    }
-    public static int NID_X9_62_c2pnb163v1() {
-        return (int)684L;
-    }
-    public static int NID_X9_62_c2pnb163v2() {
-        return (int)685L;
-    }
-    public static int NID_X9_62_c2pnb163v3() {
-        return (int)686L;
-    }
-    public static int NID_X9_62_c2pnb176v1() {
-        return (int)687L;
-    }
-    public static int NID_X9_62_c2tnb191v1() {
-        return (int)688L;
-    }
-    public static int NID_X9_62_c2tnb191v2() {
-        return (int)689L;
-    }
-    public static int NID_X9_62_c2tnb191v3() {
-        return (int)690L;
-    }
-    public static int NID_X9_62_c2onb191v4() {
-        return (int)691L;
-    }
-    public static int NID_X9_62_c2onb191v5() {
-        return (int)692L;
-    }
-    public static int NID_X9_62_c2pnb208w1() {
-        return (int)693L;
-    }
-    public static int NID_X9_62_c2tnb239v1() {
-        return (int)694L;
-    }
-    public static int NID_X9_62_c2tnb239v2() {
-        return (int)695L;
-    }
-    public static int NID_X9_62_c2tnb239v3() {
-        return (int)696L;
-    }
-    public static int NID_X9_62_c2onb239v4() {
-        return (int)697L;
-    }
-    public static int NID_X9_62_c2onb239v5() {
-        return (int)698L;
-    }
-    public static int NID_X9_62_c2pnb272w1() {
-        return (int)699L;
-    }
-    public static int NID_X9_62_c2pnb304w1() {
-        return (int)700L;
-    }
-    public static int NID_X9_62_c2tnb359v1() {
-        return (int)701L;
-    }
-    public static int NID_X9_62_c2pnb368w1() {
-        return (int)702L;
-    }
-    public static int NID_X9_62_c2tnb431r1() {
-        return (int)703L;
-    }
-    public static int NID_X9_62_prime192v1() {
-        return (int)409L;
-    }
-    public static int NID_X9_62_prime192v2() {
-        return (int)410L;
-    }
-    public static int NID_X9_62_prime192v3() {
-        return (int)411L;
-    }
-    public static int NID_X9_62_prime239v1() {
-        return (int)412L;
-    }
-    public static int NID_X9_62_prime239v2() {
-        return (int)413L;
-    }
-    public static int NID_X9_62_prime239v3() {
-        return (int)414L;
-    }
-    public static int NID_X9_62_prime256v1() {
-        return (int)415L;
-    }
-    public static int NID_ecdsa_with_SHA1() {
-        return (int)416L;
-    }
-    public static int NID_ecdsa_with_Recommended() {
-        return (int)791L;
-    }
-    public static int NID_ecdsa_with_Specified() {
-        return (int)792L;
-    }
-    public static int NID_ecdsa_with_SHA224() {
-        return (int)793L;
-    }
-    public static int NID_ecdsa_with_SHA256() {
-        return (int)794L;
-    }
-    public static int NID_ecdsa_with_SHA384() {
-        return (int)795L;
-    }
-    public static int NID_ecdsa_with_SHA512() {
-        return (int)796L;
-    }
-    public static int NID_secp112r1() {
-        return (int)704L;
-    }
-    public static int NID_secp112r2() {
-        return (int)705L;
-    }
-    public static int NID_secp128r1() {
-        return (int)706L;
-    }
-    public static int NID_secp128r2() {
-        return (int)707L;
-    }
-    public static int NID_secp160k1() {
-        return (int)708L;
-    }
-    public static int NID_secp160r1() {
-        return (int)709L;
-    }
-    public static int NID_secp160r2() {
-        return (int)710L;
-    }
-    public static int NID_secp192k1() {
-        return (int)711L;
-    }
-    public static int NID_secp224k1() {
-        return (int)712L;
-    }
-    public static int NID_secp224r1() {
-        return (int)713L;
-    }
-    public static int NID_secp256k1() {
-        return (int)714L;
-    }
-    public static int NID_secp384r1() {
-        return (int)715L;
-    }
-    public static int NID_secp521r1() {
-        return (int)716L;
-    }
-    public static int NID_sect113r1() {
-        return (int)717L;
-    }
-    public static int NID_sect113r2() {
-        return (int)718L;
-    }
-    public static int NID_sect131r1() {
-        return (int)719L;
-    }
-    public static int NID_sect131r2() {
-        return (int)720L;
-    }
-    public static int NID_sect163k1() {
-        return (int)721L;
-    }
-    public static int NID_sect163r1() {
-        return (int)722L;
-    }
-    public static int NID_sect163r2() {
-        return (int)723L;
-    }
-    public static int NID_sect193r1() {
-        return (int)724L;
-    }
-    public static int NID_sect193r2() {
-        return (int)725L;
-    }
-    public static int NID_sect233k1() {
-        return (int)726L;
-    }
-    public static int NID_sect233r1() {
-        return (int)727L;
-    }
-    public static int NID_sect239k1() {
-        return (int)728L;
-    }
-    public static int NID_sect283k1() {
-        return (int)729L;
-    }
-    public static int NID_sect283r1() {
-        return (int)730L;
-    }
-    public static int NID_sect409k1() {
-        return (int)731L;
-    }
-    public static int NID_sect409r1() {
-        return (int)732L;
-    }
-    public static int NID_sect571k1() {
-        return (int)733L;
-    }
-    public static int NID_sect571r1() {
-        return (int)734L;
-    }
-    public static int NID_wap_wsg_idm_ecid_wtls1() {
-        return (int)735L;
-    }
-    public static int NID_wap_wsg_idm_ecid_wtls3() {
-        return (int)736L;
-    }
-    public static int NID_wap_wsg_idm_ecid_wtls4() {
-        return (int)737L;
-    }
-    public static int NID_wap_wsg_idm_ecid_wtls5() {
-        return (int)738L;
-    }
-    public static int NID_wap_wsg_idm_ecid_wtls6() {
-        return (int)739L;
-    }
-    public static int NID_wap_wsg_idm_ecid_wtls7() {
-        return (int)740L;
-    }
-    public static int NID_wap_wsg_idm_ecid_wtls8() {
-        return (int)741L;
-    }
-    public static int NID_wap_wsg_idm_ecid_wtls9() {
-        return (int)742L;
-    }
-    public static int NID_wap_wsg_idm_ecid_wtls10() {
-        return (int)743L;
-    }
-    public static int NID_wap_wsg_idm_ecid_wtls11() {
-        return (int)744L;
-    }
-    public static int NID_wap_wsg_idm_ecid_wtls12() {
-        return (int)745L;
-    }
-    public static int NID_cast5_cbc() {
-        return (int)108L;
-    }
-    public static int NID_cast5_ecb() {
-        return (int)109L;
-    }
-    public static int NID_cast5_cfb64() {
-        return (int)110L;
-    }
-    public static int NID_cast5_ofb64() {
-        return (int)111L;
-    }
-    public static int NID_pbeWithMD5AndCast5_CBC() {
-        return (int)112L;
-    }
-    public static int NID_id_PasswordBasedMAC() {
-        return (int)782L;
-    }
-    public static int NID_id_DHBasedMac() {
-        return (int)783L;
-    }
-    public static int NID_rsadsi() {
-        return (int)1L;
-    }
-    public static int NID_pkcs() {
-        return (int)2L;
-    }
-    public static int NID_pkcs1() {
-        return (int)186L;
-    }
-    public static int NID_rsaEncryption() {
-        return (int)6L;
-    }
-    public static int NID_md2WithRSAEncryption() {
-        return (int)7L;
-    }
-    public static int NID_md4WithRSAEncryption() {
-        return (int)396L;
-    }
-    public static int NID_md5WithRSAEncryption() {
-        return (int)8L;
-    }
-    public static int NID_sha1WithRSAEncryption() {
-        return (int)65L;
-    }
-    public static int NID_rsaesOaep() {
-        return (int)919L;
-    }
-    public static int NID_mgf1() {
-        return (int)911L;
-    }
-    public static int NID_pSpecified() {
-        return (int)935L;
-    }
-    public static int NID_rsassaPss() {
-        return (int)912L;
-    }
-    public static int NID_sha256WithRSAEncryption() {
-        return (int)668L;
-    }
-    public static int NID_sha384WithRSAEncryption() {
-        return (int)669L;
-    }
-    public static int NID_sha512WithRSAEncryption() {
-        return (int)670L;
-    }
-    public static int NID_sha224WithRSAEncryption() {
-        return (int)671L;
-    }
-    public static int NID_sha512_224WithRSAEncryption() {
-        return (int)1145L;
-    }
-    public static int NID_sha512_256WithRSAEncryption() {
-        return (int)1146L;
-    }
-    public static int NID_pkcs3() {
-        return (int)27L;
-    }
-    public static int NID_dhKeyAgreement() {
-        return (int)28L;
-    }
-    public static int NID_pkcs5() {
-        return (int)187L;
-    }
-    public static int NID_pbeWithMD2AndDES_CBC() {
-        return (int)9L;
-    }
-    public static int NID_pbeWithMD5AndDES_CBC() {
-        return (int)10L;
-    }
-    public static int NID_pbeWithMD2AndRC2_CBC() {
-        return (int)168L;
-    }
-    public static int NID_pbeWithMD5AndRC2_CBC() {
-        return (int)169L;
-    }
-    public static int NID_pbeWithSHA1AndDES_CBC() {
-        return (int)170L;
-    }
-    public static int NID_pbeWithSHA1AndRC2_CBC() {
-        return (int)68L;
-    }
-    public static int NID_id_pbkdf2() {
-        return (int)69L;
-    }
-    public static int NID_pbes2() {
-        return (int)161L;
-    }
-    public static int NID_pbmac1() {
-        return (int)162L;
-    }
-    public static int NID_pkcs7() {
+    public static int X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY() {
         return (int)20L;
     }
-    public static int NID_pkcs7_data() {
+    public static int X509_V_ERR_UNABLE_TO_VERIFY_LEAF_SIGNATURE() {
         return (int)21L;
     }
-    public static int NID_pkcs7_signed() {
-        return (int)22L;
+    public static int X509_V_ERR_CERT_UNTRUSTED() {
+        return (int)27L;
     }
-    public static int NID_pkcs7_enveloped() {
-        return (int)23L;
+    public static int X509_V_FLAG_CRL_CHECK() {
+        return (int)4L;
     }
-    public static int NID_pkcs7_signedAndEnveloped() {
-        return (int)24L;
+    public static int X509_V_FLAG_CRL_CHECK_ALL() {
+        return (int)8L;
     }
-    public static int NID_pkcs7_digest() {
-        return (int)25L;
+    public static int PEM_R_NO_START_LINE() {
+        return (int)108L;
     }
-    public static int NID_pkcs7_encrypted() {
-        return (int)26L;
+    public static int SSL_SENT_SHUTDOWN() {
+        return (int)1L;
     }
-    public static int NID_pkcs9() {
-        return (int)47L;
+    public static int SSL_RECEIVED_SHUTDOWN() {
+        return (int)2L;
     }
-    public static int NID_pkcs9_emailAddress() {
-        return (int)48L;
+    public static int SSL_OP_SINGLE_ECDH_USE() {
+        return (int)0L;
     }
-    public static int NID_pkcs9_unstructuredName() {
-        return (int)49L;
+    public static int SSL_OP_SINGLE_DH_USE() {
+        return (int)0L;
     }
-    public static int NID_pkcs9_contentType() {
-        return (int)50L;
+    public static int SSL_OP_NO_SSLv2() {
+        return (int)0L;
     }
-    public static int NID_pkcs9_messageDigest() {
-        return (int)51L;
+    public static int SSL_CONF_FLAG_FILE() {
+        return (int)2L;
     }
-    public static int NID_pkcs9_signingTime() {
-        return (int)52L;
+    public static int SSL_CONF_FLAG_SERVER() {
+        return (int)8L;
     }
-    public static int NID_pkcs9_countersignature() {
-        return (int)53L;
+    public static int SSL_CONF_FLAG_SHOW_ERRORS() {
+        return (int)16L;
     }
-    public static int NID_pkcs9_challengePassword() {
-        return (int)54L;
+    public static int SSL_CONF_FLAG_CERTIFICATE() {
+        return (int)32L;
     }
-    public static int NID_pkcs9_unstructuredAddress() {
-        return (int)55L;
+    public static int SSL_CONF_TYPE_UNKNOWN() {
+        return (int)0L;
     }
-    public static int NID_pkcs9_extCertAttributes() {
-        return (int)56L;
+    public static int SSL_CONF_TYPE_FILE() {
+        return (int)2L;
     }
-    public static int NID_ext_req() {
-        return (int)172L;
-    }
-    public static int NID_SMIMECapabilities() {
-        return (int)167L;
-    }
-    public static int NID_SMIME() {
-        return (int)188L;
-    }
-    public static int NID_id_smime_mod() {
-        return (int)189L;
-    }
-    public static int NID_id_smime_ct() {
-        return (int)190L;
-    }
-    public static int NID_id_smime_aa() {
-        return (int)191L;
-    }
-    public static int NID_id_smime_alg() {
-        return (int)192L;
-    }
-    public static int NID_id_smime_cd() {
-        return (int)193L;
-    }
-    public static int NID_id_smime_spq() {
-        return (int)194L;
-    }
-    public static int NID_id_smime_cti() {
-        return (int)195L;
-    }
-    public static int NID_id_smime_mod_cms() {
-        return (int)196L;
-    }
-    public static int NID_id_smime_mod_ess() {
-        return (int)197L;
-    }
-    public static int NID_id_smime_mod_oid() {
-        return (int)198L;
-    }
-    public static int NID_id_smime_mod_msg_v3() {
-        return (int)199L;
-    }
-    public static int NID_id_smime_mod_ets_eSignature_88() {
-        return (int)200L;
-    }
-    public static int NID_id_smime_mod_ets_eSignature_97() {
-        return (int)201L;
-    }
-    public static int NID_id_smime_mod_ets_eSigPolicy_88() {
-        return (int)202L;
-    }
-    public static int NID_id_smime_mod_ets_eSigPolicy_97() {
-        return (int)203L;
-    }
-    public static int NID_id_smime_ct_receipt() {
-        return (int)204L;
-    }
-    public static int NID_id_smime_ct_authData() {
-        return (int)205L;
-    }
-    public static int NID_id_smime_ct_publishCert() {
-        return (int)206L;
-    }
-    public static int NID_id_smime_ct_TSTInfo() {
-        return (int)207L;
-    }
-    public static int NID_id_smime_ct_TDTInfo() {
-        return (int)208L;
-    }
-    public static int NID_id_smime_ct_contentInfo() {
-        return (int)209L;
-    }
-    public static int NID_id_smime_ct_DVCSRequestData() {
-        return (int)210L;
-    }
-    public static int NID_id_smime_ct_DVCSResponseData() {
-        return (int)211L;
-    }
-    public static int NID_id_smime_ct_compressedData() {
-        return (int)786L;
-    }
-    public static int NID_id_smime_ct_contentCollection() {
-        return (int)1058L;
-    }
-    public static int NID_id_smime_ct_authEnvelopedData() {
-        return (int)1059L;
-    }
-    public static int NID_id_ct_asciiTextWithCRLF() {
-        return (int)787L;
-    }
-    public static int NID_id_ct_xml() {
-        return (int)1060L;
-    }
-    public static int NID_id_smime_aa_receiptRequest() {
-        return (int)212L;
-    }
-    public static int NID_id_smime_aa_securityLabel() {
-        return (int)213L;
-    }
-    public static int NID_id_smime_aa_mlExpandHistory() {
-        return (int)214L;
-    }
-    public static int NID_id_smime_aa_contentHint() {
-        return (int)215L;
-    }
-    public static int NID_id_smime_aa_msgSigDigest() {
-        return (int)216L;
-    }
-    public static int NID_id_smime_aa_encapContentType() {
-        return (int)217L;
-    }
-    public static int NID_id_smime_aa_contentIdentifier() {
-        return (int)218L;
-    }
-    public static int NID_id_smime_aa_macValue() {
-        return (int)219L;
-    }
-    public static int NID_id_smime_aa_equivalentLabels() {
-        return (int)220L;
-    }
-    public static int NID_id_smime_aa_contentReference() {
-        return (int)221L;
-    }
-    public static int NID_id_smime_aa_encrypKeyPref() {
-        return (int)222L;
-    }
-    public static int NID_id_smime_aa_signingCertificate() {
-        return (int)223L;
-    }
-    public static int NID_id_smime_aa_smimeEncryptCerts() {
-        return (int)224L;
-    }
-    public static int NID_id_smime_aa_timeStampToken() {
-        return (int)225L;
-    }
-    public static int NID_id_smime_aa_ets_sigPolicyId() {
-        return (int)226L;
-    }
-    public static int NID_id_smime_aa_ets_commitmentType() {
-        return (int)227L;
-    }
-    public static int NID_id_smime_aa_ets_signerLocation() {
-        return (int)228L;
-    }
-    public static int NID_id_smime_aa_ets_signerAttr() {
-        return (int)229L;
-    }
-    public static int NID_id_smime_aa_ets_otherSigCert() {
-        return (int)230L;
-    }
-    public static int NID_id_smime_aa_ets_contentTimestamp() {
-        return (int)231L;
-    }
-    public static int NID_id_smime_aa_ets_CertificateRefs() {
-        return (int)232L;
-    }
-    public static int NID_id_smime_aa_ets_RevocationRefs() {
-        return (int)233L;
-    }
-    public static int NID_id_smime_aa_ets_certValues() {
-        return (int)234L;
-    }
-    public static int NID_id_smime_aa_ets_revocationValues() {
-        return (int)235L;
-    }
-    public static int NID_id_smime_aa_ets_escTimeStamp() {
-        return (int)236L;
-    }
-    public static int NID_id_smime_aa_ets_certCRLTimestamp() {
-        return (int)237L;
-    }
-    public static int NID_id_smime_aa_ets_archiveTimeStamp() {
-        return (int)238L;
-    }
-    public static int NID_id_smime_aa_signatureType() {
-        return (int)239L;
-    }
-    public static int NID_id_smime_aa_dvcs_dvc() {
-        return (int)240L;
-    }
-    public static int NID_id_smime_aa_signingCertificateV2() {
-        return (int)1086L;
-    }
-    public static int NID_id_smime_alg_ESDHwith3DES() {
-        return (int)241L;
-    }
-    public static int NID_id_smime_alg_ESDHwithRC2() {
-        return (int)242L;
-    }
-    public static int NID_id_smime_alg_3DESwrap() {
-        return (int)243L;
-    }
-    public static int NID_id_smime_alg_RC2wrap() {
-        return (int)244L;
-    }
-    public static int NID_id_smime_alg_ESDH() {
-        return (int)245L;
-    }
-    public static int NID_id_smime_alg_CMS3DESwrap() {
-        return (int)246L;
-    }
-    public static int NID_id_smime_alg_CMSRC2wrap() {
-        return (int)247L;
-    }
-    public static int NID_id_alg_PWRI_KEK() {
-        return (int)893L;
-    }
-    public static int NID_id_smime_cd_ldap() {
-        return (int)248L;
-    }
-    public static int NID_id_smime_spq_ets_sqt_uri() {
-        return (int)249L;
-    }
-    public static int NID_id_smime_spq_ets_sqt_unotice() {
-        return (int)250L;
-    }
-    public static int NID_id_smime_cti_ets_proofOfOrigin() {
-        return (int)251L;
-    }
-    public static int NID_id_smime_cti_ets_proofOfReceipt() {
-        return (int)252L;
-    }
-    public static int NID_id_smime_cti_ets_proofOfDelivery() {
-        return (int)253L;
-    }
-    public static int NID_id_smime_cti_ets_proofOfSender() {
-        return (int)254L;
-    }
-    public static int NID_id_smime_cti_ets_proofOfApproval() {
-        return (int)255L;
-    }
-    public static int NID_id_smime_cti_ets_proofOfCreation() {
-        return (int)256L;
-    }
-    public static int NID_friendlyName() {
-        return (int)156L;
-    }
-    public static int NID_localKeyID() {
-        return (int)157L;
-    }
-    public static int NID_ms_csp_name() {
-        return (int)417L;
-    }
-    public static int NID_LocalKeySet() {
-        return (int)856L;
-    }
-    public static int NID_x509Certificate() {
-        return (int)158L;
-    }
-    public static int NID_sdsiCertificate() {
-        return (int)159L;
-    }
-    public static int NID_x509Crl() {
-        return (int)160L;
-    }
-    public static int NID_pbe_WithSHA1And128BitRC4() {
-        return (int)144L;
-    }
-    public static int NID_pbe_WithSHA1And40BitRC4() {
-        return (int)145L;
-    }
-    public static int NID_pbe_WithSHA1And3_Key_TripleDES_CBC() {
-        return (int)146L;
-    }
-    public static int NID_pbe_WithSHA1And2_Key_TripleDES_CBC() {
-        return (int)147L;
-    }
-    public static int NID_pbe_WithSHA1And128BitRC2_CBC() {
-        return (int)148L;
-    }
-    public static int NID_pbe_WithSHA1And40BitRC2_CBC() {
-        return (int)149L;
-    }
-    public static int NID_keyBag() {
-        return (int)150L;
-    }
-    public static int NID_pkcs8ShroudedKeyBag() {
-        return (int)151L;
-    }
-    public static int NID_certBag() {
-        return (int)152L;
-    }
-    public static int NID_crlBag() {
-        return (int)153L;
-    }
-    public static int NID_secretBag() {
-        return (int)154L;
-    }
-    public static int NID_safeContentsBag() {
-        return (int)155L;
-    }
-    public static int NID_md2() {
+    public static int SSL_CONF_TYPE_DIR() {
         return (int)3L;
     }
-    public static int NID_md4() {
-        return (int)257L;
+    public static int SSL_SESS_CACHE_OFF() {
+        return (int)0L;
+    }
+    public static int SSL_SESS_CACHE_SERVER() {
+        return (int)2L;
+    }
+    public static int SSL2_VERSION() {
+        return (int)2L;
+    }
+    public static int SSL3_VERSION() {
+        return (int)768L;
+    }
+    public static int TLS1_VERSION() {
+        return (int)769L;
+    }
+    public static int TLS1_1_VERSION() {
+        return (int)770L;
+    }
+    public static int TLS1_2_VERSION() {
+        return (int)771L;
+    }
+    public static int TLS1_3_VERSION() {
+        return (int)772L;
+    }
+    public static int SSL_TLSEXT_ERR_OK() {
+        return (int)0L;
+    }
+    public static int SSL_TLSEXT_ERR_NOACK() {
+        return (int)3L;
+    }
+    public static int SSL_CB_HANDSHAKE_DONE() {
+        return (int)32L;
+    }
+    public static int SSL_VERIFY_NONE() {
+        return (int)0L;
+    }
+    public static int SSL_VERIFY_PEER() {
+        return (int)1L;
+    }
+    public static int SSL_VERIFY_FAIL_IF_NO_PEER_CERT() {
+        return (int)2L;
+    }
+    public static int SSL_ERROR_NONE() {
+        return (int)0L;
+    }
+    public static int SSL_CTRL_SET_TMP_DH() {
+        return (int)3L;
+    }
+    public static int SSL_CTRL_SET_TMP_ECDH() {
+        return (int)4L;
+    }
+    public static int SSL_CTRL_SESS_NUMBER() {
+        return (int)20L;
+    }
+    public static int SSL_CTRL_SESS_CONNECT() {
+        return (int)21L;
+    }
+    public static int SSL_CTRL_SESS_CONNECT_GOOD() {
+        return (int)22L;
+    }
+    public static int SSL_CTRL_SESS_CONNECT_RENEGOTIATE() {
+        return (int)23L;
+    }
+    public static int SSL_CTRL_SESS_ACCEPT() {
+        return (int)24L;
+    }
+    public static int SSL_CTRL_SESS_ACCEPT_GOOD() {
+        return (int)25L;
+    }
+    public static int SSL_CTRL_SESS_ACCEPT_RENEGOTIATE() {
+        return (int)26L;
+    }
+    public static int SSL_CTRL_SESS_HIT() {
+        return (int)27L;
+    }
+    public static int SSL_CTRL_SESS_CB_HIT() {
+        return (int)28L;
+    }
+    public static int SSL_CTRL_SESS_MISSES() {
+        return (int)29L;
+    }
+    public static int SSL_CTRL_SESS_TIMEOUTS() {
+        return (int)30L;
+    }
+    public static int SSL_CTRL_SESS_CACHE_FULL() {
+        return (int)31L;
+    }
+    public static int SSL_CTRL_SET_SESS_CACHE_SIZE() {
+        return (int)42L;
+    }
+    public static int SSL_CTRL_GET_SESS_CACHE_SIZE() {
+        return (int)43L;
+    }
+    public static int SSL_CTRL_SET_SESS_CACHE_MODE() {
+        return (int)44L;
+    }
+    public static int SSL_CTRL_GET_SESS_CACHE_MODE() {
+        return (int)45L;
+    }
+    public static int SSL_CTRL_SET_TLSEXT_TICKET_KEYS() {
+        return (int)59L;
+    }
+    public static int SSL_CTRL_CHAIN_CERT() {
+        return (int)89L;
+    }
+    public static int SSL_CTRL_SET_MIN_PROTO_VERSION() {
+        return (int)123L;
+    }
+    public static int SSL_CTRL_SET_MAX_PROTO_VERSION() {
+        return (int)124L;
+    }
+    public static MethodHandle OPENSSL_sk_num$MH() {
+        return RuntimeHelper.requireNonNull(constants$0.OPENSSL_sk_num$MH,"OPENSSL_sk_num");
+    }
+    public static int OPENSSL_sk_num ( Addressable x0) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$0.OPENSSL_sk_num$MH, "OPENSSL_sk_num");
+        try {
+            return (int)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle OPENSSL_sk_value$MH() {
+        return RuntimeHelper.requireNonNull(constants$0.OPENSSL_sk_value$MH,"OPENSSL_sk_value");
+    }
+    public static MemoryAddress OPENSSL_sk_value ( Addressable x0,  int x1) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$0.OPENSSL_sk_value$MH, "OPENSSL_sk_value");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(x0, x1);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static ValueLayout.OfInt ASN1_BOOLEAN = JAVA_INT;
+    public static ValueLayout.OfInt ASN1_NULL = JAVA_INT;
+    public static ValueLayout.OfLong ossl_intmax_t = JAVA_LONG;
+    public static MethodHandle CRYPTO_free$MH() {
+        return RuntimeHelper.requireNonNull(constants$0.CRYPTO_free$MH,"CRYPTO_free");
+    }
+    public static void CRYPTO_free ( Addressable ptr,  Addressable file,  int line) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$0.CRYPTO_free$MH, "CRYPTO_free");
+        try {
+            mh$.invokeExact(ptr, file, line);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle FIPS_mode$MH() {
+        return RuntimeHelper.requireNonNull(constants$0.FIPS_mode$MH,"FIPS_mode");
+    }
+    public static int FIPS_mode () {
+        var mh$ = RuntimeHelper.requireNonNull(constants$0.FIPS_mode$MH, "FIPS_mode");
+        try {
+            return (int)mh$.invokeExact();
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle FIPS_mode_set$MH() {
+        return RuntimeHelper.requireNonNull(constants$0.FIPS_mode_set$MH,"FIPS_mode_set");
+    }
+    public static int FIPS_mode_set ( int r) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$0.FIPS_mode_set$MH, "FIPS_mode_set");
+        try {
+            return (int)mh$.invokeExact(r);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle BIO_ctrl_pending$MH() {
+        return RuntimeHelper.requireNonNull(constants$0.BIO_ctrl_pending$MH,"BIO_ctrl_pending");
+    }
+    public static long BIO_ctrl_pending ( Addressable b) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$0.BIO_ctrl_pending$MH, "BIO_ctrl_pending");
+        try {
+            return (long)mh$.invokeExact(b);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle BIO_s_file$MH() {
+        return RuntimeHelper.requireNonNull(constants$1.BIO_s_file$MH,"BIO_s_file");
+    }
+    public static MemoryAddress BIO_s_file () {
+        var mh$ = RuntimeHelper.requireNonNull(constants$1.BIO_s_file$MH, "BIO_s_file");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact();
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle BIO_new_file$MH() {
+        return RuntimeHelper.requireNonNull(constants$1.BIO_new_file$MH,"BIO_new_file");
+    }
+    public static MemoryAddress BIO_new_file ( Addressable filename,  Addressable mode) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$1.BIO_new_file$MH, "BIO_new_file");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(filename, mode);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle BIO_new$MH() {
+        return RuntimeHelper.requireNonNull(constants$1.BIO_new$MH,"BIO_new");
+    }
+    public static MemoryAddress BIO_new ( Addressable type) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$1.BIO_new$MH, "BIO_new");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(type);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle BIO_free$MH() {
+        return RuntimeHelper.requireNonNull(constants$1.BIO_free$MH,"BIO_free");
+    }
+    public static int BIO_free ( Addressable a) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$1.BIO_free$MH, "BIO_free");
+        try {
+            return (int)mh$.invokeExact(a);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle BIO_read$MH() {
+        return RuntimeHelper.requireNonNull(constants$1.BIO_read$MH,"BIO_read");
+    }
+    public static int BIO_read ( Addressable b,  Addressable data,  int dlen) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$1.BIO_read$MH, "BIO_read");
+        try {
+            return (int)mh$.invokeExact(b, data, dlen);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle BIO_write$MH() {
+        return RuntimeHelper.requireNonNull(constants$1.BIO_write$MH,"BIO_write");
+    }
+    public static int BIO_write ( Addressable b,  Addressable data,  int dlen) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$1.BIO_write$MH, "BIO_write");
+        try {
+            return (int)mh$.invokeExact(b, data, dlen);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle BIO_ctrl$MH() {
+        return RuntimeHelper.requireNonNull(constants$2.BIO_ctrl$MH,"BIO_ctrl");
+    }
+    public static long BIO_ctrl ( Addressable bp,  int cmd,  long larg,  Addressable parg) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$2.BIO_ctrl$MH, "BIO_ctrl");
+        try {
+            return (long)mh$.invokeExact(bp, cmd, larg, parg);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle BIO_s_mem$MH() {
+        return RuntimeHelper.requireNonNull(constants$2.BIO_s_mem$MH,"BIO_s_mem");
+    }
+    public static MemoryAddress BIO_s_mem () {
+        var mh$ = RuntimeHelper.requireNonNull(constants$2.BIO_s_mem$MH, "BIO_s_mem");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact();
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle BIO_s_bio$MH() {
+        return RuntimeHelper.requireNonNull(constants$2.BIO_s_bio$MH,"BIO_s_bio");
+    }
+    public static MemoryAddress BIO_s_bio () {
+        var mh$ = RuntimeHelper.requireNonNull(constants$2.BIO_s_bio$MH, "BIO_s_bio");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact();
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle BIO_new_bio_pair$MH() {
+        return RuntimeHelper.requireNonNull(constants$2.BIO_new_bio_pair$MH,"BIO_new_bio_pair");
+    }
+    public static int BIO_new_bio_pair ( Addressable bio1,  long writebuf1,  Addressable bio2,  long writebuf2) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$2.BIO_new_bio_pair$MH, "BIO_new_bio_pair");
+        try {
+            return (int)mh$.invokeExact(bio1, writebuf1, bio2, writebuf2);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle BN_new$MH() {
+        return RuntimeHelper.requireNonNull(constants$2.BN_new$MH,"BN_new");
+    }
+    public static MemoryAddress BN_new () {
+        var mh$ = RuntimeHelper.requireNonNull(constants$2.BN_new$MH, "BN_new");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact();
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle BN_set_word$MH() {
+        return RuntimeHelper.requireNonNull(constants$2.BN_set_word$MH,"BN_set_word");
+    }
+    public static int BN_set_word ( Addressable a,  long w) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$2.BN_set_word$MH, "BN_set_word");
+        try {
+            return (int)mh$.invokeExact(a, w);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle BN_get_rfc2409_prime_768$MH() {
+        return RuntimeHelper.requireNonNull(constants$3.BN_get_rfc2409_prime_768$MH,"BN_get_rfc2409_prime_768");
+    }
+    public static MemoryAddress BN_get_rfc2409_prime_768 ( Addressable bn) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$3.BN_get_rfc2409_prime_768$MH, "BN_get_rfc2409_prime_768");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bn);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle BN_get_rfc2409_prime_1024$MH() {
+        return RuntimeHelper.requireNonNull(constants$3.BN_get_rfc2409_prime_1024$MH,"BN_get_rfc2409_prime_1024");
+    }
+    public static MemoryAddress BN_get_rfc2409_prime_1024 ( Addressable bn) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$3.BN_get_rfc2409_prime_1024$MH, "BN_get_rfc2409_prime_1024");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bn);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle BN_get_rfc3526_prime_1536$MH() {
+        return RuntimeHelper.requireNonNull(constants$3.BN_get_rfc3526_prime_1536$MH,"BN_get_rfc3526_prime_1536");
+    }
+    public static MemoryAddress BN_get_rfc3526_prime_1536 ( Addressable bn) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$3.BN_get_rfc3526_prime_1536$MH, "BN_get_rfc3526_prime_1536");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bn);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle BN_get_rfc3526_prime_2048$MH() {
+        return RuntimeHelper.requireNonNull(constants$3.BN_get_rfc3526_prime_2048$MH,"BN_get_rfc3526_prime_2048");
+    }
+    public static MemoryAddress BN_get_rfc3526_prime_2048 ( Addressable bn) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$3.BN_get_rfc3526_prime_2048$MH, "BN_get_rfc3526_prime_2048");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bn);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle BN_get_rfc3526_prime_3072$MH() {
+        return RuntimeHelper.requireNonNull(constants$3.BN_get_rfc3526_prime_3072$MH,"BN_get_rfc3526_prime_3072");
+    }
+    public static MemoryAddress BN_get_rfc3526_prime_3072 ( Addressable bn) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$3.BN_get_rfc3526_prime_3072$MH, "BN_get_rfc3526_prime_3072");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bn);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle BN_get_rfc3526_prime_4096$MH() {
+        return RuntimeHelper.requireNonNull(constants$3.BN_get_rfc3526_prime_4096$MH,"BN_get_rfc3526_prime_4096");
+    }
+    public static MemoryAddress BN_get_rfc3526_prime_4096 ( Addressable bn) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$3.BN_get_rfc3526_prime_4096$MH, "BN_get_rfc3526_prime_4096");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bn);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle BN_get_rfc3526_prime_6144$MH() {
+        return RuntimeHelper.requireNonNull(constants$4.BN_get_rfc3526_prime_6144$MH,"BN_get_rfc3526_prime_6144");
+    }
+    public static MemoryAddress BN_get_rfc3526_prime_6144 ( Addressable bn) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$4.BN_get_rfc3526_prime_6144$MH, "BN_get_rfc3526_prime_6144");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bn);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle BN_get_rfc3526_prime_8192$MH() {
+        return RuntimeHelper.requireNonNull(constants$4.BN_get_rfc3526_prime_8192$MH,"BN_get_rfc3526_prime_8192");
+    }
+    public static MemoryAddress BN_get_rfc3526_prime_8192 ( Addressable bn) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$4.BN_get_rfc3526_prime_8192$MH, "BN_get_rfc3526_prime_8192");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bn);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle EVP_PKEY_base_id$MH() {
+        return RuntimeHelper.requireNonNull(constants$4.EVP_PKEY_base_id$MH,"EVP_PKEY_base_id");
+    }
+    public static int EVP_PKEY_base_id ( Addressable pkey) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$4.EVP_PKEY_base_id$MH, "EVP_PKEY_base_id");
+        try {
+            return (int)mh$.invokeExact(pkey);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle EVP_PKEY_bits$MH() {
+        return RuntimeHelper.requireNonNull(constants$4.EVP_PKEY_bits$MH,"EVP_PKEY_bits");
+    }
+    public static int EVP_PKEY_bits ( Addressable pkey) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$4.EVP_PKEY_bits$MH, "EVP_PKEY_bits");
+        try {
+            return (int)mh$.invokeExact(pkey);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle EC_GROUP_free$MH() {
+        return RuntimeHelper.requireNonNull(constants$4.EC_GROUP_free$MH,"EC_GROUP_free");
+    }
+    public static void EC_GROUP_free ( Addressable group) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$4.EC_GROUP_free$MH, "EC_GROUP_free");
+        try {
+            mh$.invokeExact(group);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle EC_GROUP_get_curve_name$MH() {
+        return RuntimeHelper.requireNonNull(constants$4.EC_GROUP_get_curve_name$MH,"EC_GROUP_get_curve_name");
+    }
+    public static int EC_GROUP_get_curve_name ( Addressable group) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$4.EC_GROUP_get_curve_name$MH, "EC_GROUP_get_curve_name");
+        try {
+            return (int)mh$.invokeExact(group);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle EC_KEY_new_by_curve_name$MH() {
+        return RuntimeHelper.requireNonNull(constants$5.EC_KEY_new_by_curve_name$MH,"EC_KEY_new_by_curve_name");
+    }
+    public static MemoryAddress EC_KEY_new_by_curve_name ( int nid) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$5.EC_KEY_new_by_curve_name$MH, "EC_KEY_new_by_curve_name");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(nid);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle EC_KEY_free$MH() {
+        return RuntimeHelper.requireNonNull(constants$5.EC_KEY_free$MH,"EC_KEY_free");
+    }
+    public static void EC_KEY_free ( Addressable key) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$5.EC_KEY_free$MH, "EC_KEY_free");
+        try {
+            mh$.invokeExact(key);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle DH_new$MH() {
+        return RuntimeHelper.requireNonNull(constants$5.DH_new$MH,"DH_new");
+    }
+    public static MemoryAddress DH_new () {
+        var mh$ = RuntimeHelper.requireNonNull(constants$5.DH_new$MH, "DH_new");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact();
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle DH_free$MH() {
+        return RuntimeHelper.requireNonNull(constants$5.DH_free$MH,"DH_free");
+    }
+    public static void DH_free ( Addressable dh) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$5.DH_free$MH, "DH_free");
+        try {
+            mh$.invokeExact(dh);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle DH_set0_pqg$MH() {
+        return RuntimeHelper.requireNonNull(constants$5.DH_set0_pqg$MH,"DH_set0_pqg");
+    }
+    public static int DH_set0_pqg ( Addressable dh,  Addressable p,  Addressable q,  Addressable g) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$5.DH_set0_pqg$MH, "DH_set0_pqg");
+        try {
+            return (int)mh$.invokeExact(dh, p, q, g);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle X509_STORE_set_flags$MH() {
+        return RuntimeHelper.requireNonNull(constants$5.X509_STORE_set_flags$MH,"X509_STORE_set_flags");
+    }
+    public static int X509_STORE_set_flags ( Addressable ctx,  long flags) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$5.X509_STORE_set_flags$MH, "X509_STORE_set_flags");
+        try {
+            return (int)mh$.invokeExact(ctx, flags);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle X509_STORE_CTX_get0_untrusted$MH() {
+        return RuntimeHelper.requireNonNull(constants$6.X509_STORE_CTX_get0_untrusted$MH,"X509_STORE_CTX_get0_untrusted");
+    }
+    public static MemoryAddress X509_STORE_CTX_get0_untrusted ( Addressable ctx) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$6.X509_STORE_CTX_get0_untrusted$MH, "X509_STORE_CTX_get0_untrusted");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(ctx);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle X509_STORE_add_lookup$MH() {
+        return RuntimeHelper.requireNonNull(constants$6.X509_STORE_add_lookup$MH,"X509_STORE_add_lookup");
+    }
+    public static MemoryAddress X509_STORE_add_lookup ( Addressable v,  Addressable m) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$6.X509_STORE_add_lookup$MH, "X509_STORE_add_lookup");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(v, m);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle X509_LOOKUP_hash_dir$MH() {
+        return RuntimeHelper.requireNonNull(constants$6.X509_LOOKUP_hash_dir$MH,"X509_LOOKUP_hash_dir");
+    }
+    public static MemoryAddress X509_LOOKUP_hash_dir () {
+        var mh$ = RuntimeHelper.requireNonNull(constants$6.X509_LOOKUP_hash_dir$MH, "X509_LOOKUP_hash_dir");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact();
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle X509_LOOKUP_file$MH() {
+        return RuntimeHelper.requireNonNull(constants$6.X509_LOOKUP_file$MH,"X509_LOOKUP_file");
+    }
+    public static MemoryAddress X509_LOOKUP_file () {
+        var mh$ = RuntimeHelper.requireNonNull(constants$6.X509_LOOKUP_file$MH, "X509_LOOKUP_file");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact();
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle X509_LOOKUP_ctrl$MH() {
+        return RuntimeHelper.requireNonNull(constants$6.X509_LOOKUP_ctrl$MH,"X509_LOOKUP_ctrl");
+    }
+    public static int X509_LOOKUP_ctrl ( Addressable ctx,  int cmd,  Addressable argc,  long argl,  Addressable ret) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$6.X509_LOOKUP_ctrl$MH, "X509_LOOKUP_ctrl");
+        try {
+            return (int)mh$.invokeExact(ctx, cmd, argc, argl, ret);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle X509_STORE_CTX_get_ex_data$MH() {
+        return RuntimeHelper.requireNonNull(constants$6.X509_STORE_CTX_get_ex_data$MH,"X509_STORE_CTX_get_ex_data");
+    }
+    public static MemoryAddress X509_STORE_CTX_get_ex_data ( Addressable ctx,  int idx) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$6.X509_STORE_CTX_get_ex_data$MH, "X509_STORE_CTX_get_ex_data");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(ctx, idx);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle X509_STORE_CTX_get_error$MH() {
+        return RuntimeHelper.requireNonNull(constants$7.X509_STORE_CTX_get_error$MH,"X509_STORE_CTX_get_error");
+    }
+    public static int X509_STORE_CTX_get_error ( Addressable ctx) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$7.X509_STORE_CTX_get_error$MH, "X509_STORE_CTX_get_error");
+        try {
+            return (int)mh$.invokeExact(ctx);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle X509_STORE_CTX_set_error$MH() {
+        return RuntimeHelper.requireNonNull(constants$7.X509_STORE_CTX_set_error$MH,"X509_STORE_CTX_set_error");
+    }
+    public static void X509_STORE_CTX_set_error ( Addressable ctx,  int s) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$7.X509_STORE_CTX_set_error$MH, "X509_STORE_CTX_set_error");
+        try {
+            mh$.invokeExact(ctx, s);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle X509_STORE_CTX_get_error_depth$MH() {
+        return RuntimeHelper.requireNonNull(constants$7.X509_STORE_CTX_get_error_depth$MH,"X509_STORE_CTX_get_error_depth");
+    }
+    public static int X509_STORE_CTX_get_error_depth ( Addressable ctx) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$7.X509_STORE_CTX_get_error_depth$MH, "X509_STORE_CTX_get_error_depth");
+        try {
+            return (int)mh$.invokeExact(ctx);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle d2i_X509_bio$MH() {
+        return RuntimeHelper.requireNonNull(constants$7.d2i_X509_bio$MH,"d2i_X509_bio");
+    }
+    public static MemoryAddress d2i_X509_bio ( Addressable bp,  Addressable x509) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$7.d2i_X509_bio$MH, "d2i_X509_bio");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bp, x509);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle X509_free$MH() {
+        return RuntimeHelper.requireNonNull(constants$7.X509_free$MH,"X509_free");
+    }
+    public static void X509_free ( Addressable a) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$7.X509_free$MH, "X509_free");
+        try {
+            mh$.invokeExact(a);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle d2i_X509$MH() {
+        return RuntimeHelper.requireNonNull(constants$7.d2i_X509$MH,"d2i_X509");
+    }
+    public static MemoryAddress d2i_X509 ( Addressable a,  Addressable in,  long len) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$7.d2i_X509$MH, "d2i_X509");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(a, in, len);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle i2d_X509$MH() {
+        return RuntimeHelper.requireNonNull(constants$8.i2d_X509$MH,"i2d_X509");
+    }
+    public static int i2d_X509 ( Addressable a,  Addressable out) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$8.i2d_X509$MH, "i2d_X509");
+        try {
+            return (int)mh$.invokeExact(a, out);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle PEM_read_bio_X509_AUX$MH() {
+        return RuntimeHelper.requireNonNull(constants$8.PEM_read_bio_X509_AUX$MH,"PEM_read_bio_X509_AUX");
+    }
+    public static MemoryAddress PEM_read_bio_X509_AUX ( Addressable bp,  Addressable x,  Addressable cb,  Addressable u) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$8.PEM_read_bio_X509_AUX$MH, "PEM_read_bio_X509_AUX");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bp, x, cb, u);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle PEM_read_bio_ECPKParameters$MH() {
+        return RuntimeHelper.requireNonNull(constants$8.PEM_read_bio_ECPKParameters$MH,"PEM_read_bio_ECPKParameters");
+    }
+    public static MemoryAddress PEM_read_bio_ECPKParameters ( Addressable bp,  Addressable x,  Addressable cb,  Addressable u) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$8.PEM_read_bio_ECPKParameters$MH, "PEM_read_bio_ECPKParameters");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bp, x, cb, u);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle PEM_read_bio_DHparams$MH() {
+        return RuntimeHelper.requireNonNull(constants$8.PEM_read_bio_DHparams$MH,"PEM_read_bio_DHparams");
+    }
+    public static MemoryAddress PEM_read_bio_DHparams ( Addressable bp,  Addressable x,  Addressable cb,  Addressable u) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$8.PEM_read_bio_DHparams$MH, "PEM_read_bio_DHparams");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bp, x, cb, u);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle PEM_read_bio_PrivateKey$MH() {
+        return RuntimeHelper.requireNonNull(constants$8.PEM_read_bio_PrivateKey$MH,"PEM_read_bio_PrivateKey");
+    }
+    public static MemoryAddress PEM_read_bio_PrivateKey ( Addressable bp,  Addressable x,  Addressable cb,  Addressable u) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$8.PEM_read_bio_PrivateKey$MH, "PEM_read_bio_PrivateKey");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bp, x, cb, u);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CTX_get_options$MH() {
+        return RuntimeHelper.requireNonNull(constants$8.SSL_CTX_get_options$MH,"SSL_CTX_get_options");
+    }
+    public static long SSL_CTX_get_options ( Addressable ctx) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$8.SSL_CTX_get_options$MH, "SSL_CTX_get_options");
+        try {
+            return (long)mh$.invokeExact(ctx);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_get_options$MH() {
+        return RuntimeHelper.requireNonNull(constants$9.SSL_get_options$MH,"SSL_get_options");
+    }
+    public static long SSL_get_options ( Addressable s) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$9.SSL_get_options$MH, "SSL_get_options");
+        try {
+            return (long)mh$.invokeExact(s);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CTX_clear_options$MH() {
+        return RuntimeHelper.requireNonNull(constants$9.SSL_CTX_clear_options$MH,"SSL_CTX_clear_options");
+    }
+    public static long SSL_CTX_clear_options ( Addressable ctx,  long op) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$9.SSL_CTX_clear_options$MH, "SSL_CTX_clear_options");
+        try {
+            return (long)mh$.invokeExact(ctx, op);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CTX_set_options$MH() {
+        return RuntimeHelper.requireNonNull(constants$9.SSL_CTX_set_options$MH,"SSL_CTX_set_options");
+    }
+    public static long SSL_CTX_set_options ( Addressable ctx,  long op) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$9.SSL_CTX_set_options$MH, "SSL_CTX_set_options");
+        try {
+            return (long)mh$.invokeExact(ctx, op);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_set_options$MH() {
+        return RuntimeHelper.requireNonNull(constants$9.SSL_set_options$MH,"SSL_set_options");
+    }
+    public static long SSL_set_options ( Addressable s,  long op) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$9.SSL_set_options$MH, "SSL_set_options");
+        try {
+            return (long)mh$.invokeExact(s, op);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_get0_next_proto_negotiated$MH() {
+        return RuntimeHelper.requireNonNull(constants$9.SSL_get0_next_proto_negotiated$MH,"SSL_get0_next_proto_negotiated");
+    }
+    public static void SSL_get0_next_proto_negotiated ( Addressable s,  Addressable data,  Addressable len) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$9.SSL_get0_next_proto_negotiated$MH, "SSL_get0_next_proto_negotiated");
+        try {
+            mh$.invokeExact(s, data, len);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CTX_set_alpn_select_cb$MH() {
+        return RuntimeHelper.requireNonNull(constants$9.SSL_CTX_set_alpn_select_cb$MH,"SSL_CTX_set_alpn_select_cb");
+    }
+    public static void SSL_CTX_set_alpn_select_cb ( Addressable ctx,  Addressable cb,  Addressable arg) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$9.SSL_CTX_set_alpn_select_cb$MH, "SSL_CTX_set_alpn_select_cb");
+        try {
+            mh$.invokeExact(ctx, cb, arg);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_get0_alpn_selected$MH() {
+        return RuntimeHelper.requireNonNull(constants$10.SSL_get0_alpn_selected$MH,"SSL_get0_alpn_selected");
+    }
+    public static void SSL_get0_alpn_selected ( Addressable ssl,  Addressable data,  Addressable len) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$10.SSL_get0_alpn_selected$MH, "SSL_get0_alpn_selected");
+        try {
+            mh$.invokeExact(ssl, data, len);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_in_init$MH() {
+        return RuntimeHelper.requireNonNull(constants$10.SSL_in_init$MH,"SSL_in_init");
+    }
+    public static int SSL_in_init ( Addressable s) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$10.SSL_in_init$MH, "SSL_in_init");
+        try {
+            return (int)mh$.invokeExact(s);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CTX_set_cipher_list$MH() {
+        return RuntimeHelper.requireNonNull(constants$10.SSL_CTX_set_cipher_list$MH,"SSL_CTX_set_cipher_list");
+    }
+    public static int SSL_CTX_set_cipher_list ( Addressable x0,  Addressable str) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$10.SSL_CTX_set_cipher_list$MH, "SSL_CTX_set_cipher_list");
+        try {
+            return (int)mh$.invokeExact(x0, str);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CTX_new$MH() {
+        return RuntimeHelper.requireNonNull(constants$10.SSL_CTX_new$MH,"SSL_CTX_new");
+    }
+    public static MemoryAddress SSL_CTX_new ( Addressable meth) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$10.SSL_CTX_new$MH, "SSL_CTX_new");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(meth);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CTX_free$MH() {
+        return RuntimeHelper.requireNonNull(constants$10.SSL_CTX_free$MH,"SSL_CTX_free");
+    }
+    public static void SSL_CTX_free ( Addressable x0) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$10.SSL_CTX_free$MH, "SSL_CTX_free");
+        try {
+            mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CTX_set_timeout$MH() {
+        return RuntimeHelper.requireNonNull(constants$10.SSL_CTX_set_timeout$MH,"SSL_CTX_set_timeout");
+    }
+    public static long SSL_CTX_set_timeout ( Addressable ctx,  long t) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$10.SSL_CTX_set_timeout$MH, "SSL_CTX_set_timeout");
+        try {
+            return (long)mh$.invokeExact(ctx, t);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CTX_get_timeout$MH() {
+        return RuntimeHelper.requireNonNull(constants$11.SSL_CTX_get_timeout$MH,"SSL_CTX_get_timeout");
+    }
+    public static long SSL_CTX_get_timeout ( Addressable ctx) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$11.SSL_CTX_get_timeout$MH, "SSL_CTX_get_timeout");
+        try {
+            return (long)mh$.invokeExact(ctx);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CTX_get_cert_store$MH() {
+        return RuntimeHelper.requireNonNull(constants$11.SSL_CTX_get_cert_store$MH,"SSL_CTX_get_cert_store");
+    }
+    public static MemoryAddress SSL_CTX_get_cert_store ( Addressable x0) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$11.SSL_CTX_get_cert_store$MH, "SSL_CTX_get_cert_store");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(x0);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_get_current_cipher$MH() {
+        return RuntimeHelper.requireNonNull(constants$11.SSL_get_current_cipher$MH,"SSL_get_current_cipher");
+    }
+    public static MemoryAddress SSL_get_current_cipher ( Addressable s) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$11.SSL_get_current_cipher$MH, "SSL_get_current_cipher");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(s);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CIPHER_get_name$MH() {
+        return RuntimeHelper.requireNonNull(constants$11.SSL_CIPHER_get_name$MH,"SSL_CIPHER_get_name");
+    }
+    public static MemoryAddress SSL_CIPHER_get_name ( Addressable c) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$11.SSL_CIPHER_get_name$MH, "SSL_CIPHER_get_name");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(c);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CIPHER_get_kx_nid$MH() {
+        return RuntimeHelper.requireNonNull(constants$11.SSL_CIPHER_get_kx_nid$MH,"SSL_CIPHER_get_kx_nid");
+    }
+    public static int SSL_CIPHER_get_kx_nid ( Addressable c) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$11.SSL_CIPHER_get_kx_nid$MH, "SSL_CIPHER_get_kx_nid");
+        try {
+            return (int)mh$.invokeExact(c);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CIPHER_get_auth_nid$MH() {
+        return RuntimeHelper.requireNonNull(constants$11.SSL_CIPHER_get_auth_nid$MH,"SSL_CIPHER_get_auth_nid");
+    }
+    public static int SSL_CIPHER_get_auth_nid ( Addressable c) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$11.SSL_CIPHER_get_auth_nid$MH, "SSL_CIPHER_get_auth_nid");
+        try {
+            return (int)mh$.invokeExact(c);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_pending$MH() {
+        return RuntimeHelper.requireNonNull(constants$12.SSL_pending$MH,"SSL_pending");
+    }
+    public static int SSL_pending ( Addressable s) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$12.SSL_pending$MH, "SSL_pending");
+        try {
+            return (int)mh$.invokeExact(s);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_set_bio$MH() {
+        return RuntimeHelper.requireNonNull(constants$12.SSL_set_bio$MH,"SSL_set_bio");
+    }
+    public static void SSL_set_bio ( Addressable s,  Addressable rbio,  Addressable wbio) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$12.SSL_set_bio$MH, "SSL_set_bio");
+        try {
+            mh$.invokeExact(s, rbio, wbio);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_set_cipher_list$MH() {
+        return RuntimeHelper.requireNonNull(constants$12.SSL_set_cipher_list$MH,"SSL_set_cipher_list");
+    }
+    public static int SSL_set_cipher_list ( Addressable s,  Addressable str) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$12.SSL_set_cipher_list$MH, "SSL_set_cipher_list");
+        try {
+            return (int)mh$.invokeExact(s, str);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_set_verify$MH() {
+        return RuntimeHelper.requireNonNull(constants$12.SSL_set_verify$MH,"SSL_set_verify");
+    }
+    public static void SSL_set_verify ( Addressable s,  int mode,  Addressable callback) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$12.SSL_set_verify$MH, "SSL_set_verify");
+        try {
+            mh$.invokeExact(s, mode, callback);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CTX_use_certificate_chain_file$MH() {
+        return RuntimeHelper.requireNonNull(constants$12.SSL_CTX_use_certificate_chain_file$MH,"SSL_CTX_use_certificate_chain_file");
+    }
+    public static int SSL_CTX_use_certificate_chain_file ( Addressable ctx,  Addressable file) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$12.SSL_CTX_use_certificate_chain_file$MH, "SSL_CTX_use_certificate_chain_file");
+        try {
+            return (int)mh$.invokeExact(ctx, file);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_load_client_CA_file$MH() {
+        return RuntimeHelper.requireNonNull(constants$12.SSL_load_client_CA_file$MH,"SSL_load_client_CA_file");
+    }
+    public static MemoryAddress SSL_load_client_CA_file ( Addressable file) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$12.SSL_load_client_CA_file$MH, "SSL_load_client_CA_file");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(file);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_add_file_cert_subjects_to_stack$MH() {
+        return RuntimeHelper.requireNonNull(constants$13.SSL_add_file_cert_subjects_to_stack$MH,"SSL_add_file_cert_subjects_to_stack");
+    }
+    public static int SSL_add_file_cert_subjects_to_stack ( Addressable stackCAs,  Addressable file) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$13.SSL_add_file_cert_subjects_to_stack$MH, "SSL_add_file_cert_subjects_to_stack");
+        try {
+            return (int)mh$.invokeExact(stackCAs, file);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_SESSION_get_time$MH() {
+        return RuntimeHelper.requireNonNull(constants$13.SSL_SESSION_get_time$MH,"SSL_SESSION_get_time");
+    }
+    public static long SSL_SESSION_get_time ( Addressable s) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$13.SSL_SESSION_get_time$MH, "SSL_SESSION_get_time");
+        try {
+            return (long)mh$.invokeExact(s);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_SESSION_get_id$MH() {
+        return RuntimeHelper.requireNonNull(constants$13.SSL_SESSION_get_id$MH,"SSL_SESSION_get_id");
+    }
+    public static MemoryAddress SSL_SESSION_get_id ( Addressable s,  Addressable len) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$13.SSL_SESSION_get_id$MH, "SSL_SESSION_get_id");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(s, len);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_get_peer_certificate$MH() {
+        return RuntimeHelper.requireNonNull(constants$13.SSL_get_peer_certificate$MH,"SSL_get_peer_certificate");
+    }
+    public static MemoryAddress SSL_get_peer_certificate ( Addressable s) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$13.SSL_get_peer_certificate$MH, "SSL_get_peer_certificate");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(s);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_get_peer_cert_chain$MH() {
+        return RuntimeHelper.requireNonNull(constants$13.SSL_get_peer_cert_chain$MH,"SSL_get_peer_cert_chain");
+    }
+    public static MemoryAddress SSL_get_peer_cert_chain ( Addressable s) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$13.SSL_get_peer_cert_chain$MH, "SSL_get_peer_cert_chain");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(s);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CTX_set_verify$MH() {
+        return RuntimeHelper.requireNonNull(constants$13.SSL_CTX_set_verify$MH,"SSL_CTX_set_verify");
+    }
+    public static void SSL_CTX_set_verify ( Addressable ctx,  int mode,  Addressable callback) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$13.SSL_CTX_set_verify$MH, "SSL_CTX_set_verify");
+        try {
+            mh$.invokeExact(ctx, mode, callback);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CTX_set_cert_verify_callback$MH() {
+        return RuntimeHelper.requireNonNull(constants$14.SSL_CTX_set_cert_verify_callback$MH,"SSL_CTX_set_cert_verify_callback");
+    }
+    public static void SSL_CTX_set_cert_verify_callback ( Addressable ctx,  Addressable cb,  Addressable arg) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$14.SSL_CTX_set_cert_verify_callback$MH, "SSL_CTX_set_cert_verify_callback");
+        try {
+            mh$.invokeExact(ctx, cb, arg);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CTX_use_PrivateKey$MH() {
+        return RuntimeHelper.requireNonNull(constants$14.SSL_CTX_use_PrivateKey$MH,"SSL_CTX_use_PrivateKey");
+    }
+    public static int SSL_CTX_use_PrivateKey ( Addressable ctx,  Addressable pkey) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$14.SSL_CTX_use_PrivateKey$MH, "SSL_CTX_use_PrivateKey");
+        try {
+            return (int)mh$.invokeExact(ctx, pkey);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CTX_use_certificate$MH() {
+        return RuntimeHelper.requireNonNull(constants$14.SSL_CTX_use_certificate$MH,"SSL_CTX_use_certificate");
+    }
+    public static int SSL_CTX_use_certificate ( Addressable ctx,  Addressable x) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$14.SSL_CTX_use_certificate$MH, "SSL_CTX_use_certificate");
+        try {
+            return (int)mh$.invokeExact(ctx, x);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CTX_set_default_passwd_cb$MH() {
+        return RuntimeHelper.requireNonNull(constants$14.SSL_CTX_set_default_passwd_cb$MH,"SSL_CTX_set_default_passwd_cb");
+    }
+    public static void SSL_CTX_set_default_passwd_cb ( Addressable ctx,  Addressable cb) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$14.SSL_CTX_set_default_passwd_cb$MH, "SSL_CTX_set_default_passwd_cb");
+        try {
+            mh$.invokeExact(ctx, cb);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CTX_check_private_key$MH() {
+        return RuntimeHelper.requireNonNull(constants$15.SSL_CTX_check_private_key$MH,"SSL_CTX_check_private_key");
+    }
+    public static int SSL_CTX_check_private_key ( Addressable ctx) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$15.SSL_CTX_check_private_key$MH, "SSL_CTX_check_private_key");
+        try {
+            return (int)mh$.invokeExact(ctx);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CTX_set_session_id_context$MH() {
+        return RuntimeHelper.requireNonNull(constants$15.SSL_CTX_set_session_id_context$MH,"SSL_CTX_set_session_id_context");
+    }
+    public static int SSL_CTX_set_session_id_context ( Addressable ctx,  Addressable sid_ctx,  int sid_ctx_len) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$15.SSL_CTX_set_session_id_context$MH, "SSL_CTX_set_session_id_context");
+        try {
+            return (int)mh$.invokeExact(ctx, sid_ctx, sid_ctx_len);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_new$MH() {
+        return RuntimeHelper.requireNonNull(constants$15.SSL_new$MH,"SSL_new");
+    }
+    public static MemoryAddress SSL_new ( Addressable ctx) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$15.SSL_new$MH, "SSL_new");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(ctx);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_free$MH() {
+        return RuntimeHelper.requireNonNull(constants$15.SSL_free$MH,"SSL_free");
+    }
+    public static void SSL_free ( Addressable ssl) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$15.SSL_free$MH, "SSL_free");
+        try {
+            mh$.invokeExact(ssl);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_read$MH() {
+        return RuntimeHelper.requireNonNull(constants$15.SSL_read$MH,"SSL_read");
+    }
+    public static int SSL_read ( Addressable ssl,  Addressable buf,  int num) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$15.SSL_read$MH, "SSL_read");
+        try {
+            return (int)mh$.invokeExact(ssl, buf, num);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_write$MH() {
+        return RuntimeHelper.requireNonNull(constants$15.SSL_write$MH,"SSL_write");
+    }
+    public static int SSL_write ( Addressable ssl,  Addressable buf,  int num) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$15.SSL_write$MH, "SSL_write");
+        try {
+            return (int)mh$.invokeExact(ssl, buf, num);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CTX_ctrl$MH() {
+        return RuntimeHelper.requireNonNull(constants$16.SSL_CTX_ctrl$MH,"SSL_CTX_ctrl");
+    }
+    public static long SSL_CTX_ctrl ( Addressable ctx,  int cmd,  long larg,  Addressable parg) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$16.SSL_CTX_ctrl$MH, "SSL_CTX_ctrl");
+        try {
+            return (long)mh$.invokeExact(ctx, cmd, larg, parg);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_get_version$MH() {
+        return RuntimeHelper.requireNonNull(constants$16.SSL_get_version$MH,"SSL_get_version");
+    }
+    public static MemoryAddress SSL_get_version ( Addressable s) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$16.SSL_get_version$MH, "SSL_get_version");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(s);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle TLS_server_method$MH() {
+        return RuntimeHelper.requireNonNull(constants$16.TLS_server_method$MH,"TLS_server_method");
+    }
+    public static MemoryAddress TLS_server_method () {
+        var mh$ = RuntimeHelper.requireNonNull(constants$16.TLS_server_method$MH, "TLS_server_method");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact();
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_get_ciphers$MH() {
+        return RuntimeHelper.requireNonNull(constants$16.SSL_get_ciphers$MH,"SSL_get_ciphers");
+    }
+    public static MemoryAddress SSL_get_ciphers ( Addressable s) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$16.SSL_get_ciphers$MH, "SSL_get_ciphers");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(s);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CTX_get_ciphers$MH() {
+        return RuntimeHelper.requireNonNull(constants$16.SSL_CTX_get_ciphers$MH,"SSL_CTX_get_ciphers");
+    }
+    public static MemoryAddress SSL_CTX_get_ciphers ( Addressable ctx) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$16.SSL_CTX_get_ciphers$MH, "SSL_CTX_get_ciphers");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(ctx);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_do_handshake$MH() {
+        return RuntimeHelper.requireNonNull(constants$16.SSL_do_handshake$MH,"SSL_do_handshake");
+    }
+    public static int SSL_do_handshake ( Addressable s) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$16.SSL_do_handshake$MH, "SSL_do_handshake");
+        try {
+            return (int)mh$.invokeExact(s);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_renegotiate$MH() {
+        return RuntimeHelper.requireNonNull(constants$17.SSL_renegotiate$MH,"SSL_renegotiate");
+    }
+    public static int SSL_renegotiate ( Addressable s) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$17.SSL_renegotiate$MH, "SSL_renegotiate");
+        try {
+            return (int)mh$.invokeExact(s);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_renegotiate_pending$MH() {
+        return RuntimeHelper.requireNonNull(constants$17.SSL_renegotiate_pending$MH,"SSL_renegotiate_pending");
+    }
+    public static int SSL_renegotiate_pending ( Addressable s) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$17.SSL_renegotiate_pending$MH, "SSL_renegotiate_pending");
+        try {
+            return (int)mh$.invokeExact(s);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_shutdown$MH() {
+        return RuntimeHelper.requireNonNull(constants$17.SSL_shutdown$MH,"SSL_shutdown");
+    }
+    public static int SSL_shutdown ( Addressable s) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$17.SSL_shutdown$MH, "SSL_shutdown");
+        try {
+            return (int)mh$.invokeExact(s);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_verify_client_post_handshake$MH() {
+        return RuntimeHelper.requireNonNull(constants$17.SSL_verify_client_post_handshake$MH,"SSL_verify_client_post_handshake");
+    }
+    public static int SSL_verify_client_post_handshake ( Addressable s) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$17.SSL_verify_client_post_handshake$MH, "SSL_verify_client_post_handshake");
+        try {
+            return (int)mh$.invokeExact(s);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CTX_set_client_CA_list$MH() {
+        return RuntimeHelper.requireNonNull(constants$17.SSL_CTX_set_client_CA_list$MH,"SSL_CTX_set_client_CA_list");
+    }
+    public static void SSL_CTX_set_client_CA_list ( Addressable ctx,  Addressable name_list) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$17.SSL_CTX_set_client_CA_list$MH, "SSL_CTX_set_client_CA_list");
+        try {
+            mh$.invokeExact(ctx, name_list);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CTX_get_client_CA_list$MH() {
+        return RuntimeHelper.requireNonNull(constants$17.SSL_CTX_get_client_CA_list$MH,"SSL_CTX_get_client_CA_list");
+    }
+    public static MemoryAddress SSL_CTX_get_client_CA_list ( Addressable s) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$17.SSL_CTX_get_client_CA_list$MH, "SSL_CTX_get_client_CA_list");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(s);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CTX_add_client_CA$MH() {
+        return RuntimeHelper.requireNonNull(constants$18.SSL_CTX_add_client_CA$MH,"SSL_CTX_add_client_CA");
+    }
+    public static int SSL_CTX_add_client_CA ( Addressable ctx,  Addressable x) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$18.SSL_CTX_add_client_CA$MH, "SSL_CTX_add_client_CA");
+        try {
+            return (int)mh$.invokeExact(ctx, x);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_set_connect_state$MH() {
+        return RuntimeHelper.requireNonNull(constants$18.SSL_set_connect_state$MH,"SSL_set_connect_state");
+    }
+    public static void SSL_set_connect_state ( Addressable s) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$18.SSL_set_connect_state$MH, "SSL_set_connect_state");
+        try {
+            mh$.invokeExact(s);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_set_accept_state$MH() {
+        return RuntimeHelper.requireNonNull(constants$18.SSL_set_accept_state$MH,"SSL_set_accept_state");
+    }
+    public static void SSL_set_accept_state ( Addressable s) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$18.SSL_set_accept_state$MH, "SSL_set_accept_state");
+        try {
+            mh$.invokeExact(s);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_get_privatekey$MH() {
+        return RuntimeHelper.requireNonNull(constants$18.SSL_get_privatekey$MH,"SSL_get_privatekey");
+    }
+    public static MemoryAddress SSL_get_privatekey ( Addressable ssl) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$18.SSL_get_privatekey$MH, "SSL_get_privatekey");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(ssl);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_get_shutdown$MH() {
+        return RuntimeHelper.requireNonNull(constants$18.SSL_get_shutdown$MH,"SSL_get_shutdown");
+    }
+    public static int SSL_get_shutdown ( Addressable ssl) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$18.SSL_get_shutdown$MH, "SSL_get_shutdown");
+        try {
+            return (int)mh$.invokeExact(ssl);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CTX_set_default_verify_paths$MH() {
+        return RuntimeHelper.requireNonNull(constants$18.SSL_CTX_set_default_verify_paths$MH,"SSL_CTX_set_default_verify_paths");
+    }
+    public static int SSL_CTX_set_default_verify_paths ( Addressable ctx) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$18.SSL_CTX_set_default_verify_paths$MH, "SSL_CTX_set_default_verify_paths");
+        try {
+            return (int)mh$.invokeExact(ctx);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CTX_load_verify_locations$MH() {
+        return RuntimeHelper.requireNonNull(constants$19.SSL_CTX_load_verify_locations$MH,"SSL_CTX_load_verify_locations");
+    }
+    public static int SSL_CTX_load_verify_locations ( Addressable ctx,  Addressable CAfile,  Addressable CApath) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$19.SSL_CTX_load_verify_locations$MH, "SSL_CTX_load_verify_locations");
+        try {
+            return (int)mh$.invokeExact(ctx, CAfile, CApath);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_get_session$MH() {
+        return RuntimeHelper.requireNonNull(constants$19.SSL_get_session$MH,"SSL_get_session");
+    }
+    public static MemoryAddress SSL_get_session ( Addressable ssl) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$19.SSL_get_session$MH, "SSL_get_session");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(ssl);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_set_info_callback$MH() {
+        return RuntimeHelper.requireNonNull(constants$19.SSL_set_info_callback$MH,"SSL_set_info_callback");
+    }
+    public static void SSL_set_info_callback ( Addressable ssl,  Addressable cb) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$19.SSL_set_info_callback$MH, "SSL_set_info_callback");
+        try {
+            mh$.invokeExact(ssl, cb);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_set_verify_result$MH() {
+        return RuntimeHelper.requireNonNull(constants$19.SSL_set_verify_result$MH,"SSL_set_verify_result");
+    }
+    public static void SSL_set_verify_result ( Addressable ssl,  long v) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$19.SSL_set_verify_result$MH, "SSL_set_verify_result");
+        try {
+            mh$.invokeExact(ssl, v);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_get_ex_data_X509_STORE_CTX_idx$MH() {
+        return RuntimeHelper.requireNonNull(constants$20.SSL_get_ex_data_X509_STORE_CTX_idx$MH,"SSL_get_ex_data_X509_STORE_CTX_idx");
+    }
+    public static int SSL_get_ex_data_X509_STORE_CTX_idx () {
+        var mh$ = RuntimeHelper.requireNonNull(constants$20.SSL_get_ex_data_X509_STORE_CTX_idx$MH, "SSL_get_ex_data_X509_STORE_CTX_idx");
+        try {
+            return (int)mh$.invokeExact();
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CTX_set_tmp_dh_callback$MH() {
+        return RuntimeHelper.requireNonNull(constants$20.SSL_CTX_set_tmp_dh_callback$MH,"SSL_CTX_set_tmp_dh_callback");
+    }
+    public static void SSL_CTX_set_tmp_dh_callback ( Addressable ctx,  Addressable dh) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$20.SSL_CTX_set_tmp_dh_callback$MH, "SSL_CTX_set_tmp_dh_callback");
+        try {
+            mh$.invokeExact(ctx, dh);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CONF_CTX_new$MH() {
+        return RuntimeHelper.requireNonNull(constants$20.SSL_CONF_CTX_new$MH,"SSL_CONF_CTX_new");
+    }
+    public static MemoryAddress SSL_CONF_CTX_new () {
+        var mh$ = RuntimeHelper.requireNonNull(constants$20.SSL_CONF_CTX_new$MH, "SSL_CONF_CTX_new");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact();
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CONF_CTX_finish$MH() {
+        return RuntimeHelper.requireNonNull(constants$20.SSL_CONF_CTX_finish$MH,"SSL_CONF_CTX_finish");
+    }
+    public static int SSL_CONF_CTX_finish ( Addressable cctx) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$20.SSL_CONF_CTX_finish$MH, "SSL_CONF_CTX_finish");
+        try {
+            return (int)mh$.invokeExact(cctx);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CONF_CTX_free$MH() {
+        return RuntimeHelper.requireNonNull(constants$21.SSL_CONF_CTX_free$MH,"SSL_CONF_CTX_free");
+    }
+    public static void SSL_CONF_CTX_free ( Addressable cctx) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$21.SSL_CONF_CTX_free$MH, "SSL_CONF_CTX_free");
+        try {
+            mh$.invokeExact(cctx);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CONF_CTX_set_flags$MH() {
+        return RuntimeHelper.requireNonNull(constants$21.SSL_CONF_CTX_set_flags$MH,"SSL_CONF_CTX_set_flags");
+    }
+    public static int SSL_CONF_CTX_set_flags ( Addressable cctx,  int flags) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$21.SSL_CONF_CTX_set_flags$MH, "SSL_CONF_CTX_set_flags");
+        try {
+            return (int)mh$.invokeExact(cctx, flags);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CONF_CTX_set_ssl_ctx$MH() {
+        return RuntimeHelper.requireNonNull(constants$21.SSL_CONF_CTX_set_ssl_ctx$MH,"SSL_CONF_CTX_set_ssl_ctx");
+    }
+    public static void SSL_CONF_CTX_set_ssl_ctx ( Addressable cctx,  Addressable ctx) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$21.SSL_CONF_CTX_set_ssl_ctx$MH, "SSL_CONF_CTX_set_ssl_ctx");
+        try {
+            mh$.invokeExact(cctx, ctx);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CONF_cmd$MH() {
+        return RuntimeHelper.requireNonNull(constants$21.SSL_CONF_cmd$MH,"SSL_CONF_cmd");
+    }
+    public static int SSL_CONF_cmd ( Addressable cctx,  Addressable cmd,  Addressable value) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$21.SSL_CONF_cmd$MH, "SSL_CONF_cmd");
+        try {
+            return (int)mh$.invokeExact(cctx, cmd, value);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle SSL_CONF_cmd_value_type$MH() {
+        return RuntimeHelper.requireNonNull(constants$21.SSL_CONF_cmd_value_type$MH,"SSL_CONF_cmd_value_type");
+    }
+    public static int SSL_CONF_cmd_value_type ( Addressable cctx,  Addressable cmd) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$21.SSL_CONF_cmd_value_type$MH, "SSL_CONF_cmd_value_type");
+        try {
+            return (int)mh$.invokeExact(cctx, cmd);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle OPENSSL_init_ssl$MH() {
+        return RuntimeHelper.requireNonNull(constants$21.OPENSSL_init_ssl$MH,"OPENSSL_init_ssl");
+    }
+    public static int OPENSSL_init_ssl ( long opts,  Addressable settings) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$21.OPENSSL_init_ssl$MH, "OPENSSL_init_ssl");
+        try {
+            return (int)mh$.invokeExact(opts, settings);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle ERR_get_error$MH() {
+        return RuntimeHelper.requireNonNull(constants$22.ERR_get_error$MH,"ERR_get_error");
+    }
+    public static long ERR_get_error () {
+        var mh$ = RuntimeHelper.requireNonNull(constants$22.ERR_get_error$MH, "ERR_get_error");
+        try {
+            return (long)mh$.invokeExact();
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle ERR_peek_last_error$MH() {
+        return RuntimeHelper.requireNonNull(constants$22.ERR_peek_last_error$MH,"ERR_peek_last_error");
+    }
+    public static long ERR_peek_last_error () {
+        var mh$ = RuntimeHelper.requireNonNull(constants$22.ERR_peek_last_error$MH, "ERR_peek_last_error");
+        try {
+            return (long)mh$.invokeExact();
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle ERR_clear_error$MH() {
+        return RuntimeHelper.requireNonNull(constants$22.ERR_clear_error$MH,"ERR_clear_error");
+    }
+    public static void ERR_clear_error () {
+        var mh$ = RuntimeHelper.requireNonNull(constants$22.ERR_clear_error$MH, "ERR_clear_error");
+        try {
+            mh$.invokeExact();
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle ERR_error_string$MH() {
+        return RuntimeHelper.requireNonNull(constants$22.ERR_error_string$MH,"ERR_error_string");
+    }
+    public static MemoryAddress ERR_error_string ( long e,  Addressable buf) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$22.ERR_error_string$MH, "ERR_error_string");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(e, buf);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle PKCS12_verify_mac$MH() {
+        return RuntimeHelper.requireNonNull(constants$22.PKCS12_verify_mac$MH,"PKCS12_verify_mac");
+    }
+    public static int PKCS12_verify_mac ( Addressable p12,  Addressable pass,  int passlen) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$22.PKCS12_verify_mac$MH, "PKCS12_verify_mac");
+        try {
+            return (int)mh$.invokeExact(p12, pass, passlen);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle PKCS12_free$MH() {
+        return RuntimeHelper.requireNonNull(constants$22.PKCS12_free$MH,"PKCS12_free");
+    }
+    public static void PKCS12_free ( Addressable a) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$22.PKCS12_free$MH, "PKCS12_free");
+        try {
+            mh$.invokeExact(a);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle PKCS12_parse$MH() {
+        return RuntimeHelper.requireNonNull(constants$23.PKCS12_parse$MH,"PKCS12_parse");
+    }
+    public static int PKCS12_parse ( Addressable p12,  Addressable pass,  Addressable pkey,  Addressable cert,  Addressable ca) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$23.PKCS12_parse$MH, "PKCS12_parse");
+        try {
+            return (int)mh$.invokeExact(p12, pass, pkey, cert, ca);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle d2i_PKCS12_bio$MH() {
+        return RuntimeHelper.requireNonNull(constants$23.d2i_PKCS12_bio$MH,"d2i_PKCS12_bio");
+    }
+    public static MemoryAddress d2i_PKCS12_bio ( Addressable bp,  Addressable p12) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$23.d2i_PKCS12_bio$MH, "d2i_PKCS12_bio");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bp, p12);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RAND_seed$MH() {
+        return RuntimeHelper.requireNonNull(constants$23.RAND_seed$MH,"RAND_seed");
+    }
+    public static void RAND_seed ( Addressable buf,  int num) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$23.RAND_seed$MH, "RAND_seed");
+        try {
+            mh$.invokeExact(buf, num);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle RAND_load_file$MH() {
+        return RuntimeHelper.requireNonNull(constants$23.RAND_load_file$MH,"RAND_load_file");
+    }
+    public static int RAND_load_file ( Addressable file,  long max_bytes) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$23.RAND_load_file$MH, "RAND_load_file");
+        try {
+            return (int)mh$.invokeExact(file, max_bytes);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle ENGINE_by_id$MH() {
+        return RuntimeHelper.requireNonNull(constants$23.ENGINE_by_id$MH,"ENGINE_by_id");
+    }
+    public static MemoryAddress ENGINE_by_id ( Addressable id) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$23.ENGINE_by_id$MH, "ENGINE_by_id");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(id);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle ENGINE_register_all_complete$MH() {
+        return RuntimeHelper.requireNonNull(constants$23.ENGINE_register_all_complete$MH,"ENGINE_register_all_complete");
+    }
+    public static int ENGINE_register_all_complete () {
+        var mh$ = RuntimeHelper.requireNonNull(constants$23.ENGINE_register_all_complete$MH, "ENGINE_register_all_complete");
+        try {
+            return (int)mh$.invokeExact();
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle ENGINE_ctrl_cmd_string$MH() {
+        return RuntimeHelper.requireNonNull(constants$24.ENGINE_ctrl_cmd_string$MH,"ENGINE_ctrl_cmd_string");
+    }
+    public static int ENGINE_ctrl_cmd_string ( Addressable e,  Addressable cmd_name,  Addressable arg,  int cmd_optional) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$24.ENGINE_ctrl_cmd_string$MH, "ENGINE_ctrl_cmd_string");
+        try {
+            return (int)mh$.invokeExact(e, cmd_name, arg, cmd_optional);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle ENGINE_free$MH() {
+        return RuntimeHelper.requireNonNull(constants$24.ENGINE_free$MH,"ENGINE_free");
+    }
+    public static int ENGINE_free ( Addressable e) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$24.ENGINE_free$MH, "ENGINE_free");
+        try {
+            return (int)mh$.invokeExact(e);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle ENGINE_load_private_key$MH() {
+        return RuntimeHelper.requireNonNull(constants$24.ENGINE_load_private_key$MH,"ENGINE_load_private_key");
+    }
+    public static MemoryAddress ENGINE_load_private_key ( Addressable e,  Addressable key_id,  Addressable ui_method,  Addressable callback_data) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$24.ENGINE_load_private_key$MH, "ENGINE_load_private_key");
+        try {
+            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(e, key_id, ui_method, callback_data);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle ENGINE_set_default$MH() {
+        return RuntimeHelper.requireNonNull(constants$24.ENGINE_set_default$MH,"ENGINE_set_default");
+    }
+    public static int ENGINE_set_default ( Addressable e,  int flags) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$24.ENGINE_set_default$MH, "ENGINE_set_default");
+        try {
+            return (int)mh$.invokeExact(e, flags);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static long OPENSSL_VERSION_NUMBER() {
+        return 269488335L;
+    }
+    public static MemorySegment OPENSSL_VERSION_TEXT() {
+        return constants$24.OPENSSL_VERSION_TEXT$SEGMENT;
+    }
+    public static MemorySegment SHLIB_VERSION_HISTORY() {
+        return constants$24.SHLIB_VERSION_HISTORY$SEGMENT;
+    }
+    public static MemorySegment SHLIB_VERSION_NUMBER() {
+        return constants$25.SHLIB_VERSION_NUMBER$SEGMENT;
+    }
+    public static MemorySegment OPENSSL_FILE() {
+        return constants$25.OPENSSL_FILE$SEGMENT;
+    }
+    public static int OPENSSL_LINE() {
+        return (int)32L;
+    }
+    public static int OPENSSL_API_COMPAT() {
+        return (int)0L;
+    }
+    public static long OPENSSL_INIT_ENGINE_ALL_BUILTIN() {
+        return 30208L;
+    }
+    public static int EVP_PKEY_NONE() {
+        return (int)0L;
+    }
+    public static int EVP_PKEY_RSA() {
+        return (int)6L;
+    }
+    public static int EVP_PKEY_DSA() {
+        return (int)116L;
+    }
+    public static MemorySegment SSL_TXT_DSS() {
+        return constants$25.SSL_TXT_DSS$SEGMENT;
+    }
+    public static MemorySegment SSL_TXT_DH() {
+        return constants$25.SSL_TXT_DH$SEGMENT;
+    }
+    public static MemorySegment SSL_TXT_RSA() {
+        return constants$25.SSL_TXT_RSA$SEGMENT;
+    }
+    public static MemorySegment SSL_TXT_ECDH() {
+        return constants$25.SSL_TXT_ECDH$SEGMENT;
+    }
+    public static MemorySegment SSL_TXT_ECDSA() {
+        return constants$26.SSL_TXT_ECDSA$SEGMENT;
+    }
+    public static int SSL_OP_NO_TICKET() {
+        return (int)16384L;
+    }
+    public static int SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION() {
+        return (int)65536L;
+    }
+    public static int SSL_OP_NO_COMPRESSION() {
+        return (int)131072L;
+    }
+    public static int SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION() {
+        return (int)262144L;
+    }
+    public static int SSL_OP_CIPHER_SERVER_PREFERENCE() {
+        return (int)4194304L;
+    }
+    public static int SSL_OP_NO_SSLv3() {
+        return (int)33554432L;
+    }
+    public static int SSL_OP_NO_TLSv1() {
+        return (int)67108864L;
+    }
+    public static int SSL_OP_NO_TLSv1_2() {
+        return (int)134217728L;
+    }
+    public static int SSL_OP_NO_TLSv1_1() {
+        return (int)268435456L;
+    }
+    public static int SSL_OP_NO_TLSv1_3() {
+        return (int)536870912L;
+    }
+    public static int SSL_OP_ALL() {
+        return (int)2147485780L;
+    }
+    public static int ENGINE_METHOD_ALL() {
+        return (int)65535L;
     }
 }
 

@@ -9,54 +9,60 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$8 {
 
-    static final FunctionDescriptor lcong48$FUNC = FunctionDescriptor.ofVoid(
-        ADDRESS
-    );
-    static final MethodHandle lcong48$MH = RuntimeHelper.downcallHandle(
-        "lcong48",
-        constants$8.lcong48$FUNC, false
-    );
-    static final FunctionDescriptor drand48_r$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor i2d_X509$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
         ADDRESS
     );
-    static final MethodHandle drand48_r$MH = RuntimeHelper.downcallHandle(
-        "drand48_r",
-        constants$8.drand48_r$FUNC, false
+    static final MethodHandle i2d_X509$MH = RuntimeHelper.downcallHandle(
+        "i2d_X509",
+        constants$8.i2d_X509$FUNC, false
     );
-    static final FunctionDescriptor erand48_r$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor PEM_read_bio_X509_AUX$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS,
         ADDRESS,
         ADDRESS,
         ADDRESS
     );
-    static final MethodHandle erand48_r$MH = RuntimeHelper.downcallHandle(
-        "erand48_r",
-        constants$8.erand48_r$FUNC, false
+    static final MethodHandle PEM_read_bio_X509_AUX$MH = RuntimeHelper.downcallHandle(
+        "PEM_read_bio_X509_AUX",
+        constants$8.PEM_read_bio_X509_AUX$FUNC, false
     );
-    static final FunctionDescriptor lrand48_r$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor PEM_read_bio_ECPKParameters$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle lrand48_r$MH = RuntimeHelper.downcallHandle(
-        "lrand48_r",
-        constants$8.lrand48_r$FUNC, false
-    );
-    static final FunctionDescriptor nrand48_r$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
         ADDRESS,
         ADDRESS
     );
-    static final MethodHandle nrand48_r$MH = RuntimeHelper.downcallHandle(
-        "nrand48_r",
-        constants$8.nrand48_r$FUNC, false
+    static final MethodHandle PEM_read_bio_ECPKParameters$MH = RuntimeHelper.downcallHandle(
+        "PEM_read_bio_ECPKParameters",
+        constants$8.PEM_read_bio_ECPKParameters$FUNC, false
     );
-    static final FunctionDescriptor mrand48_r$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor PEM_read_bio_DHparams$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS,
+        ADDRESS,
         ADDRESS,
         ADDRESS
     );
-    static final MethodHandle mrand48_r$MH = RuntimeHelper.downcallHandle(
-        "mrand48_r",
-        constants$8.mrand48_r$FUNC, false
+    static final MethodHandle PEM_read_bio_DHparams$MH = RuntimeHelper.downcallHandle(
+        "PEM_read_bio_DHparams",
+        constants$8.PEM_read_bio_DHparams$FUNC, false
+    );
+    static final FunctionDescriptor PEM_read_bio_PrivateKey$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS,
+        ADDRESS,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle PEM_read_bio_PrivateKey$MH = RuntimeHelper.downcallHandle(
+        "PEM_read_bio_PrivateKey",
+        constants$8.PEM_read_bio_PrivateKey$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CTX_get_options$FUNC = FunctionDescriptor.of(JAVA_LONG,
+        ADDRESS
+    );
+    static final MethodHandle SSL_CTX_get_options$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_get_options",
+        constants$8.SSL_CTX_get_options$FUNC, false
     );
 }
 

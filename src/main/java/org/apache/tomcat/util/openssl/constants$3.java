@@ -9,49 +9,47 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$3 {
 
-    static final FunctionDescriptor strtoull$FUNC = FunctionDescriptor.of(JAVA_LONG,
-        ADDRESS,
-        ADDRESS,
-        JAVA_INT
-    );
-    static final MethodHandle strtoull$MH = RuntimeHelper.downcallHandle(
-        "strtoull",
-        constants$3.strtoull$FUNC, false
-    );
-    static final FunctionDescriptor l64a$FUNC = FunctionDescriptor.of(ADDRESS,
-        JAVA_LONG
-    );
-    static final MethodHandle l64a$MH = RuntimeHelper.downcallHandle(
-        "l64a",
-        constants$3.l64a$FUNC, false
-    );
-    static final FunctionDescriptor a64l$FUNC = FunctionDescriptor.of(JAVA_LONG,
+    static final FunctionDescriptor BN_get_rfc2409_prime_768$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS
     );
-    static final MethodHandle a64l$MH = RuntimeHelper.downcallHandle(
-        "a64l",
-        constants$3.a64l$FUNC, false
+    static final MethodHandle BN_get_rfc2409_prime_768$MH = RuntimeHelper.downcallHandle(
+        "BN_get_rfc2409_prime_768",
+        constants$3.BN_get_rfc2409_prime_768$FUNC, false
     );
-    static final FunctionDescriptor __bswap_16$FUNC = FunctionDescriptor.of(JAVA_SHORT,
-        JAVA_SHORT
+    static final FunctionDescriptor BN_get_rfc2409_prime_1024$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
     );
-    static final MethodHandle __bswap_16$MH = RuntimeHelper.downcallHandle(
-        "__bswap_16",
-        constants$3.__bswap_16$FUNC, false
+    static final MethodHandle BN_get_rfc2409_prime_1024$MH = RuntimeHelper.downcallHandle(
+        "BN_get_rfc2409_prime_1024",
+        constants$3.BN_get_rfc2409_prime_1024$FUNC, false
     );
-    static final FunctionDescriptor __bswap_32$FUNC = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT
+    static final FunctionDescriptor BN_get_rfc3526_prime_1536$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
     );
-    static final MethodHandle __bswap_32$MH = RuntimeHelper.downcallHandle(
-        "__bswap_32",
-        constants$3.__bswap_32$FUNC, false
+    static final MethodHandle BN_get_rfc3526_prime_1536$MH = RuntimeHelper.downcallHandle(
+        "BN_get_rfc3526_prime_1536",
+        constants$3.BN_get_rfc3526_prime_1536$FUNC, false
     );
-    static final FunctionDescriptor __bswap_64$FUNC = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG
+    static final FunctionDescriptor BN_get_rfc3526_prime_2048$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
     );
-    static final MethodHandle __bswap_64$MH = RuntimeHelper.downcallHandle(
-        "__bswap_64",
-        constants$3.__bswap_64$FUNC, false
+    static final MethodHandle BN_get_rfc3526_prime_2048$MH = RuntimeHelper.downcallHandle(
+        "BN_get_rfc3526_prime_2048",
+        constants$3.BN_get_rfc3526_prime_2048$FUNC, false
+    );
+    static final FunctionDescriptor BN_get_rfc3526_prime_3072$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle BN_get_rfc3526_prime_3072$MH = RuntimeHelper.downcallHandle(
+        "BN_get_rfc3526_prime_3072",
+        constants$3.BN_get_rfc3526_prime_3072$FUNC, false
+    );
+    static final FunctionDescriptor BN_get_rfc3526_prime_4096$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle BN_get_rfc3526_prime_4096$MH = RuntimeHelper.downcallHandle(
+        "BN_get_rfc3526_prime_4096",
+        constants$3.BN_get_rfc3526_prime_4096$FUNC, false
     );
 }
 

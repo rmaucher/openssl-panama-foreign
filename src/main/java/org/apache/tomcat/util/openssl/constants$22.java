@@ -9,37 +9,44 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$22 {
 
-    static final FunctionDescriptor tzset$FUNC = FunctionDescriptor.ofVoid();
-    static final MethodHandle tzset$MH = RuntimeHelper.downcallHandle(
-        "tzset",
-        constants$22.tzset$FUNC, false
+    static final FunctionDescriptor ERR_get_error$FUNC = FunctionDescriptor.of(JAVA_LONG);
+    static final MethodHandle ERR_get_error$MH = RuntimeHelper.downcallHandle(
+        "ERR_get_error",
+        constants$22.ERR_get_error$FUNC, false
     );
-    static final MemoryLayout daylight$LAYOUT = JAVA_INT;
-    static final VarHandle daylight$VH = constants$22.daylight$LAYOUT.varHandle();
-    static final MemorySegment daylight$SEGMENT = RuntimeHelper.lookupGlobalVariable("daylight", constants$22.daylight$LAYOUT);
-    static final MemoryLayout timezone$LAYOUT = JAVA_LONG;
-    static final VarHandle timezone$VH = constants$22.timezone$LAYOUT.varHandle();
-    static final MemorySegment timezone$SEGMENT = RuntimeHelper.lookupGlobalVariable("timezone", constants$22.timezone$LAYOUT);
-    static final FunctionDescriptor timegm$FUNC = FunctionDescriptor.of(JAVA_LONG,
+    static final FunctionDescriptor ERR_peek_last_error$FUNC = FunctionDescriptor.of(JAVA_LONG);
+    static final MethodHandle ERR_peek_last_error$MH = RuntimeHelper.downcallHandle(
+        "ERR_peek_last_error",
+        constants$22.ERR_peek_last_error$FUNC, false
+    );
+    static final FunctionDescriptor ERR_clear_error$FUNC = FunctionDescriptor.ofVoid();
+    static final MethodHandle ERR_clear_error$MH = RuntimeHelper.downcallHandle(
+        "ERR_clear_error",
+        constants$22.ERR_clear_error$FUNC, false
+    );
+    static final FunctionDescriptor ERR_error_string$FUNC = FunctionDescriptor.of(ADDRESS,
+        JAVA_LONG,
         ADDRESS
     );
-    static final MethodHandle timegm$MH = RuntimeHelper.downcallHandle(
-        "timegm",
-        constants$22.timegm$FUNC, false
+    static final MethodHandle ERR_error_string$MH = RuntimeHelper.downcallHandle(
+        "ERR_error_string",
+        constants$22.ERR_error_string$FUNC, false
     );
-    static final FunctionDescriptor timelocal$FUNC = FunctionDescriptor.of(JAVA_LONG,
-        ADDRESS
-    );
-    static final MethodHandle timelocal$MH = RuntimeHelper.downcallHandle(
-        "timelocal",
-        constants$22.timelocal$FUNC, false
-    );
-    static final FunctionDescriptor dysize$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor PKCS12_verify_mac$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS,
         JAVA_INT
     );
-    static final MethodHandle dysize$MH = RuntimeHelper.downcallHandle(
-        "dysize",
-        constants$22.dysize$FUNC, false
+    static final MethodHandle PKCS12_verify_mac$MH = RuntimeHelper.downcallHandle(
+        "PKCS12_verify_mac",
+        constants$22.PKCS12_verify_mac$FUNC, false
+    );
+    static final FunctionDescriptor PKCS12_free$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS
+    );
+    static final MethodHandle PKCS12_free$MH = RuntimeHelper.downcallHandle(
+        "PKCS12_free",
+        constants$22.PKCS12_free$FUNC, false
     );
 }
 

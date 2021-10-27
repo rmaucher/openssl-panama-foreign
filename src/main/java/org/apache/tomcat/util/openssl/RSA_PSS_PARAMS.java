@@ -7,7 +7,7 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
-public class RSA_PSS_PARAMS extends rsa_pss_params_st {
+public class RSA_PSS_PARAMS {
 
 }
 

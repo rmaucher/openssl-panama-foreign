@@ -9,54 +9,49 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$5 {
 
-    static final FunctionDescriptor srandom$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor EC_KEY_new_by_curve_name$FUNC = FunctionDescriptor.of(ADDRESS,
         JAVA_INT
     );
-    static final MethodHandle srandom$MH = RuntimeHelper.downcallHandle(
-        "srandom",
-        constants$5.srandom$FUNC, false
+    static final MethodHandle EC_KEY_new_by_curve_name$MH = RuntimeHelper.downcallHandle(
+        "EC_KEY_new_by_curve_name",
+        constants$5.EC_KEY_new_by_curve_name$FUNC, false
     );
-    static final FunctionDescriptor initstate$FUNC = FunctionDescriptor.of(ADDRESS,
-        JAVA_INT,
+    static final FunctionDescriptor EC_KEY_free$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS
+    );
+    static final MethodHandle EC_KEY_free$MH = RuntimeHelper.downcallHandle(
+        "EC_KEY_free",
+        constants$5.EC_KEY_free$FUNC, false
+    );
+    static final FunctionDescriptor DH_new$FUNC = FunctionDescriptor.of(ADDRESS);
+    static final MethodHandle DH_new$MH = RuntimeHelper.downcallHandle(
+        "DH_new",
+        constants$5.DH_new$FUNC, false
+    );
+    static final FunctionDescriptor DH_free$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS
+    );
+    static final MethodHandle DH_free$MH = RuntimeHelper.downcallHandle(
+        "DH_free",
+        constants$5.DH_free$FUNC, false
+    );
+    static final FunctionDescriptor DH_set0_pqg$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle DH_set0_pqg$MH = RuntimeHelper.downcallHandle(
+        "DH_set0_pqg",
+        constants$5.DH_set0_pqg$FUNC, false
+    );
+    static final FunctionDescriptor X509_STORE_set_flags$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
         JAVA_LONG
     );
-    static final MethodHandle initstate$MH = RuntimeHelper.downcallHandle(
-        "initstate",
-        constants$5.initstate$FUNC, false
-    );
-    static final FunctionDescriptor setstate$FUNC = FunctionDescriptor.of(ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle setstate$MH = RuntimeHelper.downcallHandle(
-        "setstate",
-        constants$5.setstate$FUNC, false
-    );
-    static final FunctionDescriptor random_r$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle random_r$MH = RuntimeHelper.downcallHandle(
-        "random_r",
-        constants$5.random_r$FUNC, false
-    );
-    static final FunctionDescriptor srandom_r$FUNC = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
-        ADDRESS
-    );
-    static final MethodHandle srandom_r$MH = RuntimeHelper.downcallHandle(
-        "srandom_r",
-        constants$5.srandom_r$FUNC, false
-    );
-    static final FunctionDescriptor initstate_r$FUNC = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
-        ADDRESS,
-        JAVA_LONG,
-        ADDRESS
-    );
-    static final MethodHandle initstate_r$MH = RuntimeHelper.downcallHandle(
-        "initstate_r",
-        constants$5.initstate_r$FUNC, false
+    static final MethodHandle X509_STORE_set_flags$MH = RuntimeHelper.downcallHandle(
+        "X509_STORE_set_flags",
+        constants$5.X509_STORE_set_flags$FUNC, false
     );
 }
 

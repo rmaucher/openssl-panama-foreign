@@ -9,46 +9,50 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1 {
 
-    static final FunctionDescriptor __ctype_get_mb_cur_max$FUNC = FunctionDescriptor.of(JAVA_LONG);
-    static final MethodHandle __ctype_get_mb_cur_max$MH = RuntimeHelper.downcallHandle(
-        "__ctype_get_mb_cur_max",
-        constants$1.__ctype_get_mb_cur_max$FUNC, false
+    static final FunctionDescriptor BIO_s_file$FUNC = FunctionDescriptor.of(ADDRESS);
+    static final MethodHandle BIO_s_file$MH = RuntimeHelper.downcallHandle(
+        "BIO_s_file",
+        constants$1.BIO_s_file$FUNC, false
     );
-    static final FunctionDescriptor atof$FUNC = FunctionDescriptor.of(JAVA_DOUBLE,
-        ADDRESS
-    );
-    static final MethodHandle atof$MH = RuntimeHelper.downcallHandle(
-        "atof",
-        constants$1.atof$FUNC, false
-    );
-    static final FunctionDescriptor atoi$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS
-    );
-    static final MethodHandle atoi$MH = RuntimeHelper.downcallHandle(
-        "atoi",
-        constants$1.atoi$FUNC, false
-    );
-    static final FunctionDescriptor atol$FUNC = FunctionDescriptor.of(JAVA_LONG,
-        ADDRESS
-    );
-    static final MethodHandle atol$MH = RuntimeHelper.downcallHandle(
-        "atol",
-        constants$1.atol$FUNC, false
-    );
-    static final FunctionDescriptor atoll$FUNC = FunctionDescriptor.of(JAVA_LONG,
-        ADDRESS
-    );
-    static final MethodHandle atoll$MH = RuntimeHelper.downcallHandle(
-        "atoll",
-        constants$1.atoll$FUNC, false
-    );
-    static final FunctionDescriptor strtod$FUNC = FunctionDescriptor.of(JAVA_DOUBLE,
+    static final FunctionDescriptor BIO_new_file$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS,
         ADDRESS
     );
-    static final MethodHandle strtod$MH = RuntimeHelper.downcallHandle(
-        "strtod",
-        constants$1.strtod$FUNC, false
+    static final MethodHandle BIO_new_file$MH = RuntimeHelper.downcallHandle(
+        "BIO_new_file",
+        constants$1.BIO_new_file$FUNC, false
+    );
+    static final FunctionDescriptor BIO_new$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle BIO_new$MH = RuntimeHelper.downcallHandle(
+        "BIO_new",
+        constants$1.BIO_new$FUNC, false
+    );
+    static final FunctionDescriptor BIO_free$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS
+    );
+    static final MethodHandle BIO_free$MH = RuntimeHelper.downcallHandle(
+        "BIO_free",
+        constants$1.BIO_free$FUNC, false
+    );
+    static final FunctionDescriptor BIO_read$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS,
+        JAVA_INT
+    );
+    static final MethodHandle BIO_read$MH = RuntimeHelper.downcallHandle(
+        "BIO_read",
+        constants$1.BIO_read$FUNC, false
+    );
+    static final FunctionDescriptor BIO_write$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS,
+        JAVA_INT
+    );
+    static final MethodHandle BIO_write$MH = RuntimeHelper.downcallHandle(
+        "BIO_write",
+        constants$1.BIO_write$FUNC, false
     );
 }
 

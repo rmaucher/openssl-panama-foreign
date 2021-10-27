@@ -9,53 +9,54 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$9 {
 
-    static final FunctionDescriptor jrand48_r$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
-        ADDRESS,
+    static final FunctionDescriptor SSL_get_options$FUNC = FunctionDescriptor.of(JAVA_LONG,
         ADDRESS
     );
-    static final MethodHandle jrand48_r$MH = RuntimeHelper.downcallHandle(
-        "jrand48_r",
-        constants$9.jrand48_r$FUNC, false
+    static final MethodHandle SSL_get_options$MH = RuntimeHelper.downcallHandle(
+        "SSL_get_options",
+        constants$9.SSL_get_options$FUNC, false
     );
-    static final FunctionDescriptor srand48_r$FUNC = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        ADDRESS
-    );
-    static final MethodHandle srand48_r$MH = RuntimeHelper.downcallHandle(
-        "srand48_r",
-        constants$9.srand48_r$FUNC, false
-    );
-    static final FunctionDescriptor seed48_r$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor SSL_CTX_clear_options$FUNC = FunctionDescriptor.of(JAVA_LONG,
         ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle seed48_r$MH = RuntimeHelper.downcallHandle(
-        "seed48_r",
-        constants$9.seed48_r$FUNC, false
-    );
-    static final FunctionDescriptor lcong48_r$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle lcong48_r$MH = RuntimeHelper.downcallHandle(
-        "lcong48_r",
-        constants$9.lcong48_r$FUNC, false
-    );
-    static final FunctionDescriptor malloc$FUNC = FunctionDescriptor.of(ADDRESS,
         JAVA_LONG
     );
-    static final MethodHandle malloc$MH = RuntimeHelper.downcallHandle(
-        "malloc",
-        constants$9.malloc$FUNC, false
+    static final MethodHandle SSL_CTX_clear_options$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_clear_options",
+        constants$9.SSL_CTX_clear_options$FUNC, false
     );
-    static final FunctionDescriptor calloc$FUNC = FunctionDescriptor.of(ADDRESS,
-        JAVA_LONG,
+    static final FunctionDescriptor SSL_CTX_set_options$FUNC = FunctionDescriptor.of(JAVA_LONG,
+        ADDRESS,
         JAVA_LONG
     );
-    static final MethodHandle calloc$MH = RuntimeHelper.downcallHandle(
-        "calloc",
-        constants$9.calloc$FUNC, false
+    static final MethodHandle SSL_CTX_set_options$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_set_options",
+        constants$9.SSL_CTX_set_options$FUNC, false
+    );
+    static final FunctionDescriptor SSL_set_options$FUNC = FunctionDescriptor.of(JAVA_LONG,
+        ADDRESS,
+        JAVA_LONG
+    );
+    static final MethodHandle SSL_set_options$MH = RuntimeHelper.downcallHandle(
+        "SSL_set_options",
+        constants$9.SSL_set_options$FUNC, false
+    );
+    static final FunctionDescriptor SSL_get0_next_proto_negotiated$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_get0_next_proto_negotiated$MH = RuntimeHelper.downcallHandle(
+        "SSL_get0_next_proto_negotiated",
+        constants$9.SSL_get0_next_proto_negotiated$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CTX_set_alpn_select_cb$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_CTX_set_alpn_select_cb$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_set_alpn_select_cb",
+        constants$9.SSL_CTX_set_alpn_select_cb$FUNC, false
     );
 }
 

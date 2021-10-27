@@ -7,7 +7,7 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
-public class X509V3_CTX extends v3_ext_ctx {
+public class X509V3_CTX {
 
 }
 

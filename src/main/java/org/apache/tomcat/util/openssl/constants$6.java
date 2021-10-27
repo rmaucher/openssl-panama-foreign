@@ -9,44 +9,49 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$6 {
 
-    static final FunctionDescriptor setstate_r$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor X509_STORE_CTX_get0_untrusted$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle X509_STORE_CTX_get0_untrusted$MH = RuntimeHelper.downcallHandle(
+        "X509_STORE_CTX_get0_untrusted",
+        constants$6.X509_STORE_CTX_get0_untrusted$FUNC, false
+    );
+    static final FunctionDescriptor X509_STORE_add_lookup$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS,
         ADDRESS
     );
-    static final MethodHandle setstate_r$MH = RuntimeHelper.downcallHandle(
-        "setstate_r",
-        constants$6.setstate_r$FUNC, false
+    static final MethodHandle X509_STORE_add_lookup$MH = RuntimeHelper.downcallHandle(
+        "X509_STORE_add_lookup",
+        constants$6.X509_STORE_add_lookup$FUNC, false
     );
-    static final FunctionDescriptor rand$FUNC = FunctionDescriptor.of(JAVA_INT);
-    static final MethodHandle rand$MH = RuntimeHelper.downcallHandle(
-        "rand",
-        constants$6.rand$FUNC, false
+    static final FunctionDescriptor X509_LOOKUP_hash_dir$FUNC = FunctionDescriptor.of(ADDRESS);
+    static final MethodHandle X509_LOOKUP_hash_dir$MH = RuntimeHelper.downcallHandle(
+        "X509_LOOKUP_hash_dir",
+        constants$6.X509_LOOKUP_hash_dir$FUNC, false
     );
-    static final FunctionDescriptor srand$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor X509_LOOKUP_file$FUNC = FunctionDescriptor.of(ADDRESS);
+    static final MethodHandle X509_LOOKUP_file$MH = RuntimeHelper.downcallHandle(
+        "X509_LOOKUP_file",
+        constants$6.X509_LOOKUP_file$FUNC, false
+    );
+    static final FunctionDescriptor X509_LOOKUP_ctrl$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        JAVA_INT,
+        ADDRESS,
+        JAVA_LONG,
+        ADDRESS
+    );
+    static final MethodHandle X509_LOOKUP_ctrl$MH = RuntimeHelper.downcallHandle(
+        "X509_LOOKUP_ctrl",
+        constants$6.X509_LOOKUP_ctrl$FUNC, false
+    );
+    static final FunctionDescriptor X509_STORE_CTX_get_ex_data$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS,
         JAVA_INT
     );
-    static final MethodHandle srand$MH = RuntimeHelper.downcallHandle(
-        "srand",
-        constants$6.srand$FUNC, false
-    );
-    static final FunctionDescriptor rand_r$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS
-    );
-    static final MethodHandle rand_r$MH = RuntimeHelper.downcallHandle(
-        "rand_r",
-        constants$6.rand_r$FUNC, false
-    );
-    static final FunctionDescriptor drand48$FUNC = FunctionDescriptor.of(JAVA_DOUBLE);
-    static final MethodHandle drand48$MH = RuntimeHelper.downcallHandle(
-        "drand48",
-        constants$6.drand48$FUNC, false
-    );
-    static final FunctionDescriptor erand48$FUNC = FunctionDescriptor.of(JAVA_DOUBLE,
-        ADDRESS
-    );
-    static final MethodHandle erand48$MH = RuntimeHelper.downcallHandle(
-        "erand48",
-        constants$6.erand48$FUNC, false
+    static final MethodHandle X509_STORE_CTX_get_ex_data$MH = RuntimeHelper.downcallHandle(
+        "X509_STORE_CTX_get_ex_data",
+        constants$6.X509_STORE_CTX_get_ex_data$FUNC, false
     );
 }
 

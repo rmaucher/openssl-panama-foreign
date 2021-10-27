@@ -7,7 +7,7 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
-public class ASN1_GENERALSTRING extends asn1_string_st {
+public class ASN1_GENERALSTRING {
 
 }
 

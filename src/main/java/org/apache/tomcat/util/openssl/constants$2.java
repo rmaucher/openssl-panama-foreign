@@ -9,58 +9,48 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$2 {
 
-    static final FunctionDescriptor strtof$FUNC = FunctionDescriptor.of(JAVA_FLOAT,
+    static final FunctionDescriptor BIO_ctrl$FUNC = FunctionDescriptor.of(JAVA_LONG,
         ADDRESS,
+        JAVA_INT,
+        JAVA_LONG,
         ADDRESS
     );
-    static final MethodHandle strtof$MH = RuntimeHelper.downcallHandle(
-        "strtof",
-        constants$2.strtof$FUNC, false
+    static final MethodHandle BIO_ctrl$MH = RuntimeHelper.downcallHandle(
+        "BIO_ctrl",
+        constants$2.BIO_ctrl$FUNC, false
     );
-    static final FunctionDescriptor strtol$FUNC = FunctionDescriptor.of(JAVA_LONG,
-        ADDRESS,
-        ADDRESS,
-        JAVA_INT
+    static final FunctionDescriptor BIO_s_mem$FUNC = FunctionDescriptor.of(ADDRESS);
+    static final MethodHandle BIO_s_mem$MH = RuntimeHelper.downcallHandle(
+        "BIO_s_mem",
+        constants$2.BIO_s_mem$FUNC, false
     );
-    static final MethodHandle strtol$MH = RuntimeHelper.downcallHandle(
-        "strtol",
-        constants$2.strtol$FUNC, false
+    static final FunctionDescriptor BIO_s_bio$FUNC = FunctionDescriptor.of(ADDRESS);
+    static final MethodHandle BIO_s_bio$MH = RuntimeHelper.downcallHandle(
+        "BIO_s_bio",
+        constants$2.BIO_s_bio$FUNC, false
     );
-    static final FunctionDescriptor strtoul$FUNC = FunctionDescriptor.of(JAVA_LONG,
+    static final FunctionDescriptor BIO_new_bio_pair$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
+        JAVA_LONG,
         ADDRESS,
-        JAVA_INT
+        JAVA_LONG
     );
-    static final MethodHandle strtoul$MH = RuntimeHelper.downcallHandle(
-        "strtoul",
-        constants$2.strtoul$FUNC, false
+    static final MethodHandle BIO_new_bio_pair$MH = RuntimeHelper.downcallHandle(
+        "BIO_new_bio_pair",
+        constants$2.BIO_new_bio_pair$FUNC, false
     );
-    static final FunctionDescriptor strtoq$FUNC = FunctionDescriptor.of(JAVA_LONG,
-        ADDRESS,
-        ADDRESS,
-        JAVA_INT
+    static final FunctionDescriptor BN_new$FUNC = FunctionDescriptor.of(ADDRESS);
+    static final MethodHandle BN_new$MH = RuntimeHelper.downcallHandle(
+        "BN_new",
+        constants$2.BN_new$FUNC, false
     );
-    static final MethodHandle strtoq$MH = RuntimeHelper.downcallHandle(
-        "strtoq",
-        constants$2.strtoq$FUNC, false
-    );
-    static final FunctionDescriptor strtouq$FUNC = FunctionDescriptor.of(JAVA_LONG,
+    static final FunctionDescriptor BN_set_word$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
-        ADDRESS,
-        JAVA_INT
+        JAVA_LONG
     );
-    static final MethodHandle strtouq$MH = RuntimeHelper.downcallHandle(
-        "strtouq",
-        constants$2.strtouq$FUNC, false
-    );
-    static final FunctionDescriptor strtoll$FUNC = FunctionDescriptor.of(JAVA_LONG,
-        ADDRESS,
-        ADDRESS,
-        JAVA_INT
-    );
-    static final MethodHandle strtoll$MH = RuntimeHelper.downcallHandle(
-        "strtoll",
-        constants$2.strtoll$FUNC, false
+    static final MethodHandle BN_set_word$MH = RuntimeHelper.downcallHandle(
+        "BN_set_word",
+        constants$2.BN_set_word$FUNC, false
     );
 }
 

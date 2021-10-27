@@ -9,55 +9,52 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$23 {
 
-    static final FunctionDescriptor nanosleep$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor PKCS12_parse$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS,
+        ADDRESS,
         ADDRESS,
         ADDRESS
     );
-    static final MethodHandle nanosleep$MH = RuntimeHelper.downcallHandle(
-        "nanosleep",
-        constants$23.nanosleep$FUNC, false
+    static final MethodHandle PKCS12_parse$MH = RuntimeHelper.downcallHandle(
+        "PKCS12_parse",
+        constants$23.PKCS12_parse$FUNC, false
     );
-    static final FunctionDescriptor clock_getres$FUNC = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
-        ADDRESS
-    );
-    static final MethodHandle clock_getres$MH = RuntimeHelper.downcallHandle(
-        "clock_getres",
-        constants$23.clock_getres$FUNC, false
-    );
-    static final FunctionDescriptor clock_gettime$FUNC = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
-        ADDRESS
-    );
-    static final MethodHandle clock_gettime$MH = RuntimeHelper.downcallHandle(
-        "clock_gettime",
-        constants$23.clock_gettime$FUNC, false
-    );
-    static final FunctionDescriptor clock_settime$FUNC = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
-        ADDRESS
-    );
-    static final MethodHandle clock_settime$MH = RuntimeHelper.downcallHandle(
-        "clock_settime",
-        constants$23.clock_settime$FUNC, false
-    );
-    static final FunctionDescriptor clock_nanosleep$FUNC = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
+    static final FunctionDescriptor d2i_PKCS12_bio$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS,
         ADDRESS
     );
-    static final MethodHandle clock_nanosleep$MH = RuntimeHelper.downcallHandle(
-        "clock_nanosleep",
-        constants$23.clock_nanosleep$FUNC, false
+    static final MethodHandle d2i_PKCS12_bio$MH = RuntimeHelper.downcallHandle(
+        "d2i_PKCS12_bio",
+        constants$23.d2i_PKCS12_bio$FUNC, false
     );
-    static final FunctionDescriptor clock_getcpuclockid$FUNC = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
+    static final FunctionDescriptor RAND_seed$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS,
+        JAVA_INT
+    );
+    static final MethodHandle RAND_seed$MH = RuntimeHelper.downcallHandle(
+        "RAND_seed",
+        constants$23.RAND_seed$FUNC, false
+    );
+    static final FunctionDescriptor RAND_load_file$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        JAVA_LONG
+    );
+    static final MethodHandle RAND_load_file$MH = RuntimeHelper.downcallHandle(
+        "RAND_load_file",
+        constants$23.RAND_load_file$FUNC, false
+    );
+    static final FunctionDescriptor ENGINE_by_id$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS
     );
-    static final MethodHandle clock_getcpuclockid$MH = RuntimeHelper.downcallHandle(
-        "clock_getcpuclockid",
-        constants$23.clock_getcpuclockid$FUNC, false
+    static final MethodHandle ENGINE_by_id$MH = RuntimeHelper.downcallHandle(
+        "ENGINE_by_id",
+        constants$23.ENGINE_by_id$FUNC, false
+    );
+    static final FunctionDescriptor ENGINE_register_all_complete$FUNC = FunctionDescriptor.of(JAVA_INT);
+    static final MethodHandle ENGINE_register_all_complete$MH = RuntimeHelper.downcallHandle(
+        "ENGINE_register_all_complete",
+        constants$23.ENGINE_register_all_complete$FUNC, false
     );
 }
 

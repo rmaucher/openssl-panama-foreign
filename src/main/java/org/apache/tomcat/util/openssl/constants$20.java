@@ -9,49 +9,38 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$20 {
 
-    static final FunctionDescriptor gmtime$FUNC = FunctionDescriptor.of(ADDRESS,
-        ADDRESS
+    static final FunctionDescriptor SSL_get_ex_data_X509_STORE_CTX_idx$FUNC = FunctionDescriptor.of(JAVA_INT);
+    static final MethodHandle SSL_get_ex_data_X509_STORE_CTX_idx$MH = RuntimeHelper.downcallHandle(
+        "SSL_get_ex_data_X509_STORE_CTX_idx",
+        constants$20.SSL_get_ex_data_X509_STORE_CTX_idx$FUNC, false
     );
-    static final MethodHandle gmtime$MH = RuntimeHelper.downcallHandle(
-        "gmtime",
-        constants$20.gmtime$FUNC, false
+    static final FunctionDescriptor SSL_CTX_set_tmp_dh_callback$dh$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS,
+        JAVA_INT,
+        JAVA_INT
     );
-    static final FunctionDescriptor localtime$FUNC = FunctionDescriptor.of(ADDRESS,
-        ADDRESS
+    static final MethodHandle SSL_CTX_set_tmp_dh_callback$dh$MH = RuntimeHelper.downcallHandle(
+        constants$20.SSL_CTX_set_tmp_dh_callback$dh$FUNC, false
     );
-    static final MethodHandle localtime$MH = RuntimeHelper.downcallHandle(
-        "localtime",
-        constants$20.localtime$FUNC, false
-    );
-    static final FunctionDescriptor gmtime_r$FUNC = FunctionDescriptor.of(ADDRESS,
+    static final FunctionDescriptor SSL_CTX_set_tmp_dh_callback$FUNC = FunctionDescriptor.ofVoid(
         ADDRESS,
         ADDRESS
     );
-    static final MethodHandle gmtime_r$MH = RuntimeHelper.downcallHandle(
-        "gmtime_r",
-        constants$20.gmtime_r$FUNC, false
+    static final MethodHandle SSL_CTX_set_tmp_dh_callback$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_set_tmp_dh_callback",
+        constants$20.SSL_CTX_set_tmp_dh_callback$FUNC, false
     );
-    static final FunctionDescriptor localtime_r$FUNC = FunctionDescriptor.of(ADDRESS,
-        ADDRESS,
+    static final FunctionDescriptor SSL_CONF_CTX_new$FUNC = FunctionDescriptor.of(ADDRESS);
+    static final MethodHandle SSL_CONF_CTX_new$MH = RuntimeHelper.downcallHandle(
+        "SSL_CONF_CTX_new",
+        constants$20.SSL_CONF_CTX_new$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CONF_CTX_finish$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS
     );
-    static final MethodHandle localtime_r$MH = RuntimeHelper.downcallHandle(
-        "localtime_r",
-        constants$20.localtime_r$FUNC, false
-    );
-    static final FunctionDescriptor asctime$FUNC = FunctionDescriptor.of(ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle asctime$MH = RuntimeHelper.downcallHandle(
-        "asctime",
-        constants$20.asctime$FUNC, false
-    );
-    static final FunctionDescriptor ctime$FUNC = FunctionDescriptor.of(ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle ctime$MH = RuntimeHelper.downcallHandle(
-        "ctime",
-        constants$20.ctime$FUNC, false
+    static final MethodHandle SSL_CONF_CTX_finish$MH = RuntimeHelper.downcallHandle(
+        "SSL_CONF_CTX_finish",
+        constants$20.SSL_CONF_CTX_finish$FUNC, false
     );
 }
 

@@ -9,62 +9,48 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$16 {
 
-    static final FunctionDescriptor labs$FUNC = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG
-    );
-    static final MethodHandle labs$MH = RuntimeHelper.downcallHandle(
-        "labs",
-        constants$16.labs$FUNC, false
-    );
-    static final FunctionDescriptor llabs$FUNC = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG
-    );
-    static final MethodHandle llabs$MH = RuntimeHelper.downcallHandle(
-        "llabs",
-        constants$16.llabs$FUNC, false
-    );
-    static final FunctionDescriptor div$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        JAVA_INT.withName("quot"),
-        JAVA_INT.withName("rem")
-    ),
-        JAVA_INT,
-        JAVA_INT
-    );
-    static final MethodHandle div$MH = RuntimeHelper.downcallHandle(
-        "div",
-        constants$16.div$FUNC, false
-    );
-    static final FunctionDescriptor ldiv$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        JAVA_LONG.withName("quot"),
-        JAVA_LONG.withName("rem")
-    ),
-        JAVA_LONG,
-        JAVA_LONG
-    );
-    static final MethodHandle ldiv$MH = RuntimeHelper.downcallHandle(
-        "ldiv",
-        constants$16.ldiv$FUNC, false
-    );
-    static final FunctionDescriptor lldiv$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        JAVA_LONG.withName("quot"),
-        JAVA_LONG.withName("rem")
-    ),
-        JAVA_LONG,
-        JAVA_LONG
-    );
-    static final MethodHandle lldiv$MH = RuntimeHelper.downcallHandle(
-        "lldiv",
-        constants$16.lldiv$FUNC, false
-    );
-    static final FunctionDescriptor ecvt$FUNC = FunctionDescriptor.of(ADDRESS,
-        JAVA_DOUBLE,
-        JAVA_INT,
+    static final FunctionDescriptor SSL_CTX_ctrl$FUNC = FunctionDescriptor.of(JAVA_LONG,
         ADDRESS,
+        JAVA_INT,
+        JAVA_LONG,
         ADDRESS
     );
-    static final MethodHandle ecvt$MH = RuntimeHelper.downcallHandle(
-        "ecvt",
-        constants$16.ecvt$FUNC, false
+    static final MethodHandle SSL_CTX_ctrl$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_ctrl",
+        constants$16.SSL_CTX_ctrl$FUNC, false
+    );
+    static final FunctionDescriptor SSL_get_version$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_get_version$MH = RuntimeHelper.downcallHandle(
+        "SSL_get_version",
+        constants$16.SSL_get_version$FUNC, false
+    );
+    static final FunctionDescriptor TLS_server_method$FUNC = FunctionDescriptor.of(ADDRESS);
+    static final MethodHandle TLS_server_method$MH = RuntimeHelper.downcallHandle(
+        "TLS_server_method",
+        constants$16.TLS_server_method$FUNC, false
+    );
+    static final FunctionDescriptor SSL_get_ciphers$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_get_ciphers$MH = RuntimeHelper.downcallHandle(
+        "SSL_get_ciphers",
+        constants$16.SSL_get_ciphers$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CTX_get_ciphers$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_CTX_get_ciphers$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_get_ciphers",
+        constants$16.SSL_CTX_get_ciphers$FUNC, false
+    );
+    static final FunctionDescriptor SSL_do_handshake$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS
+    );
+    static final MethodHandle SSL_do_handshake$MH = RuntimeHelper.downcallHandle(
+        "SSL_do_handshake",
+        constants$16.SSL_do_handshake$FUNC, false
     );
 }
 

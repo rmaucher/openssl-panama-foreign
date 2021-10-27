@@ -9,31 +9,48 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$11 {
 
-    static final FunctionDescriptor aligned_alloc$FUNC = FunctionDescriptor.of(ADDRESS,
-        JAVA_LONG,
-        JAVA_LONG
-    );
-    static final MethodHandle aligned_alloc$MH = RuntimeHelper.downcallHandle(
-        "aligned_alloc",
-        constants$11.aligned_alloc$FUNC, false
-    );
-    static final FunctionDescriptor abort$FUNC = FunctionDescriptor.ofVoid();
-    static final MethodHandle abort$MH = RuntimeHelper.downcallHandle(
-        "abort",
-        constants$11.abort$FUNC, false
-    );
-    static final FunctionDescriptor atexit$__func$FUNC = FunctionDescriptor.ofVoid();
-    static final MethodHandle atexit$__func$MH = RuntimeHelper.downcallHandle(
-        constants$11.atexit$__func$FUNC, false
-    );
-    static final FunctionDescriptor atexit$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor SSL_CTX_get_timeout$FUNC = FunctionDescriptor.of(JAVA_LONG,
         ADDRESS
     );
-    static final MethodHandle atexit$MH = RuntimeHelper.downcallHandle(
-        "atexit",
-        constants$11.atexit$FUNC, false
+    static final MethodHandle SSL_CTX_get_timeout$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_get_timeout",
+        constants$11.SSL_CTX_get_timeout$FUNC, false
     );
-    static final FunctionDescriptor at_quick_exit$__func$FUNC = FunctionDescriptor.ofVoid();
+    static final FunctionDescriptor SSL_CTX_get_cert_store$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_CTX_get_cert_store$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_get_cert_store",
+        constants$11.SSL_CTX_get_cert_store$FUNC, false
+    );
+    static final FunctionDescriptor SSL_get_current_cipher$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_get_current_cipher$MH = RuntimeHelper.downcallHandle(
+        "SSL_get_current_cipher",
+        constants$11.SSL_get_current_cipher$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CIPHER_get_name$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_CIPHER_get_name$MH = RuntimeHelper.downcallHandle(
+        "SSL_CIPHER_get_name",
+        constants$11.SSL_CIPHER_get_name$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CIPHER_get_kx_nid$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS
+    );
+    static final MethodHandle SSL_CIPHER_get_kx_nid$MH = RuntimeHelper.downcallHandle(
+        "SSL_CIPHER_get_kx_nid",
+        constants$11.SSL_CIPHER_get_kx_nid$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CIPHER_get_auth_nid$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS
+    );
+    static final MethodHandle SSL_CIPHER_get_auth_nid$MH = RuntimeHelper.downcallHandle(
+        "SSL_CIPHER_get_auth_nid",
+        constants$11.SSL_CIPHER_get_auth_nid$FUNC, false
+    );
 }
 
 

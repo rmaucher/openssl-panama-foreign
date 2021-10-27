@@ -9,53 +9,45 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$19 {
 
-    static final FunctionDescriptor clock$FUNC = FunctionDescriptor.of(JAVA_LONG);
-    static final MethodHandle clock$MH = RuntimeHelper.downcallHandle(
-        "clock",
-        constants$19.clock$FUNC, false
-    );
-    static final FunctionDescriptor time$FUNC = FunctionDescriptor.of(JAVA_LONG,
+    static final FunctionDescriptor SSL_CTX_load_verify_locations$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS,
         ADDRESS
     );
-    static final MethodHandle time$MH = RuntimeHelper.downcallHandle(
-        "time",
-        constants$19.time$FUNC, false
+    static final MethodHandle SSL_CTX_load_verify_locations$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_load_verify_locations",
+        constants$19.SSL_CTX_load_verify_locations$FUNC, false
     );
-    static final FunctionDescriptor difftime$FUNC = FunctionDescriptor.of(JAVA_DOUBLE,
-        JAVA_LONG,
+    static final FunctionDescriptor SSL_get_session$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_get_session$MH = RuntimeHelper.downcallHandle(
+        "SSL_get_session",
+        constants$19.SSL_get_session$FUNC, false
+    );
+    static final FunctionDescriptor SSL_set_info_callback$cb$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS,
+        JAVA_INT,
+        JAVA_INT
+    );
+    static final MethodHandle SSL_set_info_callback$cb$MH = RuntimeHelper.downcallHandle(
+        constants$19.SSL_set_info_callback$cb$FUNC, false
+    );
+    static final FunctionDescriptor SSL_set_info_callback$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_set_info_callback$MH = RuntimeHelper.downcallHandle(
+        "SSL_set_info_callback",
+        constants$19.SSL_set_info_callback$FUNC, false
+    );
+    static final FunctionDescriptor SSL_set_verify_result$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS,
         JAVA_LONG
     );
-    static final MethodHandle difftime$MH = RuntimeHelper.downcallHandle(
-        "difftime",
-        constants$19.difftime$FUNC, false
-    );
-    static final FunctionDescriptor mktime$FUNC = FunctionDescriptor.of(JAVA_LONG,
-        ADDRESS
-    );
-    static final MethodHandle mktime$MH = RuntimeHelper.downcallHandle(
-        "mktime",
-        constants$19.mktime$FUNC, false
-    );
-    static final FunctionDescriptor strftime$FUNC = FunctionDescriptor.of(JAVA_LONG,
-        ADDRESS,
-        JAVA_LONG,
-        ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle strftime$MH = RuntimeHelper.downcallHandle(
-        "strftime",
-        constants$19.strftime$FUNC, false
-    );
-    static final FunctionDescriptor strftime_l$FUNC = FunctionDescriptor.of(JAVA_LONG,
-        ADDRESS,
-        JAVA_LONG,
-        ADDRESS,
-        ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle strftime_l$MH = RuntimeHelper.downcallHandle(
-        "strftime_l",
-        constants$19.strftime_l$FUNC, false
+    static final MethodHandle SSL_set_verify_result$MH = RuntimeHelper.downcallHandle(
+        "SSL_set_verify_result",
+        constants$19.SSL_set_verify_result$FUNC, false
     );
 }
 

@@ -9,43 +9,51 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$7 {
 
-    static final FunctionDescriptor lrand48$FUNC = FunctionDescriptor.of(JAVA_LONG);
-    static final MethodHandle lrand48$MH = RuntimeHelper.downcallHandle(
-        "lrand48",
-        constants$7.lrand48$FUNC, false
-    );
-    static final FunctionDescriptor nrand48$FUNC = FunctionDescriptor.of(JAVA_LONG,
+    static final FunctionDescriptor X509_STORE_CTX_get_error$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS
     );
-    static final MethodHandle nrand48$MH = RuntimeHelper.downcallHandle(
-        "nrand48",
-        constants$7.nrand48$FUNC, false
+    static final MethodHandle X509_STORE_CTX_get_error$MH = RuntimeHelper.downcallHandle(
+        "X509_STORE_CTX_get_error",
+        constants$7.X509_STORE_CTX_get_error$FUNC, false
     );
-    static final FunctionDescriptor mrand48$FUNC = FunctionDescriptor.of(JAVA_LONG);
-    static final MethodHandle mrand48$MH = RuntimeHelper.downcallHandle(
-        "mrand48",
-        constants$7.mrand48$FUNC, false
+    static final FunctionDescriptor X509_STORE_CTX_set_error$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS,
+        JAVA_INT
     );
-    static final FunctionDescriptor jrand48$FUNC = FunctionDescriptor.of(JAVA_LONG,
+    static final MethodHandle X509_STORE_CTX_set_error$MH = RuntimeHelper.downcallHandle(
+        "X509_STORE_CTX_set_error",
+        constants$7.X509_STORE_CTX_set_error$FUNC, false
+    );
+    static final FunctionDescriptor X509_STORE_CTX_get_error_depth$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS
     );
-    static final MethodHandle jrand48$MH = RuntimeHelper.downcallHandle(
-        "jrand48",
-        constants$7.jrand48$FUNC, false
+    static final MethodHandle X509_STORE_CTX_get_error_depth$MH = RuntimeHelper.downcallHandle(
+        "X509_STORE_CTX_get_error_depth",
+        constants$7.X509_STORE_CTX_get_error_depth$FUNC, false
     );
-    static final FunctionDescriptor srand48$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor d2i_X509_bio$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle d2i_X509_bio$MH = RuntimeHelper.downcallHandle(
+        "d2i_X509_bio",
+        constants$7.d2i_X509_bio$FUNC, false
+    );
+    static final FunctionDescriptor X509_free$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS
+    );
+    static final MethodHandle X509_free$MH = RuntimeHelper.downcallHandle(
+        "X509_free",
+        constants$7.X509_free$FUNC, false
+    );
+    static final FunctionDescriptor d2i_X509$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS,
+        ADDRESS,
         JAVA_LONG
     );
-    static final MethodHandle srand48$MH = RuntimeHelper.downcallHandle(
-        "srand48",
-        constants$7.srand48$FUNC, false
-    );
-    static final FunctionDescriptor seed48$FUNC = FunctionDescriptor.of(ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle seed48$MH = RuntimeHelper.downcallHandle(
-        "seed48",
-        constants$7.seed48$FUNC, false
+    static final MethodHandle d2i_X509$MH = RuntimeHelper.downcallHandle(
+        "d2i_X509",
+        constants$7.d2i_X509$FUNC, false
     );
 }
 

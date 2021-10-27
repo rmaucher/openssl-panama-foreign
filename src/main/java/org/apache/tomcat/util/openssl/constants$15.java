@@ -9,48 +9,53 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$15 {
 
-    static final FunctionDescriptor realpath$FUNC = FunctionDescriptor.of(ADDRESS,
-        ADDRESS,
+    static final FunctionDescriptor SSL_CTX_check_private_key$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS
     );
-    static final MethodHandle realpath$MH = RuntimeHelper.downcallHandle(
-        "realpath",
-        constants$15.realpath$FUNC, false
+    static final MethodHandle SSL_CTX_check_private_key$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_check_private_key",
+        constants$15.SSL_CTX_check_private_key$FUNC, false
     );
-    static final FunctionDescriptor __compar_fn_t$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle __compar_fn_t$MH = RuntimeHelper.downcallHandle(
-        constants$15.__compar_fn_t$FUNC, false
-    );
-    static final FunctionDescriptor bsearch$FUNC = FunctionDescriptor.of(ADDRESS,
+    static final FunctionDescriptor SSL_CTX_set_session_id_context$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
         ADDRESS,
-        JAVA_LONG,
-        JAVA_LONG,
-        ADDRESS
-    );
-    static final MethodHandle bsearch$MH = RuntimeHelper.downcallHandle(
-        "bsearch",
-        constants$15.bsearch$FUNC, false
-    );
-    static final FunctionDescriptor qsort$FUNC = FunctionDescriptor.ofVoid(
-        ADDRESS,
-        JAVA_LONG,
-        JAVA_LONG,
-        ADDRESS
-    );
-    static final MethodHandle qsort$MH = RuntimeHelper.downcallHandle(
-        "qsort",
-        constants$15.qsort$FUNC, false
-    );
-    static final FunctionDescriptor abs$FUNC = FunctionDescriptor.of(JAVA_INT,
         JAVA_INT
     );
-    static final MethodHandle abs$MH = RuntimeHelper.downcallHandle(
-        "abs",
-        constants$15.abs$FUNC, false
+    static final MethodHandle SSL_CTX_set_session_id_context$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_set_session_id_context",
+        constants$15.SSL_CTX_set_session_id_context$FUNC, false
+    );
+    static final FunctionDescriptor SSL_new$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_new$MH = RuntimeHelper.downcallHandle(
+        "SSL_new",
+        constants$15.SSL_new$FUNC, false
+    );
+    static final FunctionDescriptor SSL_free$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS
+    );
+    static final MethodHandle SSL_free$MH = RuntimeHelper.downcallHandle(
+        "SSL_free",
+        constants$15.SSL_free$FUNC, false
+    );
+    static final FunctionDescriptor SSL_read$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS,
+        JAVA_INT
+    );
+    static final MethodHandle SSL_read$MH = RuntimeHelper.downcallHandle(
+        "SSL_read",
+        constants$15.SSL_read$FUNC, false
+    );
+    static final FunctionDescriptor SSL_write$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS,
+        JAVA_INT
+    );
+    static final MethodHandle SSL_write$MH = RuntimeHelper.downcallHandle(
+        "SSL_write",
+        constants$15.SSL_write$FUNC, false
     );
 }
 
