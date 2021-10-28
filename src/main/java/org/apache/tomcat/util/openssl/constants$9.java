@@ -9,54 +9,60 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$9 {
 
-    static final FunctionDescriptor SSL_get_options$FUNC = FunctionDescriptor.of(JAVA_LONG,
+    static final FunctionDescriptor X509_get_ext$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS,
+        JAVA_INT
+    );
+    static final MethodHandle X509_get_ext$MH = RuntimeHelper.downcallHandle(
+        "X509_get_ext",
+        constants$9.X509_get_ext$FUNC, false
+    );
+    static final FunctionDescriptor X509_EXTENSION_get_data$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS
     );
-    static final MethodHandle SSL_get_options$MH = RuntimeHelper.downcallHandle(
-        "SSL_get_options",
-        constants$9.SSL_get_options$FUNC, false
+    static final MethodHandle X509_EXTENSION_get_data$MH = RuntimeHelper.downcallHandle(
+        "X509_EXTENSION_get_data",
+        constants$9.X509_EXTENSION_get_data$FUNC, false
     );
-    static final FunctionDescriptor SSL_CTX_clear_options$FUNC = FunctionDescriptor.of(JAVA_LONG,
+    static final FunctionDescriptor PEM_read_bio_X509_AUX$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS,
-        JAVA_LONG
-    );
-    static final MethodHandle SSL_CTX_clear_options$MH = RuntimeHelper.downcallHandle(
-        "SSL_CTX_clear_options",
-        constants$9.SSL_CTX_clear_options$FUNC, false
-    );
-    static final FunctionDescriptor SSL_CTX_set_options$FUNC = FunctionDescriptor.of(JAVA_LONG,
-        ADDRESS,
-        JAVA_LONG
-    );
-    static final MethodHandle SSL_CTX_set_options$MH = RuntimeHelper.downcallHandle(
-        "SSL_CTX_set_options",
-        constants$9.SSL_CTX_set_options$FUNC, false
-    );
-    static final FunctionDescriptor SSL_set_options$FUNC = FunctionDescriptor.of(JAVA_LONG,
-        ADDRESS,
-        JAVA_LONG
-    );
-    static final MethodHandle SSL_set_options$MH = RuntimeHelper.downcallHandle(
-        "SSL_set_options",
-        constants$9.SSL_set_options$FUNC, false
-    );
-    static final FunctionDescriptor SSL_get0_next_proto_negotiated$FUNC = FunctionDescriptor.ofVoid(
         ADDRESS,
         ADDRESS,
         ADDRESS
     );
-    static final MethodHandle SSL_get0_next_proto_negotiated$MH = RuntimeHelper.downcallHandle(
-        "SSL_get0_next_proto_negotiated",
-        constants$9.SSL_get0_next_proto_negotiated$FUNC, false
+    static final MethodHandle PEM_read_bio_X509_AUX$MH = RuntimeHelper.downcallHandle(
+        "PEM_read_bio_X509_AUX",
+        constants$9.PEM_read_bio_X509_AUX$FUNC, false
     );
-    static final FunctionDescriptor SSL_CTX_set_alpn_select_cb$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor PEM_read_bio_ECPKParameters$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS,
         ADDRESS,
         ADDRESS,
         ADDRESS
     );
-    static final MethodHandle SSL_CTX_set_alpn_select_cb$MH = RuntimeHelper.downcallHandle(
-        "SSL_CTX_set_alpn_select_cb",
-        constants$9.SSL_CTX_set_alpn_select_cb$FUNC, false
+    static final MethodHandle PEM_read_bio_ECPKParameters$MH = RuntimeHelper.downcallHandle(
+        "PEM_read_bio_ECPKParameters",
+        constants$9.PEM_read_bio_ECPKParameters$FUNC, false
+    );
+    static final FunctionDescriptor PEM_read_bio_DHparams$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS,
+        ADDRESS,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle PEM_read_bio_DHparams$MH = RuntimeHelper.downcallHandle(
+        "PEM_read_bio_DHparams",
+        constants$9.PEM_read_bio_DHparams$FUNC, false
+    );
+    static final FunctionDescriptor PEM_read_bio_PrivateKey$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS,
+        ADDRESS,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle PEM_read_bio_PrivateKey$MH = RuntimeHelper.downcallHandle(
+        "PEM_read_bio_PrivateKey",
+        constants$9.PEM_read_bio_PrivateKey$FUNC, false
     );
 }
 

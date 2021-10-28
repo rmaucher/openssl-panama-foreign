@@ -9,51 +9,52 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$10 {
 
-    static final FunctionDescriptor SSL_get0_alpn_selected$FUNC = FunctionDescriptor.ofVoid(
-        ADDRESS,
-        ADDRESS,
+    static final FunctionDescriptor SSL_CTX_get_options$FUNC = FunctionDescriptor.of(JAVA_LONG,
         ADDRESS
     );
-    static final MethodHandle SSL_get0_alpn_selected$MH = RuntimeHelper.downcallHandle(
-        "SSL_get0_alpn_selected",
-        constants$10.SSL_get0_alpn_selected$FUNC, false
+    static final MethodHandle SSL_CTX_get_options$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_get_options",
+        constants$10.SSL_CTX_get_options$FUNC, false
     );
-    static final FunctionDescriptor SSL_in_init$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor SSL_get_options$FUNC = FunctionDescriptor.of(JAVA_LONG,
         ADDRESS
     );
-    static final MethodHandle SSL_in_init$MH = RuntimeHelper.downcallHandle(
-        "SSL_in_init",
-        constants$10.SSL_in_init$FUNC, false
+    static final MethodHandle SSL_get_options$MH = RuntimeHelper.downcallHandle(
+        "SSL_get_options",
+        constants$10.SSL_get_options$FUNC, false
     );
-    static final FunctionDescriptor SSL_CTX_set_cipher_list$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle SSL_CTX_set_cipher_list$MH = RuntimeHelper.downcallHandle(
-        "SSL_CTX_set_cipher_list",
-        constants$10.SSL_CTX_set_cipher_list$FUNC, false
-    );
-    static final FunctionDescriptor SSL_CTX_new$FUNC = FunctionDescriptor.of(ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle SSL_CTX_new$MH = RuntimeHelper.downcallHandle(
-        "SSL_CTX_new",
-        constants$10.SSL_CTX_new$FUNC, false
-    );
-    static final FunctionDescriptor SSL_CTX_free$FUNC = FunctionDescriptor.ofVoid(
-        ADDRESS
-    );
-    static final MethodHandle SSL_CTX_free$MH = RuntimeHelper.downcallHandle(
-        "SSL_CTX_free",
-        constants$10.SSL_CTX_free$FUNC, false
-    );
-    static final FunctionDescriptor SSL_CTX_set_timeout$FUNC = FunctionDescriptor.of(JAVA_LONG,
+    static final FunctionDescriptor SSL_CTX_clear_options$FUNC = FunctionDescriptor.of(JAVA_LONG,
         ADDRESS,
         JAVA_LONG
     );
-    static final MethodHandle SSL_CTX_set_timeout$MH = RuntimeHelper.downcallHandle(
-        "SSL_CTX_set_timeout",
-        constants$10.SSL_CTX_set_timeout$FUNC, false
+    static final MethodHandle SSL_CTX_clear_options$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_clear_options",
+        constants$10.SSL_CTX_clear_options$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CTX_set_options$FUNC = FunctionDescriptor.of(JAVA_LONG,
+        ADDRESS,
+        JAVA_LONG
+    );
+    static final MethodHandle SSL_CTX_set_options$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_set_options",
+        constants$10.SSL_CTX_set_options$FUNC, false
+    );
+    static final FunctionDescriptor SSL_set_options$FUNC = FunctionDescriptor.of(JAVA_LONG,
+        ADDRESS,
+        JAVA_LONG
+    );
+    static final MethodHandle SSL_set_options$MH = RuntimeHelper.downcallHandle(
+        "SSL_set_options",
+        constants$10.SSL_set_options$FUNC, false
+    );
+    static final FunctionDescriptor SSL_get0_next_proto_negotiated$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_get0_next_proto_negotiated$MH = RuntimeHelper.downcallHandle(
+        "SSL_get0_next_proto_negotiated",
+        constants$10.SSL_get0_next_proto_negotiated$FUNC, false
     );
 }
 

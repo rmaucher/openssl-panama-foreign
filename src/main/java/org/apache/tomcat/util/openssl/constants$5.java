@@ -9,6 +9,20 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$5 {
 
+    static final FunctionDescriptor EC_GROUP_free$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS
+    );
+    static final MethodHandle EC_GROUP_free$MH = RuntimeHelper.downcallHandle(
+        "EC_GROUP_free",
+        constants$5.EC_GROUP_free$FUNC, false
+    );
+    static final FunctionDescriptor EC_GROUP_get_curve_name$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS
+    );
+    static final MethodHandle EC_GROUP_get_curve_name$MH = RuntimeHelper.downcallHandle(
+        "EC_GROUP_get_curve_name",
+        constants$5.EC_GROUP_get_curve_name$FUNC, false
+    );
     static final FunctionDescriptor EC_KEY_new_by_curve_name$FUNC = FunctionDescriptor.of(ADDRESS,
         JAVA_INT
     );
@@ -34,24 +48,6 @@ class constants$5 {
     static final MethodHandle DH_free$MH = RuntimeHelper.downcallHandle(
         "DH_free",
         constants$5.DH_free$FUNC, false
-    );
-    static final FunctionDescriptor DH_set0_pqg$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
-        ADDRESS,
-        ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle DH_set0_pqg$MH = RuntimeHelper.downcallHandle(
-        "DH_set0_pqg",
-        constants$5.DH_set0_pqg$FUNC, false
-    );
-    static final FunctionDescriptor X509_STORE_set_flags$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
-        JAVA_LONG
-    );
-    static final MethodHandle X509_STORE_set_flags$MH = RuntimeHelper.downcallHandle(
-        "X509_STORE_set_flags",
-        constants$5.X509_STORE_set_flags$FUNC, false
     );
 }
 

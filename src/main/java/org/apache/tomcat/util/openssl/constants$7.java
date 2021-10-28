@@ -9,6 +9,25 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$7 {
 
+    static final FunctionDescriptor X509_LOOKUP_ctrl$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        JAVA_INT,
+        ADDRESS,
+        JAVA_LONG,
+        ADDRESS
+    );
+    static final MethodHandle X509_LOOKUP_ctrl$MH = RuntimeHelper.downcallHandle(
+        "X509_LOOKUP_ctrl",
+        constants$7.X509_LOOKUP_ctrl$FUNC, false
+    );
+    static final FunctionDescriptor X509_STORE_CTX_get_ex_data$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS,
+        JAVA_INT
+    );
+    static final MethodHandle X509_STORE_CTX_get_ex_data$MH = RuntimeHelper.downcallHandle(
+        "X509_STORE_CTX_get_ex_data",
+        constants$7.X509_STORE_CTX_get_ex_data$FUNC, false
+    );
     static final FunctionDescriptor X509_STORE_CTX_get_error$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS
     );
@@ -31,29 +50,12 @@ class constants$7 {
         "X509_STORE_CTX_get_error_depth",
         constants$7.X509_STORE_CTX_get_error_depth$FUNC, false
     );
-    static final FunctionDescriptor d2i_X509_bio$FUNC = FunctionDescriptor.of(ADDRESS,
-        ADDRESS,
+    static final FunctionDescriptor X509_STORE_CTX_get_current_cert$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS
     );
-    static final MethodHandle d2i_X509_bio$MH = RuntimeHelper.downcallHandle(
-        "d2i_X509_bio",
-        constants$7.d2i_X509_bio$FUNC, false
-    );
-    static final FunctionDescriptor X509_free$FUNC = FunctionDescriptor.ofVoid(
-        ADDRESS
-    );
-    static final MethodHandle X509_free$MH = RuntimeHelper.downcallHandle(
-        "X509_free",
-        constants$7.X509_free$FUNC, false
-    );
-    static final FunctionDescriptor d2i_X509$FUNC = FunctionDescriptor.of(ADDRESS,
-        ADDRESS,
-        ADDRESS,
-        JAVA_LONG
-    );
-    static final MethodHandle d2i_X509$MH = RuntimeHelper.downcallHandle(
-        "d2i_X509",
-        constants$7.d2i_X509$FUNC, false
+    static final MethodHandle X509_STORE_CTX_get_current_cert$MH = RuntimeHelper.downcallHandle(
+        "X509_STORE_CTX_get_current_cert",
+        constants$7.X509_STORE_CTX_get_current_cert$FUNC, false
     );
 }
 

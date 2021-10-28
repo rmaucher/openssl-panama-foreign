@@ -9,53 +9,46 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$15 {
 
-    static final FunctionDescriptor SSL_CTX_check_private_key$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor SSL_CTX_set_verify$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS,
+        JAVA_INT,
         ADDRESS
     );
-    static final MethodHandle SSL_CTX_check_private_key$MH = RuntimeHelper.downcallHandle(
-        "SSL_CTX_check_private_key",
-        constants$15.SSL_CTX_check_private_key$FUNC, false
+    static final MethodHandle SSL_CTX_set_verify$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_set_verify",
+        constants$15.SSL_CTX_set_verify$FUNC, false
     );
-    static final FunctionDescriptor SSL_CTX_set_session_id_context$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor SSL_CTX_set_cert_verify_callback$cb$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
-        ADDRESS,
-        JAVA_INT
-    );
-    static final MethodHandle SSL_CTX_set_session_id_context$MH = RuntimeHelper.downcallHandle(
-        "SSL_CTX_set_session_id_context",
-        constants$15.SSL_CTX_set_session_id_context$FUNC, false
-    );
-    static final FunctionDescriptor SSL_new$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS
     );
-    static final MethodHandle SSL_new$MH = RuntimeHelper.downcallHandle(
-        "SSL_new",
-        constants$15.SSL_new$FUNC, false
+    static final MethodHandle SSL_CTX_set_cert_verify_callback$cb$MH = RuntimeHelper.downcallHandle(
+        constants$15.SSL_CTX_set_cert_verify_callback$cb$FUNC, false
     );
-    static final FunctionDescriptor SSL_free$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor SSL_CTX_set_cert_verify_callback$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS,
+        ADDRESS,
         ADDRESS
     );
-    static final MethodHandle SSL_free$MH = RuntimeHelper.downcallHandle(
-        "SSL_free",
-        constants$15.SSL_free$FUNC, false
+    static final MethodHandle SSL_CTX_set_cert_verify_callback$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_set_cert_verify_callback",
+        constants$15.SSL_CTX_set_cert_verify_callback$FUNC, false
     );
-    static final FunctionDescriptor SSL_read$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor SSL_CTX_use_PrivateKey$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
-        ADDRESS,
-        JAVA_INT
+        ADDRESS
     );
-    static final MethodHandle SSL_read$MH = RuntimeHelper.downcallHandle(
-        "SSL_read",
-        constants$15.SSL_read$FUNC, false
+    static final MethodHandle SSL_CTX_use_PrivateKey$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_use_PrivateKey",
+        constants$15.SSL_CTX_use_PrivateKey$FUNC, false
     );
-    static final FunctionDescriptor SSL_write$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor SSL_CTX_use_certificate$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
-        ADDRESS,
-        JAVA_INT
+        ADDRESS
     );
-    static final MethodHandle SSL_write$MH = RuntimeHelper.downcallHandle(
-        "SSL_write",
-        constants$15.SSL_write$FUNC, false
+    static final MethodHandle SSL_CTX_use_certificate$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_use_certificate",
+        constants$15.SSL_CTX_use_certificate$FUNC, false
     );
 }
 

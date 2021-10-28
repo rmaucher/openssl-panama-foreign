@@ -156,10 +156,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                 return null;
             }
             MemoryAddress buf = bufPointer.get(ValueLayout.ADDRESS, 0);
-            byte[] certificate = new byte[length];
-            for (int j = 0; j < length; j++) {
-                certificate[j] = buf.get(ValueLayout.JAVA_BYTE, j);
-            }
+            byte[] certificate = MemorySegment.ofAddressNative(buf, length, scope).toArray(ValueLayout.JAVA_BYTE);
             X509_free(x509);
             CRYPTO_free(buf, OPENSSL_FILE(), OPENSSL_LINE()); // OPENSSL_free macro
             return certificate;
@@ -184,10 +181,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                     continue;
                 }
                 MemoryAddress buf = bufPointer.get(ValueLayout.ADDRESS, 0);
-                byte[] certificate = new byte[length];
-                for (int j = 0; j < length; j++) {
-                    certificate[j] = buf.get(ValueLayout.JAVA_BYTE, j);
-                }
+                byte[] certificate = MemorySegment.ofAddressNative(buf, length, scope).toArray(ValueLayout.JAVA_BYTE);
                 certificateChain[i] = certificate;
                 CRYPTO_free(buf, OPENSSL_FILE(), OPENSSL_LINE()); // OPENSSL_free macro
             }
@@ -211,11 +205,8 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             if (len == 0) {
                 return null;
             }
-            byte[] name = new byte[len];
             MemoryAddress protocolAddress = protocolPointer.get(ValueLayout.ADDRESS, 0);
-            for (int i = 0; i < len; i++) {
-                name[i] = protocolAddress.get(ValueLayout.JAVA_BYTE, i);
-            }
+            byte[] name = MemorySegment.ofAddressNative(protocolAddress, len, scope).toArray(ValueLayout.JAVA_BYTE);
             if (logger.isDebugEnabled()) {
                 logger.debug("Protocol negotiated [" + new String(name) + "]");
             }
@@ -1387,10 +1378,8 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                         var session = SSL_get_session(state.ssl);
                         MemoryAddress sessionId = SSL_SESSION_get_id(session, lenPointer);
                         int len = lenPointer.get(ValueLayout.JAVA_INT, 0);
-                        id = new byte[len];
-                        for (int i = 0; i < len; i++) {
-                            id[i] = sessionId.get(ValueLayout.JAVA_BYTE, i);
-                        }
+                        id = (len == 0) ? new byte[0]
+                                : MemorySegment.ofAddressNative(sessionId, len, scope).toArray(ValueLayout.JAVA_BYTE);
                     }
                 }
             }

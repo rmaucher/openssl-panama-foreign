@@ -9,12 +9,53 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$25 {
 
-    static final MemorySegment SHLIB_VERSION_NUMBER$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("1.1");
-    static final MemorySegment OPENSSL_FILE$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("/tmp/jextract$53551959430998703.h");
-    static final MemorySegment SSL_TXT_DSS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DSS");
-    static final MemorySegment SSL_TXT_DH$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DH");
-    static final MemorySegment SSL_TXT_RSA$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RSA");
-    static final MemorySegment SSL_TXT_ECDH$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ECDH");
+    static final FunctionDescriptor ENGINE_by_id$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle ENGINE_by_id$MH = RuntimeHelper.downcallHandle(
+        "ENGINE_by_id",
+        constants$25.ENGINE_by_id$FUNC, false
+    );
+    static final FunctionDescriptor ENGINE_register_all_complete$FUNC = FunctionDescriptor.of(JAVA_INT);
+    static final MethodHandle ENGINE_register_all_complete$MH = RuntimeHelper.downcallHandle(
+        "ENGINE_register_all_complete",
+        constants$25.ENGINE_register_all_complete$FUNC, false
+    );
+    static final FunctionDescriptor ENGINE_ctrl_cmd_string$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS,
+        ADDRESS,
+        JAVA_INT
+    );
+    static final MethodHandle ENGINE_ctrl_cmd_string$MH = RuntimeHelper.downcallHandle(
+        "ENGINE_ctrl_cmd_string",
+        constants$25.ENGINE_ctrl_cmd_string$FUNC, false
+    );
+    static final FunctionDescriptor ENGINE_free$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS
+    );
+    static final MethodHandle ENGINE_free$MH = RuntimeHelper.downcallHandle(
+        "ENGINE_free",
+        constants$25.ENGINE_free$FUNC, false
+    );
+    static final FunctionDescriptor ENGINE_load_private_key$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS,
+        ADDRESS,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle ENGINE_load_private_key$MH = RuntimeHelper.downcallHandle(
+        "ENGINE_load_private_key",
+        constants$25.ENGINE_load_private_key$FUNC, false
+    );
+    static final FunctionDescriptor ENGINE_set_default$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        JAVA_INT
+    );
+    static final MethodHandle ENGINE_set_default$MH = RuntimeHelper.downcallHandle(
+        "ENGINE_set_default",
+        constants$25.ENGINE_set_default$FUNC, false
+    );
 }
 
 

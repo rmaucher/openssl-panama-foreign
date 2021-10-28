@@ -9,44 +9,52 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$22 {
 
-    static final FunctionDescriptor ERR_get_error$FUNC = FunctionDescriptor.of(JAVA_LONG);
-    static final MethodHandle ERR_get_error$MH = RuntimeHelper.downcallHandle(
-        "ERR_get_error",
-        constants$22.ERR_get_error$FUNC, false
-    );
-    static final FunctionDescriptor ERR_peek_last_error$FUNC = FunctionDescriptor.of(JAVA_LONG);
-    static final MethodHandle ERR_peek_last_error$MH = RuntimeHelper.downcallHandle(
-        "ERR_peek_last_error",
-        constants$22.ERR_peek_last_error$FUNC, false
-    );
-    static final FunctionDescriptor ERR_clear_error$FUNC = FunctionDescriptor.ofVoid();
-    static final MethodHandle ERR_clear_error$MH = RuntimeHelper.downcallHandle(
-        "ERR_clear_error",
-        constants$22.ERR_clear_error$FUNC, false
-    );
-    static final FunctionDescriptor ERR_error_string$FUNC = FunctionDescriptor.of(ADDRESS,
-        JAVA_LONG,
+    static final FunctionDescriptor SSL_CONF_CTX_finish$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS
     );
-    static final MethodHandle ERR_error_string$MH = RuntimeHelper.downcallHandle(
-        "ERR_error_string",
-        constants$22.ERR_error_string$FUNC, false
+    static final MethodHandle SSL_CONF_CTX_finish$MH = RuntimeHelper.downcallHandle(
+        "SSL_CONF_CTX_finish",
+        constants$22.SSL_CONF_CTX_finish$FUNC, false
     );
-    static final FunctionDescriptor PKCS12_verify_mac$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
+    static final FunctionDescriptor SSL_CONF_CTX_free$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS
+    );
+    static final MethodHandle SSL_CONF_CTX_free$MH = RuntimeHelper.downcallHandle(
+        "SSL_CONF_CTX_free",
+        constants$22.SSL_CONF_CTX_free$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CONF_CTX_set_flags$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
         JAVA_INT
     );
-    static final MethodHandle PKCS12_verify_mac$MH = RuntimeHelper.downcallHandle(
-        "PKCS12_verify_mac",
-        constants$22.PKCS12_verify_mac$FUNC, false
+    static final MethodHandle SSL_CONF_CTX_set_flags$MH = RuntimeHelper.downcallHandle(
+        "SSL_CONF_CTX_set_flags",
+        constants$22.SSL_CONF_CTX_set_flags$FUNC, false
     );
-    static final FunctionDescriptor PKCS12_free$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor SSL_CONF_CTX_set_ssl_ctx$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS,
         ADDRESS
     );
-    static final MethodHandle PKCS12_free$MH = RuntimeHelper.downcallHandle(
-        "PKCS12_free",
-        constants$22.PKCS12_free$FUNC, false
+    static final MethodHandle SSL_CONF_CTX_set_ssl_ctx$MH = RuntimeHelper.downcallHandle(
+        "SSL_CONF_CTX_set_ssl_ctx",
+        constants$22.SSL_CONF_CTX_set_ssl_ctx$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CONF_cmd$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_CONF_cmd$MH = RuntimeHelper.downcallHandle(
+        "SSL_CONF_cmd",
+        constants$22.SSL_CONF_cmd$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CONF_cmd_value_type$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_CONF_cmd_value_type$MH = RuntimeHelper.downcallHandle(
+        "SSL_CONF_cmd_value_type",
+        constants$22.SSL_CONF_cmd_value_type$FUNC, false
     );
 }
 

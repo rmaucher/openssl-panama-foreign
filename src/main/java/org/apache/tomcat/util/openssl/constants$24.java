@@ -9,43 +9,56 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$24 {
 
-    static final FunctionDescriptor ENGINE_ctrl_cmd_string$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
-        ADDRESS,
-        ADDRESS,
-        JAVA_INT
-    );
-    static final MethodHandle ENGINE_ctrl_cmd_string$MH = RuntimeHelper.downcallHandle(
-        "ENGINE_ctrl_cmd_string",
-        constants$24.ENGINE_ctrl_cmd_string$FUNC, false
-    );
-    static final FunctionDescriptor ENGINE_free$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor PKCS12_free$FUNC = FunctionDescriptor.ofVoid(
         ADDRESS
     );
-    static final MethodHandle ENGINE_free$MH = RuntimeHelper.downcallHandle(
-        "ENGINE_free",
-        constants$24.ENGINE_free$FUNC, false
+    static final MethodHandle PKCS12_free$MH = RuntimeHelper.downcallHandle(
+        "PKCS12_free",
+        constants$24.PKCS12_free$FUNC, false
     );
-    static final FunctionDescriptor ENGINE_load_private_key$FUNC = FunctionDescriptor.of(ADDRESS,
+    static final FunctionDescriptor PKCS12_parse$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
         ADDRESS,
         ADDRESS,
         ADDRESS,
         ADDRESS
     );
-    static final MethodHandle ENGINE_load_private_key$MH = RuntimeHelper.downcallHandle(
-        "ENGINE_load_private_key",
-        constants$24.ENGINE_load_private_key$FUNC, false
+    static final MethodHandle PKCS12_parse$MH = RuntimeHelper.downcallHandle(
+        "PKCS12_parse",
+        constants$24.PKCS12_parse$FUNC, false
     );
-    static final FunctionDescriptor ENGINE_set_default$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor d2i_PKCS12_bio$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle d2i_PKCS12_bio$MH = RuntimeHelper.downcallHandle(
+        "d2i_PKCS12_bio",
+        constants$24.d2i_PKCS12_bio$FUNC, false
+    );
+    static final FunctionDescriptor RAND_seed$FUNC = FunctionDescriptor.ofVoid(
         ADDRESS,
         JAVA_INT
     );
-    static final MethodHandle ENGINE_set_default$MH = RuntimeHelper.downcallHandle(
-        "ENGINE_set_default",
-        constants$24.ENGINE_set_default$FUNC, false
+    static final MethodHandle RAND_seed$MH = RuntimeHelper.downcallHandle(
+        "RAND_seed",
+        constants$24.RAND_seed$FUNC, false
     );
-    static final MemorySegment OPENSSL_VERSION_TEXT$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("OpenSSL 1.1.1l  FIPS 24 Aug 2021");
-    static final MemorySegment SHLIB_VERSION_HISTORY$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("");
+    static final FunctionDescriptor RAND_load_file$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        JAVA_LONG
+    );
+    static final MethodHandle RAND_load_file$MH = RuntimeHelper.downcallHandle(
+        "RAND_load_file",
+        constants$24.RAND_load_file$FUNC, false
+    );
+    static final FunctionDescriptor X509_check_issued$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle X509_check_issued$MH = RuntimeHelper.downcallHandle(
+        "X509_check_issued",
+        constants$24.X509_check_issued$FUNC, false
+    );
 }
 
 

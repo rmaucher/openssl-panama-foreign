@@ -9,48 +9,50 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$17 {
 
-    static final FunctionDescriptor SSL_renegotiate$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS
-    );
-    static final MethodHandle SSL_renegotiate$MH = RuntimeHelper.downcallHandle(
-        "SSL_renegotiate",
-        constants$17.SSL_renegotiate$FUNC, false
-    );
-    static final FunctionDescriptor SSL_renegotiate_pending$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS
-    );
-    static final MethodHandle SSL_renegotiate_pending$MH = RuntimeHelper.downcallHandle(
-        "SSL_renegotiate_pending",
-        constants$17.SSL_renegotiate_pending$FUNC, false
-    );
-    static final FunctionDescriptor SSL_shutdown$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS
-    );
-    static final MethodHandle SSL_shutdown$MH = RuntimeHelper.downcallHandle(
-        "SSL_shutdown",
-        constants$17.SSL_shutdown$FUNC, false
-    );
-    static final FunctionDescriptor SSL_verify_client_post_handshake$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS
-    );
-    static final MethodHandle SSL_verify_client_post_handshake$MH = RuntimeHelper.downcallHandle(
-        "SSL_verify_client_post_handshake",
-        constants$17.SSL_verify_client_post_handshake$FUNC, false
-    );
-    static final FunctionDescriptor SSL_CTX_set_client_CA_list$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor SSL_write$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
+        ADDRESS,
+        JAVA_INT
+    );
+    static final MethodHandle SSL_write$MH = RuntimeHelper.downcallHandle(
+        "SSL_write",
+        constants$17.SSL_write$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CTX_ctrl$FUNC = FunctionDescriptor.of(JAVA_LONG,
+        ADDRESS,
+        JAVA_INT,
+        JAVA_LONG,
         ADDRESS
     );
-    static final MethodHandle SSL_CTX_set_client_CA_list$MH = RuntimeHelper.downcallHandle(
-        "SSL_CTX_set_client_CA_list",
-        constants$17.SSL_CTX_set_client_CA_list$FUNC, false
+    static final MethodHandle SSL_CTX_ctrl$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_ctrl",
+        constants$17.SSL_CTX_ctrl$FUNC, false
     );
-    static final FunctionDescriptor SSL_CTX_get_client_CA_list$FUNC = FunctionDescriptor.of(ADDRESS,
+    static final FunctionDescriptor SSL_get_version$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS
     );
-    static final MethodHandle SSL_CTX_get_client_CA_list$MH = RuntimeHelper.downcallHandle(
-        "SSL_CTX_get_client_CA_list",
-        constants$17.SSL_CTX_get_client_CA_list$FUNC, false
+    static final MethodHandle SSL_get_version$MH = RuntimeHelper.downcallHandle(
+        "SSL_get_version",
+        constants$17.SSL_get_version$FUNC, false
+    );
+    static final FunctionDescriptor TLS_server_method$FUNC = FunctionDescriptor.of(ADDRESS);
+    static final MethodHandle TLS_server_method$MH = RuntimeHelper.downcallHandle(
+        "TLS_server_method",
+        constants$17.TLS_server_method$FUNC, false
+    );
+    static final FunctionDescriptor SSL_get_ciphers$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_get_ciphers$MH = RuntimeHelper.downcallHandle(
+        "SSL_get_ciphers",
+        constants$17.SSL_get_ciphers$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CTX_get_ciphers$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_CTX_get_ciphers$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_get_ciphers",
+        constants$17.SSL_CTX_get_ciphers$FUNC, false
     );
 }
 

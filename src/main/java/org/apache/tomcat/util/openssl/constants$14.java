@@ -9,45 +9,49 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$14 {
 
-    static final FunctionDescriptor SSL_CTX_set_cert_verify_callback$cb$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor SSL_load_client_CA_file$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_load_client_CA_file$MH = RuntimeHelper.downcallHandle(
+        "SSL_load_client_CA_file",
+        constants$14.SSL_load_client_CA_file$FUNC, false
+    );
+    static final FunctionDescriptor SSL_add_file_cert_subjects_to_stack$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
         ADDRESS
     );
-    static final MethodHandle SSL_CTX_set_cert_verify_callback$cb$MH = RuntimeHelper.downcallHandle(
-        constants$14.SSL_CTX_set_cert_verify_callback$cb$FUNC, false
+    static final MethodHandle SSL_add_file_cert_subjects_to_stack$MH = RuntimeHelper.downcallHandle(
+        "SSL_add_file_cert_subjects_to_stack",
+        constants$14.SSL_add_file_cert_subjects_to_stack$FUNC, false
     );
-    static final FunctionDescriptor SSL_CTX_set_cert_verify_callback$FUNC = FunctionDescriptor.ofVoid(
-        ADDRESS,
+    static final FunctionDescriptor SSL_SESSION_get_time$FUNC = FunctionDescriptor.of(JAVA_LONG,
+        ADDRESS
+    );
+    static final MethodHandle SSL_SESSION_get_time$MH = RuntimeHelper.downcallHandle(
+        "SSL_SESSION_get_time",
+        constants$14.SSL_SESSION_get_time$FUNC, false
+    );
+    static final FunctionDescriptor SSL_SESSION_get_id$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS,
         ADDRESS
     );
-    static final MethodHandle SSL_CTX_set_cert_verify_callback$MH = RuntimeHelper.downcallHandle(
-        "SSL_CTX_set_cert_verify_callback",
-        constants$14.SSL_CTX_set_cert_verify_callback$FUNC, false
+    static final MethodHandle SSL_SESSION_get_id$MH = RuntimeHelper.downcallHandle(
+        "SSL_SESSION_get_id",
+        constants$14.SSL_SESSION_get_id$FUNC, false
     );
-    static final FunctionDescriptor SSL_CTX_use_PrivateKey$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
+    static final FunctionDescriptor SSL_get_peer_certificate$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS
     );
-    static final MethodHandle SSL_CTX_use_PrivateKey$MH = RuntimeHelper.downcallHandle(
-        "SSL_CTX_use_PrivateKey",
-        constants$14.SSL_CTX_use_PrivateKey$FUNC, false
+    static final MethodHandle SSL_get_peer_certificate$MH = RuntimeHelper.downcallHandle(
+        "SSL_get_peer_certificate",
+        constants$14.SSL_get_peer_certificate$FUNC, false
     );
-    static final FunctionDescriptor SSL_CTX_use_certificate$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
+    static final FunctionDescriptor SSL_get_peer_cert_chain$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS
     );
-    static final MethodHandle SSL_CTX_use_certificate$MH = RuntimeHelper.downcallHandle(
-        "SSL_CTX_use_certificate",
-        constants$14.SSL_CTX_use_certificate$FUNC, false
-    );
-    static final FunctionDescriptor SSL_CTX_set_default_passwd_cb$FUNC = FunctionDescriptor.ofVoid(
-        ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle SSL_CTX_set_default_passwd_cb$MH = RuntimeHelper.downcallHandle(
-        "SSL_CTX_set_default_passwd_cb",
-        constants$14.SSL_CTX_set_default_passwd_cb$FUNC, false
+    static final MethodHandle SSL_get_peer_cert_chain$MH = RuntimeHelper.downcallHandle(
+        "SSL_get_peer_cert_chain",
+        constants$14.SSL_get_peer_cert_chain$FUNC, false
     );
 }
 

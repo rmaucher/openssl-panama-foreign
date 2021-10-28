@@ -18,7 +18,7 @@ Find include paths using "gcc -xc -E -v -", on Fedora it is /usr/lib/gcc/x86_64-
 Edit openssl.conf accordingly.
 
 ```
-export JAVA_HOME=<pathto>/panama-foreign/build/linux-x86_64-server-release/jdk
+export JAVA_HOME=<pathto>/panama-foreign/build/linux-x86_64-server-release/images/jdk
 $JAVA_HOME/bin/jextract @openssl-tomcat.conf openssl.h
 ```
 The code included was generated for OpenSSL 1.1.1. As long as things remain API

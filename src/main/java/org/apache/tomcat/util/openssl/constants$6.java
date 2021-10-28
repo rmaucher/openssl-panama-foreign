@@ -9,6 +9,24 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$6 {
 
+    static final FunctionDescriptor DH_set0_pqg$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle DH_set0_pqg$MH = RuntimeHelper.downcallHandle(
+        "DH_set0_pqg",
+        constants$6.DH_set0_pqg$FUNC, false
+    );
+    static final FunctionDescriptor X509_STORE_set_flags$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        JAVA_LONG
+    );
+    static final MethodHandle X509_STORE_set_flags$MH = RuntimeHelper.downcallHandle(
+        "X509_STORE_set_flags",
+        constants$6.X509_STORE_set_flags$FUNC, false
+    );
     static final FunctionDescriptor X509_STORE_CTX_get0_untrusted$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS
     );
@@ -33,25 +51,6 @@ class constants$6 {
     static final MethodHandle X509_LOOKUP_file$MH = RuntimeHelper.downcallHandle(
         "X509_LOOKUP_file",
         constants$6.X509_LOOKUP_file$FUNC, false
-    );
-    static final FunctionDescriptor X509_LOOKUP_ctrl$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
-        JAVA_INT,
-        ADDRESS,
-        JAVA_LONG,
-        ADDRESS
-    );
-    static final MethodHandle X509_LOOKUP_ctrl$MH = RuntimeHelper.downcallHandle(
-        "X509_LOOKUP_ctrl",
-        constants$6.X509_LOOKUP_ctrl$FUNC, false
-    );
-    static final FunctionDescriptor X509_STORE_CTX_get_ex_data$FUNC = FunctionDescriptor.of(ADDRESS,
-        ADDRESS,
-        JAVA_INT
-    );
-    static final MethodHandle X509_STORE_CTX_get_ex_data$MH = RuntimeHelper.downcallHandle(
-        "X509_STORE_CTX_get_ex_data",
-        constants$6.X509_STORE_CTX_get_ex_data$FUNC, false
     );
 }
 

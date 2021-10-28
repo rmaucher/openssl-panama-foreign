@@ -9,38 +9,44 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$20 {
 
-    static final FunctionDescriptor SSL_get_ex_data_X509_STORE_CTX_idx$FUNC = FunctionDescriptor.of(JAVA_INT);
-    static final MethodHandle SSL_get_ex_data_X509_STORE_CTX_idx$MH = RuntimeHelper.downcallHandle(
-        "SSL_get_ex_data_X509_STORE_CTX_idx",
-        constants$20.SSL_get_ex_data_X509_STORE_CTX_idx$FUNC, false
+    static final FunctionDescriptor SSL_CTX_set_default_verify_paths$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS
     );
-    static final FunctionDescriptor SSL_CTX_set_tmp_dh_callback$dh$FUNC = FunctionDescriptor.of(ADDRESS,
+    static final MethodHandle SSL_CTX_set_default_verify_paths$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_set_default_verify_paths",
+        constants$20.SSL_CTX_set_default_verify_paths$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CTX_load_verify_locations$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_CTX_load_verify_locations$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_load_verify_locations",
+        constants$20.SSL_CTX_load_verify_locations$FUNC, false
+    );
+    static final FunctionDescriptor SSL_get_session$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_get_session$MH = RuntimeHelper.downcallHandle(
+        "SSL_get_session",
+        constants$20.SSL_get_session$FUNC, false
+    );
+    static final FunctionDescriptor SSL_set_info_callback$cb$FUNC = FunctionDescriptor.ofVoid(
         ADDRESS,
         JAVA_INT,
         JAVA_INT
     );
-    static final MethodHandle SSL_CTX_set_tmp_dh_callback$dh$MH = RuntimeHelper.downcallHandle(
-        constants$20.SSL_CTX_set_tmp_dh_callback$dh$FUNC, false
+    static final MethodHandle SSL_set_info_callback$cb$MH = RuntimeHelper.downcallHandle(
+        constants$20.SSL_set_info_callback$cb$FUNC, false
     );
-    static final FunctionDescriptor SSL_CTX_set_tmp_dh_callback$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor SSL_set_info_callback$FUNC = FunctionDescriptor.ofVoid(
         ADDRESS,
         ADDRESS
     );
-    static final MethodHandle SSL_CTX_set_tmp_dh_callback$MH = RuntimeHelper.downcallHandle(
-        "SSL_CTX_set_tmp_dh_callback",
-        constants$20.SSL_CTX_set_tmp_dh_callback$FUNC, false
-    );
-    static final FunctionDescriptor SSL_CONF_CTX_new$FUNC = FunctionDescriptor.of(ADDRESS);
-    static final MethodHandle SSL_CONF_CTX_new$MH = RuntimeHelper.downcallHandle(
-        "SSL_CONF_CTX_new",
-        constants$20.SSL_CONF_CTX_new$FUNC, false
-    );
-    static final FunctionDescriptor SSL_CONF_CTX_finish$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS
-    );
-    static final MethodHandle SSL_CONF_CTX_finish$MH = RuntimeHelper.downcallHandle(
-        "SSL_CONF_CTX_finish",
-        constants$20.SSL_CONF_CTX_finish$FUNC, false
+    static final MethodHandle SSL_set_info_callback$MH = RuntimeHelper.downcallHandle(
+        "SSL_set_info_callback",
+        constants$20.SSL_set_info_callback$FUNC, false
     );
 }
 
