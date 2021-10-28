@@ -81,6 +81,11 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
     private static final MethodHandle openSSLCallbackInfoHandle;
     private static final MethodHandle openSSLCallbackVerifyHandle;
 
+    private static final FunctionDescriptor openSSLCallbackInfoFunctionDescriptor =
+            FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+    private static final FunctionDescriptor openSSLCallbackVerifyFunctionDescriptor =
+            FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+
     static {
         MethodHandles.Lookup lookup = MethodHandles.lookup();
         try {
@@ -131,7 +136,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         IMPLEMENTED_PROTOCOLS_SET = Collections.unmodifiableSet(protocols);
     }
 
-    static String[] getCiphers(MemoryAddress ssl) {
+    private static String[] getCiphers(MemoryAddress ssl) {
         MemoryAddress sk = SSL_get_ciphers(ssl);
         int len = OPENSSL_sk_num(sk);
         if (len <= 0) {
@@ -146,72 +151,66 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         return ciphers.toArray(new String[0]);
     }
 
-    private static byte[] getPeerCertificate(MemoryAddress ssl) {
-        try (var scope = ResourceScope.newConfinedScope()) {
-            var allocator = SegmentAllocator.nativeAllocator(scope);
-            MemoryAddress/*(X509*)*/ x509 = SSL_get_peer_certificate(ssl);
-            MemorySegment bufPointer = allocator.allocate(ValueLayout.ADDRESS, MemoryAddress.NULL);
-            int length = i2d_X509(x509, bufPointer);
-            if (length <= 0) {
-                return null;
-            }
-            MemoryAddress buf = bufPointer.get(ValueLayout.ADDRESS, 0);
-            byte[] certificate = MemorySegment.ofAddressNative(buf, length, scope).toArray(ValueLayout.JAVA_BYTE);
-            X509_free(x509);
-            CRYPTO_free(buf, OPENSSL_FILE(), OPENSSL_LINE()); // OPENSSL_free macro
-            return certificate;
+    private static byte[] getPeerCertificate(MemoryAddress ssl, ResourceScope scope) {
+        var allocator = SegmentAllocator.nativeAllocator(scope);
+        MemoryAddress/*(X509*)*/ x509 = SSL_get_peer_certificate(ssl);
+        MemorySegment bufPointer = allocator.allocate(ValueLayout.ADDRESS, MemoryAddress.NULL);
+        int length = i2d_X509(x509, bufPointer);
+        if (length <= 0) {
+            return null;
         }
+        MemoryAddress buf = bufPointer.get(ValueLayout.ADDRESS, 0);
+        byte[] certificate = MemorySegment.ofAddressNative(buf, length, scope).toArray(ValueLayout.JAVA_BYTE);
+        X509_free(x509);
+        CRYPTO_free(buf, OPENSSL_FILE(), OPENSSL_LINE()); // OPENSSL_free macro
+        return certificate;
     }
 
-    private static byte[][] getPeerCertChain(MemoryAddress ssl) {
+    private static byte[][] getPeerCertChain(MemoryAddress ssl, ResourceScope scope) {
         MemoryAddress/*STACK_OF(X509)*/ sk = SSL_get_peer_cert_chain(ssl);
         int len = OPENSSL_sk_num(sk);
         if (len <= 0) {
             return null;
         }
         byte[][] certificateChain = new byte[len][];
-        try (var scope = ResourceScope.newConfinedScope()) {
-            var allocator = SegmentAllocator.nativeAllocator(scope);
-            for (int i = 0; i < len; i++) {
-                MemoryAddress/*(X509*)*/ x509 = OPENSSL_sk_value(sk, i);
-                MemorySegment bufPointer = allocator.allocate(ValueLayout.ADDRESS, MemoryAddress.NULL);
-                int length = i2d_X509(x509, bufPointer);
-                if (length < 0) {
-                    certificateChain[i] = new byte[0];
-                    continue;
-                }
-                MemoryAddress buf = bufPointer.get(ValueLayout.ADDRESS, 0);
-                byte[] certificate = MemorySegment.ofAddressNative(buf, length, scope).toArray(ValueLayout.JAVA_BYTE);
-                certificateChain[i] = certificate;
-                CRYPTO_free(buf, OPENSSL_FILE(), OPENSSL_LINE()); // OPENSSL_free macro
+        var allocator = SegmentAllocator.nativeAllocator(scope);
+        for (int i = 0; i < len; i++) {
+            MemoryAddress/*(X509*)*/ x509 = OPENSSL_sk_value(sk, i);
+            MemorySegment bufPointer = allocator.allocate(ValueLayout.ADDRESS, MemoryAddress.NULL);
+            int length = i2d_X509(x509, bufPointer);
+            if (length < 0) {
+                certificateChain[i] = new byte[0];
+                continue;
             }
+            MemoryAddress buf = bufPointer.get(ValueLayout.ADDRESS, 0);
+            byte[] certificate = MemorySegment.ofAddressNative(buf, length, scope).toArray(ValueLayout.JAVA_BYTE);
+            certificateChain[i] = certificate;
+            CRYPTO_free(buf, OPENSSL_FILE(), OPENSSL_LINE()); // OPENSSL_free macro
         }
         return certificateChain;
     }
 
-    private static String getProtocolNegotiated(MemoryAddress ssl) {
-        try (var scope = ResourceScope.newConfinedScope()) {
-            var allocator = SegmentAllocator.nativeAllocator(scope);
-            MemorySegment lenAddress = allocator.allocate(ValueLayout.JAVA_INT, 0);
-            MemorySegment protocolPointer = allocator.allocate(ValueLayout.ADDRESS, MemoryAddress.NULL);
-            SSL_get0_alpn_selected(ssl, protocolPointer, lenAddress);
-            if (MemoryAddress.NULL.equals(protocolPointer.address())) {
-                SSL_get0_next_proto_negotiated(ssl, protocolPointer, lenAddress);
-            }
-            if (MemoryAddress.NULL.equals(protocolPointer.address())) {
-                return null;
-            }
-            int len = lenAddress.get(ValueLayout.JAVA_INT, 0);
-            if (len == 0) {
-                return null;
-            }
-            MemoryAddress protocolAddress = protocolPointer.get(ValueLayout.ADDRESS, 0);
-            byte[] name = MemorySegment.ofAddressNative(protocolAddress, len, scope).toArray(ValueLayout.JAVA_BYTE);
-            if (logger.isDebugEnabled()) {
-                logger.debug("Protocol negotiated [" + new String(name) + "]");
-            }
-            return new String(name);
+    private static String getProtocolNegotiated(MemoryAddress ssl, ResourceScope scope) {
+        var allocator = SegmentAllocator.nativeAllocator(scope);
+        MemorySegment lenAddress = allocator.allocate(ValueLayout.JAVA_INT, 0);
+        MemorySegment protocolPointer = allocator.allocate(ValueLayout.ADDRESS, MemoryAddress.NULL);
+        SSL_get0_alpn_selected(ssl, protocolPointer, lenAddress);
+        if (MemoryAddress.NULL.equals(protocolPointer.address())) {
+            SSL_get0_next_proto_negotiated(ssl, protocolPointer, lenAddress);
         }
+        if (MemoryAddress.NULL.equals(protocolPointer.address())) {
+            return null;
+        }
+        int len = lenAddress.get(ValueLayout.JAVA_INT, 0);
+        if (len == 0) {
+            return null;
+        }
+        MemoryAddress protocolAddress = protocolPointer.get(ValueLayout.ADDRESS, 0);
+        byte[] name = MemorySegment.ofAddressNative(protocolAddress, len, scope).toArray(ValueLayout.JAVA_BYTE);
+        if (logger.isDebugEnabled()) {
+            logger.debug("Protocol negotiated [" + new String(name) + "]");
+        }
+        return new String(name);
     }
 
     private static final int MAX_PLAINTEXT_LENGTH = 16 * 1024; // 2^14
@@ -305,13 +304,13 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             throw new IllegalArgumentException(sm.getString("engine.noSSLContext"));
         }
         ResourceScope scope = ResourceScope.newSharedScope();
+        var allocator = SegmentAllocator.nativeAllocator(scope);
         session = new OpenSSLSession();
-        MemoryAddress ssl = SSL_new(sslCtx);
+        var ssl = SSL_new(sslCtx);
         this.certificateVerificationDepth = certificateVerificationDepth;
         // Set ssl_info_callback
-        MethodHandle boundOpenSSLCallbackInfoHandle = openSSLCallbackInfoHandle.bindTo(this);
-        NativeSymbol openSSLCallbackInfo = CLinker.systemCLinker().upcallStub(boundOpenSSLCallbackInfoHandle,
-                FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT), scope);
+        NativeSymbol openSSLCallbackInfo = CLinker.systemCLinker().upcallStub(openSSLCallbackInfoHandle.bindTo(this),
+                openSSLCallbackInfoFunctionDescriptor, scope);
         SSL_set_info_callback(ssl, openSSLCallbackInfo);
         if (clientMode) {
             SSL_set_connect_state(ssl);
@@ -319,16 +318,11 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             SSL_set_accept_state(ssl);
         }
         SSL_set_verify_result(ssl, X509_V_OK());
-        MemoryAddress internalBIO = MemoryAddress.NULL;
-        MemoryAddress networkBIO = MemoryAddress.NULL;
-        try (var confinedScope = ResourceScope.newConfinedScope()) {
-            var allocator = SegmentAllocator.nativeAllocator(confinedScope);
-            MemorySegment internalBIOPointer = allocator.allocate(ValueLayout.ADDRESS);
-            MemorySegment networkBIOPointer = allocator.allocate(ValueLayout.ADDRESS);
-            BIO_new_bio_pair(internalBIOPointer, 0, networkBIOPointer, 0);
-            internalBIO = internalBIOPointer.get(ValueLayout.ADDRESS, 0);
-            networkBIO = networkBIOPointer.get(ValueLayout.ADDRESS, 0);
-        }
+        var internalBIOPointer = allocator.allocate(ValueLayout.ADDRESS);
+        var networkBIOPointer = allocator.allocate(ValueLayout.ADDRESS);
+        BIO_new_bio_pair(internalBIOPointer, 0, networkBIOPointer, 0);
+        var internalBIO = internalBIOPointer.get(ValueLayout.ADDRESS, 0);
+        var networkBIO = networkBIOPointer.get(ValueLayout.ADDRESS, 0);
         SSL_set_bio(ssl, internalBIO, internalBIO);
         state = new OpenSSLState(scope, ssl, networkBIO);
         cleanable = cleaner.register(this, state);
@@ -1052,7 +1046,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             checkLastError();
         } else {
             if (alpn) {
-                selectedProtocol = getProtocolNegotiated(state.ssl);
+                selectedProtocol = getProtocolNegotiated(state.ssl, state.scope);
             }
             session.lastAccessedTime = System.currentTimeMillis();
             // if SSL_do_handshake returns > 0 it means the handshake was finished. This means we can update
@@ -1197,7 +1191,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             if (handshakeCount != currentHandshake && SSL_renegotiate_pending(state.ssl) == 0 &&
                     (phaState != PHAState.START)) {
                 if (alpn) {
-                    selectedProtocol = getProtocolNegotiated(state.ssl);
+                    selectedProtocol = getProtocolNegotiated(state.ssl, state.scope);
                 }
                 session.lastAccessedTime = System.currentTimeMillis();
                 version = SSL_get_version(state.ssl).getUtf8String(0);
@@ -1274,9 +1268,9 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             };
             // SSL.setVerify(state.ssl, value, certificateVerificationDepth);
             // Set int verify_callback(int preverify_ok, X509_STORE_CTX *x509_ctx) callback
-            MethodHandle boundOpenSSLCallbackVerifyHandle = openSSLCallbackVerifyHandle.bindTo(this);
-            NativeSymbol openSSLCallbackVerify = CLinker.systemCLinker().upcallStub(boundOpenSSLCallbackVerifyHandle,
-                    FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS), state.scope);
+            NativeSymbol openSSLCallbackVerify =
+                    CLinker.systemCLinker().upcallStub(openSSLCallbackVerifyHandle.bindTo(this),
+                    openSSLCallbackVerifyFunctionDescriptor, state.scope);
             int value = switch (mode) {
                 case NONE -> SSL_VERIFY_NONE();
                 case REQUIRE -> SSL_VERIFY_PEER() | SSL_VERIFY_FAIL_IF_NO_PEER_CERT();
@@ -1490,13 +1484,13 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                     if (destroyed || SSL_in_init(state.ssl) != 0) {
                         throw new SSLPeerUnverifiedException(sm.getString("engine.unverifiedPeer"));
                     }
-                    chain = getPeerCertChain(state.ssl);
+                    chain = getPeerCertChain(state.ssl, state.scope);
                     if (!clientMode) {
                         // if used on the server side SSL_get_peer_cert_chain(...) will not include the remote peer certificate.
                         // We use SSL_get_peer_certificate to get it in this case and add it to our array later.
                         //
                         // See https://www.openssl.org/docs/ssl/SSL_get_peer_cert_chain.html
-                        clientCert = getPeerCertificate(state.ssl);
+                        clientCert = getPeerCertificate(state.ssl, state.scope);
                     } else {
                         clientCert = null;
                     }
@@ -1547,7 +1541,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                     if (destroyed || SSL_in_init(state.ssl) != 0) {
                         throw new SSLPeerUnverifiedException(sm.getString("engine.unverifiedPeer"));
                     }
-                    chain = getPeerCertChain(state.ssl);
+                    chain = getPeerCertChain(state.ssl, state.scope);
                 }
                 if (chain == null) {
                     throw new SSLPeerUnverifiedException(sm.getString("engine.unverifiedPeer"));
@@ -1616,7 +1610,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                 synchronized (OpenSSLEngine.this) {
                     if (!destroyed) {
                         // Note: This only used NPN which seems odd
-                        applicationProtocol = getProtocolNegotiated(state.ssl);
+                        applicationProtocol = getProtocolNegotiated(state.ssl, state.scope);
                     }
                 }
                 if (applicationProtocol == null) {

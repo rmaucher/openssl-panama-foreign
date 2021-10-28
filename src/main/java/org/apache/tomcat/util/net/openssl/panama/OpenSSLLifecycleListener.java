@@ -138,122 +138,120 @@ public class OpenSSLLifecycleListener implements LifecycleListener {
             return;
         }
 
-        try (var scope = ResourceScope.newConfinedScope()) {
-            var allocator = SegmentAllocator.nativeAllocator(scope);
+        var scope = ResourceScope.globalScope();
+        var allocator = SegmentAllocator.nativeAllocator(scope);
 
-            // FIXME: implement ssl_init_cleanup to use if there's an error or when the library is unloaded, possibly only ENGINE_free
+        // FIXME: implement ssl_init_cleanup to use if there's an error or when the library is unloaded, possibly only ENGINE_free
 
-            // FIXME: Finish SSL.initialize if needed
+        // Main library init
+        OPENSSL_init_ssl(OPENSSL_INIT_ENGINE_ALL_BUILTIN(), MemoryAddress.NULL);
 
-            // Main library init
-            OPENSSL_init_ssl(OPENSSL_INIT_ENGINE_ALL_BUILTIN(), MemoryAddress.NULL);
-
-            // Setup engine
-            String engineName = "on".equalsIgnoreCase(SSLEngine) ? null : SSLEngine;
-            if (engineName != null) {
-                if ("auto".equals(engineName)) {
-                    ENGINE_register_all_complete();
-                } else {
-                    var engine = allocator.allocateUtf8String(engineName);
-                    enginePointer = ENGINE_by_id(engine);
-                    if (MemoryAddress.NULL.equals(enginePointer)) {
-                        enginePointer = ENGINE_by_id(allocator.allocateUtf8String("dynamic"));
-                        if (enginePointer != null) {
-                            if (ENGINE_ctrl_cmd_string(enginePointer, allocator.allocateUtf8String("SO_PATH"), engine, 0) == 0
-                                    || ENGINE_ctrl_cmd_string(enginePointer, allocator.allocateUtf8String("LOAD"),
-                                            MemoryAddress.NULL, 0) == 0) {
-                                // Engine load error
-                                ENGINE_free(enginePointer);
-                                enginePointer = MemoryAddress.NULL;
-                            }
-                        }
-                    }
-                    if (!MemoryAddress.NULL.equals(enginePointer)) {
-                        if (ENGINE_set_default(enginePointer, ENGINE_METHOD_ALL()) == 0) {
+        // Setup engine
+        String engineName = "on".equalsIgnoreCase(SSLEngine) ? null : SSLEngine;
+        if (engineName != null) {
+            if ("auto".equals(engineName)) {
+                ENGINE_register_all_complete();
+            } else {
+                var engine = allocator.allocateUtf8String(engineName);
+                enginePointer = ENGINE_by_id(engine);
+                if (MemoryAddress.NULL.equals(enginePointer)) {
+                    enginePointer = ENGINE_by_id(allocator.allocateUtf8String("dynamic"));
+                    if (enginePointer != null) {
+                        if (ENGINE_ctrl_cmd_string(enginePointer, allocator.allocateUtf8String("SO_PATH"), engine, 0) == 0
+                                || ENGINE_ctrl_cmd_string(enginePointer, allocator.allocateUtf8String("LOAD"),
+                                        MemoryAddress.NULL, 0) == 0) {
                             // Engine load error
                             ENGINE_free(enginePointer);
                             enginePointer = MemoryAddress.NULL;
                         }
                     }
-                    if (MemoryAddress.NULL.equals(enginePointer)) {
-                        // FIXME: throw error here
+                }
+                if (!MemoryAddress.NULL.equals(enginePointer)) {
+                    if (ENGINE_set_default(enginePointer, ENGINE_METHOD_ALL()) == 0) {
+                        // Engine load error
+                        ENGINE_free(enginePointer);
+                        enginePointer = MemoryAddress.NULL;
                     }
                 }
-            }
-
-            // Set the random seed, translated to the Java way
-            boolean seedDone = false;
-            if (SSLRandomSeed != null || SSLRandomSeed.length() != 0 || !"builtin".equals(SSLRandomSeed)) {
-                var randomSeed = allocator.allocateUtf8String(SSLRandomSeed);
-                seedDone = RAND_load_file(randomSeed, 128) > 0;
-            }
-            if (!seedDone) {
-                // Use a regular random to get some bytes
-                SecureRandom random = new SecureRandom();
-                byte[] randomBytes = random.generateSeed(128);
-                RAND_seed(allocator.allocateArray(ValueLayout.JAVA_BYTE, randomBytes), 128);
-            }
-
-            // FIXME: Normally init_dh_params is not needed
-
-            if (!(null == FIPSMode || "off".equalsIgnoreCase(FIPSMode))) {
-
-                fipsModeActive = false;
-
-                final boolean enterFipsMode;
-                int fipsModeState = FIPS_mode();
-
-                if(log.isDebugEnabled()) {
-                    log.debug(sm.getString("listener.currentFIPSMode",
-                                           Integer.valueOf(fipsModeState)));
+                if (MemoryAddress.NULL.equals(enginePointer)) {
+                    throw new IllegalStateException(sm.getString("listener.engineError"));
                 }
+            }
+        }
 
-                if ("on".equalsIgnoreCase(FIPSMode)) {
-                    if (fipsModeState == FIPS_ON) {
-                        log.info(sm.getString("listener.skipFIPSInitialization"));
-                        fipsModeActive = true;
-                        enterFipsMode = false;
-                    } else {
-                        enterFipsMode = true;
-                    }
-                } else if ("require".equalsIgnoreCase(FIPSMode)) {
-                    if (fipsModeState == FIPS_ON) {
-                        fipsModeActive = true;
-                        enterFipsMode = false;
-                    } else {
-                        throw new IllegalStateException(
-                                sm.getString("listener.requireNotInFIPSMode"));
-                    }
-                } else if ("enter".equalsIgnoreCase(FIPSMode)) {
-                    if (fipsModeState == FIPS_OFF) {
-                        enterFipsMode = true;
-                    } else {
-                        throw new IllegalStateException(sm.getString(
-                                "listener.enterAlreadyInFIPSMode",
-                                Integer.valueOf(fipsModeState)));
-                    }
-                } else {
-                    throw new IllegalArgumentException(sm.getString(
-                            "listener.wrongFIPSMode", FIPSMode));
-                }
+        // Set the random seed, translated to the Java way
+        boolean seedDone = false;
+        if (SSLRandomSeed != null || SSLRandomSeed.length() != 0 || !"builtin".equals(SSLRandomSeed)) {
+            var randomSeed = allocator.allocateUtf8String(SSLRandomSeed);
+            seedDone = RAND_load_file(randomSeed, 128) > 0;
+        }
+        if (!seedDone) {
+            // Use a regular random to get some bytes
+            SecureRandom random = new SecureRandom();
+            byte[] randomBytes = random.generateSeed(128);
+            RAND_seed(allocator.allocateArray(ValueLayout.JAVA_BYTE, randomBytes), 128);
+        }
 
-                if (enterFipsMode) {
-                    log.info(sm.getString("listener.initializingFIPS"));
+        // init_dh_params is done in OpenSSLContext static init
+        
+        // FIXME: Keylog ?
 
-                    fipsModeState = FIPS_mode_set(FIPS_ON);
-                    if (fipsModeState != FIPS_ON) {
-                        // This case should be handled by the native method,
-                        // but we'll make absolutely sure, here.
-                        String message = sm.getString("listener.initializeFIPSFailed");
-                        log.error(message);
-                        throw new IllegalStateException(message);
-                    }
+        if (!(null == FIPSMode || "off".equalsIgnoreCase(FIPSMode))) {
 
+            fipsModeActive = false;
+
+            final boolean enterFipsMode;
+            int fipsModeState = FIPS_mode();
+
+            if(log.isDebugEnabled()) {
+                log.debug(sm.getString("listener.currentFIPSMode",
+                        Integer.valueOf(fipsModeState)));
+            }
+
+            if ("on".equalsIgnoreCase(FIPSMode)) {
+                if (fipsModeState == FIPS_ON) {
+                    log.info(sm.getString("listener.skipFIPSInitialization"));
                     fipsModeActive = true;
-                    log.info(sm.getString("listener.initializeFIPSSuccess"));
+                    enterFipsMode = false;
+                } else {
+                    enterFipsMode = true;
                 }
+            } else if ("require".equalsIgnoreCase(FIPSMode)) {
+                if (fipsModeState == FIPS_ON) {
+                    fipsModeActive = true;
+                    enterFipsMode = false;
+                } else {
+                    throw new IllegalStateException(
+                            sm.getString("listener.requireNotInFIPSMode"));
+                }
+            } else if ("enter".equalsIgnoreCase(FIPSMode)) {
+                if (fipsModeState == FIPS_OFF) {
+                    enterFipsMode = true;
+                } else {
+                    throw new IllegalStateException(sm.getString(
+                            "listener.enterAlreadyInFIPSMode",
+                            Integer.valueOf(fipsModeState)));
+                }
+            } else {
+                throw new IllegalArgumentException(sm.getString(
+                        "listener.wrongFIPSMode", FIPSMode));
             }
 
+            if (enterFipsMode) {
+                log.info(sm.getString("listener.initializingFIPS"));
+
+                fipsModeState = FIPS_mode_set(FIPS_ON);
+                if (fipsModeState != FIPS_ON) {
+                    // This case should be handled by the native method,
+                    // but we'll make absolutely sure, here.
+                    String message = sm.getString("listener.initializeFIPSFailed");
+                    log.error(message);
+                    throw new IllegalStateException(message);
+                }
+
+                fipsModeActive = true;
+                log.info(sm.getString("listener.initializeFIPSSuccess"));
+            }
         }
 
         log.info(sm.getString("listener.initializedOpenSSL", OPENSSL_VERSION_TEXT().getUtf8String(0)));
