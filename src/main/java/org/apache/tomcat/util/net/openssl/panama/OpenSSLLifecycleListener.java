@@ -39,6 +39,7 @@ import org.apache.tomcat.util.res.StringManager;
 /**
  * Implementation of <code>LifecycleListener</code> that will do the global
  * initialization of OpenSSL according to specified configuration parameters.
+ * Using the listener is completely optional, but is needed for configuration.
  */
 public class OpenSSLLifecycleListener implements LifecycleListener {
 
@@ -127,6 +128,16 @@ public class OpenSSLLifecycleListener implements LifecycleListener {
 
     static MemoryAddress enginePointer = MemoryAddress.NULL;
 
+    static void initLibrary() {
+        synchronized (OpenSSLStatus.class) {
+            if (OpenSSLStatus.isLibraryInitialized()) {
+                return;
+            }
+            OpenSSLStatus.setLibraryInitialized(true);
+            OPENSSL_init_ssl(OPENSSL_INIT_ENGINE_ALL_BUILTIN(), MemoryAddress.NULL);
+        }
+    }
+
     static void init() throws Exception {
 
         if (OpenSSLStatus.isInitialized()) {
@@ -144,7 +155,7 @@ public class OpenSSLLifecycleListener implements LifecycleListener {
         // FIXME: implement ssl_init_cleanup to use if there's an error or when the library is unloaded, possibly only ENGINE_free
 
         // Main library init
-        OPENSSL_init_ssl(OPENSSL_INIT_ENGINE_ALL_BUILTIN(), MemoryAddress.NULL);
+        initLibrary();
 
         // Setup engine
         String engineName = "on".equalsIgnoreCase(SSLEngine) ? null : SSLEngine;

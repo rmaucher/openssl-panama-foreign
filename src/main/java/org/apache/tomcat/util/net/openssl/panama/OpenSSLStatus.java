@@ -20,10 +20,15 @@ package org.apache.tomcat.util.net.openssl.panama;
  * Holds OpenSSL status without the need to load other classes.
  */
 public class OpenSSLStatus {
+    private static volatile boolean libraryInitialized = false;
     private static volatile boolean initialized = false;
     private static volatile boolean available = false;
     private static volatile boolean instanceCreated = false;
 
+
+    public static boolean isLibraryInitialized() {
+        return libraryInitialized;
+    }
 
     public static boolean isInitialized() {
         return initialized;
@@ -35,6 +40,10 @@ public class OpenSSLStatus {
 
     public static boolean isInstanceCreated() {
         return instanceCreated;
+    }
+
+    public static void setLibraryInitialized(boolean libraryInitialized) {
+        OpenSSLStatus.libraryInitialized = libraryInitialized;
     }
 
     public static void setInitialized(boolean initialized) {

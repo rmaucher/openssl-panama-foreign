@@ -172,6 +172,9 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
     private static final DHParam[] dhParameters = new DHParam[6];
 
     static {
+
+        OpenSSLLifecycleListener.initLibrary();
+
         var dh = DH_new();
         var p = BN_get_rfc3526_prime_8192(MemoryAddress.NULL);
         var g = BN_new();
