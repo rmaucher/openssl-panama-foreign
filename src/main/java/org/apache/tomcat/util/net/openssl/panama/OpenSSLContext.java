@@ -16,6 +16,7 @@
  */
 package org.apache.tomcat.util.net.openssl.panama;
 
+import jdk.incubator.foreign.Addressable;
 import jdk.incubator.foreign.CLinker;
 import jdk.incubator.foreign.FunctionDescriptor;
 import jdk.incubator.foreign.MemoryAddress;
@@ -131,7 +132,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
             ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
     private static final FunctionDescriptor openSSLCallbackTmpDHFunctionDescriptor =
-            FunctionDescriptor.of(ValueLayout.JAVA_LONG/*FIXME: ValueLayout.ADDRESS*/, ValueLayout.ADDRESS,
+            FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS,
             ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
 
     static {
@@ -147,7 +148,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                     MethodType.methodType(int.class, MemoryAddress.class, MemoryAddress.class,
                             MemoryAddress.class, MemoryAddress.class, int.class, MemoryAddress.class));
             openSSLCallbackTmpDHHandle = lookup.findVirtual(OpenSSLContext.class, "openSSLCallbackTmpDH",
-                    MethodType.methodType(long.class/*MemoryAddress.class*/, MemoryAddress.class, int.class, int.class));
+                    MethodType.methodType(Addressable.class, MemoryAddress.class, int.class, int.class));
         } catch (Exception e) {
             throw new IllegalStateException(e);
         }
@@ -800,7 +801,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
     }
 
     // DH *(*tmp_dh_callback)(SSL *ssl, int is_export, int keylength)
-    public long/*FIXME: MemoryAddress*/ openSSLCallbackTmpDH(MemoryAddress ssl, int isExport, int keylength) {
+    public Addressable openSSLCallbackTmpDH(MemoryAddress ssl, int isExport, int keylength) {
         var pkey = SSL_get_privatekey(ssl);
         int type = (MemoryAddress.NULL.equals(pkey)) ? EVP_PKEY_NONE() : EVP_PKEY_base_id(pkey);
         /*
@@ -821,10 +822,10 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
         }
         for (int i = 0; i < dhParameters.length; i++) {
             if (keylen >= dhParameters[i].min) {
-                return dhParameters[i].dh.toRawLongValue();
+                return dhParameters[i].dh;
             }
         }
-        return MemoryAddress.NULL.toRawLongValue();
+        return MemoryAddress.NULL;
     }
 
     // int SSL_callback_alpn_select_proto(SSL* ssl, const unsigned char **out, unsigned char *outlen,

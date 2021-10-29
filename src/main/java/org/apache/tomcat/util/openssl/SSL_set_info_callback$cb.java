@@ -14,9 +14,10 @@ public interface SSL_set_info_callback$cb {
         return RuntimeHelper.upcallStub(SSL_set_info_callback$cb.class, fi, constants$20.SSL_set_info_callback$cb$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;II)V", scope);
     }
     static SSL_set_info_callback$cb ofAddress(MemoryAddress addr, ResourceScope scope) {
-        NativeSymbol symbol = NativeSymbol.ofAddress("SSL_set_info_callback$cb::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, int x1, int x2) -> {
+        NativeSymbol symbol = NativeSymbol.ofAddress("SSL_set_info_callback$cb::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (jdk.incubator.foreign.MemoryAddress x0, int x1, int x2) -> {
             try {
-                constants$20.SSL_set_info_callback$cb$MH.invokeExact(symbol, x0, x1, x2);
+                constants$20.SSL_set_info_callback$cb$MH.invokeExact(symbol, (jdk.incubator.foreign.Addressable)x0, x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

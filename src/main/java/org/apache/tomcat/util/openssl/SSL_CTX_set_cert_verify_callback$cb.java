@@ -14,9 +14,10 @@ public interface SSL_CTX_set_cert_verify_callback$cb {
         return RuntimeHelper.upcallStub(SSL_CTX_set_cert_verify_callback$cb.class, fi, constants$15.SSL_CTX_set_cert_verify_callback$cb$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
     static SSL_CTX_set_cert_verify_callback$cb ofAddress(MemoryAddress addr, ResourceScope scope) {
-        NativeSymbol symbol = NativeSymbol.ofAddress("SSL_CTX_set_cert_verify_callback$cb::" + Long.toHexString(addr.toRawLongValue()), addr, scope);return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+        NativeSymbol symbol = NativeSymbol.ofAddress("SSL_CTX_set_cert_verify_callback$cb::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
             try {
-                return (int)constants$15.SSL_CTX_set_cert_verify_callback$cb$MH.invokeExact(symbol, x0, x1);
+                return (int)constants$15.SSL_CTX_set_cert_verify_callback$cb$MH.invokeExact(symbol, (jdk.incubator.foreign.Addressable)x0, (jdk.incubator.foreign.Addressable)x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }
