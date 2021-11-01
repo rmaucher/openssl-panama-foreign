@@ -1283,13 +1283,13 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         }
     }
 
-    public void openSSLCallbackInfo(MemoryAddress ssl, int where, int ret) {
+    public synchronized void openSSLCallbackInfo(MemoryAddress ssl, int where, int ret) {
         if (0 != (where & SSL_CB_HANDSHAKE_DONE())) {
             handshakeCount++;
         }
     }
 
-    public int openSSLCallbackVerify(int preverify_ok, MemoryAddress /*X509_STORE_CTX*/ x509_ctx) {
+    public synchronized int openSSLCallbackVerify(int preverify_ok, MemoryAddress /*X509_STORE_CTX*/ x509_ctx) {
         if (logger.isDebugEnabled()) {
             logger.debug("Verification in engine with mode [" + certificateVerifyMode + "]");
         }
@@ -1662,8 +1662,6 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
 
     private static class OpenSSLState implements Runnable {
 
-        private static final Log logger = LogFactory.getLog(OpenSSLState.class);
-
         private final ResourceScope scope;
         private final MemoryAddress ssl;
         private final MemoryAddress networkBIO;
@@ -1676,9 +1674,6 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
 
         @Override
         public void run() {
-            if (logger.isDebugEnabled()) {
-                logger.debug("Cleanup for SSL instance " + ssl.toRawLongValue());
-            }
             try {
                 BIO_free(networkBIO);
                 SSL_free(ssl);
