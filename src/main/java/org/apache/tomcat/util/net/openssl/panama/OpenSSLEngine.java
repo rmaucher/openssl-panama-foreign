@@ -306,39 +306,28 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
 
         if (src.isDirect()) {
             sslWrote = SSL_write(ssl, MemorySegment.ofByteBuffer(src), len);
-            if (sslWrote <= 0) {
-                checkLastError();
-            }
-            if (sslWrote >= 0) {
+            if (sslWrote > 0) {
                 src.position(pos + sslWrote);
                 return sslWrote;
+            } else {
+                checkLastError();
             }
         } else {
-            ByteBuffer buf = ByteBuffer.allocateDirect(len);
-            try {
-                src.limit(pos + len);
-                buf.put(src);
-                buf.flip();
-                src.limit(limit);
-
-                sslWrote = SSL_write(ssl, MemorySegment.ofByteBuffer(buf), len);
-                if (sslWrote <= 0) {
-                    checkLastError();
-                }
-                if (sslWrote >= 0) {
+            try (var scope = ResourceScope.newConfinedScope()) {
+                var allocator = SegmentAllocator.nativeAllocator(scope);
+                MemorySegment bufSegment = allocator.allocateArray(ValueLayout.JAVA_BYTE, len);
+                MemorySegment.copy(src.array(), pos, bufSegment, ValueLayout.JAVA_BYTE, 0, len);
+                sslWrote = SSL_write(ssl, bufSegment, len);
+                if (sslWrote > 0) {
                     src.position(pos + sslWrote);
                     return sslWrote;
                 } else {
-                    src.position(pos);
+                    checkLastError();
                 }
-            } finally {
-                buf.clear();
-                ByteBufferUtils.cleanDirectBuffer(buf);
             }
         }
 
-        throw new IllegalStateException(
-                sm.getString("engine.writeToSSLFailed", Integer.toString(sslWrote)));
+        return 0;
     }
 
     /**
@@ -351,27 +340,25 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         final int len = src.remaining();
         if (src.isDirect()) {
             final int netWrote = BIO_write(networkBIO, MemorySegment.ofByteBuffer(src), len);
-            if (netWrote <= 0) {
-                checkLastError();
-            }
-            if (netWrote >= 0) {
+            if (netWrote > 0) {
                 src.position(pos + netWrote);
                 return netWrote;
+            } else {
+                checkLastError();
             }
         } else {
+            // This uses unsafe and does not need to be used: the connector should be configured with direct buffers
             ByteBuffer buf = ByteBuffer.allocateDirect(len);
             try {
                 buf.put(src);
                 buf.flip();
                 final int netWrote = BIO_write(networkBIO, MemorySegment.ofByteBuffer(buf), len);
-                if (netWrote <= 0) {
-                    checkLastError();
-                }
-                if (netWrote >= 0) {
+                if (netWrote > 0) {
                     src.position(pos + netWrote);
                     return netWrote;
                 } else {
                     src.position(pos);
+                    checkLastError();
                 }
             } finally {
                 buf.clear();
@@ -389,6 +376,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
     private int readPlaintextData(final MemoryAddress ssl, final ByteBuffer dst) throws SSLException {
         clearLastError();
         final int pos = dst.position();
+
         if (dst.isDirect()) {
             final int len = dst.remaining();
             final int sslRead = SSL_read(ssl, MemorySegment.ofByteBuffer(dst), len);
@@ -401,21 +389,17 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         } else {
             final int limit = dst.limit();
             final int len = Math.min(MAX_ENCRYPTED_PACKET_LENGTH, limit - pos);
-            final ByteBuffer buf = ByteBuffer.allocateDirect(len);
-            try {
-                final int sslRead = SSL_read(ssl, MemorySegment.ofByteBuffer(buf), len);
+            try (var scope = ResourceScope.newConfinedScope()) {
+                var allocator = SegmentAllocator.nativeAllocator(scope);
+                MemorySegment bufSegment = allocator.allocateArray(ValueLayout.JAVA_BYTE, len);
+                final int sslRead = SSL_read(ssl, bufSegment, len);
                 if (sslRead > 0) {
-                    buf.limit(sslRead);
-                    dst.limit(pos + sslRead);
-                    dst.put(buf);
-                    dst.limit(limit);
+                    MemorySegment.copy(bufSegment, ValueLayout.JAVA_BYTE, 0, dst.array(), pos, sslRead);
+                    dst.position(dst.position() + sslRead);
                     return sslRead;
                 } else {
                     checkLastError();
                 }
-            } finally {
-                buf.clear();
-                ByteBufferUtils.cleanDirectBuffer(buf);
             }
         }
 
@@ -438,6 +422,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                 checkLastError();
             }
         } else {
+            // This uses unsafe and does not need to be used: the connector should be configured with direct buffers
             final ByteBuffer buf = ByteBuffer.allocateDirect(pending);
             try {
                 final int bioRead = BIO_read(networkBIO, MemorySegment.ofByteBuffer(buf), pending);
@@ -531,11 +516,17 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             }
             while (src.hasRemaining()) {
 
+                int bytesWritten = 0;
                 // Write plain text application data to the SSL engine
                 try {
-                    bytesConsumed += writePlaintextData(state.ssl, src);
+                    bytesWritten = writePlaintextData(state.ssl, src);
+                    bytesConsumed += bytesWritten;
                 } catch (Exception e) {
                     throw new SSLException(e);
+                }
+
+                if (bytesWritten == 0) {
+                    throw new IllegalStateException(sm.getString("engine.failedToWriteBytes"));
                 }
 
                 // Check to see if the engine wrote data into the network BIO
