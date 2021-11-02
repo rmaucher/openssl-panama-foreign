@@ -428,7 +428,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
      */
     private int readEncryptedData(final MemoryAddress networkBIO, final ByteBuffer dst, final int pending) throws SSLException {
         clearLastError();
-        if (dst.isDirect() && dst.remaining() >= pending) {
+        if (dst.isDirect()) {
             final int pos = dst.position();
             final int bioRead = BIO_read(networkBIO, MemorySegment.ofByteBuffer(dst), pending);
             if (bioRead > 0) {
