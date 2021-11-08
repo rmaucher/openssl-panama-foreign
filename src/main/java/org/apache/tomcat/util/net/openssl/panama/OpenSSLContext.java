@@ -92,10 +92,6 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
     public static final int SSL_PROTOCOL_ALL = (SSL_PROTOCOL_TLSV1 | SSL_PROTOCOL_TLSV1_1 | SSL_PROTOCOL_TLSV1_2 |
             SSL_PROTOCOL_TLSV1_3);
 
-    public static final int OCSP_STATUS_OK      = 0;
-    public static final int OCSP_STATUS_REVOKED = 1;
-    public static final int OCSP_STATUS_UNKNOWN = 2;
-
     private static final String BEGIN_KEY = "-----BEGIN PRIVATE KEY-----\n";
     private static final Object END_KEY = "\n-----END PRIVATE KEY-----";
 
@@ -652,6 +648,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
             NativeSymbol openSSLCallbackVerify =
                     CLinker.systemCLinker().upcallStub(openSSLCallbackVerifyHandle.bindTo(this),
                     openSSLCallbackVerifyFunctionDescriptor, state.scope);
+            // Leave this just in case but in Tomcat this is always set again by the engine
             SSL_CTX_set_verify(state.ctx, value, openSSLCallbackVerify);
 
             // Trust and certificate verification
@@ -801,7 +798,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
     }
 
     // DH *(*tmp_dh_callback)(SSL *ssl, int is_export, int keylength)
-    public Addressable openSSLCallbackTmpDH(MemoryAddress ssl, int isExport, int keylength) {
+    public synchronized Addressable openSSLCallbackTmpDH(MemoryAddress ssl, int isExport, int keylength) {
         var pkey = SSL_get_privatekey(ssl);
         int type = (MemoryAddress.NULL.equals(pkey)) ? EVP_PKEY_NONE() : EVP_PKEY_base_id(pkey);
         /*
@@ -830,7 +827,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
 
     // int SSL_callback_alpn_select_proto(SSL* ssl, const unsigned char **out, unsigned char *outlen,
     //        const unsigned char *in, unsigned int inlen, void *arg)
-    public int openSSLCallbackAlpnSelectProto(MemoryAddress ssl, MemoryAddress out, MemoryAddress outlen,
+    public synchronized int openSSLCallbackAlpnSelectProto(MemoryAddress ssl, MemoryAddress out, MemoryAddress outlen,
             MemoryAddress in, int inlen, MemoryAddress arg) {
         // No scope, so byte by byte read, the ALPN data is small
         byte[] advertisedBytes = new byte[inlen];
@@ -863,7 +860,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
         return SSL_TLSEXT_ERR_NOACK();
     }
 
-    public int openSSLCallbackVerify(int preverify_ok, MemoryAddress /*X509_STORE_CTX*/ x509ctx) {
+    public synchronized int openSSLCallbackVerify(int preverify_ok, MemoryAddress /*X509_STORE_CTX*/ x509ctx) {
         if (log.isDebugEnabled()) {
             log.debug("Verification with mode [" + certificateVerifyMode + "]");
         }
@@ -875,11 +872,11 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                 || certificateVerifyMode == SSL_VERIFY_NONE()) {
             return 1;
         }
-        /*SSL_VERIFY_ERROR_IS_OPTIONAL(errnum) -> ((errnum == X509_V_ERR_DEPTH_ZERO_SELF_SIGNED_CERT) \
-        || (errnum == X509_V_ERR_SELF_SIGNED_CERT_IN_CHAIN) \
-        || (errnum == X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY) \
-        || (errnum == X509_V_ERR_CERT_UNTRUSTED) \
-        || (errnum == X509_V_ERR_UNABLE_TO_VERIFY_LEAF_SIGNATURE))*/
+        /*SSL_VERIFY_ERROR_IS_OPTIONAL(errnum) -> ((errnum == X509_V_ERR_DEPTH_ZERO_SELF_SIGNED_CERT)
+                || (errnum == X509_V_ERR_SELF_SIGNED_CERT_IN_CHAIN)
+                || (errnum == X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY)
+                || (errnum == X509_V_ERR_CERT_UNTRUSTED)
+                || (errnum == X509_V_ERR_UNABLE_TO_VERIFY_LEAF_SIGNATURE))*/
         boolean verifyErrorIsOptional = (errnum == X509_V_ERR_DEPTH_ZERO_SELF_SIGNED_CERT())
                 || (errnum == X509_V_ERR_SELF_SIGNED_CERT_IN_CHAIN())
                 || (errnum == X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY())
@@ -912,58 +909,17 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
              * missing/untrusted.  Fail in that case.
              */
             if (verifyErrorIsOptional) {
-                X509_STORE_CTX_set_error(x509ctx, X509_V_ERR_APPLICATION_VERIFICATION());
-                errnum = X509_V_ERR_APPLICATION_VERIFICATION();
-                ok = 0;
-            } else {
-                int ocspResponse = OCSP_STATUS_UNKNOWN;
-                // ocspResponse = ssl_verify_OCSP(x509_ctx);
-                MemoryAddress x509 = X509_STORE_CTX_get_current_cert(x509ctx);
-                if (!MemoryAddress.NULL.equals(x509)) {
-                    // No need to check cert->valid, because ssl_verify_OCSP() only
-                    // is called if OpenSSL already successfully verified the certificate
-                    // (parameter "ok" in SSL_callback_SSL_verify() must be true).
-                    if (X509_check_issued(x509, x509) == X509_V_OK()) {
-                        // don't do OCSP checking for valid self-issued certs
-                        X509_STORE_CTX_set_error(x509ctx, X509_V_OK());
-                    } else {
-                        /* if we can't get the issuer, we cannot perform OCSP verification */
-                        MemoryAddress issuer = X509_STORE_CTX_get0_current_issuer(x509ctx);
-                        if (!MemoryAddress.NULL.equals(issuer)) {
-                            //ssl_ocsp_request(x509, issuer, x509ctx);
-                            int nid = X509_get_ext_by_NID(x509, NID_info_access(), -1);
-                            if (nid >= 0) {
-                                try (var scope = ResourceScope.newConfinedScope()) {
-                                    MemoryAddress ext = X509_get_ext(x509, nid);
-                                    MemoryAddress os = X509_EXTENSION_get_data(ext);
-                                    int len = ASN1_STRING_length(os);
-                                    MemoryAddress data = ASN1_STRING_get0_data(os);
-                                    // ocsp_urls = decode_OCSP_url(os);
-                                    byte[] asn1String = new byte[len + 1];
-                                    for (int i = 0; i < len; i++) {
-                                        asn1String[i] = data.get(ValueLayout.JAVA_BYTE, i);
-                                    }
-                                    asn1String[len] = 0;
-                                    Asn1Parser parser = new Asn1Parser(asn1String);
-                                    // Parse the byte sequence
-                                    ArrayList<String> urls = new ArrayList<>();
-                                    try {
-                                        parseOCSPURLs(parser, urls);
-                                    } catch (Exception e) {
-                                        log.error("OCSP error", e);
-                                    }
-                                    if (!urls.isEmpty()) {
-                                        // FIXME: OCSP requests and response from sslutils.c ssl_ocsp_request
-                                    }
-                                }
-                            }
-                        }
-                    }
+                if (certificateVerifyMode != OPTIONAL_NO_CA) {
+                    X509_STORE_CTX_set_error(x509ctx, X509_V_ERR_APPLICATION_VERIFICATION());
+                    errnum = X509_V_ERR_APPLICATION_VERIFICATION();
+                    ok = 0;
                 }
-                if (ocspResponse == OCSP_STATUS_REVOKED) {
+            } else {
+                int ocspResponse = OpenSSLEngine.processOCSP(x509ctx);
+                if (ocspResponse == V_OCSP_CERTSTATUS_REVOKED()) {
                     ok = 0;
                     errnum = X509_STORE_CTX_get_error(x509ctx);
-                } else if (ocspResponse == OCSP_STATUS_UNKNOWN) {
+                } else if (ocspResponse == V_OCSP_CERTSTATUS_UNKNOWN()) {
                     errnum = X509_STORE_CTX_get_error(x509ctx);
                     if (errnum <= 0) {
                         ok = 0;
@@ -980,41 +936,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
     }
 
 
-    private static final int ASN1_SEQUENCE = 0x30;
-    private static final int ASN1_OID      = 0x06;
-    private static final int ASN1_STRING   = 0x86;
-    private static final byte[] OCSP_OID = {0x2b, 0x06, 0x01, 0x05, 0x05, 0x07, 0x30, 0x01};
-
-    private boolean parseOCSPURLs(Asn1Parser parser, ArrayList<String> urls) {
-        while (true) {
-            int tag = parser.peekTag();
-            if (tag == ASN1_SEQUENCE) {
-                parser.parseTag(ASN1_SEQUENCE);
-                parser.parseFullLength();
-            } else if (tag == ASN1_OID) {
-                parser.parseTag(ASN1_OID);
-                int oidLen = parser.parseLength();
-                byte[] oid = new byte[oidLen];
-                parser.parseBytes(oid);
-                if (Arrays.compareUnsigned(oid, 0, OCSP_OID.length, OCSP_OID, 0, OCSP_OID.length) == 0) {
-                    Asn1Parser newParser = new Asn1Parser(Arrays.copyOfRange(oid, 8, oid.length));
-                    newParser.parseTag(ASN1_STRING);
-                    int urlLen = newParser.parseLength();
-                    byte[] url = new byte[urlLen];
-                    urls.add(new String(url));
-                }
-            } else if (tag == 0) {
-                // Reached the end
-                return true;
-            } else {
-                break;
-            }
-        }
-        return false;
-    }
-
-
-    public int openSSLCallbackCertVerify(MemoryAddress /*X509_STORE_CTX*/ x509_ctx, MemoryAddress param) {
+    public synchronized int openSSLCallbackCertVerify(MemoryAddress /*X509_STORE_CTX*/ x509_ctx, MemoryAddress param) {
         if (log.isDebugEnabled()) {
             log.debug("Certificate verification");
         }
@@ -1155,7 +1077,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
     }
 
 
-    public void addCertificate(SSLHostConfigCertificate certificate) throws Exception {
+    private void addCertificate(SSLHostConfigCertificate certificate) throws Exception {
         try (var scope = ResourceScope.newConfinedScope()) {
             var allocator = SegmentAllocator.nativeAllocator(scope);
             int index = getCertificateIndex(certificate);
@@ -1251,7 +1173,17 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                     }
                     cert = PEM_read_bio_X509_AUX(bio, MemoryAddress.NULL, openSSLCallbackPassword, MemoryAddress.NULL);
                     if (MemoryAddress.NULL.equals(cert) &&
-                            // FIXME: Unfortunately jextract doesn't convert this ERR_GET_REASON(ERR_peek_last_error())
+                            // Missing ERR_GET_REASON(ERR_peek_last_error())
+                            /*int ERR_GET_REASON(unsigned long errcode) {
+                             *    if (ERR_SYSTEM_ERROR(errcode))
+                             *        return errcode & ERR_SYSTEM_MASK;
+                             *    return errcode & ERR_REASON_MASK;
+                             *}
+                             *# define ERR_SYSTEM_ERROR(errcode)      (((errcode) & ERR_SYSTEM_FLAG) != 0)
+                             *# define ERR_SYSTEM_FLAG                ((unsigned int)INT_MAX + 1)
+                             *# define ERR_SYSTEM_MASK                ((unsigned int)INT_MAX)
+                             *# define ERR_REASON_MASK                0X7FFFFF
+                             */
                             ((ERR_peek_last_error() & 0X7FFFFF) == PEM_R_NO_START_LINE())) {
                         ERR_clear_error();
                         BIO_ctrl(bio, BIO_CTRL_RESET(), 0, MemoryAddress.NULL);
@@ -1491,11 +1423,12 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
     }
 
     @Override
-    public SSLEngine createSSLEngine() {
+    public synchronized SSLEngine createSSLEngine() {
         return new OpenSSLEngine(cleaner, state.ctx, defaultProtocol, false, sessionContext,
                 (negotiableProtocols != null && negotiableProtocols.size() > 0), initialized,
                 sslHostConfig.getCertificateVerificationDepth(),
-                sslHostConfig.getCertificateVerification() == CertificateVerification.OPTIONAL_NO_CA);
+                sslHostConfig.getCertificateVerification() == CertificateVerification.OPTIONAL_NO_CA,
+                noOcspCheck);
     }
 
     @Override
