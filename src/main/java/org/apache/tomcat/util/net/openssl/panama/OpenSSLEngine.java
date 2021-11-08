@@ -1097,7 +1097,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
     /**
      * Clear out any errors, but log a warning.
      */
-    private static void clearLastError() {
+    private void clearLastError() {
         getLastError();
     }
 
@@ -1110,25 +1110,23 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
      * zero result.
      * @return the first error in the stack
      */
-    private static String getLastError() {
+    private String getLastError() {
         String sslError = null;
         long error = ERR_get_error();
         if (error != SSL_ERROR_NONE()) {
-            try (var scope = ResourceScope.newConfinedScope()) {
-                var allocator = SegmentAllocator.nativeAllocator(scope);
-                do {
-                    // Loop until getLastErrorNumber() returns SSL_ERROR_NONE
-                    var buf = allocator.allocateArray(ValueLayout.JAVA_BYTE, new byte[128]);
-                    ERR_error_string(error, buf);
-                    String err = buf.getUtf8String(0);
-                    if (sslError == null) {
-                        sslError = err;
-                    }
-                    if (logger.isDebugEnabled()) {
-                        logger.debug(sm.getString("engine.openSSLError", Long.toString(error), err));
-                    }
-                } while ((error = ERR_get_error()) != SSL_ERROR_NONE());
-            }
+            var allocator = SegmentAllocator.nativeAllocator(state.scope);
+            do {
+                // Loop until getLastErrorNumber() returns SSL_ERROR_NONE
+                var buf = allocator.allocateArray(ValueLayout.JAVA_BYTE, new byte[128]);
+                ERR_error_string(error, buf);
+                String err = buf.getUtf8String(0);
+                if (sslError == null) {
+                    sslError = err;
+                }
+                if (logger.isDebugEnabled()) {
+                    logger.debug(sm.getString("engine.openSSLError", Long.toString(error), err));
+                }
+            } while ((error = ERR_get_error()) != SSL_ERROR_NONE());
         }
         return sslError;
     }
@@ -1564,15 +1562,13 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             byte[] id = null;
             synchronized (OpenSSLEngine.this) {
                 if (!destroyed) {
-                    try (var scope = ResourceScope.newConfinedScope()) {
-                        var allocator = SegmentAllocator.nativeAllocator(scope);
-                        MemorySegment lenPointer = allocator.allocate(ValueLayout.ADDRESS);
-                        var session = SSL_get_session(state.ssl);
-                        MemoryAddress sessionId = SSL_SESSION_get_id(session, lenPointer);
-                        int len = lenPointer.get(ValueLayout.JAVA_INT, 0);
-                        id = (len == 0) ? new byte[0]
-                                : MemorySegment.ofAddressNative(sessionId, len, scope).toArray(ValueLayout.JAVA_BYTE);
-                    }
+                    var allocator = SegmentAllocator.nativeAllocator(state.scope);
+                    MemorySegment lenPointer = allocator.allocate(ValueLayout.ADDRESS);
+                    var session = SSL_get_session(state.ssl);
+                    MemoryAddress sessionId = SSL_SESSION_get_id(session, lenPointer);
+                    int len = lenPointer.get(ValueLayout.JAVA_INT, 0);
+                    id = (len == 0) ? new byte[0]
+                            : MemorySegment.ofAddressNative(sessionId, len, state.scope).toArray(ValueLayout.JAVA_BYTE);
                 }
             }
 

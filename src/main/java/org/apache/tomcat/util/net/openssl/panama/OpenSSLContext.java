@@ -827,7 +827,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
 
     // int SSL_callback_alpn_select_proto(SSL* ssl, const unsigned char **out, unsigned char *outlen,
     //        const unsigned char *in, unsigned int inlen, void *arg)
-    public synchronized int openSSLCallbackAlpnSelectProto(MemoryAddress ssl, MemoryAddress out, MemoryAddress outlen,
+    public int openSSLCallbackAlpnSelectProto(MemoryAddress ssl, MemoryAddress out, MemoryAddress outlen,
             MemoryAddress in, int inlen, MemoryAddress arg) {
         // No scope, so byte by byte read, the ALPN data is small
         byte[] advertisedBytes = new byte[inlen];
