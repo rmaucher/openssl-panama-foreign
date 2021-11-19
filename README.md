@@ -56,7 +56,7 @@ Use a connector like:
 Run Tomcat using:
 ```
 export JAVA_HOME=<pathto>/panama-foreign/build/linux-x86_64-server-release/images/jdk
-export JAVA_OPTS="--enable-native-access=ALL-UNNAMED --add-modules jdk.incubator.foreign"
+export JAVA_OPTS="-Djdk.internal.foreign.ProgrammableUpcallHandler.USE_INTRINSICS=false --enable-native-access=ALL-UNNAMED --add-modules jdk.incubator.foreign"
 ```
 
 ## Generating OpenSSL API code using jextract (optional)

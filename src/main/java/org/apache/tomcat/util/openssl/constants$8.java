@@ -26,6 +26,20 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$8 {
 
+    static final FunctionDescriptor X509_STORE_CTX_get_error_depth$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS
+    );
+    static final MethodHandle X509_STORE_CTX_get_error_depth$MH = RuntimeHelper.downcallHandle(
+        "X509_STORE_CTX_get_error_depth",
+        constants$8.X509_STORE_CTX_get_error_depth$FUNC, false
+    );
+    static final FunctionDescriptor X509_STORE_CTX_get_current_cert$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle X509_STORE_CTX_get_current_cert$MH = RuntimeHelper.downcallHandle(
+        "X509_STORE_CTX_get_current_cert",
+        constants$8.X509_STORE_CTX_get_current_cert$FUNC, false
+    );
     static final FunctionDescriptor X509_STORE_CTX_get0_current_issuer$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS
     );
@@ -56,23 +70,6 @@ class constants$8 {
     static final MethodHandle d2i_X509$MH = RuntimeHelper.downcallHandle(
         "d2i_X509",
         constants$8.d2i_X509$FUNC, false
-    );
-    static final FunctionDescriptor i2d_X509$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle i2d_X509$MH = RuntimeHelper.downcallHandle(
-        "i2d_X509",
-        constants$8.i2d_X509$FUNC, false
-    );
-    static final FunctionDescriptor X509_get_ext_by_NID$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
-        JAVA_INT,
-        JAVA_INT
-    );
-    static final MethodHandle X509_get_ext_by_NID$MH = RuntimeHelper.downcallHandle(
-        "X509_get_ext_by_NID",
-        constants$8.X509_get_ext_by_NID$FUNC, false
     );
 }
 

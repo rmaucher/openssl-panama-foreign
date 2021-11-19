@@ -26,6 +26,18 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$6 {
 
+    static final FunctionDescriptor DH_new$FUNC = FunctionDescriptor.of(ADDRESS);
+    static final MethodHandle DH_new$MH = RuntimeHelper.downcallHandle(
+        "DH_new",
+        constants$6.DH_new$FUNC, false
+    );
+    static final FunctionDescriptor DH_free$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS
+    );
+    static final MethodHandle DH_free$MH = RuntimeHelper.downcallHandle(
+        "DH_free",
+        constants$6.DH_free$FUNC, false
+    );
     static final FunctionDescriptor DH_set0_pqg$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
         ADDRESS,
@@ -58,16 +70,6 @@ class constants$6 {
     static final MethodHandle X509_STORE_add_lookup$MH = RuntimeHelper.downcallHandle(
         "X509_STORE_add_lookup",
         constants$6.X509_STORE_add_lookup$FUNC, false
-    );
-    static final FunctionDescriptor X509_LOOKUP_hash_dir$FUNC = FunctionDescriptor.of(ADDRESS);
-    static final MethodHandle X509_LOOKUP_hash_dir$MH = RuntimeHelper.downcallHandle(
-        "X509_LOOKUP_hash_dir",
-        constants$6.X509_LOOKUP_hash_dir$FUNC, false
-    );
-    static final FunctionDescriptor X509_LOOKUP_file$FUNC = FunctionDescriptor.of(ADDRESS);
-    static final MethodHandle X509_LOOKUP_file$MH = RuntimeHelper.downcallHandle(
-        "X509_LOOKUP_file",
-        constants$6.X509_LOOKUP_file$FUNC, false
     );
 }
 

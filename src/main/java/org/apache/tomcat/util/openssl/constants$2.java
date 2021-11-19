@@ -26,6 +26,24 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$2 {
 
+    static final FunctionDescriptor BIO_read$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS,
+        JAVA_INT
+    );
+    static final MethodHandle BIO_read$MH = RuntimeHelper.downcallHandle(
+        "BIO_read",
+        constants$2.BIO_read$FUNC, false
+    );
+    static final FunctionDescriptor BIO_write$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS,
+        JAVA_INT
+    );
+    static final MethodHandle BIO_write$MH = RuntimeHelper.downcallHandle(
+        "BIO_write",
+        constants$2.BIO_write$FUNC, false
+    );
     static final FunctionDescriptor BIO_ctrl$FUNC = FunctionDescriptor.of(JAVA_LONG,
         ADDRESS,
         JAVA_INT,
@@ -55,19 +73,6 @@ class constants$2 {
     static final MethodHandle BIO_new_bio_pair$MH = RuntimeHelper.downcallHandle(
         "BIO_new_bio_pair",
         constants$2.BIO_new_bio_pair$FUNC, false
-    );
-    static final FunctionDescriptor BN_new$FUNC = FunctionDescriptor.of(ADDRESS);
-    static final MethodHandle BN_new$MH = RuntimeHelper.downcallHandle(
-        "BN_new",
-        constants$2.BN_new$FUNC, false
-    );
-    static final FunctionDescriptor BN_set_word$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
-        JAVA_LONG
-    );
-    static final MethodHandle BN_set_word$MH = RuntimeHelper.downcallHandle(
-        "BN_set_word",
-        constants$2.BN_set_word$FUNC, false
     );
 }
 

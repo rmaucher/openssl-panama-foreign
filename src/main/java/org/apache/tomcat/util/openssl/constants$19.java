@@ -26,6 +26,21 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$19 {
 
+    static final FunctionDescriptor SSL_verify_client_post_handshake$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS
+    );
+    static final MethodHandle SSL_verify_client_post_handshake$MH = RuntimeHelper.downcallHandle(
+        "SSL_verify_client_post_handshake",
+        constants$19.SSL_verify_client_post_handshake$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CTX_set_client_CA_list$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_CTX_set_client_CA_list$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_set_client_CA_list",
+        constants$19.SSL_CTX_set_client_CA_list$FUNC, false
+    );
     static final FunctionDescriptor SSL_CTX_get_client_CA_list$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS
     );
@@ -54,20 +69,6 @@ class constants$19 {
     static final MethodHandle SSL_set_accept_state$MH = RuntimeHelper.downcallHandle(
         "SSL_set_accept_state",
         constants$19.SSL_set_accept_state$FUNC, false
-    );
-    static final FunctionDescriptor SSL_get_privatekey$FUNC = FunctionDescriptor.of(ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle SSL_get_privatekey$MH = RuntimeHelper.downcallHandle(
-        "SSL_get_privatekey",
-        constants$19.SSL_get_privatekey$FUNC, false
-    );
-    static final FunctionDescriptor SSL_get_shutdown$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS
-    );
-    static final MethodHandle SSL_get_shutdown$MH = RuntimeHelper.downcallHandle(
-        "SSL_get_shutdown",
-        constants$19.SSL_get_shutdown$FUNC, false
     );
 }
 

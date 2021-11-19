@@ -26,6 +26,24 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$26 {
 
+    static final FunctionDescriptor ENGINE_load_private_key$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS,
+        ADDRESS,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle ENGINE_load_private_key$MH = RuntimeHelper.downcallHandle(
+        "ENGINE_load_private_key",
+        constants$26.ENGINE_load_private_key$FUNC, false
+    );
+    static final FunctionDescriptor ENGINE_set_default$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        JAVA_INT
+    );
+    static final MethodHandle ENGINE_set_default$MH = RuntimeHelper.downcallHandle(
+        "ENGINE_set_default",
+        constants$26.ENGINE_set_default$FUNC, false
+    );
     static final FunctionDescriptor OCSP_cert_to_id$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS,
         ADDRESS,
@@ -56,23 +74,6 @@ class constants$26 {
     static final MethodHandle OCSP_response_get1_basic$MH = RuntimeHelper.downcallHandle(
         "OCSP_response_get1_basic",
         constants$26.OCSP_response_get1_basic$FUNC, false
-    );
-    static final FunctionDescriptor OCSP_resp_get0$FUNC = FunctionDescriptor.of(ADDRESS,
-        ADDRESS,
-        JAVA_INT
-    );
-    static final MethodHandle OCSP_resp_get0$MH = RuntimeHelper.downcallHandle(
-        "OCSP_resp_get0",
-        constants$26.OCSP_resp_get0$FUNC, false
-    );
-    static final FunctionDescriptor OCSP_resp_find$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
-        ADDRESS,
-        JAVA_INT
-    );
-    static final MethodHandle OCSP_resp_find$MH = RuntimeHelper.downcallHandle(
-        "OCSP_resp_find",
-        constants$26.OCSP_resp_find$FUNC, false
     );
 }
 

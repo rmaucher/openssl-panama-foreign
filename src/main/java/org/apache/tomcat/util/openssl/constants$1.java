@@ -26,6 +26,20 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1 {
 
+    static final FunctionDescriptor FIPS_mode_set$FUNC = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT
+    );
+    static final MethodHandle FIPS_mode_set$MH = RuntimeHelper.downcallHandle(
+        "FIPS_mode_set",
+        constants$1.FIPS_mode_set$FUNC, false
+    );
+    static final FunctionDescriptor BIO_ctrl_pending$FUNC = FunctionDescriptor.of(JAVA_LONG,
+        ADDRESS
+    );
+    static final MethodHandle BIO_ctrl_pending$MH = RuntimeHelper.downcallHandle(
+        "BIO_ctrl_pending",
+        constants$1.BIO_ctrl_pending$FUNC, false
+    );
     static final FunctionDescriptor BIO_s_file$FUNC = FunctionDescriptor.of(ADDRESS);
     static final MethodHandle BIO_s_file$MH = RuntimeHelper.downcallHandle(
         "BIO_s_file",
@@ -52,24 +66,6 @@ class constants$1 {
     static final MethodHandle BIO_free$MH = RuntimeHelper.downcallHandle(
         "BIO_free",
         constants$1.BIO_free$FUNC, false
-    );
-    static final FunctionDescriptor BIO_read$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
-        ADDRESS,
-        JAVA_INT
-    );
-    static final MethodHandle BIO_read$MH = RuntimeHelper.downcallHandle(
-        "BIO_read",
-        constants$1.BIO_read$FUNC, false
-    );
-    static final FunctionDescriptor BIO_write$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
-        ADDRESS,
-        JAVA_INT
-    );
-    static final MethodHandle BIO_write$MH = RuntimeHelper.downcallHandle(
-        "BIO_write",
-        constants$1.BIO_write$FUNC, false
     );
 }
 

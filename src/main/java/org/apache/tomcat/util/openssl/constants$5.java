@@ -26,6 +26,20 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$5 {
 
+    static final FunctionDescriptor EVP_PKEY_base_id$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS
+    );
+    static final MethodHandle EVP_PKEY_base_id$MH = RuntimeHelper.downcallHandle(
+        "EVP_PKEY_base_id",
+        constants$5.EVP_PKEY_base_id$FUNC, false
+    );
+    static final FunctionDescriptor EVP_PKEY_bits$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS
+    );
+    static final MethodHandle EVP_PKEY_bits$MH = RuntimeHelper.downcallHandle(
+        "EVP_PKEY_bits",
+        constants$5.EVP_PKEY_bits$FUNC, false
+    );
     static final FunctionDescriptor EC_GROUP_free$FUNC = FunctionDescriptor.ofVoid(
         ADDRESS
     );
@@ -53,18 +67,6 @@ class constants$5 {
     static final MethodHandle EC_KEY_free$MH = RuntimeHelper.downcallHandle(
         "EC_KEY_free",
         constants$5.EC_KEY_free$FUNC, false
-    );
-    static final FunctionDescriptor DH_new$FUNC = FunctionDescriptor.of(ADDRESS);
-    static final MethodHandle DH_new$MH = RuntimeHelper.downcallHandle(
-        "DH_new",
-        constants$5.DH_new$FUNC, false
-    );
-    static final FunctionDescriptor DH_free$FUNC = FunctionDescriptor.ofVoid(
-        ADDRESS
-    );
-    static final MethodHandle DH_free$MH = RuntimeHelper.downcallHandle(
-        "DH_free",
-        constants$5.DH_free$FUNC, false
     );
 }
 

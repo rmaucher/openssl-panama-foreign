@@ -26,6 +26,23 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$24 {
 
+    static final FunctionDescriptor ERR_error_string$FUNC = FunctionDescriptor.of(ADDRESS,
+        JAVA_LONG,
+        ADDRESS
+    );
+    static final MethodHandle ERR_error_string$MH = RuntimeHelper.downcallHandle(
+        "ERR_error_string",
+        constants$24.ERR_error_string$FUNC, false
+    );
+    static final FunctionDescriptor PKCS12_verify_mac$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS,
+        JAVA_INT
+    );
+    static final MethodHandle PKCS12_verify_mac$MH = RuntimeHelper.downcallHandle(
+        "PKCS12_verify_mac",
+        constants$24.PKCS12_verify_mac$FUNC, false
+    );
     static final FunctionDescriptor PKCS12_free$FUNC = FunctionDescriptor.ofVoid(
         ADDRESS
     );
@@ -59,22 +76,6 @@ class constants$24 {
     static final MethodHandle RAND_seed$MH = RuntimeHelper.downcallHandle(
         "RAND_seed",
         constants$24.RAND_seed$FUNC, false
-    );
-    static final FunctionDescriptor RAND_load_file$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
-        JAVA_LONG
-    );
-    static final MethodHandle RAND_load_file$MH = RuntimeHelper.downcallHandle(
-        "RAND_load_file",
-        constants$24.RAND_load_file$FUNC, false
-    );
-    static final FunctionDescriptor X509_check_issued$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle X509_check_issued$MH = RuntimeHelper.downcallHandle(
-        "X509_check_issued",
-        constants$24.X509_check_issued$FUNC, false
     );
 }
 

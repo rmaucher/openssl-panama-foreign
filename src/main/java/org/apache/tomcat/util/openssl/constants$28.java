@@ -26,6 +26,18 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$28 {
 
+    static final FunctionDescriptor OCSP_CERTID_free$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS
+    );
+    static final MethodHandle OCSP_CERTID_free$MH = RuntimeHelper.downcallHandle(
+        "OCSP_CERTID_free",
+        constants$28.OCSP_CERTID_free$FUNC, false
+    );
+    static final FunctionDescriptor OCSP_REQUEST_new$FUNC = FunctionDescriptor.of(ADDRESS);
+    static final MethodHandle OCSP_REQUEST_new$MH = RuntimeHelper.downcallHandle(
+        "OCSP_REQUEST_new",
+        constants$28.OCSP_REQUEST_new$FUNC, false
+    );
     static final FunctionDescriptor OCSP_REQUEST_free$FUNC = FunctionDescriptor.ofVoid(
         ADDRESS
     );
@@ -41,10 +53,7 @@ class constants$28 {
         "i2d_OCSP_REQUEST",
         constants$28.i2d_OCSP_REQUEST$FUNC, false
     );
-    static final MemorySegment OPENSSL_VERSION_TEXT$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("OpenSSL 1.1.1l  FIPS 24 Aug 2021");
-    static final MemorySegment SHLIB_VERSION_HISTORY$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("");
-    static final MemorySegment SHLIB_VERSION_NUMBER$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("1.1");
-    static final MemorySegment OPENSSL_FILE$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("/tmp/jextract$14118250997508934609.h");
+    static final MemorySegment OPENSSL_FILE$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("/tmp/jextract$12235211098697166037.h");
 }
 
 

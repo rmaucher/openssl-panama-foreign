@@ -26,6 +26,20 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$12 {
 
+    static final FunctionDescriptor SSL_CTX_new$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_CTX_new$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_new",
+        constants$12.SSL_CTX_new$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CTX_free$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS
+    );
+    static final MethodHandle SSL_CTX_free$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_free",
+        constants$12.SSL_CTX_free$FUNC, false
+    );
     static final FunctionDescriptor SSL_CTX_set_timeout$FUNC = FunctionDescriptor.of(JAVA_LONG,
         ADDRESS,
         JAVA_LONG
@@ -54,20 +68,6 @@ class constants$12 {
     static final MethodHandle SSL_get_current_cipher$MH = RuntimeHelper.downcallHandle(
         "SSL_get_current_cipher",
         constants$12.SSL_get_current_cipher$FUNC, false
-    );
-    static final FunctionDescriptor SSL_CIPHER_get_name$FUNC = FunctionDescriptor.of(ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle SSL_CIPHER_get_name$MH = RuntimeHelper.downcallHandle(
-        "SSL_CIPHER_get_name",
-        constants$12.SSL_CIPHER_get_name$FUNC, false
-    );
-    static final FunctionDescriptor SSL_CIPHER_get_kx_nid$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS
-    );
-    static final MethodHandle SSL_CIPHER_get_kx_nid$MH = RuntimeHelper.downcallHandle(
-        "SSL_CIPHER_get_kx_nid",
-        constants$12.SSL_CIPHER_get_kx_nid$FUNC, false
     );
 }
 

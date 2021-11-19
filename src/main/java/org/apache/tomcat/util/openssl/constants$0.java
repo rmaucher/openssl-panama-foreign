@@ -41,6 +41,18 @@ class constants$0 {
         "OPENSSL_sk_value",
         constants$0.OPENSSL_sk_value$FUNC, false
     );
+    static final FunctionDescriptor OpenSSL_version_num$FUNC = FunctionDescriptor.of(JAVA_LONG);
+    static final MethodHandle OpenSSL_version_num$MH = RuntimeHelper.downcallHandle(
+        "OpenSSL_version_num",
+        constants$0.OpenSSL_version_num$FUNC, false
+    );
+    static final FunctionDescriptor OpenSSL_version$FUNC = FunctionDescriptor.of(ADDRESS,
+        JAVA_INT
+    );
+    static final MethodHandle OpenSSL_version$MH = RuntimeHelper.downcallHandle(
+        "OpenSSL_version",
+        constants$0.OpenSSL_version$FUNC, false
+    );
     static final FunctionDescriptor CRYPTO_free$FUNC = FunctionDescriptor.ofVoid(
         ADDRESS,
         ADDRESS,
@@ -54,20 +66,6 @@ class constants$0 {
     static final MethodHandle FIPS_mode$MH = RuntimeHelper.downcallHandle(
         "FIPS_mode",
         constants$0.FIPS_mode$FUNC, false
-    );
-    static final FunctionDescriptor FIPS_mode_set$FUNC = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT
-    );
-    static final MethodHandle FIPS_mode_set$MH = RuntimeHelper.downcallHandle(
-        "FIPS_mode_set",
-        constants$0.FIPS_mode_set$FUNC, false
-    );
-    static final FunctionDescriptor BIO_ctrl_pending$FUNC = FunctionDescriptor.of(JAVA_LONG,
-        ADDRESS
-    );
-    static final MethodHandle BIO_ctrl_pending$MH = RuntimeHelper.downcallHandle(
-        "BIO_ctrl_pending",
-        constants$0.BIO_ctrl_pending$FUNC, false
     );
 }
 

@@ -26,6 +26,23 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$23 {
 
+    static final FunctionDescriptor SSL_CONF_cmd$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_CONF_cmd$MH = RuntimeHelper.downcallHandle(
+        "SSL_CONF_cmd",
+        constants$23.SSL_CONF_cmd$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CONF_cmd_value_type$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_CONF_cmd_value_type$MH = RuntimeHelper.downcallHandle(
+        "SSL_CONF_cmd_value_type",
+        constants$23.SSL_CONF_cmd_value_type$FUNC, false
+    );
     static final FunctionDescriptor OPENSSL_init_ssl$FUNC = FunctionDescriptor.of(JAVA_INT,
         JAVA_LONG,
         ADDRESS
@@ -48,23 +65,6 @@ class constants$23 {
     static final MethodHandle ERR_clear_error$MH = RuntimeHelper.downcallHandle(
         "ERR_clear_error",
         constants$23.ERR_clear_error$FUNC, false
-    );
-    static final FunctionDescriptor ERR_error_string$FUNC = FunctionDescriptor.of(ADDRESS,
-        JAVA_LONG,
-        ADDRESS
-    );
-    static final MethodHandle ERR_error_string$MH = RuntimeHelper.downcallHandle(
-        "ERR_error_string",
-        constants$23.ERR_error_string$FUNC, false
-    );
-    static final FunctionDescriptor PKCS12_verify_mac$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
-        ADDRESS,
-        JAVA_INT
-    );
-    static final MethodHandle PKCS12_verify_mac$MH = RuntimeHelper.downcallHandle(
-        "PKCS12_verify_mac",
-        constants$23.PKCS12_verify_mac$FUNC, false
     );
 }
 

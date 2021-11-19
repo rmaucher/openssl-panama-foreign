@@ -26,6 +26,20 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$4 {
 
+    static final FunctionDescriptor BN_get_rfc3526_prime_3072$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle BN_get_rfc3526_prime_3072$MH = RuntimeHelper.downcallHandle(
+        "BN_get_rfc3526_prime_3072",
+        constants$4.BN_get_rfc3526_prime_3072$FUNC, false
+    );
+    static final FunctionDescriptor BN_get_rfc3526_prime_4096$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle BN_get_rfc3526_prime_4096$MH = RuntimeHelper.downcallHandle(
+        "BN_get_rfc3526_prime_4096",
+        constants$4.BN_get_rfc3526_prime_4096$FUNC, false
+    );
     static final FunctionDescriptor BN_get_rfc3526_prime_6144$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS
     );
@@ -53,20 +67,6 @@ class constants$4 {
     static final MethodHandle ASN1_STRING_get0_data$MH = RuntimeHelper.downcallHandle(
         "ASN1_STRING_get0_data",
         constants$4.ASN1_STRING_get0_data$FUNC, false
-    );
-    static final FunctionDescriptor EVP_PKEY_base_id$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS
-    );
-    static final MethodHandle EVP_PKEY_base_id$MH = RuntimeHelper.downcallHandle(
-        "EVP_PKEY_base_id",
-        constants$4.EVP_PKEY_base_id$FUNC, false
-    );
-    static final FunctionDescriptor EVP_PKEY_bits$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS
-    );
-    static final MethodHandle EVP_PKEY_bits$MH = RuntimeHelper.downcallHandle(
-        "EVP_PKEY_bits",
-        constants$4.EVP_PKEY_bits$FUNC, false
     );
 }
 

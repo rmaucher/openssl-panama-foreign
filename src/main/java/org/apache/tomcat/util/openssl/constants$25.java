@@ -26,6 +26,22 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$25 {
 
+    static final FunctionDescriptor RAND_load_file$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        JAVA_LONG
+    );
+    static final MethodHandle RAND_load_file$MH = RuntimeHelper.downcallHandle(
+        "RAND_load_file",
+        constants$25.RAND_load_file$FUNC, false
+    );
+    static final FunctionDescriptor X509_check_issued$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle X509_check_issued$MH = RuntimeHelper.downcallHandle(
+        "X509_check_issued",
+        constants$25.X509_check_issued$FUNC, false
+    );
     static final FunctionDescriptor ENGINE_by_id$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS
     );
@@ -54,24 +70,6 @@ class constants$25 {
     static final MethodHandle ENGINE_free$MH = RuntimeHelper.downcallHandle(
         "ENGINE_free",
         constants$25.ENGINE_free$FUNC, false
-    );
-    static final FunctionDescriptor ENGINE_load_private_key$FUNC = FunctionDescriptor.of(ADDRESS,
-        ADDRESS,
-        ADDRESS,
-        ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle ENGINE_load_private_key$MH = RuntimeHelper.downcallHandle(
-        "ENGINE_load_private_key",
-        constants$25.ENGINE_load_private_key$FUNC, false
-    );
-    static final FunctionDescriptor ENGINE_set_default$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
-        JAVA_INT
-    );
-    static final MethodHandle ENGINE_set_default$MH = RuntimeHelper.downcallHandle(
-        "ENGINE_set_default",
-        constants$25.ENGINE_set_default$FUNC, false
     );
 }
 

@@ -26,6 +26,26 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$10 {
 
+    static final FunctionDescriptor PEM_read_bio_DHparams$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS,
+        ADDRESS,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle PEM_read_bio_DHparams$MH = RuntimeHelper.downcallHandle(
+        "PEM_read_bio_DHparams",
+        constants$10.PEM_read_bio_DHparams$FUNC, false
+    );
+    static final FunctionDescriptor PEM_read_bio_PrivateKey$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS,
+        ADDRESS,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle PEM_read_bio_PrivateKey$MH = RuntimeHelper.downcallHandle(
+        "PEM_read_bio_PrivateKey",
+        constants$10.PEM_read_bio_PrivateKey$FUNC, false
+    );
     static final FunctionDescriptor SSL_CTX_get_options$FUNC = FunctionDescriptor.of(JAVA_LONG,
         ADDRESS
     );
@@ -55,23 +75,6 @@ class constants$10 {
     static final MethodHandle SSL_CTX_set_options$MH = RuntimeHelper.downcallHandle(
         "SSL_CTX_set_options",
         constants$10.SSL_CTX_set_options$FUNC, false
-    );
-    static final FunctionDescriptor SSL_set_options$FUNC = FunctionDescriptor.of(JAVA_LONG,
-        ADDRESS,
-        JAVA_LONG
-    );
-    static final MethodHandle SSL_set_options$MH = RuntimeHelper.downcallHandle(
-        "SSL_set_options",
-        constants$10.SSL_set_options$FUNC, false
-    );
-    static final FunctionDescriptor SSL_get0_next_proto_negotiated$FUNC = FunctionDescriptor.ofVoid(
-        ADDRESS,
-        ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle SSL_get0_next_proto_negotiated$MH = RuntimeHelper.downcallHandle(
-        "SSL_get0_next_proto_negotiated",
-        constants$10.SSL_get0_next_proto_negotiated$FUNC, false
     );
 }
 

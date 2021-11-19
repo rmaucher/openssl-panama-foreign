@@ -26,6 +26,19 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$3 {
 
+    static final FunctionDescriptor BN_new$FUNC = FunctionDescriptor.of(ADDRESS);
+    static final MethodHandle BN_new$MH = RuntimeHelper.downcallHandle(
+        "BN_new",
+        constants$3.BN_new$FUNC, false
+    );
+    static final FunctionDescriptor BN_set_word$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        JAVA_LONG
+    );
+    static final MethodHandle BN_set_word$MH = RuntimeHelper.downcallHandle(
+        "BN_set_word",
+        constants$3.BN_set_word$FUNC, false
+    );
     static final FunctionDescriptor BN_get_rfc2409_prime_768$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS
     );
@@ -53,20 +66,6 @@ class constants$3 {
     static final MethodHandle BN_get_rfc3526_prime_2048$MH = RuntimeHelper.downcallHandle(
         "BN_get_rfc3526_prime_2048",
         constants$3.BN_get_rfc3526_prime_2048$FUNC, false
-    );
-    static final FunctionDescriptor BN_get_rfc3526_prime_3072$FUNC = FunctionDescriptor.of(ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle BN_get_rfc3526_prime_3072$MH = RuntimeHelper.downcallHandle(
-        "BN_get_rfc3526_prime_3072",
-        constants$3.BN_get_rfc3526_prime_3072$FUNC, false
-    );
-    static final FunctionDescriptor BN_get_rfc3526_prime_4096$FUNC = FunctionDescriptor.of(ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle BN_get_rfc3526_prime_4096$MH = RuntimeHelper.downcallHandle(
-        "BN_get_rfc3526_prime_4096",
-        constants$3.BN_get_rfc3526_prime_4096$FUNC, false
     );
 }
 

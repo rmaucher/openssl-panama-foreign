@@ -26,6 +26,23 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$27 {
 
+    static final FunctionDescriptor OCSP_resp_get0$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS,
+        JAVA_INT
+    );
+    static final MethodHandle OCSP_resp_get0$MH = RuntimeHelper.downcallHandle(
+        "OCSP_resp_get0",
+        constants$27.OCSP_resp_get0$FUNC, false
+    );
+    static final FunctionDescriptor OCSP_resp_find$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS,
+        JAVA_INT
+    );
+    static final MethodHandle OCSP_resp_find$MH = RuntimeHelper.downcallHandle(
+        "OCSP_resp_find",
+        constants$27.OCSP_resp_find$FUNC, false
+    );
     static final FunctionDescriptor OCSP_single_get0_status$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
         ADDRESS,
@@ -59,18 +76,6 @@ class constants$27 {
     static final MethodHandle d2i_OCSP_RESPONSE$MH = RuntimeHelper.downcallHandle(
         "d2i_OCSP_RESPONSE",
         constants$27.d2i_OCSP_RESPONSE$FUNC, false
-    );
-    static final FunctionDescriptor OCSP_CERTID_free$FUNC = FunctionDescriptor.ofVoid(
-        ADDRESS
-    );
-    static final MethodHandle OCSP_CERTID_free$MH = RuntimeHelper.downcallHandle(
-        "OCSP_CERTID_free",
-        constants$27.OCSP_CERTID_free$FUNC, false
-    );
-    static final FunctionDescriptor OCSP_REQUEST_new$FUNC = FunctionDescriptor.of(ADDRESS);
-    static final MethodHandle OCSP_REQUEST_new$MH = RuntimeHelper.downcallHandle(
-        "OCSP_REQUEST_new",
-        constants$27.OCSP_REQUEST_new$FUNC, false
     );
 }
 

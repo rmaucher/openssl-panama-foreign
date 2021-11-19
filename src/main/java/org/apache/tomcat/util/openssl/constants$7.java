@@ -26,6 +26,16 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$7 {
 
+    static final FunctionDescriptor X509_LOOKUP_hash_dir$FUNC = FunctionDescriptor.of(ADDRESS);
+    static final MethodHandle X509_LOOKUP_hash_dir$MH = RuntimeHelper.downcallHandle(
+        "X509_LOOKUP_hash_dir",
+        constants$7.X509_LOOKUP_hash_dir$FUNC, false
+    );
+    static final FunctionDescriptor X509_LOOKUP_file$FUNC = FunctionDescriptor.of(ADDRESS);
+    static final MethodHandle X509_LOOKUP_file$MH = RuntimeHelper.downcallHandle(
+        "X509_LOOKUP_file",
+        constants$7.X509_LOOKUP_file$FUNC, false
+    );
     static final FunctionDescriptor X509_LOOKUP_ctrl$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
         JAVA_INT,
@@ -59,20 +69,6 @@ class constants$7 {
     static final MethodHandle X509_STORE_CTX_set_error$MH = RuntimeHelper.downcallHandle(
         "X509_STORE_CTX_set_error",
         constants$7.X509_STORE_CTX_set_error$FUNC, false
-    );
-    static final FunctionDescriptor X509_STORE_CTX_get_error_depth$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS
-    );
-    static final MethodHandle X509_STORE_CTX_get_error_depth$MH = RuntimeHelper.downcallHandle(
-        "X509_STORE_CTX_get_error_depth",
-        constants$7.X509_STORE_CTX_get_error_depth$FUNC, false
-    );
-    static final FunctionDescriptor X509_STORE_CTX_get_current_cert$FUNC = FunctionDescriptor.of(ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle X509_STORE_CTX_get_current_cert$MH = RuntimeHelper.downcallHandle(
-        "X509_STORE_CTX_get_current_cert",
-        constants$7.X509_STORE_CTX_get_current_cert$FUNC, false
     );
 }
 

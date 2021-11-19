@@ -26,6 +26,20 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$18 {
 
+    static final FunctionDescriptor SSL_get_ciphers$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_get_ciphers$MH = RuntimeHelper.downcallHandle(
+        "SSL_get_ciphers",
+        constants$18.SSL_get_ciphers$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CTX_get_ciphers$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_CTX_get_ciphers$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_get_ciphers",
+        constants$18.SSL_CTX_get_ciphers$FUNC, false
+    );
     static final FunctionDescriptor SSL_do_handshake$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS
     );
@@ -53,21 +67,6 @@ class constants$18 {
     static final MethodHandle SSL_shutdown$MH = RuntimeHelper.downcallHandle(
         "SSL_shutdown",
         constants$18.SSL_shutdown$FUNC, false
-    );
-    static final FunctionDescriptor SSL_verify_client_post_handshake$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS
-    );
-    static final MethodHandle SSL_verify_client_post_handshake$MH = RuntimeHelper.downcallHandle(
-        "SSL_verify_client_post_handshake",
-        constants$18.SSL_verify_client_post_handshake$FUNC, false
-    );
-    static final FunctionDescriptor SSL_CTX_set_client_CA_list$FUNC = FunctionDescriptor.ofVoid(
-        ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle SSL_CTX_set_client_CA_list$MH = RuntimeHelper.downcallHandle(
-        "SSL_CTX_set_client_CA_list",
-        constants$18.SSL_CTX_set_client_CA_list$FUNC, false
     );
 }
 

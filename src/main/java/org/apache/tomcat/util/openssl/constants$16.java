@@ -26,6 +26,22 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$16 {
 
+    static final FunctionDescriptor SSL_CTX_use_PrivateKey$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_CTX_use_PrivateKey$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_use_PrivateKey",
+        constants$16.SSL_CTX_use_PrivateKey$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CTX_use_certificate$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle SSL_CTX_use_certificate$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_use_certificate",
+        constants$16.SSL_CTX_use_certificate$FUNC, false
+    );
     static final FunctionDescriptor SSL_CTX_set_default_passwd_cb$FUNC = FunctionDescriptor.ofVoid(
         ADDRESS,
         ADDRESS
@@ -56,22 +72,6 @@ class constants$16 {
     static final MethodHandle SSL_new$MH = RuntimeHelper.downcallHandle(
         "SSL_new",
         constants$16.SSL_new$FUNC, false
-    );
-    static final FunctionDescriptor SSL_free$FUNC = FunctionDescriptor.ofVoid(
-        ADDRESS
-    );
-    static final MethodHandle SSL_free$MH = RuntimeHelper.downcallHandle(
-        "SSL_free",
-        constants$16.SSL_free$FUNC, false
-    );
-    static final FunctionDescriptor SSL_read$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
-        ADDRESS,
-        JAVA_INT
-    );
-    static final MethodHandle SSL_read$MH = RuntimeHelper.downcallHandle(
-        "SSL_read",
-        constants$16.SSL_read$FUNC, false
     );
 }
 
