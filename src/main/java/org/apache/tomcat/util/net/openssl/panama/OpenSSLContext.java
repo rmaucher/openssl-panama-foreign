@@ -169,6 +169,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
     }
 
     private final ContextState state;
+    // FIXME: causes a crash with TestSSLHostConfigCompat, fixed if this is a shared scope held in the state
     private final ResourceScope scope;
 
     private static String[] getCiphers(MemoryAddress sslCtx) {
