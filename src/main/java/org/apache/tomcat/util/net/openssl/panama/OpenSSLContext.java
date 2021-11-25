@@ -169,7 +169,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
     }
 
     private final ContextState state;
-    private final ResourceScope scope;
+    private final ResourceScope contextScope;
 
     private static String[] getCiphers(MemoryAddress sslCtx) {
         MemoryAddress sk = SSL_CTX_get_ciphers(sslCtx);
@@ -200,7 +200,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
 
         this.sslHostConfig = certificate.getSSLHostConfig();
         this.certificate = certificate;
-        scope = ResourceScope.newImplicitScope();
+        contextScope = ResourceScope.newImplicitScope();
 
         MemoryAddress sslCtx = MemoryAddress.NULL;
         MemoryAddress confCtx = MemoryAddress.NULL;
@@ -210,7 +210,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
             // Create OpenSSLConfCmd context if used
             OpenSSLConf openSslConf = sslHostConfig.getOpenSslConf();
             if (openSslConf != null) {
-                var allocator = SegmentAllocator.nativeAllocator(scope);
+                var allocator = SegmentAllocator.nativeAllocator(contextScope);
                 try {
                     if (log.isDebugEnabled()) {
                         log.debug(sm.getString("openssl.makeConf"));
@@ -321,7 +321,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
             // Set int pem_password_cb(char *buf, int size, int rwflag, void *u) callback
             openSSLCallbackPassword =
                     CLinker.systemCLinker().upcallStub(openSSLCallbackPasswordHandle,
-                    openSSLCallbackPasswordFunctionDescriptor, scope);
+                    openSSLCallbackPasswordFunctionDescriptor, contextScope);
             SSL_CTX_set_default_passwd_cb(sslCtx, openSSLCallbackPassword);
 
             alpn = (negotiableProtocols != null && negotiableProtocols.size() > 0);
@@ -349,7 +349,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
              * and the implicit scope will ensure that the associated native
              * resources are cleaned up.
              */
-            scope.addCloseAction(state);
+            contextScope.addCloseAction(state);
 
             if (!success) {
                 destroy();
@@ -557,7 +557,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
 
             // List the ciphers that the client is permitted to negotiate
             if (SSL_CTX_set_cipher_list(state.sslCtx,
-                    SegmentAllocator.nativeAllocator(scope).allocateUtf8String(sslHostConfig.getCiphers())) <= 0) {
+                    SegmentAllocator.nativeAllocator(contextScope).allocateUtf8String(sslHostConfig.getCiphers())) <= 0) {
                 log.warn(sm.getString("engine.failedCipherSuite", sslHostConfig.getCiphers()));
             }
 
@@ -593,7 +593,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
             // Set int verify_callback(int preverify_ok, X509_STORE_CTX *x509_ctx) callback
             NativeSymbol openSSLCallbackVerify =
                     CLinker.systemCLinker().upcallStub(openSSLCallbackVerifyHandle,
-                    openSSLCallbackVerifyFunctionDescriptor, scope);
+                    openSSLCallbackVerifyFunctionDescriptor, contextScope);
             // Leave this just in case but in Tomcat this is always set again by the engine
             SSL_CTX_set_verify(state.sslCtx, value, openSSLCallbackVerify);
 
@@ -605,7 +605,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                     state.x509TrustManager = chooseTrustManager(tms);
                     NativeSymbol openSSLCallbackCertVerify =
                             CLinker.systemCLinker().upcallStub(openSSLCallbackCertVerifyHandle,
-                            openSSLCallbackCertVerifyFunctionDescriptor, this.scope);
+                            openSSLCallbackCertVerifyFunctionDescriptor, this.contextScope);
                     SSL_CTX_set_cert_verify_callback(state.sslCtx, openSSLCallbackCertVerify, state.sslCtx);
 
                     // Pass along the DER encoded certificates of the accepted client
@@ -662,7 +662,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                 //        MemoryAddress in, int inlen, MemoryAddress arg
                 NativeSymbol openSSLCallbackAlpnSelectProto =
                         CLinker.systemCLinker().upcallStub(openSSLCallbackAlpnSelectProtoHandle,
-                        openSSLCallbackAlpnSelectProtoFunctionDescriptor, scope);
+                        openSSLCallbackAlpnSelectProtoFunctionDescriptor, contextScope);
                 SSL_CTX_set_alpn_select_cb(state.sslCtx, openSSLCallbackAlpnSelectProto, state.sslCtx);
                 // Skip NPN (annoying and likely not useful anymore)
                 //SSLContext.setNpnProtos(state.ctx, protocolsArray, SSL.SSL_SELECTOR_FAILURE_NO_ADVERTISE);
@@ -784,27 +784,25 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
         for (int i = 0; i < inlen; i++) {
             advertisedBytes[i] = in.get(ValueLayout.JAVA_BYTE, i);
         }
-        try (ResourceScope scope = ResourceScope.newConfinedScope()) {
-            for (byte[] negotiableProtocolBytes : state.negotiableProtocols) {
-                for (int i = 0; i <= advertisedBytes.length - negotiableProtocolBytes.length; i++) {
-                    if (advertisedBytes[i] == negotiableProtocolBytes[0]) {
-                        for (int j = 0; j < negotiableProtocolBytes.length; j++) {
-                            if (advertisedBytes[i + j] == negotiableProtocolBytes[j]) {
-                                if (j == negotiableProtocolBytes.length - 1) {
-                                    // Match
-                                    out.set(ValueLayout.ADDRESS, 0, in.addOffset(i));
-                                    outlen.set(ValueLayout.JAVA_BYTE, 0, (byte) negotiableProtocolBytes.length);
-                                    return SSL_TLSEXT_ERR_OK();
-                                }
-                            } else {
-                                break;
+        for (byte[] negotiableProtocolBytes : state.negotiableProtocols) {
+            for (int i = 0; i <= advertisedBytes.length - negotiableProtocolBytes.length; i++) {
+                if (advertisedBytes[i] == negotiableProtocolBytes[0]) {
+                    for (int j = 0; j < negotiableProtocolBytes.length; j++) {
+                        if (advertisedBytes[i + j] == negotiableProtocolBytes[j]) {
+                            if (j == negotiableProtocolBytes.length - 1) {
+                                // Match
+                                out.set(ValueLayout.ADDRESS, 0, in.addOffset(i));
+                                outlen.set(ValueLayout.JAVA_BYTE, 0, (byte) negotiableProtocolBytes.length);
+                                return SSL_TLSEXT_ERR_OK();
                             }
+                        } else {
+                            break;
                         }
                     }
                 }
             }
-            return SSL_TLSEXT_ERR_NOACK();
         }
+        return SSL_TLSEXT_ERR_NOACK();
     }
 
     public static int openSSLCallbackVerify(int preverify_ok, MemoryAddress /*X509_STORE_CTX*/ x509ctx) {
@@ -962,7 +960,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
 
 
     private void addCertificate(SSLHostConfigCertificate certificate) throws Exception {
-        var allocator = SegmentAllocator.nativeAllocator(scope);
+        var allocator = SegmentAllocator.nativeAllocator(contextScope);
         int index = getCertificateIndex(certificate);
         // Load Server key and certificate
         if (certificate.getCertificateFile() != null) {
@@ -1126,7 +1124,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
             }
             // Set callback for DH parameters
             NativeSymbol openSSLCallbackTmpDH = CLinker.systemCLinker().upcallStub(openSSLCallbackTmpDHHandle,
-                    openSSLCallbackTmpDHFunctionDescriptor, scope);
+                    openSSLCallbackTmpDHFunctionDescriptor, contextScope);
             SSL_CTX_set_tmp_dh_callback(state.sslCtx, openSSLCallbackTmpDH);
             // Set certificate chain file
             if (certificate.getCertificateChainFile() != null) {
@@ -1214,7 +1212,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
             }
             // Set callback for DH parameters
             NativeSymbol openSSLCallbackTmpDH = CLinker.systemCLinker().upcallStub(openSSLCallbackTmpDHHandle,
-                    openSSLCallbackTmpDHFunctionDescriptor, scope);
+                    openSSLCallbackTmpDHFunctionDescriptor, contextScope);
             SSL_CTX_set_tmp_dh_callback(state.sslCtx, openSSLCallbackTmpDH);
             for (int i = 1; i < chain.length; i++) {
                 //SSLContext.addChainCertificateRaw(state.ctx, chain[i].getEncoded());
