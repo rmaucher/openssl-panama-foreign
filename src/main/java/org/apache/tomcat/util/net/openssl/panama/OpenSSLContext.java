@@ -65,7 +65,6 @@ import org.apache.tomcat.util.net.SSLHostConfigCertificate;
 import org.apache.tomcat.util.net.SSLHostConfigCertificate.Type;
 import org.apache.tomcat.util.net.openssl.OpenSSLConf;
 import org.apache.tomcat.util.net.openssl.OpenSSLConfCmd;
-import org.apache.tomcat.util.net.openssl.panama.OpenSSLContext.ContextState;
 import org.apache.tomcat.util.res.StringManager;
 
 public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
@@ -844,7 +843,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                     continue;
                 }
                 MemoryAddress buf = bufPointer.get(ValueLayout.ADDRESS, 0);
-                certificateChain[i] = MemorySegment.ofAddressNative(buf, length, scope).toArray(ValueLayout.JAVA_BYTE);
+                certificateChain[i] = MemorySegment.ofAddress(buf, length, scope).toArray(ValueLayout.JAVA_BYTE);
                 CRYPTO_free(buf, MemoryAddress.NULL, 0); // OPENSSL_free macro
             }
             MemoryAddress cipher = SSL_get_current_cipher(ssl);
@@ -959,7 +958,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                     // The password is too long
                     log.error(sm.getString("openssl.passwordTooLong"));
                 } else {
-                    MemorySegment bufSegment = MemorySegment.ofAddressNative(buf, bufsiz, scope);
+                    MemorySegment bufSegment = MemorySegment.ofAddress(buf, bufsiz, scope);
                     bufSegment.copyFrom(callbackPasswordNative);
                     return (int) callbackPasswordNative.byteSize();
                 }

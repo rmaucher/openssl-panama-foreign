@@ -975,7 +975,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             return null;
         }
         MemoryAddress buf = bufPointer.get(ValueLayout.ADDRESS, 0);
-        byte[] certificate = MemorySegment.ofAddressNative(buf, length, engineScope).toArray(ValueLayout.JAVA_BYTE);
+        byte[] certificate = MemorySegment.ofAddress(buf, length, engineScope).toArray(ValueLayout.JAVA_BYTE);
         X509_free(x509);
         CRYPTO_free(buf, MemoryAddress.NULL, 0); // OPENSSL_free macro
         return certificate;
@@ -998,7 +998,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                 continue;
             }
             MemoryAddress buf = bufPointer.get(ValueLayout.ADDRESS, 0);
-            byte[] certificate = MemorySegment.ofAddressNative(buf, length, engineScope).toArray(ValueLayout.JAVA_BYTE);
+            byte[] certificate = MemorySegment.ofAddress(buf, length, engineScope).toArray(ValueLayout.JAVA_BYTE);
             certificateChain[i] = certificate;
             CRYPTO_free(buf, MemoryAddress.NULL, 0); // OPENSSL_free macro
         }
@@ -1021,7 +1021,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             return null;
         }
         MemoryAddress protocolAddress = protocolPointer.get(ValueLayout.ADDRESS, 0);
-        byte[] name = MemorySegment.ofAddressNative(protocolAddress, length, engineScope).toArray(ValueLayout.JAVA_BYTE);
+        byte[] name = MemorySegment.ofAddress(protocolAddress, length, engineScope).toArray(ValueLayout.JAVA_BYTE);
         if (log.isDebugEnabled()) {
             log.debug("Protocol negotiated [" + new String(name) + "]");
         }
@@ -1389,7 +1389,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                             int length = ASN1_STRING_length(os);
                             MemoryAddress data = ASN1_STRING_get0_data(os);
                             // ocsp_urls = decode_OCSP_url(os);
-                            byte[] asn1String = MemorySegment.ofAddressNative(data, length, scope).toArray(ValueLayout.JAVA_BYTE);
+                            byte[] asn1String = MemorySegment.ofAddress(data, length, scope).toArray(ValueLayout.JAVA_BYTE);
                             Asn1Parser parser = new Asn1Parser(asn1String);
                             // Parse the byte sequence
                             ArrayList<String> urls = new ArrayList<>();
@@ -1486,7 +1486,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             // Host: urlHost:urlPort
             // Content-Type: application/ocsp-request
             // Content-Length: ocspRequestData.length
-            byte[] ocspRequestData = MemorySegment.ofAddressNative(buf, requestLength, scope).toArray(ValueLayout.JAVA_BYTE);
+            byte[] ocspRequestData = MemorySegment.ofAddress(buf, requestLength, scope).toArray(ValueLayout.JAVA_BYTE);
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setDoInput(true);
@@ -1573,7 +1573,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                     MemoryAddress sessionId = SSL_SESSION_get_id(session, lenPointer);
                     int len = lenPointer.get(ValueLayout.JAVA_INT, 0);
                     id = (len == 0) ? new byte[0]
-                            : MemorySegment.ofAddressNative(sessionId, len, engineScope).toArray(ValueLayout.JAVA_BYTE);
+                            : MemorySegment.ofAddress(sessionId, len, engineScope).toArray(ValueLayout.JAVA_BYTE);
                 }
             }
 
