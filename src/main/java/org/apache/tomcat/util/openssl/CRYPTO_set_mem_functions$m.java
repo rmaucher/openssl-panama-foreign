@@ -24,17 +24,17 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
-public interface SSL_set_info_callback$cb {
+public interface CRYPTO_set_mem_functions$m {
 
-    void apply(jdk.incubator.foreign.MemoryAddress x0, int x1, int x2);
-    static NativeSymbol allocate(SSL_set_info_callback$cb fi, ResourceScope scope) {
-        return RuntimeHelper.upcallStub(SSL_set_info_callback$cb.class, fi, constants$22.SSL_set_info_callback$cb$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;II)V", scope);
+    jdk.incubator.foreign.Addressable apply(long x0, jdk.incubator.foreign.MemoryAddress x1, int x2);
+    static NativeSymbol allocate(CRYPTO_set_mem_functions$m fi, ResourceScope scope) {
+        return RuntimeHelper.upcallStub(CRYPTO_set_mem_functions$m.class, fi, constants$0.CRYPTO_set_mem_functions$m$FUNC, "(JLjdk/incubator/foreign/MemoryAddress;I)Ljdk/incubator/foreign/Addressable;", scope);
     }
-    static SSL_set_info_callback$cb ofAddress(MemoryAddress addr, ResourceScope scope) {
-        NativeSymbol symbol = NativeSymbol.ofAddress("SSL_set_info_callback$cb::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
-return (jdk.incubator.foreign.MemoryAddress x0, int x1, int x2) -> {
+    static CRYPTO_set_mem_functions$m ofAddress(MemoryAddress addr, ResourceScope scope) {
+        NativeSymbol symbol = NativeSymbol.ofAddress("CRYPTO_set_mem_functions$m::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
+return (long x0, jdk.incubator.foreign.MemoryAddress x1, int x2) -> {
             try {
-                constants$22.SSL_set_info_callback$cb$MH.invokeExact(symbol, (jdk.incubator.foreign.Addressable)x0, x1, x2);
+                return (jdk.incubator.foreign.Addressable)(jdk.incubator.foreign.MemoryAddress)constants$0.CRYPTO_set_mem_functions$m$MH.invokeExact(symbol, x0, (jdk.incubator.foreign.Addressable)x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

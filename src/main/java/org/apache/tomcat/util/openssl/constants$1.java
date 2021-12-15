@@ -26,46 +26,40 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$1 {
 
-    static final FunctionDescriptor FIPS_mode_set$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor CRYPTO_set_mem_functions$r$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS,
+        JAVA_LONG,
+        ADDRESS,
         JAVA_INT
     );
-    static final MethodHandle FIPS_mode_set$MH = RuntimeHelper.downcallHandle(
-        "FIPS_mode_set",
-        constants$1.FIPS_mode_set$FUNC, false
+    static final MethodHandle CRYPTO_set_mem_functions$r$MH = RuntimeHelper.downcallHandle(
+        constants$1.CRYPTO_set_mem_functions$r$FUNC, false
     );
-    static final FunctionDescriptor BIO_ctrl_pending$FUNC = FunctionDescriptor.of(JAVA_LONG,
-        ADDRESS
+    static final FunctionDescriptor CRYPTO_set_mem_functions$f$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS,
+        ADDRESS,
+        JAVA_INT
     );
-    static final MethodHandle BIO_ctrl_pending$MH = RuntimeHelper.downcallHandle(
-        "BIO_ctrl_pending",
-        constants$1.BIO_ctrl_pending$FUNC, false
+    static final MethodHandle CRYPTO_set_mem_functions$f$MH = RuntimeHelper.downcallHandle(
+        constants$1.CRYPTO_set_mem_functions$f$FUNC, false
     );
-    static final FunctionDescriptor BIO_s_file$FUNC = FunctionDescriptor.of(ADDRESS);
-    static final MethodHandle BIO_s_file$MH = RuntimeHelper.downcallHandle(
-        "BIO_s_file",
-        constants$1.BIO_s_file$FUNC, false
-    );
-    static final FunctionDescriptor BIO_new_file$FUNC = FunctionDescriptor.of(ADDRESS,
+    static final FunctionDescriptor CRYPTO_set_mem_functions$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
         ADDRESS,
         ADDRESS
     );
-    static final MethodHandle BIO_new_file$MH = RuntimeHelper.downcallHandle(
-        "BIO_new_file",
-        constants$1.BIO_new_file$FUNC, false
+    static final MethodHandle CRYPTO_set_mem_functions$MH = RuntimeHelper.downcallHandle(
+        "CRYPTO_set_mem_functions",
+        constants$1.CRYPTO_set_mem_functions$FUNC, false
     );
-    static final FunctionDescriptor BIO_new$FUNC = FunctionDescriptor.of(ADDRESS,
-        ADDRESS
+    static final FunctionDescriptor CRYPTO_free$FUNC = FunctionDescriptor.ofVoid(
+        ADDRESS,
+        ADDRESS,
+        JAVA_INT
     );
-    static final MethodHandle BIO_new$MH = RuntimeHelper.downcallHandle(
-        "BIO_new",
-        constants$1.BIO_new$FUNC, false
-    );
-    static final FunctionDescriptor BIO_free$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS
-    );
-    static final MethodHandle BIO_free$MH = RuntimeHelper.downcallHandle(
-        "BIO_free",
-        constants$1.BIO_free$FUNC, false
+    static final MethodHandle CRYPTO_free$MH = RuntimeHelper.downcallHandle(
+        "CRYPTO_free",
+        constants$1.CRYPTO_free$FUNC, false
     );
 }
 

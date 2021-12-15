@@ -26,47 +26,47 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$5 {
 
-    static final FunctionDescriptor EVP_PKEY_base_id$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor BN_get_rfc3526_prime_2048$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS
     );
-    static final MethodHandle EVP_PKEY_base_id$MH = RuntimeHelper.downcallHandle(
-        "EVP_PKEY_base_id",
-        constants$5.EVP_PKEY_base_id$FUNC, false
+    static final MethodHandle BN_get_rfc3526_prime_2048$MH = RuntimeHelper.downcallHandle(
+        "BN_get_rfc3526_prime_2048",
+        constants$5.BN_get_rfc3526_prime_2048$FUNC, false
     );
-    static final FunctionDescriptor EVP_PKEY_bits$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor BN_get_rfc3526_prime_3072$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS
     );
-    static final MethodHandle EVP_PKEY_bits$MH = RuntimeHelper.downcallHandle(
-        "EVP_PKEY_bits",
-        constants$5.EVP_PKEY_bits$FUNC, false
+    static final MethodHandle BN_get_rfc3526_prime_3072$MH = RuntimeHelper.downcallHandle(
+        "BN_get_rfc3526_prime_3072",
+        constants$5.BN_get_rfc3526_prime_3072$FUNC, false
     );
-    static final FunctionDescriptor EC_GROUP_free$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor BN_get_rfc3526_prime_4096$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS
     );
-    static final MethodHandle EC_GROUP_free$MH = RuntimeHelper.downcallHandle(
-        "EC_GROUP_free",
-        constants$5.EC_GROUP_free$FUNC, false
+    static final MethodHandle BN_get_rfc3526_prime_4096$MH = RuntimeHelper.downcallHandle(
+        "BN_get_rfc3526_prime_4096",
+        constants$5.BN_get_rfc3526_prime_4096$FUNC, false
     );
-    static final FunctionDescriptor EC_GROUP_get_curve_name$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor BN_get_rfc3526_prime_6144$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS
     );
-    static final MethodHandle EC_GROUP_get_curve_name$MH = RuntimeHelper.downcallHandle(
-        "EC_GROUP_get_curve_name",
-        constants$5.EC_GROUP_get_curve_name$FUNC, false
+    static final MethodHandle BN_get_rfc3526_prime_6144$MH = RuntimeHelper.downcallHandle(
+        "BN_get_rfc3526_prime_6144",
+        constants$5.BN_get_rfc3526_prime_6144$FUNC, false
     );
-    static final FunctionDescriptor EC_KEY_new_by_curve_name$FUNC = FunctionDescriptor.of(ADDRESS,
-        JAVA_INT
-    );
-    static final MethodHandle EC_KEY_new_by_curve_name$MH = RuntimeHelper.downcallHandle(
-        "EC_KEY_new_by_curve_name",
-        constants$5.EC_KEY_new_by_curve_name$FUNC, false
-    );
-    static final FunctionDescriptor EC_KEY_free$FUNC = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor BN_get_rfc3526_prime_8192$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS
     );
-    static final MethodHandle EC_KEY_free$MH = RuntimeHelper.downcallHandle(
-        "EC_KEY_free",
-        constants$5.EC_KEY_free$FUNC, false
+    static final MethodHandle BN_get_rfc3526_prime_8192$MH = RuntimeHelper.downcallHandle(
+        "BN_get_rfc3526_prime_8192",
+        constants$5.BN_get_rfc3526_prime_8192$FUNC, false
+    );
+    static final FunctionDescriptor ASN1_STRING_length$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS
+    );
+    static final MethodHandle ASN1_STRING_length$MH = RuntimeHelper.downcallHandle(
+        "ASN1_STRING_length",
+        constants$5.ASN1_STRING_length$FUNC, false
     );
 }
 

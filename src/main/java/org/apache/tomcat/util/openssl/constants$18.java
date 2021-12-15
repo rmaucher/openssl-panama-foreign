@@ -26,47 +26,54 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$18 {
 
-    static final FunctionDescriptor SSL_get_ciphers$FUNC = FunctionDescriptor.of(ADDRESS,
+    static final FunctionDescriptor SSL_new$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS
     );
-    static final MethodHandle SSL_get_ciphers$MH = RuntimeHelper.downcallHandle(
-        "SSL_get_ciphers",
-        constants$18.SSL_get_ciphers$FUNC, false
+    static final MethodHandle SSL_new$MH = RuntimeHelper.downcallHandle(
+        "SSL_new",
+        constants$18.SSL_new$FUNC, false
     );
-    static final FunctionDescriptor SSL_CTX_get_ciphers$FUNC = FunctionDescriptor.of(ADDRESS,
+    static final FunctionDescriptor SSL_free$FUNC = FunctionDescriptor.ofVoid(
         ADDRESS
     );
-    static final MethodHandle SSL_CTX_get_ciphers$MH = RuntimeHelper.downcallHandle(
-        "SSL_CTX_get_ciphers",
-        constants$18.SSL_CTX_get_ciphers$FUNC, false
+    static final MethodHandle SSL_free$MH = RuntimeHelper.downcallHandle(
+        "SSL_free",
+        constants$18.SSL_free$FUNC, false
     );
-    static final FunctionDescriptor SSL_do_handshake$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor SSL_read$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS,
+        JAVA_INT
+    );
+    static final MethodHandle SSL_read$MH = RuntimeHelper.downcallHandle(
+        "SSL_read",
+        constants$18.SSL_read$FUNC, false
+    );
+    static final FunctionDescriptor SSL_write$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS,
+        JAVA_INT
+    );
+    static final MethodHandle SSL_write$MH = RuntimeHelper.downcallHandle(
+        "SSL_write",
+        constants$18.SSL_write$FUNC, false
+    );
+    static final FunctionDescriptor SSL_CTX_ctrl$FUNC = FunctionDescriptor.of(JAVA_LONG,
+        ADDRESS,
+        JAVA_INT,
+        JAVA_LONG,
         ADDRESS
     );
-    static final MethodHandle SSL_do_handshake$MH = RuntimeHelper.downcallHandle(
-        "SSL_do_handshake",
-        constants$18.SSL_do_handshake$FUNC, false
+    static final MethodHandle SSL_CTX_ctrl$MH = RuntimeHelper.downcallHandle(
+        "SSL_CTX_ctrl",
+        constants$18.SSL_CTX_ctrl$FUNC, false
     );
-    static final FunctionDescriptor SSL_renegotiate$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor SSL_get_version$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS
     );
-    static final MethodHandle SSL_renegotiate$MH = RuntimeHelper.downcallHandle(
-        "SSL_renegotiate",
-        constants$18.SSL_renegotiate$FUNC, false
-    );
-    static final FunctionDescriptor SSL_renegotiate_pending$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS
-    );
-    static final MethodHandle SSL_renegotiate_pending$MH = RuntimeHelper.downcallHandle(
-        "SSL_renegotiate_pending",
-        constants$18.SSL_renegotiate_pending$FUNC, false
-    );
-    static final FunctionDescriptor SSL_shutdown$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS
-    );
-    static final MethodHandle SSL_shutdown$MH = RuntimeHelper.downcallHandle(
-        "SSL_shutdown",
-        constants$18.SSL_shutdown$FUNC, false
+    static final MethodHandle SSL_get_version$MH = RuntimeHelper.downcallHandle(
+        "SSL_get_version",
+        constants$18.SSL_get_version$FUNC, false
     );
 }
 

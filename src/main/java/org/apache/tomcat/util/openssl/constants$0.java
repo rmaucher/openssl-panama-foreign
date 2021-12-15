@@ -53,19 +53,13 @@ class constants$0 {
         "OpenSSL_version",
         constants$0.OpenSSL_version$FUNC, false
     );
-    static final FunctionDescriptor CRYPTO_free$FUNC = FunctionDescriptor.ofVoid(
-        ADDRESS,
+    static final FunctionDescriptor CRYPTO_set_mem_functions$m$FUNC = FunctionDescriptor.of(ADDRESS,
+        JAVA_LONG,
         ADDRESS,
         JAVA_INT
     );
-    static final MethodHandle CRYPTO_free$MH = RuntimeHelper.downcallHandle(
-        "CRYPTO_free",
-        constants$0.CRYPTO_free$FUNC, false
-    );
-    static final FunctionDescriptor FIPS_mode$FUNC = FunctionDescriptor.of(JAVA_INT);
-    static final MethodHandle FIPS_mode$MH = RuntimeHelper.downcallHandle(
-        "FIPS_mode",
-        constants$0.FIPS_mode$FUNC, false
+    static final MethodHandle CRYPTO_set_mem_functions$m$MH = RuntimeHelper.downcallHandle(
+        constants$0.CRYPTO_set_mem_functions$m$FUNC, false
     );
 }
 

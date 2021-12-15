@@ -26,54 +26,51 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$26 {
 
-    static final FunctionDescriptor ENGINE_load_private_key$FUNC = FunctionDescriptor.of(ADDRESS,
-        ADDRESS,
-        ADDRESS,
-        ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle ENGINE_load_private_key$MH = RuntimeHelper.downcallHandle(
-        "ENGINE_load_private_key",
-        constants$26.ENGINE_load_private_key$FUNC, false
-    );
-    static final FunctionDescriptor ENGINE_set_default$FUNC = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor RAND_seed$FUNC = FunctionDescriptor.ofVoid(
         ADDRESS,
         JAVA_INT
     );
-    static final MethodHandle ENGINE_set_default$MH = RuntimeHelper.downcallHandle(
-        "ENGINE_set_default",
-        constants$26.ENGINE_set_default$FUNC, false
+    static final MethodHandle RAND_seed$MH = RuntimeHelper.downcallHandle(
+        "RAND_seed",
+        constants$26.RAND_seed$FUNC, false
     );
-    static final FunctionDescriptor OCSP_cert_to_id$FUNC = FunctionDescriptor.of(ADDRESS,
+    static final FunctionDescriptor RAND_load_file$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        JAVA_LONG
+    );
+    static final MethodHandle RAND_load_file$MH = RuntimeHelper.downcallHandle(
+        "RAND_load_file",
+        constants$26.RAND_load_file$FUNC, false
+    );
+    static final FunctionDescriptor X509_check_issued$FUNC = FunctionDescriptor.of(JAVA_INT,
+        ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle X509_check_issued$MH = RuntimeHelper.downcallHandle(
+        "X509_check_issued",
+        constants$26.X509_check_issued$FUNC, false
+    );
+    static final FunctionDescriptor ENGINE_by_id$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle ENGINE_by_id$MH = RuntimeHelper.downcallHandle(
+        "ENGINE_by_id",
+        constants$26.ENGINE_by_id$FUNC, false
+    );
+    static final FunctionDescriptor ENGINE_register_all_complete$FUNC = FunctionDescriptor.of(JAVA_INT);
+    static final MethodHandle ENGINE_register_all_complete$MH = RuntimeHelper.downcallHandle(
+        "ENGINE_register_all_complete",
+        constants$26.ENGINE_register_all_complete$FUNC, false
+    );
+    static final FunctionDescriptor ENGINE_ctrl_cmd_string$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS,
         ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle OCSP_cert_to_id$MH = RuntimeHelper.downcallHandle(
-        "OCSP_cert_to_id",
-        constants$26.OCSP_cert_to_id$FUNC, false
-    );
-    static final FunctionDescriptor OCSP_request_add0_id$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS,
-        ADDRESS
+        JAVA_INT
     );
-    static final MethodHandle OCSP_request_add0_id$MH = RuntimeHelper.downcallHandle(
-        "OCSP_request_add0_id",
-        constants$26.OCSP_request_add0_id$FUNC, false
-    );
-    static final FunctionDescriptor OCSP_response_status$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS
-    );
-    static final MethodHandle OCSP_response_status$MH = RuntimeHelper.downcallHandle(
-        "OCSP_response_status",
-        constants$26.OCSP_response_status$FUNC, false
-    );
-    static final FunctionDescriptor OCSP_response_get1_basic$FUNC = FunctionDescriptor.of(ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle OCSP_response_get1_basic$MH = RuntimeHelper.downcallHandle(
-        "OCSP_response_get1_basic",
-        constants$26.OCSP_response_get1_basic$FUNC, false
+    static final MethodHandle ENGINE_ctrl_cmd_string$MH = RuntimeHelper.downcallHandle(
+        "ENGINE_ctrl_cmd_string",
+        constants$26.ENGINE_ctrl_cmd_string$FUNC, false
     );
 }
 

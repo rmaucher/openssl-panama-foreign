@@ -26,57 +26,49 @@ import jdk.incubator.foreign.*;
 import static jdk.incubator.foreign.ValueLayout.*;
 class constants$9 {
 
-    static final FunctionDescriptor i2d_X509$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
-        ADDRESS
-    );
-    static final MethodHandle i2d_X509$MH = RuntimeHelper.downcallHandle(
-        "i2d_X509",
-        constants$9.i2d_X509$FUNC, false
-    );
-    static final FunctionDescriptor X509_get_ext_by_NID$FUNC = FunctionDescriptor.of(JAVA_INT,
-        ADDRESS,
-        JAVA_INT,
-        JAVA_INT
-    );
-    static final MethodHandle X509_get_ext_by_NID$MH = RuntimeHelper.downcallHandle(
-        "X509_get_ext_by_NID",
-        constants$9.X509_get_ext_by_NID$FUNC, false
-    );
-    static final FunctionDescriptor X509_get_ext$FUNC = FunctionDescriptor.of(ADDRESS,
+    static final FunctionDescriptor X509_STORE_CTX_set_error$FUNC = FunctionDescriptor.ofVoid(
         ADDRESS,
         JAVA_INT
     );
-    static final MethodHandle X509_get_ext$MH = RuntimeHelper.downcallHandle(
-        "X509_get_ext",
-        constants$9.X509_get_ext$FUNC, false
+    static final MethodHandle X509_STORE_CTX_set_error$MH = RuntimeHelper.downcallHandle(
+        "X509_STORE_CTX_set_error",
+        constants$9.X509_STORE_CTX_set_error$FUNC, false
     );
-    static final FunctionDescriptor X509_EXTENSION_get_data$FUNC = FunctionDescriptor.of(ADDRESS,
+    static final FunctionDescriptor X509_STORE_CTX_get_error_depth$FUNC = FunctionDescriptor.of(JAVA_INT,
         ADDRESS
     );
-    static final MethodHandle X509_EXTENSION_get_data$MH = RuntimeHelper.downcallHandle(
-        "X509_EXTENSION_get_data",
-        constants$9.X509_EXTENSION_get_data$FUNC, false
+    static final MethodHandle X509_STORE_CTX_get_error_depth$MH = RuntimeHelper.downcallHandle(
+        "X509_STORE_CTX_get_error_depth",
+        constants$9.X509_STORE_CTX_get_error_depth$FUNC, false
     );
-    static final FunctionDescriptor PEM_read_bio_X509_AUX$FUNC = FunctionDescriptor.of(ADDRESS,
-        ADDRESS,
-        ADDRESS,
+    static final FunctionDescriptor X509_STORE_CTX_get_current_cert$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle X509_STORE_CTX_get_current_cert$MH = RuntimeHelper.downcallHandle(
+        "X509_STORE_CTX_get_current_cert",
+        constants$9.X509_STORE_CTX_get_current_cert$FUNC, false
+    );
+    static final FunctionDescriptor X509_STORE_CTX_get0_current_issuer$FUNC = FunctionDescriptor.of(ADDRESS,
+        ADDRESS
+    );
+    static final MethodHandle X509_STORE_CTX_get0_current_issuer$MH = RuntimeHelper.downcallHandle(
+        "X509_STORE_CTX_get0_current_issuer",
+        constants$9.X509_STORE_CTX_get0_current_issuer$FUNC, false
+    );
+    static final FunctionDescriptor d2i_X509_bio$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS,
         ADDRESS
     );
-    static final MethodHandle PEM_read_bio_X509_AUX$MH = RuntimeHelper.downcallHandle(
-        "PEM_read_bio_X509_AUX",
-        constants$9.PEM_read_bio_X509_AUX$FUNC, false
+    static final MethodHandle d2i_X509_bio$MH = RuntimeHelper.downcallHandle(
+        "d2i_X509_bio",
+        constants$9.d2i_X509_bio$FUNC, false
     );
-    static final FunctionDescriptor PEM_read_bio_ECPKParameters$FUNC = FunctionDescriptor.of(ADDRESS,
-        ADDRESS,
-        ADDRESS,
-        ADDRESS,
+    static final FunctionDescriptor X509_free$FUNC = FunctionDescriptor.ofVoid(
         ADDRESS
     );
-    static final MethodHandle PEM_read_bio_ECPKParameters$MH = RuntimeHelper.downcallHandle(
-        "PEM_read_bio_ECPKParameters",
-        constants$9.PEM_read_bio_ECPKParameters$FUNC, false
+    static final MethodHandle X509_free$MH = RuntimeHelper.downcallHandle(
+        "X509_free",
+        constants$9.X509_free$FUNC, false
     );
 }
 
