@@ -25,9 +25,9 @@
     </parent>
 
     <groupId>org.apache.tomcat</groupId>
-    <artifactId>openssl-java18</artifactId>
-    <name>Apache Tomcat OpenSSL support for Java 18</name>
-    <description>OpenSSL support using the Panama JEP 419 API included in Java 18</description>
+    <artifactId>tomcat-coyote-openssl</artifactId>
+    <name>Apache Tomcat OpenSSL support for Java 21</name>
+    <description>OpenSSL support using new APIs included in Java 21</description>
     <version>0.1-SNAPSHOT</version>
 
     <properties>
