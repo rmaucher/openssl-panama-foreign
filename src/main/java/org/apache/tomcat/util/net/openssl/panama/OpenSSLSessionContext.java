@@ -16,6 +16,9 @@
  */
 package org.apache.tomcat.util.net.openssl.panama;
 
+import java.lang.foreign.ResourceScope;
+import java.lang.foreign.SegmentAllocator;
+import java.lang.foreign.ValueLayout;
 import java.util.Enumeration;
 import java.util.NoSuchElementException;
 
@@ -25,10 +28,6 @@ import javax.net.ssl.SSLSessionContext;
 import static org.apache.tomcat.util.openssl.openssl_h.*;
 
 import org.apache.tomcat.util.res.StringManager;
-
-import jdk.incubator.foreign.ResourceScope;
-import jdk.incubator.foreign.SegmentAllocator;
-import jdk.incubator.foreign.ValueLayout;
 
 /**
  * OpenSSL specific {@link SSLSessionContext} implementation.

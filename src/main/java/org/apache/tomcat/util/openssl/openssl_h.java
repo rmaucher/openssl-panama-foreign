@@ -22,8 +22,8 @@ package org.apache.tomcat.util.openssl;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
-import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.ValueLayout.*;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
 public class openssl_h  {
 
     /* package-private */ openssl_h() {}
@@ -271,7 +271,7 @@ public class openssl_h  {
     public static MemoryAddress OPENSSL_sk_value ( Addressable x0,  int x1) {
         var mh$ = RuntimeHelper.requireNonNull(constants$0.OPENSSL_sk_value$MH, "OPENSSL_sk_value");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(x0, x1);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(x0, x1);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -293,7 +293,7 @@ public class openssl_h  {
     public static MemoryAddress OpenSSL_version ( int type) {
         var mh$ = RuntimeHelper.requireNonNull(constants$0.OpenSSL_version$MH, "OpenSSL_version");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(type);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(type);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -359,7 +359,7 @@ public class openssl_h  {
     public static MemoryAddress BIO_s_file () {
         var mh$ = RuntimeHelper.requireNonNull(constants$2.BIO_s_file$MH, "BIO_s_file");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact();
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -370,7 +370,7 @@ public class openssl_h  {
     public static MemoryAddress BIO_new_file ( Addressable filename,  Addressable mode) {
         var mh$ = RuntimeHelper.requireNonNull(constants$2.BIO_new_file$MH, "BIO_new_file");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(filename, mode);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(filename, mode);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -381,7 +381,7 @@ public class openssl_h  {
     public static MemoryAddress BIO_new ( Addressable type) {
         var mh$ = RuntimeHelper.requireNonNull(constants$2.BIO_new$MH, "BIO_new");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(type);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(type);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -436,7 +436,7 @@ public class openssl_h  {
     public static MemoryAddress BIO_s_mem () {
         var mh$ = RuntimeHelper.requireNonNull(constants$3.BIO_s_mem$MH, "BIO_s_mem");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact();
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -447,7 +447,7 @@ public class openssl_h  {
     public static MemoryAddress BIO_s_bio () {
         var mh$ = RuntimeHelper.requireNonNull(constants$3.BIO_s_bio$MH, "BIO_s_bio");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact();
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -469,7 +469,7 @@ public class openssl_h  {
     public static MemoryAddress BN_new () {
         var mh$ = RuntimeHelper.requireNonNull(constants$4.BN_new$MH, "BN_new");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact();
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -491,7 +491,7 @@ public class openssl_h  {
     public static MemoryAddress BN_get_rfc2409_prime_768 ( Addressable bn) {
         var mh$ = RuntimeHelper.requireNonNull(constants$4.BN_get_rfc2409_prime_768$MH, "BN_get_rfc2409_prime_768");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bn);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(bn);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -502,7 +502,7 @@ public class openssl_h  {
     public static MemoryAddress BN_get_rfc2409_prime_1024 ( Addressable bn) {
         var mh$ = RuntimeHelper.requireNonNull(constants$4.BN_get_rfc2409_prime_1024$MH, "BN_get_rfc2409_prime_1024");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bn);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(bn);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -513,7 +513,7 @@ public class openssl_h  {
     public static MemoryAddress BN_get_rfc3526_prime_1536 ( Addressable bn) {
         var mh$ = RuntimeHelper.requireNonNull(constants$4.BN_get_rfc3526_prime_1536$MH, "BN_get_rfc3526_prime_1536");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bn);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(bn);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -524,7 +524,7 @@ public class openssl_h  {
     public static MemoryAddress BN_get_rfc3526_prime_2048 ( Addressable bn) {
         var mh$ = RuntimeHelper.requireNonNull(constants$5.BN_get_rfc3526_prime_2048$MH, "BN_get_rfc3526_prime_2048");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bn);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(bn);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -535,7 +535,7 @@ public class openssl_h  {
     public static MemoryAddress BN_get_rfc3526_prime_3072 ( Addressable bn) {
         var mh$ = RuntimeHelper.requireNonNull(constants$5.BN_get_rfc3526_prime_3072$MH, "BN_get_rfc3526_prime_3072");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bn);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(bn);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -546,7 +546,7 @@ public class openssl_h  {
     public static MemoryAddress BN_get_rfc3526_prime_4096 ( Addressable bn) {
         var mh$ = RuntimeHelper.requireNonNull(constants$5.BN_get_rfc3526_prime_4096$MH, "BN_get_rfc3526_prime_4096");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bn);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(bn);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -557,7 +557,7 @@ public class openssl_h  {
     public static MemoryAddress BN_get_rfc3526_prime_6144 ( Addressable bn) {
         var mh$ = RuntimeHelper.requireNonNull(constants$5.BN_get_rfc3526_prime_6144$MH, "BN_get_rfc3526_prime_6144");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bn);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(bn);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -568,7 +568,7 @@ public class openssl_h  {
     public static MemoryAddress BN_get_rfc3526_prime_8192 ( Addressable bn) {
         var mh$ = RuntimeHelper.requireNonNull(constants$5.BN_get_rfc3526_prime_8192$MH, "BN_get_rfc3526_prime_8192");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bn);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(bn);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -590,7 +590,7 @@ public class openssl_h  {
     public static MemoryAddress ASN1_STRING_get0_data ( Addressable x) {
         var mh$ = RuntimeHelper.requireNonNull(constants$6.ASN1_STRING_get0_data$MH, "ASN1_STRING_get0_data");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(x);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(x);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -645,7 +645,7 @@ public class openssl_h  {
     public static MemoryAddress EC_KEY_new_by_curve_name ( int nid) {
         var mh$ = RuntimeHelper.requireNonNull(constants$6.EC_KEY_new_by_curve_name$MH, "EC_KEY_new_by_curve_name");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(nid);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(nid);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -667,7 +667,7 @@ public class openssl_h  {
     public static MemoryAddress DH_new () {
         var mh$ = RuntimeHelper.requireNonNull(constants$7.DH_new$MH, "DH_new");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact();
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -711,7 +711,7 @@ public class openssl_h  {
     public static MemoryAddress X509_STORE_CTX_get0_untrusted ( Addressable ctx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$7.X509_STORE_CTX_get0_untrusted$MH, "X509_STORE_CTX_get0_untrusted");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(ctx);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(ctx);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -722,7 +722,7 @@ public class openssl_h  {
     public static MemoryAddress X509_STORE_add_lookup ( Addressable v,  Addressable m) {
         var mh$ = RuntimeHelper.requireNonNull(constants$8.X509_STORE_add_lookup$MH, "X509_STORE_add_lookup");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(v, m);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(v, m);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -733,7 +733,7 @@ public class openssl_h  {
     public static MemoryAddress X509_LOOKUP_hash_dir () {
         var mh$ = RuntimeHelper.requireNonNull(constants$8.X509_LOOKUP_hash_dir$MH, "X509_LOOKUP_hash_dir");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact();
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -744,7 +744,7 @@ public class openssl_h  {
     public static MemoryAddress X509_LOOKUP_file () {
         var mh$ = RuntimeHelper.requireNonNull(constants$8.X509_LOOKUP_file$MH, "X509_LOOKUP_file");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact();
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -766,7 +766,7 @@ public class openssl_h  {
     public static MemoryAddress X509_STORE_CTX_get_ex_data ( Addressable ctx,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$8.X509_STORE_CTX_get_ex_data$MH, "X509_STORE_CTX_get_ex_data");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(ctx, idx);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(ctx, idx);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -810,7 +810,7 @@ public class openssl_h  {
     public static MemoryAddress X509_STORE_CTX_get_current_cert ( Addressable ctx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$9.X509_STORE_CTX_get_current_cert$MH, "X509_STORE_CTX_get_current_cert");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(ctx);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(ctx);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -821,7 +821,7 @@ public class openssl_h  {
     public static MemoryAddress X509_STORE_CTX_get0_current_issuer ( Addressable ctx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$9.X509_STORE_CTX_get0_current_issuer$MH, "X509_STORE_CTX_get0_current_issuer");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(ctx);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(ctx);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -832,7 +832,7 @@ public class openssl_h  {
     public static MemoryAddress d2i_X509_bio ( Addressable bp,  Addressable x509) {
         var mh$ = RuntimeHelper.requireNonNull(constants$9.d2i_X509_bio$MH, "d2i_X509_bio");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bp, x509);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(bp, x509);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -854,7 +854,7 @@ public class openssl_h  {
     public static MemoryAddress d2i_X509 ( Addressable a,  Addressable in,  long len) {
         var mh$ = RuntimeHelper.requireNonNull(constants$10.d2i_X509$MH, "d2i_X509");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(a, in, len);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(a, in, len);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -887,7 +887,7 @@ public class openssl_h  {
     public static MemoryAddress X509_get_ext ( Addressable x,  int loc) {
         var mh$ = RuntimeHelper.requireNonNull(constants$10.X509_get_ext$MH, "X509_get_ext");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(x, loc);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(x, loc);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -898,7 +898,7 @@ public class openssl_h  {
     public static MemoryAddress X509_EXTENSION_get_data ( Addressable ne) {
         var mh$ = RuntimeHelper.requireNonNull(constants$10.X509_EXTENSION_get_data$MH, "X509_EXTENSION_get_data");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(ne);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(ne);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -909,7 +909,7 @@ public class openssl_h  {
     public static MemoryAddress PEM_read_bio_X509_AUX ( Addressable bp,  Addressable x,  Addressable cb,  Addressable u) {
         var mh$ = RuntimeHelper.requireNonNull(constants$10.PEM_read_bio_X509_AUX$MH, "PEM_read_bio_X509_AUX");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bp, x, cb, u);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(bp, x, cb, u);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -920,7 +920,7 @@ public class openssl_h  {
     public static MemoryAddress PEM_read_bio_ECPKParameters ( Addressable bp,  Addressable x,  Addressable cb,  Addressable u) {
         var mh$ = RuntimeHelper.requireNonNull(constants$11.PEM_read_bio_ECPKParameters$MH, "PEM_read_bio_ECPKParameters");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bp, x, cb, u);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(bp, x, cb, u);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -931,7 +931,7 @@ public class openssl_h  {
     public static MemoryAddress PEM_read_bio_DHparams ( Addressable bp,  Addressable x,  Addressable cb,  Addressable u) {
         var mh$ = RuntimeHelper.requireNonNull(constants$11.PEM_read_bio_DHparams$MH, "PEM_read_bio_DHparams");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bp, x, cb, u);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(bp, x, cb, u);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -942,7 +942,7 @@ public class openssl_h  {
     public static MemoryAddress PEM_read_bio_PrivateKey ( Addressable bp,  Addressable x,  Addressable cb,  Addressable u) {
         var mh$ = RuntimeHelper.requireNonNull(constants$11.PEM_read_bio_PrivateKey$MH, "PEM_read_bio_PrivateKey");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bp, x, cb, u);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(bp, x, cb, u);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1063,7 +1063,7 @@ public class openssl_h  {
     public static MemoryAddress SSL_CTX_new ( Addressable meth) {
         var mh$ = RuntimeHelper.requireNonNull(constants$13.SSL_CTX_new$MH, "SSL_CTX_new");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(meth);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(meth);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1107,7 +1107,7 @@ public class openssl_h  {
     public static MemoryAddress SSL_CTX_get_cert_store ( Addressable x0) {
         var mh$ = RuntimeHelper.requireNonNull(constants$13.SSL_CTX_get_cert_store$MH, "SSL_CTX_get_cert_store");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(x0);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(x0);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1118,7 +1118,7 @@ public class openssl_h  {
     public static MemoryAddress SSL_get_current_cipher ( Addressable s) {
         var mh$ = RuntimeHelper.requireNonNull(constants$14.SSL_get_current_cipher$MH, "SSL_get_current_cipher");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(s);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(s);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1129,7 +1129,7 @@ public class openssl_h  {
     public static MemoryAddress SSL_CIPHER_get_name ( Addressable c) {
         var mh$ = RuntimeHelper.requireNonNull(constants$14.SSL_CIPHER_get_name$MH, "SSL_CIPHER_get_name");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(c);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(c);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1217,7 +1217,7 @@ public class openssl_h  {
     public static MemoryAddress SSL_load_client_CA_file ( Addressable file) {
         var mh$ = RuntimeHelper.requireNonNull(constants$15.SSL_load_client_CA_file$MH, "SSL_load_client_CA_file");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(file);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(file);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1250,7 +1250,7 @@ public class openssl_h  {
     public static MemoryAddress SSL_SESSION_get_id ( Addressable s,  Addressable len) {
         var mh$ = RuntimeHelper.requireNonNull(constants$16.SSL_SESSION_get_id$MH, "SSL_SESSION_get_id");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(s, len);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(s, len);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1261,7 +1261,7 @@ public class openssl_h  {
     public static MemoryAddress SSL_get_peer_certificate ( Addressable s) {
         var mh$ = RuntimeHelper.requireNonNull(constants$16.SSL_get_peer_certificate$MH, "SSL_get_peer_certificate");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(s);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(s);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1272,7 +1272,7 @@ public class openssl_h  {
     public static MemoryAddress SSL_get_peer_cert_chain ( Addressable s) {
         var mh$ = RuntimeHelper.requireNonNull(constants$16.SSL_get_peer_cert_chain$MH, "SSL_get_peer_cert_chain");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(s);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(s);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1360,7 +1360,7 @@ public class openssl_h  {
     public static MemoryAddress SSL_new ( Addressable ctx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$18.SSL_new$MH, "SSL_new");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(ctx);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(ctx);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1415,7 +1415,7 @@ public class openssl_h  {
     public static MemoryAddress SSL_get_version ( Addressable s) {
         var mh$ = RuntimeHelper.requireNonNull(constants$18.SSL_get_version$MH, "SSL_get_version");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(s);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(s);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1426,7 +1426,7 @@ public class openssl_h  {
     public static MemoryAddress TLS_server_method () {
         var mh$ = RuntimeHelper.requireNonNull(constants$19.TLS_server_method$MH, "TLS_server_method");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact();
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1437,7 +1437,7 @@ public class openssl_h  {
     public static MemoryAddress SSL_get_ciphers ( Addressable s) {
         var mh$ = RuntimeHelper.requireNonNull(constants$19.SSL_get_ciphers$MH, "SSL_get_ciphers");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(s);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(s);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1448,7 +1448,7 @@ public class openssl_h  {
     public static MemoryAddress SSL_CTX_get_ciphers ( Addressable ctx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$19.SSL_CTX_get_ciphers$MH, "SSL_CTX_get_ciphers");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(ctx);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(ctx);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1525,7 +1525,7 @@ public class openssl_h  {
     public static MemoryAddress SSL_CTX_get_client_CA_list ( Addressable s) {
         var mh$ = RuntimeHelper.requireNonNull(constants$20.SSL_CTX_get_client_CA_list$MH, "SSL_CTX_get_client_CA_list");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(s);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(s);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1569,7 +1569,7 @@ public class openssl_h  {
     public static MemoryAddress SSL_get_privatekey ( Addressable ssl) {
         var mh$ = RuntimeHelper.requireNonNull(constants$21.SSL_get_privatekey$MH, "SSL_get_privatekey");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(ssl);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(ssl);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1613,7 +1613,7 @@ public class openssl_h  {
     public static MemoryAddress SSL_get_session ( Addressable ssl) {
         var mh$ = RuntimeHelper.requireNonNull(constants$21.SSL_get_session$MH, "SSL_get_session");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(ssl);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(ssl);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1668,7 +1668,7 @@ public class openssl_h  {
     public static MemoryAddress SSL_CONF_CTX_new () {
         var mh$ = RuntimeHelper.requireNonNull(constants$23.SSL_CONF_CTX_new$MH, "SSL_CONF_CTX_new");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact();
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1789,7 +1789,7 @@ public class openssl_h  {
     public static MemoryAddress ERR_error_string ( long e,  Addressable buf) {
         var mh$ = RuntimeHelper.requireNonNull(constants$25.ERR_error_string$MH, "ERR_error_string");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(e, buf);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(e, buf);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1833,7 +1833,7 @@ public class openssl_h  {
     public static MemoryAddress d2i_PKCS12_bio ( Addressable bp,  Addressable p12) {
         var mh$ = RuntimeHelper.requireNonNull(constants$25.d2i_PKCS12_bio$MH, "d2i_PKCS12_bio");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bp, p12);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(bp, p12);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1877,7 +1877,7 @@ public class openssl_h  {
     public static MemoryAddress ENGINE_by_id ( Addressable id) {
         var mh$ = RuntimeHelper.requireNonNull(constants$26.ENGINE_by_id$MH, "ENGINE_by_id");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(id);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(id);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1921,7 +1921,7 @@ public class openssl_h  {
     public static MemoryAddress ENGINE_load_private_key ( Addressable e,  Addressable key_id,  Addressable ui_method,  Addressable callback_data) {
         var mh$ = RuntimeHelper.requireNonNull(constants$27.ENGINE_load_private_key$MH, "ENGINE_load_private_key");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(e, key_id, ui_method, callback_data);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(e, key_id, ui_method, callback_data);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1943,7 +1943,7 @@ public class openssl_h  {
     public static MemoryAddress OCSP_cert_to_id ( Addressable dgst,  Addressable subject,  Addressable issuer) {
         var mh$ = RuntimeHelper.requireNonNull(constants$27.OCSP_cert_to_id$MH, "OCSP_cert_to_id");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(dgst, subject, issuer);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(dgst, subject, issuer);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1954,7 +1954,7 @@ public class openssl_h  {
     public static MemoryAddress OCSP_request_add0_id ( Addressable req,  Addressable cid) {
         var mh$ = RuntimeHelper.requireNonNull(constants$27.OCSP_request_add0_id$MH, "OCSP_request_add0_id");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(req, cid);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(req, cid);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1976,7 +1976,7 @@ public class openssl_h  {
     public static MemoryAddress OCSP_response_get1_basic ( Addressable resp) {
         var mh$ = RuntimeHelper.requireNonNull(constants$28.OCSP_response_get1_basic$MH, "OCSP_response_get1_basic");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(resp);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(resp);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -1987,7 +1987,7 @@ public class openssl_h  {
     public static MemoryAddress OCSP_resp_get0 ( Addressable bs,  int idx) {
         var mh$ = RuntimeHelper.requireNonNull(constants$28.OCSP_resp_get0$MH, "OCSP_resp_get0");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(bs, idx);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(bs, idx);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2042,7 +2042,7 @@ public class openssl_h  {
     public static MemoryAddress d2i_OCSP_RESPONSE ( Addressable a,  Addressable in,  long len) {
         var mh$ = RuntimeHelper.requireNonNull(constants$29.d2i_OCSP_RESPONSE$MH, "d2i_OCSP_RESPONSE");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact(a, in, len);
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(a, in, len);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -2064,7 +2064,7 @@ public class openssl_h  {
     public static MemoryAddress OCSP_REQUEST_new () {
         var mh$ = RuntimeHelper.requireNonNull(constants$29.OCSP_REQUEST_new$MH, "OCSP_REQUEST_new");
         try {
-            return (jdk.incubator.foreign.MemoryAddress)mh$.invokeExact();
+            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

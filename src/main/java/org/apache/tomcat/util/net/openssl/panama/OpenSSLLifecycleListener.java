@@ -17,13 +17,12 @@
 package org.apache.tomcat.util.net.openssl.panama;
 
 
-import jdk.incubator.foreign.MemoryAddress;
-import jdk.incubator.foreign.ResourceScope;
-import jdk.incubator.foreign.SegmentAllocator;
-import jdk.incubator.foreign.ValueLayout;
-
 import static org.apache.tomcat.util.openssl.openssl_h.*;
 
+import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.ResourceScope;
+import java.lang.foreign.SegmentAllocator;
+import java.lang.foreign.ValueLayout;
 import java.security.SecureRandom;
 
 import org.apache.catalina.Lifecycle;

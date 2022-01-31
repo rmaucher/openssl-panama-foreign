@@ -22,19 +22,19 @@ package org.apache.tomcat.util.openssl;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
-import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.ValueLayout.*;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
 public interface SSL_CTX_set_cert_verify_callback$cb {
 
-    int apply(jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1);
+    int apply(java.lang.foreign.MemoryAddress x0, java.lang.foreign.MemoryAddress x1);
     static NativeSymbol allocate(SSL_CTX_set_cert_verify_callback$cb fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(SSL_CTX_set_cert_verify_callback$cb.class, fi, constants$16.SSL_CTX_set_cert_verify_callback$cb$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;Ljdk/incubator/foreign/MemoryAddress;)I", scope);
     }
     static SSL_CTX_set_cert_verify_callback$cb ofAddress(MemoryAddress addr, ResourceScope scope) {
         NativeSymbol symbol = NativeSymbol.ofAddress("SSL_CTX_set_cert_verify_callback$cb::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
-return (jdk.incubator.foreign.MemoryAddress x0, jdk.incubator.foreign.MemoryAddress x1) -> {
+return (java.lang.foreign.MemoryAddress x0, java.lang.foreign.MemoryAddress x1) -> {
             try {
-                return (int)constants$16.SSL_CTX_set_cert_verify_callback$cb$MH.invokeExact(symbol, (jdk.incubator.foreign.Addressable)x0, (jdk.incubator.foreign.Addressable)x1);
+                return (int)constants$16.SSL_CTX_set_cert_verify_callback$cb$MH.invokeExact(symbol, (java.lang.foreign.Addressable)x0, (java.lang.foreign.Addressable)x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

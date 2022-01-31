@@ -18,7 +18,7 @@ package org.apache.tomcat.util.net.openssl.panama;
 
 import static org.apache.tomcat.util.openssl.openssl_h.*;
 
-import jdk.incubator.foreign.MemoryAddress;
+import java.lang.foreign.MemoryAddress;
 
 /**
  * Stats exposed by an OpenSSL session context.

@@ -22,19 +22,19 @@ package org.apache.tomcat.util.openssl;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
-import jdk.incubator.foreign.*;
-import static jdk.incubator.foreign.ValueLayout.*;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
 public interface CRYPTO_set_mem_functions$m {
 
-    jdk.incubator.foreign.Addressable apply(long x0, jdk.incubator.foreign.MemoryAddress x1, int x2);
+    java.lang.foreign.Addressable apply(long x0, java.lang.foreign.MemoryAddress x1, int x2);
     static NativeSymbol allocate(CRYPTO_set_mem_functions$m fi, ResourceScope scope) {
         return RuntimeHelper.upcallStub(CRYPTO_set_mem_functions$m.class, fi, constants$0.CRYPTO_set_mem_functions$m$FUNC, "(JLjdk/incubator/foreign/MemoryAddress;I)Ljdk/incubator/foreign/Addressable;", scope);
     }
     static CRYPTO_set_mem_functions$m ofAddress(MemoryAddress addr, ResourceScope scope) {
         NativeSymbol symbol = NativeSymbol.ofAddress("CRYPTO_set_mem_functions$m::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
-return (long x0, jdk.incubator.foreign.MemoryAddress x1, int x2) -> {
+return (long x0, java.lang.foreign.MemoryAddress x1, int x2) -> {
             try {
-                return (jdk.incubator.foreign.Addressable)(jdk.incubator.foreign.MemoryAddress)constants$0.CRYPTO_set_mem_functions$m$MH.invokeExact(symbol, x0, (jdk.incubator.foreign.Addressable)x1, x2);
+                return (java.lang.foreign.Addressable)(java.lang.foreign.MemoryAddress)constants$0.CRYPTO_set_mem_functions$m$MH.invokeExact(symbol, x0, (java.lang.foreign.Addressable)x1, x2);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }
