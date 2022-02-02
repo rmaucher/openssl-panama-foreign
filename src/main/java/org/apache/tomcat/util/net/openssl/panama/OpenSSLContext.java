@@ -629,7 +629,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                             log.debug(sm.getString("openssl.addedClientCaCert", caCert.toString()));
                         }
                     }
-                } else if (sslHostConfig.getCaCertificateFile() != null || sslHostConfig.getCaCertificatePath() != null) {
+                } else {
                     // Client certificate verification based on trusted CA files and dirs
                     //SSLContext.setCACertificate(state.ctx,
                     //        SSLHostConfig.adjustRelativePath(sslHostConfig.getCaCertificateFile()),
@@ -658,12 +658,6 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                             log.warn(sm.getString("openssl.noCACerts"));
                         }
                     }
-                } else {
-                    // No CA certificates configured. Reject all client certificates.
-                    NativeSymbol openSSLCallbackCertVerify =
-                            CLinker.systemCLinker().upcallStub(openSSLCallbackCertVerifyHandle,
-                            openSSLCallbackCertVerifyFunctionDescriptor, state.contextScope);
-                    SSL_CTX_set_cert_verify_callback(state.sslCtx, openSSLCallbackCertVerify, MemoryAddress.NULL);
                 }
             }
 
