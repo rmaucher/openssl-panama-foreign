@@ -27,10 +27,10 @@ import static java.lang.foreign.ValueLayout.*;
 public interface CRYPTO_set_mem_functions$r {
 
     java.lang.foreign.Addressable apply(java.lang.foreign.MemoryAddress x0, long x1, java.lang.foreign.MemoryAddress x2, int x3);
-    static NativeSymbol allocate(CRYPTO_set_mem_functions$r fi, ResourceScope scope) {
+    static NativeSymbol allocate(CRYPTO_set_mem_functions$r fi, MemorySession scope) {
         return RuntimeHelper.upcallStub(CRYPTO_set_mem_functions$r.class, fi, constants$1.CRYPTO_set_mem_functions$r$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;JLjdk/incubator/foreign/MemoryAddress;I)Ljdk/incubator/foreign/Addressable;", scope);
     }
-    static CRYPTO_set_mem_functions$r ofAddress(MemoryAddress addr, ResourceScope scope) {
+    static CRYPTO_set_mem_functions$r ofAddress(MemoryAddress addr, MemorySession scope) {
         NativeSymbol symbol = NativeSymbol.ofAddress("CRYPTO_set_mem_functions$r::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
 return (java.lang.foreign.MemoryAddress x0, long x1, java.lang.foreign.MemoryAddress x2, int x3) -> {
             try {

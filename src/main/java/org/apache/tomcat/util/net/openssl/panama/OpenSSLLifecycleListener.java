@@ -20,7 +20,7 @@ package org.apache.tomcat.util.net.openssl.panama;
 import static org.apache.tomcat.util.openssl.openssl_h.*;
 
 import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.ResourceScope;
+import java.lang.foreign.MemorySession;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
 import java.security.SecureRandom;
@@ -228,8 +228,8 @@ public class OpenSSLLifecycleListener implements LifecycleListener {
                 return;
             }
 
-            var scope = ResourceScope.globalScope();
-            var allocator = SegmentAllocator.nativeAllocator(scope);
+            var memorySession = MemorySession.global();
+            var allocator = SegmentAllocator.newNativeArena(memorySession);
 
             // Main library init
             initLibrary();

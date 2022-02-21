@@ -27,10 +27,10 @@ import static java.lang.foreign.ValueLayout.*;
 public interface SSL_CTX_set_tmp_dh_callback$dh {
 
     java.lang.foreign.Addressable apply(java.lang.foreign.MemoryAddress x0, int x1, int x2);
-    static NativeSymbol allocate(SSL_CTX_set_tmp_dh_callback$dh fi, ResourceScope scope) {
+    static NativeSymbol allocate(SSL_CTX_set_tmp_dh_callback$dh fi, MemorySession scope) {
         return RuntimeHelper.upcallStub(SSL_CTX_set_tmp_dh_callback$dh.class, fi, constants$22.SSL_CTX_set_tmp_dh_callback$dh$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;II)Ljdk/incubator/foreign/Addressable;", scope);
     }
-    static SSL_CTX_set_tmp_dh_callback$dh ofAddress(MemoryAddress addr, ResourceScope scope) {
+    static SSL_CTX_set_tmp_dh_callback$dh ofAddress(MemoryAddress addr, MemorySession scope) {
         NativeSymbol symbol = NativeSymbol.ofAddress("SSL_CTX_set_tmp_dh_callback$dh::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
 return (java.lang.foreign.MemoryAddress x0, int x1, int x2) -> {
             try {

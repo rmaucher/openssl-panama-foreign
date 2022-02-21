@@ -26,7 +26,7 @@ import java.lang.foreign.NativeSymbol;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ResourceScope;
+import java.lang.foreign.MemorySession;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
@@ -50,7 +50,7 @@ final class RuntimeHelper {
     private final static MethodHandles.Lookup MH_LOOKUP = MethodHandles.lookup();
 
     final static SegmentAllocator CONSTANT_ALLOCATOR =
-            (size, align) -> MemorySegment.allocateNative(size, align, ResourceScope.newImplicitScope());
+            (size, align) -> MemorySegment.allocateNative(size, align, MemorySession.openImplicit());
 
     static {
         System.loadLibrary("ssl");
@@ -66,7 +66,7 @@ final class RuntimeHelper {
     private final static SegmentAllocator THROWING_ALLOCATOR = (x, y) -> { throw new AssertionError("should not reach here"); };
 
     static final MemorySegment lookupGlobalVariable(String name, MemoryLayout layout) {
-        return LOADER.findNative(name).map(symbol -> MemorySegment.ofAddress(symbol.address(), layout.byteSize(), ResourceScope.newSharedScope())).orElse(null);
+        return LOADER.findNative(name).map(symbol -> MemorySegment.ofAddress(symbol.address(), layout.byteSize(), MemorySession.openShared())).orElse(null);
     }
 
     static final MethodHandle downcallHandle(String name, FunctionDescriptor fdesc, boolean variadic) {
@@ -85,7 +85,7 @@ final class RuntimeHelper {
         return LINKER.downcallHandle(fdesc);
     }
 
-    static final <Z> NativeSymbol upcallStub(Class<Z> fi, Z z, FunctionDescriptor fdesc, String mtypeDesc, ResourceScope scope) {
+    static final <Z> NativeSymbol upcallStub(Class<Z> fi, Z z, FunctionDescriptor fdesc, String mtypeDesc, MemorySession scope) {
         try {
             MethodHandle handle = MH_LOOKUP.findVirtual(fi, "apply",
                     MethodType.fromMethodDescriptorString(mtypeDesc, LOADER));
@@ -96,7 +96,7 @@ final class RuntimeHelper {
         }
     }
 
-    static MemorySegment asArray(MemoryAddress addr, MemoryLayout layout, int numElements, ResourceScope scope) {
+    static MemorySegment asArray(MemoryAddress addr, MemoryLayout layout, int numElements, MemorySession scope) {
          return MemorySegment.ofAddress(addr, numElements * layout.byteSize(), scope);
     }
 

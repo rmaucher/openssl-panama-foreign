@@ -22,8 +22,8 @@ import java.lang.foreign.CLinker;
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.MemorySession;
 import java.lang.foreign.NativeSymbol;
-import java.lang.foreign.ResourceScope;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
@@ -105,8 +105,8 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         OpenSSLLifecycleListener.initLibrary();
 
         final Set<String> availableCipherSuites = new LinkedHashSet<>(128);
-        try (var scope = ResourceScope.newConfinedScope()) {
-            var allocator = SegmentAllocator.nativeAllocator(scope);
+        try (var memorySession = MemorySession.openConfined()) {
+            var allocator = SegmentAllocator.newNativeArena(memorySession);
             var sslCtx = SSL_CTX_new(TLS_server_method());
             try {
                 SSL_CTX_set_options(sslCtx, SSL_OP_ALL());
@@ -184,7 +184,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
     }
 
     private final EngineState state;
-    private final ResourceScope engineScope;
+    private final MemorySession engineMemorySession;
 
     private enum Accepted { NOT, IMPLICIT, EXPLICIT }
     private Accepted accepted = Accepted.NOT;
@@ -246,13 +246,13 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         if (sslCtx == null) {
             throw new IllegalArgumentException(sm.getString("engine.noSSLContext"));
         }
-        engineScope = ResourceScope.newImplicitScope();
-        var allocator = SegmentAllocator.nativeAllocator(engineScope);
+        engineMemorySession = MemorySession.openImplicit();
+        var allocator = SegmentAllocator.newNativeArena(engineMemorySession);
         session = new OpenSSLSession();
         var ssl = SSL_new(sslCtx);
         // Set ssl_info_callback
         NativeSymbol openSSLCallbackInfo = CLinker.systemCLinker().upcallStub(openSSLCallbackInfoHandle,
-                openSSLCallbackInfoFunctionDescriptor, engineScope);
+                openSSLCallbackInfoFunctionDescriptor, engineMemorySession);
         SSL_set_info_callback(ssl, openSSLCallbackInfo);
         if (clientMode) {
             SSL_set_connect_state(ssl);
@@ -267,7 +267,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         var networkBIO = networkBIOPointer.get(ValueLayout.ADDRESS, 0);
         SSL_set_bio(ssl, internalBIO, internalBIO);
         state = new EngineState(ssl, networkBIO, certificateVerificationDepth, noOcspCheck);
-        engineScope.addCloseAction(state);
+        engineMemorySession.addCloseAction(state);
         this.fallbackApplicationProtocol = fallbackApplicationProtocol;
         this.clientMode = clientMode;
         this.sessionContext = sessionContext;
@@ -314,8 +314,8 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                 checkLastError();
             }
         } else {
-            try (var scope = ResourceScope.newConfinedScope()) {
-                var allocator = SegmentAllocator.nativeAllocator(scope);
+            try (var memorySession = MemorySession.openConfined()) {
+                var allocator = SegmentAllocator.newNativeArena(memorySession);
                 MemorySegment bufSegment = allocator.allocateArray(ValueLayout.JAVA_BYTE, len);
                 MemorySegment.copy(src.array(), pos, bufSegment, ValueLayout.JAVA_BYTE, 0, len);
                 sslWrote = SSL_write(ssl, bufSegment, len);
@@ -390,8 +390,8 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         } else {
             final int limit = dst.limit();
             final int len = Math.min(MAX_ENCRYPTED_PACKET_LENGTH, limit - pos);
-            try (var scope = ResourceScope.newConfinedScope()) {
-                var allocator = SegmentAllocator.nativeAllocator(scope);
+            try (var memorySession = MemorySession.openConfined()) {
+                var allocator = SegmentAllocator.newNativeArena(memorySession);
                 MemorySegment bufSegment = allocator.allocateArray(ValueLayout.JAVA_BYTE, len);
                 final int sslRead = SSL_read(ssl, bufSegment, len);
                 if (sslRead > 0) {
@@ -829,7 +829,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
 
         final String cipherSuiteSpec = buf.toString();
         try {
-            SSL_set_cipher_list(state.ssl, SegmentAllocator.nativeAllocator(engineScope)
+            SSL_set_cipher_list(state.ssl, SegmentAllocator.newNativeArena(engineMemorySession)
                     .allocateUtf8String(cipherSuiteSpec));
         } catch (Exception e) {
             throw new IllegalStateException(sm.getString("engine.failedCipherSuite", cipherSuiteSpec), e);
@@ -966,7 +966,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
     }
 
     private byte[] getPeerCertificate() {
-        var allocator = SegmentAllocator.nativeAllocator(engineScope);
+        var allocator = SegmentAllocator.newNativeArena(engineMemorySession);
         MemoryAddress/*(X509*)*/ x509 = SSL_get_peer_certificate(state.ssl);
         MemorySegment bufPointer = allocator.allocate(ValueLayout.ADDRESS, MemoryAddress.NULL);
         int length = i2d_X509(x509, bufPointer);
@@ -974,7 +974,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             return null;
         }
         MemoryAddress buf = bufPointer.get(ValueLayout.ADDRESS, 0);
-        byte[] certificate = MemorySegment.ofAddress(buf, length, engineScope).toArray(ValueLayout.JAVA_BYTE);
+        byte[] certificate = MemorySegment.ofAddress(buf, length, engineMemorySession).toArray(ValueLayout.JAVA_BYTE);
         X509_free(x509);
         CRYPTO_free(buf, MemoryAddress.NULL, 0); // OPENSSL_free macro
         return certificate;
@@ -987,7 +987,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             return null;
         }
         byte[][] certificateChain = new byte[len][];
-        var allocator = SegmentAllocator.nativeAllocator(engineScope);
+        var allocator = SegmentAllocator.newNativeArena(engineMemorySession);
         for (int i = 0; i < len; i++) {
             MemoryAddress/*(X509*)*/ x509 = OPENSSL_sk_value(sk, i);
             MemorySegment bufPointer = allocator.allocate(ValueLayout.ADDRESS, MemoryAddress.NULL);
@@ -997,7 +997,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                 continue;
             }
             MemoryAddress buf = bufPointer.get(ValueLayout.ADDRESS, 0);
-            byte[] certificate = MemorySegment.ofAddress(buf, length, engineScope).toArray(ValueLayout.JAVA_BYTE);
+            byte[] certificate = MemorySegment.ofAddress(buf, length, engineMemorySession).toArray(ValueLayout.JAVA_BYTE);
             certificateChain[i] = certificate;
             CRYPTO_free(buf, MemoryAddress.NULL, 0); // OPENSSL_free macro
         }
@@ -1005,7 +1005,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
     }
 
     private String getProtocolNegotiated() {
-        var allocator = SegmentAllocator.nativeAllocator(engineScope);
+        var allocator = SegmentAllocator.newNativeArena(engineMemorySession);
         MemorySegment lenAddress = allocator.allocate(ValueLayout.JAVA_INT, 0);
         MemorySegment protocolPointer = allocator.allocate(ValueLayout.ADDRESS, MemoryAddress.NULL);
         SSL_get0_alpn_selected(state.ssl, protocolPointer, lenAddress);
@@ -1020,7 +1020,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             return null;
         }
         MemoryAddress protocolAddress = protocolPointer.get(ValueLayout.ADDRESS, 0);
-        byte[] name = MemorySegment.ofAddress(protocolAddress, length, engineScope).toArray(ValueLayout.JAVA_BYTE);
+        byte[] name = MemorySegment.ofAddress(protocolAddress, length, engineMemorySession).toArray(ValueLayout.JAVA_BYTE);
         if (log.isDebugEnabled()) {
             log.debug("Protocol negotiated [" + new String(name) + "]");
         }
@@ -1107,7 +1107,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         String sslError = null;
         long error = ERR_get_error();
         if (error != SSL_ERROR_NONE()) {
-            var allocator = SegmentAllocator.nativeAllocator(engineScope);
+            var allocator = SegmentAllocator.newNativeArena(engineMemorySession);
             do {
                 // Loop until getLastErrorNumber() returns SSL_ERROR_NONE
                 var buf = allocator.allocateArray(ValueLayout.JAVA_BYTE, new byte[128]);
@@ -1262,7 +1262,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             // Set int verify_callback(int preverify_ok, X509_STORE_CTX *x509_ctx) callback
             NativeSymbol openSSLCallbackVerify =
                     CLinker.systemCLinker().upcallStub(openSSLCallbackVerifyHandle,
-                    openSSLCallbackVerifyFunctionDescriptor, engineScope);
+                    openSSLCallbackVerifyFunctionDescriptor, engineMemorySession);
             int value = switch (mode) {
                 case NONE -> SSL_VERIFY_NONE();
                 case REQUIRE -> SSL_VERIFY_PEER() | SSL_VERIFY_FAIL_IF_NO_PEER_CERT();
@@ -1382,13 +1382,13 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                     // sslutils.c ssl_ocsp_request(x509, issuer, x509ctx);
                     int nid = X509_get_ext_by_NID(x509, NID_info_access(), -1);
                     if (nid >= 0) {
-                        try (var scope = ResourceScope.newConfinedScope()) {
+                        try (var memorySession = MemorySession.openConfined()) {
                             MemoryAddress ext = X509_get_ext(x509, nid);
                             MemoryAddress os = X509_EXTENSION_get_data(ext);
                             int length = ASN1_STRING_length(os);
                             MemoryAddress data = ASN1_STRING_get0_data(os);
                             // ocsp_urls = decode_OCSP_url(os);
-                            byte[] asn1String = MemorySegment.ofAddress(data, length, scope).toArray(ValueLayout.JAVA_BYTE);
+                            byte[] asn1String = MemorySegment.ofAddress(data, length, memorySession).toArray(ValueLayout.JAVA_BYTE);
                             Asn1Parser parser = new Asn1Parser(asn1String);
                             // Parse the byte sequence
                             ArrayList<String> urls = new ArrayList<>();
@@ -1402,7 +1402,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
                                 for (String urlString : urls) {
                                     try {
                                         URL url = new URL(urlString);
-                                        ocspResponse = processOCSPRequest(url, issuer, x509, x509ctx, scope);
+                                        ocspResponse = processOCSPRequest(url, issuer, x509, x509ctx, memorySession);
                                         if (log.isDebugEnabled()) {
                                             log.debug("OCSP response for URL: " + urlString + " was " + ocspResponse);
                                         }
@@ -1452,7 +1452,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
     }
 
     private static int processOCSPRequest(URL url, MemoryAddress issuer, MemoryAddress x509,
-            MemoryAddress /*X509_STORE_CTX*/ x509ctx, ResourceScope scope) {
+            MemoryAddress /*X509_STORE_CTX*/ x509ctx, MemorySession memorySession) {
         MemoryAddress ocspRequest = MemoryAddress.NULL;
         MemoryAddress ocspResponse = MemoryAddress.NULL;
         MemoryAddress id = MemoryAddress.NULL;
@@ -1461,7 +1461,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         MemoryAddress basicResponse = MemoryAddress.NULL;
         MemoryAddress certId = MemoryAddress.NULL;
         try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
-            var allocator = SegmentAllocator.nativeAllocator(scope);
+            var allocator = SegmentAllocator.newNativeArena(memorySession);
             ocspRequest = OCSP_REQUEST_new();
             if (MemoryAddress.NULL.equals(ocspRequest)) {
                 return V_OCSP_CERTSTATUS_UNKNOWN();
@@ -1485,7 +1485,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             // Host: urlHost:urlPort
             // Content-Type: application/ocsp-request
             // Content-Length: ocspRequestData.length
-            byte[] ocspRequestData = MemorySegment.ofAddress(buf, requestLength, scope).toArray(ValueLayout.JAVA_BYTE);
+            byte[] ocspRequestData = MemorySegment.ofAddress(buf, requestLength, memorySession).toArray(ValueLayout.JAVA_BYTE);
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setDoInput(true);
@@ -1566,13 +1566,13 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             byte[] id = null;
             synchronized (OpenSSLEngine.this) {
                 if (!destroyed) {
-                    var allocator = SegmentAllocator.nativeAllocator(engineScope);
+                    var allocator = SegmentAllocator.newNativeArena(engineMemorySession);
                     MemorySegment lenPointer = allocator.allocate(ValueLayout.ADDRESS);
                     var session = SSL_get_session(state.ssl);
                     MemoryAddress sessionId = SSL_SESSION_get_id(session, lenPointer);
                     int len = lenPointer.get(ValueLayout.JAVA_INT, 0);
                     id = (len == 0) ? new byte[0]
-                            : MemorySegment.ofAddress(sessionId, len, engineScope).toArray(ValueLayout.JAVA_BYTE);
+                            : MemorySegment.ofAddress(sessionId, len, engineMemorySession).toArray(ValueLayout.JAVA_BYTE);
                 }
             }
 

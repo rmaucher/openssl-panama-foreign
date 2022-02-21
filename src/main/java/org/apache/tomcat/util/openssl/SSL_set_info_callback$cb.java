@@ -27,10 +27,10 @@ import static java.lang.foreign.ValueLayout.*;
 public interface SSL_set_info_callback$cb {
 
     void apply(java.lang.foreign.MemoryAddress x0, int x1, int x2);
-    static NativeSymbol allocate(SSL_set_info_callback$cb fi, ResourceScope scope) {
+    static NativeSymbol allocate(SSL_set_info_callback$cb fi, MemorySession scope) {
         return RuntimeHelper.upcallStub(SSL_set_info_callback$cb.class, fi, constants$22.SSL_set_info_callback$cb$FUNC, "(Ljdk/incubator/foreign/MemoryAddress;II)V", scope);
     }
-    static SSL_set_info_callback$cb ofAddress(MemoryAddress addr, ResourceScope scope) {
+    static SSL_set_info_callback$cb ofAddress(MemoryAddress addr, MemorySession scope) {
         NativeSymbol symbol = NativeSymbol.ofAddress("SSL_set_info_callback$cb::" + Long.toHexString(addr.toRawLongValue()), addr, scope);
 return (java.lang.foreign.MemoryAddress x0, int x1, int x2) -> {
             try {
