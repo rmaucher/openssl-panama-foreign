@@ -2,8 +2,8 @@
 
 ## This module is experimental
 
-It uses the incubating JEP 419 API. More details on this API are available
-at `https://openjdk.java.net/jeps/419`.
+It uses the JEP 424 API. More details on this API are available
+at `https://openjdk.java.net/jeps/424`.
 
 ## Building the panama-foreign JDK
 
