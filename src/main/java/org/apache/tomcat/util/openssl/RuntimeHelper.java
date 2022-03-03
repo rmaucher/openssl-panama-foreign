@@ -22,7 +22,6 @@ import java.lang.foreign.Addressable;
 import java.lang.foreign.CLinker;
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.GroupLayout;
-import java.lang.foreign.NativeSymbol;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
@@ -85,7 +84,7 @@ final class RuntimeHelper {
         return LINKER.downcallHandle(fdesc);
     }
 
-    static final <Z> NativeSymbol upcallStub(Class<Z> fi, Z z, FunctionDescriptor fdesc, String mtypeDesc, MemorySession scope) {
+    static final <Z> MemorySegment upcallStub(Class<Z> fi, Z z, FunctionDescriptor fdesc, String mtypeDesc, MemorySession scope) {
         try {
             MethodHandle handle = MH_LOOKUP.findVirtual(fi, "apply",
                     MethodType.fromMethodDescriptorString(mtypeDesc, LOADER));
@@ -104,10 +103,10 @@ final class RuntimeHelper {
 
     private static class VarargsInvoker {
         private static final MethodHandle INVOKE_MH;
-        private final NativeSymbol symbol;
+        private final MemorySegment symbol;
         private final FunctionDescriptor function;
 
-        private VarargsInvoker(NativeSymbol symbol, FunctionDescriptor function) {
+        private VarargsInvoker(MemorySegment symbol, FunctionDescriptor function) {
             this.symbol = symbol;
             this.function = function;
         }
@@ -120,7 +119,7 @@ final class RuntimeHelper {
             }
         }
 
-        static MethodHandle make(NativeSymbol symbol, FunctionDescriptor function) {
+        static MethodHandle make(MemorySegment symbol, FunctionDescriptor function) {
             VarargsInvoker invoker = new VarargsInvoker(symbol, function);
             MethodHandle handle = INVOKE_MH.bindTo(invoker).asCollector(Object[].class, function.argumentLayouts().size() + 1);
             MethodType mtype = MethodType.methodType(function.returnLayout().isPresent() ? carrier(function.returnLayout().get(), true) : void.class);

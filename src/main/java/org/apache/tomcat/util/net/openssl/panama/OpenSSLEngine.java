@@ -23,7 +23,6 @@ import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.MemorySession;
-import java.lang.foreign.NativeSymbol;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
@@ -251,7 +250,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         session = new OpenSSLSession();
         var ssl = SSL_new(sslCtx);
         // Set ssl_info_callback
-        NativeSymbol openSSLCallbackInfo = CLinker.systemCLinker().upcallStub(openSSLCallbackInfoHandle,
+        var openSSLCallbackInfo = CLinker.systemCLinker().upcallStub(openSSLCallbackInfoHandle,
                 openSSLCallbackInfoFunctionDescriptor, engineMemorySession);
         SSL_set_info_callback(ssl, openSSLCallbackInfo);
         if (clientMode) {
@@ -1260,7 +1259,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             };
             // SSL.setVerify(state.ssl, value, certificateVerificationDepth);
             // Set int verify_callback(int preverify_ok, X509_STORE_CTX *x509_ctx) callback
-            NativeSymbol openSSLCallbackVerify =
+            var openSSLCallbackVerify =
                     CLinker.systemCLinker().upcallStub(openSSLCallbackVerifyHandle,
                     openSSLCallbackVerifyFunctionDescriptor, engineMemorySession);
             int value = switch (mode) {
