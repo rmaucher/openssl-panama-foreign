@@ -34,6 +34,14 @@ class constants$13 {
         "SSL_CTX_set_cipher_list",
         constants$13.SSL_CTX_set_cipher_list$FUNC, false
     );
+    static final FunctionDescriptor SSL_CTX_set_ciphersuites$FUNC = FunctionDescriptor.of(JAVA_INT,
+            ADDRESS,
+            ADDRESS
+        );
+    static final MethodHandle SSL_CTX_set_ciphersuites$MH = RuntimeHelper.downcallHandle(
+            "SSL_CTX_set_ciphersuites",
+            constants$13.SSL_CTX_set_ciphersuites$FUNC, false
+        );
     static final FunctionDescriptor SSL_CTX_new$FUNC = FunctionDescriptor.of(ADDRESS,
         ADDRESS
     );

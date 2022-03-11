@@ -1057,6 +1057,17 @@ public class openssl_h  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    public static MethodHandle SSL_CTX_set_ciphersuites$MH() {
+        return RuntimeHelper.requireNonNull(constants$13.SSL_CTX_set_ciphersuites$MH,"SSL_CTX_set_ciphersuites");
+    }
+    public static int SSL_CTX_set_ciphersuites ( Addressable x0,  Addressable str) {
+        var mh$ = RuntimeHelper.requireNonNull(constants$13.SSL_CTX_set_ciphersuites$MH, "SSL_CTX_set_ciphersuites");
+        try {
+            return (int)mh$.invokeExact(x0, str);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
     public static MethodHandle SSL_CTX_new$MH() {
         return RuntimeHelper.requireNonNull(constants$13.SSL_CTX_new$MH,"SSL_CTX_new");
     }
