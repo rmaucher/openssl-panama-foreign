@@ -27,6 +27,7 @@ import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.MemorySession;
 import java.lang.foreign.SegmentAllocator;
+import java.lang.foreign.SymbolLookup;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
@@ -65,11 +66,11 @@ final class RuntimeHelper {
     private final static SegmentAllocator THROWING_ALLOCATOR = (x, y) -> { throw new AssertionError("should not reach here"); };
 
     static final MemorySegment lookupGlobalVariable(String name, MemoryLayout layout) {
-        return LOADER.findNative(name).map(symbol -> MemorySegment.ofAddress(symbol.address(), layout.byteSize(), MemorySession.openShared())).orElse(null);
+        return SymbolLookup.loaderLookup().lookup(name).map(symbol -> MemorySegment.ofAddress(symbol.address(), layout.byteSize(), MemorySession.openShared())).orElse(null);
     }
 
     static final MethodHandle downcallHandle(String name, FunctionDescriptor fdesc, boolean variadic) {
-        return LOADER.findNative(name).map(
+        return SymbolLookup.loaderLookup().lookup(name).map(
                 addr -> {
                     return variadic ?
                         VarargsInvoker.make(addr, fdesc) :
