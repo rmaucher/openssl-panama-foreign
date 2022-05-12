@@ -7,16 +7,10 @@ at `https://openjdk.java.net/jeps/424`.
 
 ## Building the panama-foreign JDK
 
-Clone `https://github.com/openjdk/panama-foreign` in some location. This is a
-forked Java 18 development JVM with the added Panama API and tools. It will
-often fail to build. When this happens, step back one commit at a time until
-it does. This is the only way to obtain the jextract tool, that is more or less
-required for large libraries. The Panama API from this branch is also
-different from the API present in Java 17.
-
-Clang is a dependency for jextract, and ideally Clang from LLVM 12 should be
-used. It may need explicit declaration to the configure script, using something
-like `--with-libclang=/usr/lib64/llvm12 --with-libclang-version=12`.
+Clone `https://github.com/openjdk/panama-foreign/` in some location and
+checkout the `foreign-preview` branch. This is a forked Java 19 development JVM
+with the added JEP 424 API. It may fail to build. When this happens, step back
+one commit at a time until it does.
 
 ```
 bash configure
@@ -68,52 +62,16 @@ Example connector:
 Run Tomcat using the additional Java options that allow access to the API and
 native code:
 ```
-export JAVA_OPTS="--enable-native-access=ALL-UNNAMED --add-modules jdk.incubator.foreign"
-```
-
-## Running the testsuite
-
-Use the following patch for `build.xml` before running the testuite:
-```
-diff --git a/build.xml b/build.xml
-index dc1260b..dd9fba9 100644
---- a/build.xml
-+++ b/build.xml
-@@ -213,6 +213,8 @@
-   <defaultexcludes remove="**/.gitignore" />
-   <!--<defaultexcludes echo="true" />-->
-
-   <!-- Classpaths -->
-   <path id="compile.classpath">
-     <pathelement location="${bnd.jar}"/>
-@@ -240,6 +242,7 @@
-     <pathelement location="${derby.jar}"/>
-     <pathelement location="${derby-shared.jar}"/>
-     <pathelement location="${derby-tools.jar}"/>
-+    <pathelement location="output/build/lib/tomcat-coyote-openssl-0.1.jar"/>
-     <path refid="compile.classpath" />
-     <path refid="tomcat.classpath" />
-   </path>
-@@ -1944,7 +1947,6 @@
-
-           <jvmarg value="${test.jvmarg.egd}"/>
-           <jvmarg value="-Dfile.encoding=UTF-8"/>
--          <jvmarg value="-Djava.library.path=${test.apr.loc}"/>
-           <jvmarg value="${test.formatter}"/>
-           <jvmarg value="-Djava.net.preferIPv4Stack=${java.net.preferIPv4Stack}"/>
-           <jvmarg value="--add-opens=java.base/java.lang=ALL-UNNAMED"/>
-@@ -1952,6 +1954,9 @@
-           <jvmarg value="--add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED"/>
-           <jvmarg value="--add-opens=java.base/java.util=ALL-UNNAMED"/>
-           <jvmarg value="--add-opens=java.base/java.util.concurrent=ALL-UNNAMED"/>
-+          <jvmarg value="--enable-native-access=ALL-UNNAMED"/>
-+          <jvmarg value="--add-modules"/>
-+          <jvmarg value="jdk.incubator.foreign"/>
-
-           <classpath refid="tomcat.test.classpath" />
+export JAVA_OPTS="--enable-preview --enable-native-access=ALL-UNNAMED"
 ```
 
 ## Generating the OpenSSL API code using jextract (optional)
+
+jextract is now available in its own standalone repository. Clone
+`https://github.com/openjdk/jextract` in some location. Please refer to the
+instructions from the repository for building.
+However, jextract has not been adapted yet to the JEP 424 API and the generated
+code will need to be modified manually.
 
 This step is only useful to be able to use additional native APIs from OpenSSL
 or stdlib.
