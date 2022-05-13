@@ -20,8 +20,8 @@ import static org.apache.tomcat.util.openssl.openssl_h.*;
 
 import java.io.File;
 import java.lang.foreign.Addressable;
-import java.lang.foreign.CLinker;
 import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.Linker;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.MemorySession;
@@ -326,7 +326,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
 
             // Set int pem_password_cb(char *buf, int size, int rwflag, void *u) callback
             openSSLCallbackPassword =
-                    CLinker.systemCLinker().upcallStub(openSSLCallbackPasswordHandle,
+                    Linker.nativeLinker().upcallStub(openSSLCallbackPasswordHandle,
                     openSSLCallbackPasswordFunctionDescriptor, contextMemorySession);
             SSL_CTX_set_default_passwd_cb(sslCtx, openSSLCallbackPassword);
 
@@ -607,7 +607,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
 
             // Set int verify_callback(int preverify_ok, X509_STORE_CTX *x509_ctx) callback
             var openSSLCallbackVerify =
-                    CLinker.systemCLinker().upcallStub(openSSLCallbackVerifyHandle,
+                    Linker.nativeLinker().upcallStub(openSSLCallbackVerifyHandle,
                     openSSLCallbackVerifyFunctionDescriptor, state.contextMemorySession);
             // Leave this just in case but in Tomcat this is always set again by the engine
             SSL_CTX_set_verify(state.sslCtx, value, openSSLCallbackVerify);
@@ -619,7 +619,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                     // Client certificate verification based on custom trust managers
                     state.x509TrustManager = chooseTrustManager(tms);
                     var openSSLCallbackCertVerify =
-                            CLinker.systemCLinker().upcallStub(openSSLCallbackCertVerifyHandle,
+                            Linker.nativeLinker().upcallStub(openSSLCallbackCertVerifyHandle,
                             openSSLCallbackCertVerifyFunctionDescriptor, state.contextMemorySession);
                     SSL_CTX_set_cert_verify_callback(state.sslCtx, openSSLCallbackCertVerify, state.sslCtx);
 
@@ -678,7 +678,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                 // int openSSLCallbackAlpnSelectProto(MemoryAddress ssl, MemoryAddress out, MemoryAddress outlen,
                 //        MemoryAddress in, int inlen, MemoryAddress arg
                 var openSSLCallbackAlpnSelectProto =
-                        CLinker.systemCLinker().upcallStub(openSSLCallbackAlpnSelectProtoHandle,
+                        Linker.nativeLinker().upcallStub(openSSLCallbackAlpnSelectProtoHandle,
                         openSSLCallbackAlpnSelectProtoFunctionDescriptor, state.contextMemorySession);
                 SSL_CTX_set_alpn_select_cb(state.sslCtx, openSSLCallbackAlpnSelectProto, state.sslCtx);
                 // Skip NPN (annoying and likely not useful anymore)
@@ -1143,7 +1143,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                 EC_GROUP_free(ecparams);
             }
             // Set callback for DH parameters
-            var openSSLCallbackTmpDH = CLinker.systemCLinker().upcallStub(openSSLCallbackTmpDHHandle,
+            var openSSLCallbackTmpDH = Linker.nativeLinker().upcallStub(openSSLCallbackTmpDHHandle,
                     openSSLCallbackTmpDHFunctionDescriptor, state.contextMemorySession);
             SSL_CTX_set_tmp_dh_callback(state.sslCtx, openSSLCallbackTmpDH);
             // Set certificate chain file
@@ -1231,7 +1231,7 @@ public class OpenSSLContext implements org.apache.tomcat.util.net.SSLContext {
                 return;
             }
             // Set callback for DH parameters
-            var openSSLCallbackTmpDH = CLinker.systemCLinker().upcallStub(openSSLCallbackTmpDHHandle,
+            var openSSLCallbackTmpDH = Linker.nativeLinker().upcallStub(openSSLCallbackTmpDHHandle,
                     openSSLCallbackTmpDHFunctionDescriptor, state.contextMemorySession);
             SSL_CTX_set_tmp_dh_callback(state.sslCtx, openSSLCallbackTmpDH);
             for (int i = 1; i < chain.length; i++) {

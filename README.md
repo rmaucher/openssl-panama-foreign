@@ -5,11 +5,11 @@
 It uses the JEP 424 API. More details on this API are available
 at `https://openjdk.java.net/jeps/424`.
 
-## Building the panama-foreign JDK
+## Building the JDK with the JEP 424 API
 
-Clone `https://github.com/openjdk/panama-foreign/` in some location and
-checkout the `foreign-preview` branch. This is a forked Java 19 development JVM
-with the added JEP 424 API. It may fail to build. When this happens, step back
+Clone `https://github.com/openjdk/jdk/` in some location and
+checkout the `foreign-preview` branch. This is a Java 19 development JVM
+with the JEP 424 API. It may fail to build. When this happens, step back
 one commit at a time until it does.
 
 ```

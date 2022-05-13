@@ -18,8 +18,8 @@ package org.apache.tomcat.util.net.openssl.panama;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
-import java.lang.foreign.CLinker;
 import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.Linker;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.MemorySession;
@@ -250,7 +250,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
         session = new OpenSSLSession();
         var ssl = SSL_new(sslCtx);
         // Set ssl_info_callback
-        var openSSLCallbackInfo = CLinker.systemCLinker().upcallStub(openSSLCallbackInfoHandle,
+        var openSSLCallbackInfo = Linker.nativeLinker().upcallStub(openSSLCallbackInfoHandle,
                 openSSLCallbackInfoFunctionDescriptor, engineMemorySession);
         SSL_set_info_callback(ssl, openSSLCallbackInfo);
         if (clientMode) {
@@ -1260,7 +1260,7 @@ public final class OpenSSLEngine extends SSLEngine implements SSLUtil.ProtocolIn
             // SSL.setVerify(state.ssl, value, certificateVerificationDepth);
             // Set int verify_callback(int preverify_ok, X509_STORE_CTX *x509_ctx) callback
             var openSSLCallbackVerify =
-                    CLinker.systemCLinker().upcallStub(openSSLCallbackVerifyHandle,
+                    Linker.nativeLinker().upcallStub(openSSLCallbackVerifyHandle,
                     openSSLCallbackVerifyFunctionDescriptor, engineMemorySession);
             int value = switch (mode) {
                 case NONE -> SSL_VERIFY_NONE();
